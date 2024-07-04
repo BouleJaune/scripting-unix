@@ -1,0 +1,157 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{gentium}
+\usepackage{mathptmx} % Use Times Font
+
+
+\usepackage[pdftex]{graphicx} % Required for including pictures
+\usepackage[french]{babel} 
+\usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % Format links for pdf
+\usepackage{calc} % To reset the counter in the document after title page
+\usepackage{enumitem} % Includes lists
+
+\frenchspacing % No double spacing between sentences
+\linespread{1.2} % Set linespace
+\usepackage[a4paper, lmargin=0.1666\paperwidth, rmargin=0.1666\paperwidth, tmargin=0.1111\paperheight, bmargin=0.1111\paperheight]{geometry} %margins
+%\usepackage{parskip}
+
+\usepackage[all]{nowidow} % Tries to remove widows
+\usepackage[protrusion=true,expansion=true]{microtype} % Improves typography, load after fontpackage is selected
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+
+%-----------------------
+% Set pdf information and add title, fill in the fields
+%-----------------------
+\hypersetup{ 	
+pdfsubject = {},
+pdftitle = {},
+pdfauthor = {}
+}
+
+%-----------------------
+% Begin document
+%-----------------------
+\begin{document} %All text i dokumentet hamnar mellan dessa taggar, allt ovanför är formatering av dokumentet
+
+\section{Introduction}
+
+Les objectifs de la formation\\ 
+
+Connaître les caractéristiques des principaux outils de scripting Unix/Linux
+
+Savoir lire des scripts Unix/Linux écrits en Shell, Perl, Python Ruby ou AWK
+
+Être capable d'écrire des scripts simples d'exploitation Unix/Linux
+
+Comprendre comment choisir l'outil le plus adapté pour résoudre un problème particulier
+\\
+
+Prez perso et demander le niveau des gens
+
+\section{Le Shell - les bases}
+
+\subsection{Qu'est ce qu'un shell}
+
+Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.\\ 
+Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer *des* shells (bash, python, zsh, powershell, ruby ...). 
+'Emulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
+
+La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd et powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.
+
+
+
+Philo, kiss, si trop complexe passer sur autre chose, bien pour manipuler des binaires
+Shebang, executable, qu'est ce qu'un executable
+POSIX/ISO
+
+Scripting : variables control, loops, test, case (and arg parse, diff - et --), functions, utilisation de binaires externes
+
+Puissance de juste one commande + pipe + redirections
+
+Les différents shell (ksh, bash, zsh, csh, ...)\\
+Le Shell POSIX/ISO\\
+L'écriture de script Shell \\
+Activation des commandes POSIX/ISO\\
+Les caractères spéciaux (jockers, échappements, redirection)\\
+Les variables\\
+Les structures de contrôle\\
+
+\section{Le langage Perl - les bases}
+Prez, utilité de nos jours, spécifité
+
+Présentation de Perl\\
+Les variables scalaires, les tableaux, les opérateurs\\
+Les instructions de contrôle\\
+Les tableaux associatifs (hash)\\
+
+\section{Le langage Python - les bases}
+Prez, importance de python, pourquoi (communauté), scope (ansible, blabla, 3600 trucs)
+
+Présentation de Python\\
+Variables et expressions\\
+Les tableaux, les chaînes de caractères\\
+Les instructions de contrôle\\
+Les dictionnaires (hash)\\
+
+\section{Le langage Ruby - les bases}
+Présentation de Ruby\\
+Les variables\\
+Les chaînes de caractères\\
+Les structures de contrôle\\
+Les tableaux, les itérateurs - Les hash\\
+
+\section{Les expressions régulières (RegExp)}
+Importance de grep et sed 
+RegExp en Shell (via grep et sed)\\
+RegExp en Perl\\
+RegExp en Python\\
+RegExp en Ruby\\
+
+\section{La modularité en Shell, Perl, Python et Ruby}
+
+parler de direnv, de requirements.txt, de venv python, de classes python (osef un peu)
+y a des trucs pour shell (bpkg) mais pas le but, illogique, shell = spécifique task
+
+Les fonctions\\
+Les paquetages\\
+L'approche objet\\
+Utilisation de bibliothèques externes\\
+
+
+
+\section{La programmation parallèle en Shell, Perl, Python et Ruby}
+
+différentes concurrency
+xargs pipes et parallel pour shell
+multithreading et async pour python
+
+\section{Résoudre des problèmes avec le Shell, Perl, Python et Ruby}
+
+Ecrire des scripts d'exploitation (activer une application, les signaux, ...)\\
+Manipuler des fichiers\\
+Faire des calculs\\
+Ecrire des CGI Web\\
+Accéder à des bases de données\\
+Manipuler des fichiers XML (parsing, validation, création)\\
+Créer des applications réseaux TCP/IP\\
+
+Ptit serveur web
+Génération de fichier dans un dossier
+service shell filewatcher qui trigger un truc
+xargs et des pipes pour multiprocessing
+perl ou grep pour regex
+awk pour un truc
+
+9 - AWK : un sous-ensemble POSIX/ISO du langage Perl
+
+10 - Conclusion
+
+Quel outil pour quoi faire?
+
+
+
+\subsection*{Subtitle}
+\end{document}
