@@ -56,16 +56,40 @@ Prez perso et demander le niveau des gens
 \subsection{Qu'est ce qu'un shell}
 
 Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.\\ 
-Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer *des* shells (bash, python, zsh, powershell, ruby ...). 
-'Emulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
+Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer \textit{des} shells (bash, python, zsh, fish, powershell, ruby ...). \\ 
+\'Emulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
 
-La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd et powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.
+La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.\\
+
+
+\subsection{Shell Unix}
+Abus de langage shell = unix shell / bash
+Principaux shells, principales différences, tout pareil osef, focus sur Bash.
+
+\subsection{Détails d'OS pour utiliser shell et autres langages}
+stdin / stdout
+droits fichiers, +x, shebang
+return code, 
+
+\subsection{Concepts/Binaires et builtins}
+Shell outil de manipulation de binaires linux + fournis des builtins
+Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe go python
+Tout est texte, absolument tout
+RTFM
+
+\subsection{Structures de contrôle}
+if then else fi
+while do done
+until do done
+for do done
+case esac
+
+test et [ et [[
+
+\subsection{}
 
 
 
-Philo, kiss, si trop complexe passer sur autre chose, bien pour manipuler des binaires
-Shebang, executable, qu'est ce qu'un executable
-POSIX/ISO
 
 Scripting : variables control, loops, test, case (and arg parse, diff - et --), functions, utilisation de binaires externes
 

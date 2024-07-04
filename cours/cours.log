@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  4 JUL 2024 20:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  4 JUL 2024 20:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -734,48 +734,57 @@ LaTeX Info: Redefining \lslig on input line 902.
 Package microtype Info: Loading configuration file microtype.cfg.
  (/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
-))
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 36.
- (/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)) (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-02-20 L3 programming layer (loader) 
+ (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box53
+))
+Package: l3keys2e 2024-02-18 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count294
+\l__lipsum_a_int=\count295
+\l__lipsum_b_int=\count296
+ (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 37.
+ (/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (./cours.aux)
 \openout1 = `cours.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 \big@size=\dimen169
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count294
+\scratchcounter=\count297
 \scratchdimen=\dimen170
 \scratchbox=\box54
-\nofMPsegments=\count295
-\nofMParguments=\count296
+\nofMPsegments=\count298
+\nofMParguments=\count299
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count297
+\MPscratchCnt=\count300
 \MPscratchDim=\dimen171
-\MPnumerator=\count298
-\makeMPintoPDFobject=\count299
+\MPnumerator=\count301
+\makeMPintoPDFobject=\count302
 \everyMPtoPDFconversion=\toks26
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -783,15 +792,15 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \degres on input line 36.
+LaTeX Info: Redefining \degres on input line 37.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 36.
+(french.ldf)             reported on input line 37.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 36.
-LaTeX Info: Redefining \up on input line 36.
-Package hyperref Info: Link coloring OFF on input line 36.
+(french.ldf)             reported on input line 37.
+LaTeX Info: Redefining \up on input line 37.
+Package hyperref Info: Link coloring OFF on input line 37.
  (./cours.out) (./cours.out)
 \@outlinefile=\write3
 \openout3 = `cours.out'.
@@ -831,92 +840,97 @@ Package hyperref Info: Link coloring OFF on input line 36.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 36.
-Package microtype Info: Applying patch `item' on input line 36.
-Package microtype Info: Applying patch `toc' on input line 36.
-Package microtype Info: Applying patch `eqnum' on input line 36.
-Package microtype Info: Applying patch `footnote' on input line 36.
-Package microtype Info: Applying patch `verbatim' on input line 36.
+LaTeX Info: Redefining \microtypecontext on input line 37.
+Package microtype Info: Applying patch `item' on input line 37.
+Package microtype Info: Applying patch `toc' on input line 37.
+Package microtype Info: Applying patch `eqnum' on input line 37.
+Package microtype Info: Applying patch `footnote' on input line 37.
+Package microtype Info: Applying patch `verbatim' on input line 37.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 36.
+LaTeX Info: Redefining \showhyphens on input line 37.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--71
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--79
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--88
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 90--95
+Underfull \hbox (badness 10000) in paragraph at lines 98--105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--102
+Underfull \hbox (badness 10000) in paragraph at lines 109--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--112
+Underfull \hbox (badness 10000) in paragraph at lines 117--122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--130
+Underfull \hbox (badness 10000) in paragraph at lines 124--129
 
  []
 
-[2] [3] (./cours.aux)
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 131--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--164
+
+ []
+
+[3] [4] (./cours.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `cours.out' has not changed.
-(rerunfilecheck)             Checksum: 109C2FCBC8EA98428B621CAC1F6CEEAC;2266.
+(rerunfilecheck)             Checksum: 28CC4364B8BDABBFDBEFE95627EDBDAE;3150.
  ) 
 Here is how much of TeX's memory you used:
- 13227 strings out of 476047
- 210577 string characters out of 5792626
- 1933187 words of memory out of 5000000
- 35149 multiletter control sequences out of 15000+600000
- 572170 words of font info for 68 fonts, out of 8000000 for 9000
+ 13699 strings out of 476047
+ 221325 string characters out of 5792626
+ 1935187 words of memory out of 5000000
+ 35572 multiletter control sequences out of 15000+600000
+ 576364 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,5n,79p,1097b,461s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on cours.pdf (3 pages, 37767 bytes).
+ 79i,6n,93p,1097b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cours.pdf (4 pages, 47784 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 16465 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 107 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 21 named destinations out of 1000 (max. 500000)
+ 20601 words of extra memory for PDF output out of 20736 (max. 10000000)
 
