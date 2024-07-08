@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  7 JUL 2024 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  9 JUL 2024 00:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -911,61 +911,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 136--142
+Underfull \hbox (badness 10000) in paragraph at lines 137--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--150
+Underfull \hbox (badness 10000) in paragraph at lines 147--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--157
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--166
+Underfull \hbox (badness 10000) in paragraph at lines 153--158
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 168--173
+Underfull \hbox (badness 10000) in paragraph at lines 167--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--183
+Underfull \hbox (badness 10000) in paragraph at lines 177--182
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--201
+Underfull \hbox (badness 10000) in paragraph at lines 188--192
 
  []
 
-[5] [6] (./cours.aux)
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 203--210
+
+ []
+
+[6] (./cours.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `cours.out' has not changed.
-(rerunfilecheck)             Checksum: B29915CF330FBAEB2FB415CE8DB32097;5167.
+(rerunfilecheck)             Checksum: 31A8E489ADD40C861C60C4CAE36D73FE;5401.
  ) 
 Here is how much of TeX's memory you used:
- 13907 strings out of 476047
- 224812 string characters out of 5792626
- 1941187 words of memory out of 5000000
- 35698 multiletter control sequences out of 15000+600000
- 588769 words of font info for 129 fonts, out of 8000000 for 9000
+ 13914 strings out of 476047
+ 224896 string characters out of 5792626
+ 1942187 words of memory out of 5000000
+ 35700 multiletter control sequences out of 15000+600000
+ 588899 words of font info for 131 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  79i,6n,93p,1097b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cours.pdf (6 pages, 54888 bytes).
+Output written on cours.pdf (6 pages, 56048 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 186 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 38625 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 38641 words of extra memory for PDF output out of 42996 (max. 10000000)
 

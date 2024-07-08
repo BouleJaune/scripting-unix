@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1720369183.37542 "cours.tex" "cours.pdf" "cours" 1720369183.93372 0
+["pdflatex"] 1720479022.69695 "cours.tex" "cours.pdf" "cours" 1720479023.2875 0
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1716849630 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1716849630 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1716849630 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -100,10 +100,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1716849630 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1717063686.30591 5312086 49e033e8d3948bcca48e0612d8828e70 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1717063603 7119908 49a369500672e719f61f373d48db4eb5 ""
-  "cours.aux" 1720369183.85836 4014 ced11b484cb88a6d4822bda9d11e8f50 "pdflatex"
-  "cours.out" 1720369183.85836 5167 b29915cf330fbaeb2fb415ce8db32097 "pdflatex"
-  "cours.tex" 1720369180.93841 7153 19f5cd633f305f2098ee74d86e513ca2 ""
-  "cours.toc" 1720369183.85836 2574 eb8065e958f0880b6ce6e59d5df42ca9 "pdflatex"
+  "cours.aux" 1720479023.20607 4251 ed4972dfd459f45203bbd35ea0684bb6 "pdflatex"
+  "cours.out" 1720479023.20607 5401 31a8e489add40c861c60c4cae36d73fe "pdflatex"
+  "cours.tex" 1720479021.36276 7981 bcb550ee2a8379610b6a91bd2508255f ""
+  "cours.toc" 1720479023.20607 2729 c5e8b0ccf6fbfc4506afda973d20805c "pdflatex"
   (generated)
   "cours.aux"
   "cours.log"
