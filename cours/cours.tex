@@ -35,7 +35,7 @@ pdfauthor = {}
 % Begin document
 %-----------------------
 \begin{document} %All text i dokumentet hamnar mellan dessa taggar, allt ovanför är formatering av dokumentet
-
+\tableofcontents
 \section{Introduction}
 
 Les objectifs de la formation\\ 
@@ -62,22 +62,45 @@ Il ne faut pas confondre un shell avec un terminal. Un terminal était initialem
 La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.\\
 
 
-\subsection{Shell Unix}
-Abus de langage shell = unix shell / bash
+\subsection{Différents shells Unix}
 Principaux shells, principales différences, tout pareil osef, focus sur Bash.
+Abus de langage bash=shell unix
 
-\subsection{Détails d'OS pour utiliser shell et autres langages}
+\subsection{Rappels Linux essentiels pour le scripting}
+Supposes qu'ils ont un minimum les bases, donc juste l'essentiel pour scrpiting
 stdin / stdout
-droits fichiers, +x, shebang
 return code, 
+droits fichiers, +x, shebang
 
-\subsection{Concepts/Binaires et builtins}
-Shell outil de manipulation de binaires linux + fournis des builtins
+\subsection{Intérets des Shells Unix}
+Le shell malgré sa syntaxe archaique et ses fonctionnalités limitées vis à vis de langages interprétés à usage général a tout de même encore des avantages.
+
+\subsubsection{Actions uniques}
+Utile lorsque l'on veut faire une tâche relativement simple que quelques fois. 
+Exemple: extraire des données textes et les process sommairement
+cat / sed / cut / tr ...
+
+\subsubsection{Manipulation de binaires}
+L'une des force de Bash par rapport à d'autres langages et sa facilité à manipuler directement des binaires. En python, par exemple, on peut aussi manipuler des binaires, mais on sent clairement que cela est moins pensé pour.
+Exemple : Utiliser un exécutable propriétaire (import baroc), utiliser l'output d'un script python et l'injecter ailleurs etc
+
+
+\subsubsection{Manipulation de texte}
+Tout est texte
+Exemple : lire des logs
+
+\subsubsection{Manipulation OS linux}
+les deux derniers ~= Manipulation linux pur car linux déjà tout fichiers et texte + binaires unix
+
+
 Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe go python
-Tout est texte, absolument tout
-RTFM
 
-\subsection{Structures de contrôle}
+\subsection{"flow" de texte}
+Pipes !!
+
+\subsection{Détails syntaxiques}
+\subsubsection{Redirections et globs (*)}
+\subsubsection{Structures de contrôle}
 if then else fi
 while do done
 until do done
@@ -86,16 +109,30 @@ case esac
 
 test et [ et [[
 
-\subsection{}
+\subsubsection{Variables}
 
 
+\subsubsection{Fonctions}
+\subsubsection{Arguments parsing}
+- vs --
 
+\subsubsection{Binaires utiles}
+Force et efficience des binaires linux
+cut, cat, echo, grep, tr, sed, xargs, tail, df, ls
+diff
 
-Scripting : variables control, loops, test, case (and arg parse, diff - et --), functions, utilisation de binaires externes
+man ! RTFM
+\subsection{Exercices}
+Récupérer la liste des pourcentages de remplissages des filesystems
+
+\subsubsection{Script}
+
+\subsubsection{Sans scripts}
+
+df | tail -n +2 | tr -s " " | cut -d " " -f 5
 
 Puissance de juste one commande + pipe + redirections
 
-Les différents shell (ksh, bash, zsh, csh, ...)\\
 Le Shell POSIX/ISO\\
 L'écriture de script Shell \\
 Activation des commandes POSIX/ISO\\
@@ -111,6 +148,13 @@ Les variables scalaires, les tableaux, les opérateurs\\
 Les instructions de contrôle\\
 Les tableaux associatifs (hash)\\
 
+\section{Le langage Ruby - les bases}
+Présentation de Ruby\\
+Les variables\\
+Les chaînes de caractères\\
+Les structures de contrôle\\
+Les tableaux, les itérateurs - Les hash\\
+
 \section{Le langage Python - les bases}
 Prez, importance de python, pourquoi (communauté), scope (ansible, blabla, 3600 trucs)
 
@@ -120,19 +164,12 @@ Les tableaux, les chaînes de caractères\\
 Les instructions de contrôle\\
 Les dictionnaires (hash)\\
 
-\section{Le langage Ruby - les bases}
-Présentation de Ruby\\
-Les variables\\
-Les chaînes de caractères\\
-Les structures de contrôle\\
-Les tableaux, les itérateurs - Les hash\\
-
 \section{Les expressions régulières (RegExp)}
+regex car tout est texte
 Importance de grep et sed 
 RegExp en Shell (via grep et sed)\\
-RegExp en Perl\\
-RegExp en Python\\
-RegExp en Ruby\\
+RegExp en Perl (normes)\\
+RegExp en Python (module re mais osef)\\
 
 \section{La modularité en Shell, Perl, Python et Ruby}
 
