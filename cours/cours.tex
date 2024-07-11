@@ -63,12 +63,27 @@ La confusion est courante car sur Windows historiquement le nom du shell et de l
 
 
 \subsection{Différents shells Unix}
-Principaux shells, principales différences, tout pareil osef, focus sur Bash.
-Abus de langage bash=shell unix
+"sh" (shell command langage) est un spécification de langage défini par POSIX mais n'est pas une implémentation en lui même. Il y a diverses implémentations, la plus connue étannt Bash.
+Le fichier /bin/sh est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. ls -l /bin/sh \\
+Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.\\
+Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
+Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu naviguable ou encore une forte customisabilité par exemple).
+
+Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
+Exemple de fonctionnalité disponible sur Bash et qui n'est pas "POSIX compliant" : 
+test et [] sont POSIX compliant mais [[]] ne l'est pas. Les deux premiers sont strictements pareils, [ étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme *.
+
+Pour information lancer un script via /bin/sh avec /bin/sh étant un symlink vers bash va lancer bash en mode posix ce qui rendra bash le plus POSIX compliant possible.
+Posix mode : https://www.gnu.org/software/bash/manual/html\_node/Bash-POSIX-Mode.html
+
+En pratique il est rare d'utiliser des fonctionnalités non disponibles sur d'autres shell tout comme il est au final rare d'utiliser autre chose que Bash, néanmoins il peut être utile de garder ceci dans un coin de la tête.
 
 \subsection{Rappels Linux essentiels pour le scripting}
 Supposes qu'ils ont un minimum les bases, donc juste l'essentiel pour scrpiting
+
 stdin / stdout
+recup stdout et in des process dans /proc/pid/fd/1 et 2
+
 return code, 
 droits fichiers, +x, shebang
 
@@ -100,7 +115,10 @@ Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe 
 Pipes !!
 
 \subsection{Détails syntaxiques}
-\subsubsection{Redirections et globs (*)}
+\subsubsection{Redirections et charactères spéciaux}
+< > >> et sterr redirection
+Les caractères spéciaux (jockers, échappements, redirection)\\
+
 \subsubsection{Structures de contrôle}
 if then else fi
 while do done
