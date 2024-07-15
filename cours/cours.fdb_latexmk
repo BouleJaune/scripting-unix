@@ -1,7 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1720732831.38293 "cours.tex" "cours.pdf" "cours" 1720732831.97946 0
+["pdflatex"] 1720880634.12724 "cours.tex" "cours.pdf" "cours" 1720880634.62071 0
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1716849630 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
-  "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1716849630 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1716849630 2172 fd0c924230362ff848a33632ed45dc23 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1716849630 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm" 1716849630 6880 f19b8995b61c334d78fc734065f6b4d4 ""
@@ -98,12 +97,12 @@
   "/usr/share/texmf-dist/tex/latex/ucs/utf8x.def" 1716849630 8944 e3433baec74c4b7b278c6b6a547ff9ec ""
   "/usr/share/texmf-dist/tex/latex/url/url.sty" 1716849630 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1716849630 41588 b43d3e860a4f94167ee1e725ff526a72 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1717063686.30591 5312086 49e033e8d3948bcca48e0612d8828e70 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1717063603 7119908 49a369500672e719f61f373d48db4eb5 ""
-  "cours.aux" 1720732831.90083 4251 fcf04c1db5dff992d05fa9df99c2f2b8 "pdflatex"
-  "cours.out" 1720732831.90083 5401 31a8e489add40c861c60c4cae36d73fe "pdflatex"
-  "cours.tex" 1720732830.23752 9781 8f85f4f3095f6c4eb2fab9473eec167f ""
-  "cours.toc" 1720732831.90083 2729 2dbf8fa801f3a347a04e94fa1764b205 "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1720874136.3076 5462654 d89815a1db5cc13e69b62cdf78e022e4 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1720874099 8555711 06359d2f39d6ba89d75f6c81d0cacb8f ""
+  "cours.aux" 1720880634.50746 4142 f9c47eec826918f04ff60be270558971 "pdflatex"
+  "cours.out" 1720880634.51079 5317 831e88cb7e3227e210bb931803564798 "pdflatex"
+  "cours.tex" 1720880633.62746 11718 85f1deaed888db44c87ded0ffd3c9ad4 ""
+  "cours.toc" 1720880634.51079 2661 24ba1eaf51706d1f91251ebcd07e6474 "pdflatex"
   (generated)
   "cours.aux"
   "cours.log"

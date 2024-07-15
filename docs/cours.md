@@ -1,44 +1,6 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-%\usepackage{gentium}
-\usepackage{mathptmx} % Use Times Font
+# Introduction
 
-
-\usepackage[pdftex]{graphicx} % Required for including pictures
-\usepackage[french]{babel} 
-\usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % Format links for pdf
-\usepackage{calc} % To reset the counter in the document after title page
-\usepackage{enumitem} % Includes lists
-
-\frenchspacing % No double spacing between sentences
-\linespread{1.2} % Set linespace
-\usepackage[a4paper, lmargin=0.1666\paperwidth, rmargin=0.1666\paperwidth, tmargin=0.1111\paperheight, bmargin=0.1111\paperheight]{geometry} %margins
-%\usepackage{parskip}
-
-\usepackage[all]{nowidow} % Tries to remove widows
-\usepackage[protrusion=true,expansion=true]{microtype} % Improves typography, load after fontpackage is selected
-
-\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
-
-
-%-----------------------
-% Set pdf information and add title, fill in the fields
-%-----------------------
-\hypersetup{ 	
-pdfsubject = {},
-pdftitle = {},
-pdfauthor = {}
-}
-
-%-----------------------
-% Begin document
-%-----------------------
-\begin{document} %All text i dokumentet hamnar mellan dessa taggar, allt ovanför är formatering av dokumentet
-\tableofcontents
-\section{Introduction}
-
-Les objectifs de la formation\\ 
+Les objectifs de la formation
 
 Connaître les caractéristiques des principaux outils de scripting Unix/Linux
 
@@ -47,38 +9,40 @@ Savoir lire des scripts Unix/Linux écrits en Shell, Perl, Python Ruby ou AWK
 Être capable d'écrire des scripts simples d'exploitation Unix/Linux
 
 Comprendre comment choisir l'outil le plus adapté pour résoudre un problème particulier
-\\
+
 
 Prez perso et demander le niveau des gens
 
-\section{Le Shell - les bases}
+# Le Shell - les bases
 
-\subsection{Qu'est ce qu'un shell}
+## Qu'est ce qu'un shell
 
-Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.\\ 
-Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer \textit{des} shells (bash, python, zsh, fish, powershell, ruby ...). \\ 
+Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.
+
+Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer \textit{des} shells (bash, python, zsh, fish, powershell, ruby ...).  
 \'Emulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
 
-La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.\\
+La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.
 
 
-\subsection{Différents shells Unix}
+## Différents shells Unix
+
 "sh" (shell command langage) est un spécification de langage défini par POSIX mais n'est pas une implémentation en lui même. Il y a diverses implémentations, la plus connue étannt Bash.
-Le fichier /bin/sh est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. ls -l /bin/sh \\
-Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.\\
+Le fichier ``/bin/sh`` est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. ``ls -l /bin/sh``
+Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.
 Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
 Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu naviguable ou encore une forte customisabilité par exemple).
 
 Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
 Exemple de fonctionnalité disponible sur Bash et qui n'est pas "POSIX compliant" : 
-test et [] sont POSIX compliant mais [[]] ne l'est pas. Les deux premiers sont strictements pareils, [ étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme *.
+``test`` et ``[]`` sont POSIX compliant mais ``[[]]`` ne l'est pas. Les deux premiers sont strictements pareils, [ étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme ``*``.
 
 Pour information lancer un script via /bin/sh avec /bin/sh étant un symlink vers bash va lancer bash en mode posix ce qui rendra bash le plus POSIX compliant possible.
-Posix mode : https://www.gnu.org/software/bash/manual/html\_node/Bash-POSIX-Mode.html
+Posix mode : https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html
 
 En pratique il est rare d'utiliser des fonctionnalités non disponibles sur d'autres shell tout comme il est au final rare d'utiliser autre chose que Bash, néanmoins il peut être utile de garder ceci dans un coin de la tête.
 
-\subsection{Rappels Linux essentiels pour le scripting}
+## Rappels Linux essentiels pour le scripting
 
 Il y a plusieurs aspects de Linux qui sont importants à comprendre pour mieux comprendre le scripting sous Unix.
 
@@ -88,97 +52,122 @@ recup stdout et in des process dans /proc/pid/fd/1 et 2
 return code, 
 droits fichiers, +x, shebang
 
-\subsection{Intérets des Shells Unix}
+## Intérets des Shells Unix
 Le shell malgré sa syntaxe archaique et ses fonctionnalités limitées vis à vis de langages interprétés à usage général a tout de même encore des avantages.
 
-\subsubsection{Actions uniques}
+## Actions uniques
 Utile lorsque l'on veut faire une tâche relativement simple que quelques fois. 
 Maitriser le shell permet d'être beaucoup plus rapide dans un environnement Unix
 Exemple: extraire des données textes et les process sommairement
-cat / sed / cut / tr ...
+``cat / sed / cut / tr`` ...
 
-\subsubsection{Manipulation de binaires}
+### Manipulation de binaires
+
 L'une des force de Bash par rapport à d'autres langages et sa facilité à manipuler directement des binaires. En python, par exemple, on peut aussi manipuler des binaires, mais on sent clairement que cela est moins pensé pour.
 Exemple : Utiliser un exécutable propriétaire (import baroc), utiliser l'output d'un script python et l'injecter ailleurs etc
 
 
-\subsubsection{Manipulation de texte}
+### Manipulation de texte
+
 Tout est texte
 Exemple : lire des logs
 
-\subsubsection{Manipulation OS linux}
+### Manipulation OS linux
 les deux derniers ~= Manipulation linux pur car linux déjà tout fichiers et texte + binaires unix
 
 
 Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe go python
 
 
-\subsection{Détails syntaxiques}
-\subsubsection{Redirections et charactères spéciaux}
+## Détails syntaxiques
+### Redirections et charactères spéciaux
 
-Les flux standards sur Linux sont le standard out (stdout), standard error (stderr) et standard input (stdin). Normalment chaque process Linux possède un flux de chaque par défaut.
+Les flux standards sur Linux sont le standard out (``stdout``), standard error (``stderr``) et standard input (``stdin``). Normalement chaque process Linux possède un flux de chaque par défaut.
 
 Ces flux servent à transmettre des données entre une source et une sortie. 
 Les données sur linux sont toujours du texte et la commande lancée représente une des extrémités de ces flux.
 
-Le stdin est le flux d'entrée dans la commande lancée, le stdout la sortie normale de la comande et le stderr est le canal pour les erreurs.\\
-Par défaut le stdout et le stderr sont envoyés dans le terminal en cours. On peut rediriger ces sorties vers d'autres scripts, commandes ou fichiers.\\
+Le ``stdin`` est le flux d'entrée dans la commande lancée, le ``stdout`` la sortie normale de la comande et le ``stderr`` est le canal pour les erreurs.\\
+Par défaut le ``stdout`` et le ``stderr`` sont envoyés dans le terminal en cours. On peut rediriger ces sorties vers d'autres scripts, commandes ou fichiers.\\
 
-Sur Linux tout est un fichier, même ces trois flux, ils sont dénommés 0 pour le stdin, 1 pour le stdout et 2 pour le stdout. Ces fichiers sont situés dans /proc/PID/fd. 
+Sur Linux tout est un fichier, même ces trois flux, ils sont dénommés ``0`` pour le ``stdin``, ``1`` pour le ``stdout`` et ``2`` pour le ``stderr``. Ces fichiers sont situés dans ``/proc/PID/fd``. 
 
 
 Redirection vers un fichier: 
 
-On peut utiliser > et >> pour rediriger le stdout vers un fichier, les doubles chevrons permettent d'ajouter à la fin d'un fichier déjà existant tandis que le simple chevron écrase le fichier. Dans les deux cas si le fichier n'existait pas il sera créé.\\
+On peut utiliser ``>`` et ``>>`` pour rediriger le stdout vers un fichier, les doubles chevrons permettent d'ajouter à la fin d'un fichier déjà existant tandis que le simple chevron écrase le fichier. Dans les deux cas si le fichier n'existait pas il sera créé.
 
-Cela ne redirige pas le stderr par défaut.
+Cela ne redirige pas le ``stderr`` par défaut.
 Script d'exemple : 
+```sh
 \#!/bin/sh
 echo hello world
 cat nexistepas 
+```
 
+```sh
 chmod +x test.sh
 ./test.sh > out
+```
 
 
-On peut expliciter ce qui est redirigé en précisant le numéro du fichier correspondant.\\
-./test.sh 2> errors\\
-./test.sh 1> out\\
-./test.sh 1> out 2> errors\\
-Si on veut rediriger à la fois le stdout et le stderr vers le même fichier avec une syntaxe plus courte que d'écrire deux fois le fichier on peut faire : \\
-./test.sh > out 2>\&1\\
-Cela dit au shell de rediriger 2 (stderr) vers la même sortie que 1 (stdout). 
+On peut expliciter ce qui est redirigé en précisant le numéro du fichier correspondant.
+```sh
+./test.sh 2> errors
+./test.sh 1> out
+./test.sh 1> out 2> errors
+```
 
-Le stdin est un peu plus complexe à visualiser sans redirection, par défaut celui ci étant le clavier.
+Si on veut rediriger à la fois le ``stdout`` et le ``stderr`` vers le même fichier avec une syntaxe plus courte que d'écrire deux fois le fichier on peut faire : 
+```sh
+./test.sh > out 2>\&1
+```
+Cela dit au shell de rediriger ``2`` (``stderr``) vers la même sortie que ``1`` (``stdout``). 
 
-cat > test et sur un autre shell tail -f test => visualisation du stdin via clavier. 
+Le ``stdin`` est un peu plus complexe à visualiser sans redirection, par défaut celui ci étant le clavier.
 
-On peut aussi rediriger le stdin d'un processus, donc ne plus avoir le clavier comme input mais un fichier ou la sortie d'autre processus.
+On peut aussi le rediriger, donc ne plus avoir le clavier comme input mais un fichier ou la sortie d'autre processus.
 
 Commençons par créer un fichier d'inputs: 
+```sh
 seq 10 > input
+```
 
-La commande grep permet de récupérer dans du texte les lignes matchant un pattern.
-Elle accepte le nom d'un fichier, on peut donc faire grep 5 input pour récupérer la ligne où le 5 est présent. Néanmoins si aucun fichier n'est fourni il va tenter de match dans le stdin.
+La commande ``grep PATTERN FILE`` permet de récupérer dans du texte les lignes matchant un pattern.
+Elle accepte le nom d'un fichier en entrée, on peut donc faire ``grep 5 input`` pour récupérer la ligne où le ``5`` est présent. Néanmoins si aucun fichier n'est fourni il va chercher à match dans le stdin.
 
-grep 5 => écrire des trucs et mettre un 5 dans une ligne.
+```sh
+grep 5
+```
+
 
 On peut donc lui rediriger le stdin pour lui fournir notre fichier input de cette manière. Pour cela on utilise encore une fois des chevrons, mais cette fois ci dans l'autre sens.
 grep 5 < input
 
-Il est à noter que ces redirections peuvent être placées n'importe où dans la commande, cela est aussi vrai pour les redirections de stderr et stdout.\\
-< input grep 5\\
-grep < input 5\\
+Il est à noter que ces redirections peuvent être placées n'importe où dans la commande, cela est aussi vrai pour les redirections de stderr et stdout.
+```sh
+< input grep 5
+grep < input 5
 grep 2>err 1>out < input 5
+```
+On peut aussi rediriger la même sortie vers plusieurs fichiers différents.
+```sh
+cat input >out >out2
+```
+
+# Pipelines linux
+
+Les pipes Linux permettent de rediriger le ``stdout`` d'une première commande vers le ``stdin`` d'une seconde commande.
+
 
 
 pipes et flow de texte 
 
 
-\subsubsection{charac spéciaux}
+### charac spéciaux
 Les caractères spéciaux (jockers, échappements, commande substitution)\\
 
-\subsubsection{Structures de contrôle}
+### Structures de contrôle
 if then else fi
 while do done
 until do done
@@ -187,20 +176,20 @@ case esac
 
 test et [ et [[
 
-\subsubsection{Variables}
+### Variables
 
 
-\subsubsection{Fonctions}
-\subsubsection{Arguments parsing}
+### Fonctions
+### Arguments parsing
 - vs --
 
-\subsubsection{Binaires utiles}
+## Binaires utiles
 Force et efficience des binaires linux
 cut, cat, echo, grep, tr, sed, xargs, tail, df, ls
 diff
 
 man ! RTFM
-\subsection{Exercices}
+## Exercices
 Récupérer la liste des pourcentages de remplissages des filesystems
 
 \subsubsection{Script}
@@ -298,7 +287,3 @@ awk pour un truc
 
 Quel outil pour quoi faire?
 
-
-
-\subsection*{Subtitle}
-\end{document}
