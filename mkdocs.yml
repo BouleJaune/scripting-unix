@@ -1,6 +1,6 @@
 site_name: Scripting Unix
 
-# Theme
+# Theme material
 theme:
   name: "material"
   language: "fr"
