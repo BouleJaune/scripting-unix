@@ -19,8 +19,8 @@ Prez perso et demander le niveau des gens
 
 Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.
 
-Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer \textit{des} shells (bash, python, zsh, fish, powershell, ruby ...).  
-\'Emulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
+Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer des shells (bash, python, zsh, fish, powershell, ruby ...).  
+Émulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.
 
 La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.
 
@@ -35,10 +35,10 @@ Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalit
 
 Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
 Exemple de fonctionnalité disponible sur Bash et qui n'est pas "POSIX compliant" : 
-``test`` et ``[]`` sont POSIX compliant mais ``[[]]`` ne l'est pas. Les deux premiers sont strictements pareils, [ étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme ``*``.
+``test`` et ``[]`` sont POSIX compliant mais ``[[]]`` ne l'est pas. Les deux premiers sont strictements pareils, ``[`` étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme ``*``.
 
 Pour information lancer un script via /bin/sh avec /bin/sh étant un symlink vers bash va lancer bash en mode posix ce qui rendra bash le plus POSIX compliant possible.
-Posix mode : https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html
+[Bash POSIX Mode](https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html)
 
 En pratique il est rare d'utiliser des fonctionnalités non disponibles sur d'autres shell tout comme il est au final rare d'utiliser autre chose que Bash, néanmoins il peut être utile de garder ceci dans un coin de la tête.
 
@@ -184,9 +184,19 @@ cat: nexistepas: Aucun fichier ou dossier de ce nom
 1
 ```
 
-L'option ``-c`` de ``grep`` permet de compter le nombre correspondance avec le pattern voulu. On voit que dans le premier cas le ``stderr`` est affiché dans le terminal tandis que dans les suivants il est envoyé dans le ``stdin`` du ``grep``
+L'option ``-c`` de ``grep`` permet de compter le nombre correspondance avec le pattern voulu. On voit que dans le premier cas le ``stderr`` est affiché dans le terminal tandis que dans les suivants il est envoyé dans le ``stdin`` du ``grep``.
 
-pipes et flow de texte 
+Un point important qui sera revu dans la partie _parallélisme_ est le fait que chacun des processus d'une série de pipes est lancé dès le début. Les process n'attendent pas que le précédent soit fini pour démarrer.
+La plupart des commandes linux classiques vont traiter les données en entrée (``stdin``) ligne par ligne et envoyer en sortie (``stdout``) aussi ligne par ligne. Le temps d'exécution est donc minoré par le processus le plus long et n'est donc pas la somme du temps d'exécution de chaque processus.
+
+La commande ``time`` permet de mesurer le temps d'exécution d'une commande et donc de visualiser cette parallélisation.
+
+```sh
+❯time (sleep 5 | sleep 5)
+( sleep 5 | sleep 5; )  0,00s user 0,00s system 0% cpu 5,002 total
+```
+
+On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d'un ``sleep 5`` et non la somme des deux (à 0.001s près). Dans cet exemple les deux processus sont indépendants et il n'y a pas d'intérêts à la connexion du ``stdout`` du premier processus au ``stdin`` du second.
 
 
 ### charac spéciaux
