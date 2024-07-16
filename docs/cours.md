@@ -157,9 +157,34 @@ cat input >out >out2
 
 # Pipelines linux
 
-Les pipes Linux permettent de rediriger le ``stdout`` d'une première commande vers le ``stdin`` d'une seconde commande.
+Les pipes Linux permettent de rediriger le ``stdout`` d'une première commande vers le ``stdin`` d'une seconde commande. Cela permet de chaîner des processus et de gagner beaucoup de temps.
 
+```sh
+ls / | grep dev
+systemctl | grep service
+```
 
+Ou encore une un peu plus élaborée : 
+```sh
+systemctl | grep service | cut -d "." -f 1 | xargs
+```
+
+Il est possible de rediriger aussi le ``stderr`` dans une pipe, soit en le redirigeant simplement vers le ``stdout`` soit en utilisant ``|&``
+```sh
+❯cat nexistepas | grep "Aucun fichier" -c
+cat: nexistepas: Aucun fichier ou dossier de ce nom
+0
+```
+```sh
+❯cat nexistepas |& grep "Aucun fichier" -c
+1
+```
+```sh
+❯cat nexistepas 2>&1 | grep "Aucun fichier" -c
+1
+```
+
+L'option ``-c`` de ``grep`` permet de compter le nombre correspondance avec le pattern voulu. On voit que dans le premier cas le ``stderr`` est affiché dans le terminal tandis que dans les suivants il est envoyé dans le ``stdin`` du ``grep``
 
 pipes et flow de texte 
 
