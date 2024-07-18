@@ -198,18 +198,58 @@ La commande ``time`` permet de mesurer le temps d'exécution d'une commande et d
 
 On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d'un ``sleep 5`` et non la somme des deux (à 0.001s près). Dans cet exemple les deux processus sont indépendants et il n'y a pas d'intérêts à la connexion du ``stdout`` du premier processus au ``stdin`` du second.
 
+## Commande et process subsitutions
+
+$() (command) et \`\` (pareil)
+<() (process) 
+
+### Substitution de commandes
+
+Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe ``$(commandes)`` ou ``` `commandes` ```, les deux syntaxes sont fonctionnellement pareils.
+
+```sh
+echo Le chemin du dossier actuel est $(pwd)
+```
+La commande pwd signifie "print working directory" et affiche donc le chemin complet du dossier actuel.
+
+On peut aussi substituer une pipeline de commandes qui renverra le ``stdout`` final.
+```sh
+echo Le système d\'exploitation est `uname -a | cut -d ' ' -f 1`
+```
+
+### Substitution de processus
+
+La substitution de commande permet de remplacer par le ``stdout`` de la commande mais parfois on ne veut pas directement ce ``stdout`` mais on veut plutôt un fichier contenant ce contenu. 
+On peut faire cela via une substitution de processus qui a pour syntaxe ``<(commande)``.
+
+
+Ici la variable ``--kubeconfig`` attends un nom de fichier et pas directement son contenu, cependant nous possédons le contenu du kubeconfig dans une variable. On utilise donc une substitution de process. 
+
+```sh
+kubectl --kubeconfig <(echo $CONTENU_KUBECONFIG) apply -f dep.yml
+```
+
+
+## Code de retour et opérateurs && et ||
+
+rc 0, 1 et +, comme retour http 404 etc
+&& et || aussi
 
 ### charac spéciaux
-Les caractères spéciaux (jockers, échappements, commande substitution)\\
+
+Les caractères spéciaux (jockers, échappements)
 
 ### Structures de contrôle
+
+case esac
+test et [ et [[
 if then else fi
+break continue
+
 while do done
 until do done
 for do done
-case esac
 
-test et [ et [[
 
 ### Variables
 
@@ -227,61 +267,58 @@ man ! RTFM
 ## Exercices
 Récupérer la liste des pourcentages de remplissages des filesystems
 
-\subsubsection{Script}
+### Script
 
-\subsubsection{Sans scripts}
+### Sans scripts
 
+```sh
 df | tail -n +2 | tr -s " " | cut -d " " -f 5
+```
 
-Puissance de juste one commande + pipe + redirections
 
-Le Shell POSIX/ISO\\
-L'écriture de script Shell \\
-Activation des commandes POSIX/ISO\\
-Les caractères spéciaux (jockers, échappements, redirection)\\
-Les variables\\
-Les structures de contrôle\\
-
-\section{Le langage Perl - les bases}
+# Le langage Perl - les bases
 Prez, utilité de nos jours, spécifité
 
-Présentation de Perl\\
-Les variables scalaires, les tableaux, les opérateurs\\
-Les instructions de contrôle\\
-Les tableaux associatifs (hash)\\
+Présentation de Perl
 
-\section{Le langage Ruby - les bases}
-Présentation de Ruby\\
-Les variables\\
+Les variables scalaires, les tableaux, les opérateurs
+
+Les instructions de contrôle
+
+Les tableaux associatifs (hash)
+
+# Le langage Ruby - les bases
+Présentation de Ruby
+Les variables
 Les chaînes de caractères\\
 Les structures de contrôle\\
 Les tableaux, les itérateurs - Les hash\\
 
-\section{Le langage Python - les bases}
+# Le langage Python - les bases
 Python est un langage de programmation interprété à usage extrêmement populaire de nos jours.
 Sa facilité facilité d'apprentissage et de lecture est ce qui a fait sa popularité initiale, aujourd'hui c'est la communauté qui en fait sa force avec les milliers de modules et programmes Python disponibles.
 
 Pour un administrateur système et/ou un devops Python est un langage très attirant, son principal défaut, la potentielle lenteur au runtime, n'est pas un problème dans nos cas d'usage. Python est aussi ce qui est derrière Ansible et permet la création de modules Ansible customs, le plus important outil d'infrastructure as code (IAC) du moment.
 Il est aussi par défaut installé sur la très grande majorité des distributions Linux.
 
-\subsection{Syntaxe}
+## Syntaxe
 Variables et expressions\\
 Les tableaux, les chaînes de caractères\\
 Les instructions de contrôle\\
 Les dictionnaires (hash)\\
 
-\subsection{Exercices Python}
+## Exercices Python
 
 
 
-\section{Les expressions régulières (RegExp)}
+# Les expressions régulières (RegExp)
 regex car tout est texte
 Importance de grep et sed 
 RegExp en Shell (via grep et sed)\\
 RegExp en Perl (normes)\\
 RegExp en Python (module re mais osef)\\
 
-\section{La modularité en Shell, Perl, Python et Ruby}
+# La modularité en Shell, Perl, Python et Ruby
 
 parler de direnv, de requirements.txt, de venv python, de classes python (osef un peu)
 y a des trucs pour shell (bpkg) mais pas le but, illogique, shell = spécifique task
@@ -293,13 +330,13 @@ Utilisation de bibliothèques externes=> oui\\
 
 
 
-\section{La programmation parallèle en Shell, Perl, Python et Ruby}
+# La programmation parallèle en Shell, Perl, Python et Ruby
 
 différentes concurrency
-xargs pipes et parallel pour shell
-multithreading et async pour python
+xargs pipes et parallel et & + wait pour shell
+multi-threading et async pour python
 
-\section{Résoudre des problèmes avec le Shell, Perl, Python et Ruby}
+# Résoudre des problèmes avec le Shell, Perl, Python et Ruby
 
 Ecrire des scripts d'exploitation (activer une application, les signaux, ...)\\
 Manipuler des fichiers\\
