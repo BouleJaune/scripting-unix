@@ -200,9 +200,6 @@ On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d
 
 ## Commande et process subsitutions
 
-$() (command) et \`\` (pareil)
-<() (process) 
-
 ### Substitution de commandes
 
 Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe ``$(commandes)`` ou ``` `commandes` ```, les deux syntaxes sont fonctionnellement pareils.
