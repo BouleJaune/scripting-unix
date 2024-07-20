@@ -207,11 +207,11 @@ Parfois on peut avoir envie de remplacer une partie d'une commande par le résul
 ```sh
 echo Le chemin du dossier actuel est $(pwd)
 ```
-La commande pwd signifie "print working directory" et affiche donc le chemin complet du dossier actuel.
+La commande ``pwd`` signifie "print working directory" et affiche donc le chemin complet du dossier actuel.
 
 On peut aussi substituer une pipeline de commandes qui renverra le ``stdout`` final.
 ```sh
-echo Le système d\'exploitation est `uname -a | cut -d ' ' -f 1`
+echo "Le système d'exploitation est `uname -a | cut -d ' ' -f 1`"
 ```
 
 ### Substitution de processus
@@ -229,12 +229,39 @@ kubectl --kubeconfig <(echo $CONTENU_KUBECONFIG) apply -f dep.yml
 
 ## Code de retour et opérateurs && et ||
 
-rc 0, 1 et +, comme retour http 404 etc
-&& et || aussi
+Lorsqu'une commande finit de s'éxécuter elle va renvoyer un code de retour qui dépendra de son état de sortie.
+Si tout s'est bien passé celui ci sera égal à ``0``, sinon, il sera souvent ``1`` ou un autre nombre en fonction de la commande en elle même.
+Ce code est automatiquement stocké dans la variable ``$?`` pour chaque commande et permet donc de faire des actions en fonction de sa valeur.
+Naturellement on peut imaginer utiliser une structure de contrôle tel qu'un ``if else`` pour manipuler ces codes de retour. Cependant Bash fournit une alternative plus pratique pour des cas simples avec ``&&`` et ``||``.
+
+L'opérateur Bash AND ``&&`` permet d'éxécuter la commande à droite de l'opérateur si et seulement si la commande à gauche a un code de retour à ``0``, tandis que l'opérateur OR ``||`` exécutera la commande à droite si et seulement si la commande à gauche a un code de retour différent de ``0``.
+
+```sh
+❯ls && echo "La commande est passée" || echo "La commande n'est pas passée"
+Vos fichiers
+La commande est passée
+```
+
+```sh
+❯cat nexistepas && echocat: nexistepas: Aucun fichier ou dossier de ce nom
+La commande n'est pas passée "La commande est passée" || echo "La commande n'est pas passée"
+```
+
+Ces opérateurs ont une associativité par la gauche. Cela permet donc d'utiliser en premier ``&&`` puis ``||`` pour traiter tout les cas en une ligne.
+Rappel associativité gauche : ``a ~ b ~ c = (a ~ b)~c``
+
+Cela implique qu'il faut donc mettre le ``&&`` *avant* le ``||``.
+
+```sh
+❯cat nexistepas || echo "La commande n'est pas passée" && echo "La commande est passée" 
+cat: nexistepas: Aucun fichier ou dossier de ce nom
+La commande n'est pas passée
+La commande est passée
+```
 
 ### charac spéciaux
 
-Les caractères spéciaux (jockers, échappements)
+Les caractères spéciaux (jokers, échappements)
 
 ### Structures de contrôle
 
