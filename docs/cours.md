@@ -442,6 +442,32 @@ Le nombre est 4
 ```
 
 ### Variables
+
+On peut définir une variable de cette manière : 
+
+```sh
+VARIABLE="contenu de la variable"
+```
+If faut noter qu'il n'y a pas d'espace de part et d'autre du ``=`` et que toutes les variables sont stockées en tant que chaîne de caractères.
+
+On peut aussi définir des variables en demandant dynamiquement à l'utilisateur de les remplir grâce à ``read``. 
+
+```sh
+read VARIABLE
+```
+
+Pour utiliser une variable il faut rappeler son nom avec un ``$`` devant. Cependant dans certains cas il peut être nécessaire d'encapsuler le nom de la variable dans ``{}``.
+
+```sh
+KERNEL="Linux-6.9.9"
+echo Le kernel est $KERNEL
+echo Créons un fichier nommé $KERNEL_file # Renverra une variable vide
+echo Créons un fichier nommé ${KERNEL}_file # Fonctionnera
+touch ${KERNEL}_file
+```
+
+
+
 ((var++))
 $? et $1..3
 pas d'espace
