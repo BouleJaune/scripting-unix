@@ -390,6 +390,25 @@ do
 done
 ```
 
+Le dernier type de boucle est la boucle ``for``, celle ci permet d'itérer au travers de, par exemple, une liste.
+Cela permet soit de parcourir une liste et avoir une variable fixée sur la valeur en cours :
+
+
+```sh
+for i in bash linux script
+do
+    echo "Cette boucle listera les mots de la liste : $i"
+done
+```
+
+Soit de contrôler le nombre d'itération d'une action :
+
+```sh
+for i in {1..5}
+do
+    echo "Cette boucle s'exécutera 5 fois, $i"
+done
+```
 
 
 while do done
