@@ -410,20 +410,44 @@ do
 done
 ```
 
+```sh
+for i in {1..5}
+do
+    echo "Cette boucle s'exécutera 5 fois, $i"
+done
+```
 
-while do done
-until do done
-for do done
 
-break continue
+Parfois on veut pouvoir sortir plus tôt d'une boucle ou bien passer directement à l'itération suivante. On peut faire cela respectivement grâce à ``break`` et ``continue``.
+
+```sh
+for i in {1..8}
+do
+    if [ $i -eq 3 ] 
+    then
+        continue #Permet de skipper le reste de cette itération
+    fi
+    if [ $i -eq 5 ]
+    then
+        break #Sortira définitivement de la boucle
+    fi
+    echo "Le nombre est $i"
+done
+```
+Donnera : 
+```sh
+Le nombre est 1
+Le nombre est 2
+Le nombre est 4
+```
 
 ### Variables
 ((var++))
+$? et $1..3
+
 
 ### Fonctions
 
-### Arguments parsing
-- vs --
 
 ## Binaires utiles
 
