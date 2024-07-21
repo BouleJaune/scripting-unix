@@ -265,30 +265,157 @@ Les caractères spéciaux (jokers, échappements)
 
 ### Structures de contrôle
 
-case esac
-test et [ et [[
-if then else fi
-break continue
+#### Les tests
+La commande ``test`` permet de tester si une expression est vraie ou fausse. Test renverra un code de retour de ``0`` si vraie et ``1`` si faux.
+
+```sh
+❯test a = a
+echo $?
+0
+```
+
+Les expressions se construisent via des opérateurs de test qui sont, notamment : 
+
+-  ``a = b`` et ``a != b`` testent si les chaines de charactères ``a`` et ``ab`` sont respectivement égales et inégales
+- ``-z a`` et ``-n a`` respectivement testent si la chaine de charactères ``a`` est vide et ne l'est pas
+- ``n1 -eq n2`` et ``n1 -ne n2`` testent l'égalité et l'inégalité de deux nombres
+- ``n1 -lt n2`` et ``n1 -gt n2`` testent si ``n1`` est strictement plus petit que ``n2`` pour ``-lt`` et strictement plus grand pour ``-gt``.
+- ``n1 -le n2`` et ``n1 -ge n2`` pareil mais inférieur/supérieur ou égal.
+
+Il y aussi des opérateurs purement logiques qui permettent de combiner plusieurs expressions entre elles:
+``! e`` si ``e`` renvoi vrai si ``e`` est fausse et inversement.
+``e1 -a e2``  renvoi vrai si et seulement si ``e1`` et ``e2`` sont vrais.
+``e1 -o e2`` renvoi vrai si ``e1`` ou ``e2`` ou les deux sont vrais.
+
+Exemples : 
+```sh
+❯test  5 -eq 2 -a 5 -eq 5
+echo $?
+1
+```
+```sh
+❯test 5 -eq 2 -o 5 -eq 5
+echo $?
+0
+```
+Plus d'opérateurs pour construire des expressions sont disponibles sur le manuel de la commande (``man test``).
+
+La plupart du temps la commande ``test`` n'est pas utilisée avec cette syntaxe. Son autre syntaxe plus commune est ``[`` : 
+```sh
+[ "hello" = "world" ] 
+```
+Les espaces après ``[`` et avant ``]`` sont importants. Ce serait comme écrire ``test"hello" = "world"`` ce qui ne peut pas fonctionner.
+
+Il existe aussi une autre notation ``[[`` qui apporte plus de fonctionnalités cependant cette version de ``test`` n'est pas POSIX. L'une de ces fonctionnalités est notamment le support du joker ``*``.
+
+```sh
+A="VARIABLE_TEST"
+[ $A = *TEST* ] => ne fonctionnera pas
+[[ $A = *TEST* ]] => fonctionne
+```
+
+#### Structure if
+
+Les ``test`` sont le plus souvent utilisés avec la structure de contrôle ``if``. Cette structure permet d'exécuter des actions si et seulement si la commande à droite de ``if`` a un code de retour de ``0``. 
+
+La syntaxe est la suivante : 
+```sh
+A="VARIABLE_TEST"
+if [[ $A = *TEST* ]]
+then
+    echo $A contient TEST
+fi
+```
+
+On peut rajouter des ``else`` pour faire une action dans le cas où le code de retour n'est pas ``0`` et même refaire directement un autre ``if`` avec ``elif``.
+
+```sh
+A="VARIABLE_TEST"
+if [[ $A = *HELLO* ]]
+then
+    echo $A contient HELLO
+elif [[ $A = *WORLD* ]]
+then
+    echo $A contient WORLD
+else
+    echo $A ne contient ni HELLO ni WORLD
+fi
+```
+
+#### Switch case
+
+Parfois on veut faire plusieurs tests en une seule fois, par exemple si l'on veut traiter les options d'entrée d'un script ou encore comparer une variable avec plusieurs autres.
+On peut faire ceci avec un ``switch case``. On peut ainsi réécrire l'exemple précédent de cette manière :
+
+```sh
+A="VARIABLE_TEST"
+case $A in
+    HELLO) 
+        echo $A contient HELLO
+        ;;
+    WORLD) 
+        echo $A contient WORLD
+        ;;
+    *)
+        echo $A ne contient pas HELLO ni WORLD
+        ;;
+esac
+```
+
+Ces ``switch case`` sont très souvent utilisés pour traiter les options d'entrées d'un script.
+
+#### Les boucles
+Les boucles sont des structures de contrôles permettant d'itérer plusieurs fois une même action. 
+Il y a divers types de boucles. L'une d'elles est la boucle ``while``. Celle si itèrera tant que la condition à sa droite sera vraie.
+
+```sh
+n=0
+while [ $n -ne 10 ]
+do
+    n=$(seq 10 | shuf -n 1)
+    echo Nombre aléatoire  $n
+done
+```
+
+``seq 10`` permet de générer une liste de 1 à 10, ``shuf -n 1`` permet d'en sélectionner un aléatoirement. Cette boucle ``while`` tournera donc tant que l'on ne tombe pas aléatoirement sur ``n=10``.
+
+Une boucle très similaire est ``until``, qui fait exactement l'opposé et itère tant que sa condition n'est *pas* vraie.
+
+```sh
+n=0
+until [ $n -eq 10 ]
+do
+    n=$(seq 10 | shuf -n 1)
+    echo Nombre aléatoire  $n
+done
+```
+
+
 
 while do done
 until do done
 for do done
 
+break continue
 
 ### Variables
-
+((var++))
 
 ### Fonctions
+
 ### Arguments parsing
 - vs --
 
 ## Binaires utiles
+
 Force et efficience des binaires linux
 cut, cat, echo, grep, tr, sed, xargs, tail, df, ls
 diff
 
 man ! RTFM
+
 ## Exercices
+
 Récupérer la liste des pourcentages de remplissages des filesystems
 
 ### Script
