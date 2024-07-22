@@ -448,6 +448,7 @@ On peut définir une variable de cette manière :
 ```sh
 VARIABLE="contenu de la variable"
 ```
+
 If faut noter qu'il n'y a pas d'espace de part et d'autre du ``=`` et que toutes les variables sont stockées en tant que chaîne de caractères.
 
 On peut aussi définir des variables en demandant dynamiquement à l'utilisateur de les remplir grâce à ``read``. 
@@ -470,7 +471,6 @@ touch ${KERNEL}_file
 
 ((var++))
 $? et $1..3
-pas d'espace
 
 ### Fonctions
 
