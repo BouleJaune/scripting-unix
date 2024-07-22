@@ -510,27 +510,4 @@ On voit bien que après la fonctin la ``$var1`` s'est remise sur sa valeur préc
 
 
 
-## Binaires utiles
-
-Maintenant que nous avons vu la plupart des fonctionnalités de Bash voici une liste de commandes et binaires utiles pour utiliser le shell :
-
-
-Force et efficience des binaires linux
-cut, cat, echo, grep, tr, sed, xargs, tail, df, ls
-diff
-
-
-man ! RTFM
-
-## Exercices
-
-Récupérer la liste des pourcentages de remplissages des filesystems
-
-### Script
-
-### Sans scripts
-
-```sh
-df | tail -n +2 | tr -s " " | cut -d " " -f 5
-```
 

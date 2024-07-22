@@ -1,4 +1,9 @@
 site_name: Scripting Unix
+nav:
+  - Introduction: 'cours'
+  - Shell : 'shell'
+  - Cheatsheet Shell: 'cheatsheetShell'
+  - Travaux Pratique Shell: 'TPShell'
 
 # Theme material
 theme:
