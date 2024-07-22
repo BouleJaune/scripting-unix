@@ -155,6 +155,12 @@ On peut aussi rediriger la même sortie vers plusieurs fichiers différents.
 cat input >out >out2
 ```
 
+Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un fichier ``/dev/null`` sur Linux pensé pour ceci. Un exemple d'utilisation et de ``grep`` dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant ``stderr`` vers ``/dev/null``.
+
+```sh
+grep -r PATTERN . 2>/dev/null
+```
+
 # Pipelines linux
 
 Les pipes Linux permettent de rediriger le ``stdout`` d'une première commande vers le ``stdin`` d'une seconde commande. Cela permet de chaîner des processus et de gagner beaucoup de temps.
@@ -467,15 +473,84 @@ echo Créons un fichier nommé ${KERNEL}_file # Fonctionnera
 touch ${KERNEL}_file
 ```
 
+Certaines variables sont déjà assignées par Bash:
+
+- ``$SHELL`` : Le chemin du binaire du shell actuel
+- ``$$`` Le PID de la session Bash
+- ``$?`` Le dernier code de retour
+- ``$@`` La liste des arguments d'entrée du script
+- ``$#`` Le nombre de ces arguments
+- ``$n`` avec ``n`` un chiffre. L'argument numéro ``n``
 
 
-((var++))
-$? et $1..3
+Les trois derniers sont particulièrements utiles pour utiliser des arguments d'entrée de script :
+```sh 
+#!/bin/sh
+echo $#
+echo $@
+echo $3
+```
+Renverra : 
+
+```sh
+❯./script.sh 1 2 5
+3
+1 2 5
+5
+```
 
 ### Fonctions
 
+Une fonction permet d'encapsuler une série de commandes et actions au sein d'une seule avec ses propres arguments.
+Il a y deux syntaxes pour définir une fonction :
+
+```sh
+function ma_fonction {
+    contenu de la fonction
+}
+```
+et
+
+```sh
+ma_fonction () {
+    contenu de la fonction
+}
+```
+
+Le mot reservé ``function`` est donc optionnel mais si celui est omis alors les ``()`` deviennent obligatoires tandis qu'elles ne le sont pas dans le premier cas.
+Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguiter et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.
+
+Si l'on veut utiliser des arguments on peut utiliser les variables built-ins $n pour récupérer ces arguments au moment de l'appel de la fonction.
+
+```sh
+function ma_fonction () {
+	echo "Les arguments sont : $1 $2"
+}
+ma_fonction arg1 arg2
+```
+
+Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieure sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.
+
+```sh
+var1="A"
+var2="B"
+function ma_fonction {
+    local var1="C"
+    var2="D"
+    echo "Les variables dans la fonction sont var1: $var1, var2: $var2"
+}
+ma_fonction
+echo "Les variables après la fonction sont var1: $var1, var2: $var2"
+```
+
+On voit bien que après la fonctin la ``$var1`` s'est remise sur sa valeur précédente tandis que la ``$var2`` reste sur la valeur définie dans la fonction.
+
+
 
 ## Binaires utiles
+
+Maintenant que nous avons vu la plupart des fonctionnalités de Bash voici une liste de commandes et binaires utiles pour utiliser le shell :
+
 
 Force et efficience des binaires linux
 cut, cat, echo, grep, tr, sed, xargs, tail, df, ls
