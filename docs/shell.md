@@ -16,7 +16,7 @@ La confusion est courante car sur Windows historiquement le nom du shell et de l
 Le fichier ``/bin/sh`` est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. ``ls -l /bin/sh``
 Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.
 Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
-Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu naviguable ou encore une forte customisabilité par exemple).
+Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu navigable ou encore une forte customisabilité par exemple).
 
 Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
 Exemple de fonctionnalité disponible sur Bash et qui n'est pas "POSIX compliant" : 
@@ -27,22 +27,72 @@ Pour information lancer un script via /bin/sh avec /bin/sh étant un symlink ver
 
 En pratique il est rare d'utiliser des fonctionnalités non disponibles sur d'autres shell tout comme il est au final rare d'utiliser autre chose que Bash, néanmoins il peut être utile de garder ceci dans un coin de la tête.
 
-## Rappels Linux essentiels pour le scripting
+## Rendre un script exécutable
 
-[TODO]
+Pour qu'un script soit éxécutable sur Linux, que ce soit un script Shell, Python ou autre, il faut que celui-ci ait des droits d'exécution.
+Pour vérifier qu'un fichier possède ces droits on peut utiliser ``ls -l script.sh`` pour lister ses permissions.
 
-Il y a plusieurs aspects de Linux qui sont importants à comprendre pour mieux comprendre le scripting sous Unix.
+Si un script de ne les possède pas on peut les rajouter avec ``chmod +x script.sh``. Cela rajoutera pour tout le monde les permissions. Par défaut sur linux les permissions sont gérables à trois niveau, le propriétaire du fichier, le groupe du fichier et tout le monde.
 
-stdin / stdout / stderr
-recup stdout et in des process dans /proc/pid/fd/1 et 2
+Si l'on veut rajouter le ``x``, l'exécution, sur un type précis on peut le préciser avec la lettre correspondante. ``o`` pour tout le monde (others), ``g`` pour groupe et ``u`` pour le propriétaire (user).
 
-return code, 
-droits fichiers, +x, shebang
 
-## Détails syntaxiques
-### Redirections et charactères spéciaux
 
-Les flux standards sur Linux sont le standard out (``stdout``), standard error (``stderr``) et standard input (``stdin``). Normalement chaque process Linux possède un flux de chaque par défaut.
+```sh
+❯ ls -l script.sh
+-rw-r--r-- 1 root root 0 23 mai 23:00 script.sh
+```
+Le script n'a pas de x dans ses permissions
+```
+❯ chmod ug+x script.sh
+❯ ls -l script.sh
+-rwxr-xr-- 1 root root 0 23 mai 23:00 script.sh
+```
+Le script a des permissions d'exécution sur l'user et le groupe.
+
+Une fois un script rendu exécutable on peut le lancer en mettant directement son chemin dans le shell.
+
+Soit de manière absolue ou encore de manière relative.
+```sh
+/chemin/vers/le/script.sh
+./script.sh
+```
+La méthode relative est, justement, relative à la position actuelle du terminal. ``.`` représente dans le shell le dossier actuel, donc si vous ne vous situez pas au bon endroit cela ne fonctionnera pas.
+
+``..`` représente le dossier avant le dossier actuel, on peut utiliser les deux pour atteindre n'importe quel fichier du système mais il est parfois plus simple d'utiliser le chemin entier.
+
+
+Lorsque le script est appelé le shell va chercher un logiciel avec lequel lire notre script. Cela peut par exemple être python ou bash. Par défaut Linux va tenter d'exécuter le script avec le shell actuel, donc bash si c'est un shell bash par exemple. Ce qui n'est pas très fiable ni possible pour un script autre que bash.
+
+Pour cela on peut ``#!`` tout au début du script suivi du binaire voulu, ceci est appelé un ``shebang``.
+```sh
+#!/usr/bin/python3
+
+...contenu du script....
+```
+
+Enfin une autre manière d'utiliser un script sans shebang ni permissions d'exécution et de directement l'appeler avec le binaire voulu.
+```sh
+bash script.sh
+python script.py
+```
+## Caractères spéciaux
+
+Dans un shell Linux certains caractères ont une signification spéciale, en voici une liste non exhaustive. 
+
+- ``~`` "Tilde". Répertoire personnel, la plupart du temps /home/user.
+- `` ` `` "Backtick". Utile pour ouvrir et fermé des substitutions de commandes.
+- `` # `` Marque le début d'un commentaire.
+- `` | `` Caractère pipe, permet de faire des pipes Unix.
+- `` * `` Caractère joker (wildcard), permet de se substituer n'importe quelle suite de caractères. (``ls fichiers_* `` par exemple)
+- `` ? `` Permet de se substituer à un seul caractère.
+- ``'`` et ``"`` Permet de délimiter des chaînes de caractères, utile par exemple pour des chaînes comportant des espaces. (``ls "/fichier/avec/un espace"``)
+- `` ; `` Défini la fin d'une commande. Utile pour faire plusieurs commandes sur une seule ligne sans lien logique entre elles.
+- `` \ `` Permet d'échapper un caractère pour lui enlever son effet "spécial". (``echo L\'apostrophe peut se mettre comme ceci``)
+
+## Redirections 
+
+Les flux standards sur Linux sont le standard out (``stdout``), standard error (``stderr``) et standard input (``stdin``). Normalement chaque processus Linux possède un flux de chaque par défaut.
 
 Ces flux servent à transmettre des données entre une source et une sortie. 
 Les données sur linux sont toujours du texte et la commande lancée représente une des extrémités de ces flux.
@@ -121,7 +171,7 @@ Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un 
 grep -r PATTERN . 2>/dev/null
 ```
 
-# Pipelines linux
+## Pipelines linux
 
 Les pipes Linux permettent de rediriger le ``stdout`` d'une première commande vers le ``stdin`` d'une seconde commande. Cela permet de chaîner des processus et de gagner beaucoup de temps.
 
@@ -152,7 +202,7 @@ cat: nexistepas: Aucun fichier ou dossier de ce nom
 
 L'option ``-c`` de ``grep`` permet de compter le nombre correspondance avec le pattern voulu. On voit que dans le premier cas le ``stderr`` est affiché dans le terminal tandis que dans les suivants il est envoyé dans le ``stdin`` du ``grep``.
 
-Un point important qui sera revu dans la partie _parallélisme_ est le fait que chacun des processus d'une série de pipes est lancé dès le début. Les process n'attendent pas que le précédent soit fini pour démarrer.
+Un point important qui sera revu dans la partie _parallélisme_ est le fait que chacun des processus d'une série de pipes est lancé dès le début. Les processus n'attendent pas que le précédent soit fini pour démarrer.
 La plupart des commandes linux classiques vont traiter les données en entrée (``stdin``) ligne par ligne et envoyer en sortie (``stdout``) aussi ligne par ligne. Le temps d'exécution est donc minoré par le processus le plus long et n'est donc pas la somme du temps d'exécution de chaque processus.
 
 La commande ``time`` permet de mesurer le temps d'exécution d'une commande et donc de visualiser cette parallélisation.
@@ -164,7 +214,7 @@ La commande ``time`` permet de mesurer le temps d'exécution d'une commande et d
 
 On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d'un ``sleep 5`` et non la somme des deux (à 0.001s près). Dans cet exemple les deux processus sont indépendants et il n'y a pas d'intérêts à la connexion du ``stdout`` du premier processus au ``stdin`` du second.
 
-## Commande et process subsitutions
+## Commande et processus subsitution
 
 ### Substitution de commandes
 
@@ -225,16 +275,10 @@ La commande n'est pas passée
 La commande est passée
 ```
 
-### charac spéciaux
 
-Les caractères spéciaux (jokers, échappements)
-```
-*  ; ' " \
-```
+## Structures de contrôle
 
-### Structures de contrôle
-
-#### Les tests
+### Les tests
 La commande ``test`` permet de tester si une expression est vraie ou fausse. Test renverra un code de retour de ``0`` si vraie et ``1`` si faux.
 
 ```sh
@@ -283,7 +327,7 @@ A="VARIABLE_TEST"
 [[ $A = *TEST* ]] => fonctionne
 ```
 
-#### Structure if
+### Structure if
 
 Les ``test`` sont le plus souvent utilisés avec la structure de contrôle ``if``. Cette structure permet d'exécuter des actions si et seulement si la commande à droite de ``if`` a un code de retour de ``0``. 
 
@@ -311,7 +355,7 @@ else
 fi
 ```
 
-#### Switch case
+### Switch case
 
 Parfois on veut faire plusieurs tests en une seule fois, par exemple si l'on veut traiter les options d'entrée d'un script ou encore comparer une variable avec plusieurs autres.
 On peut faire ceci avec un ``switch case``. On peut ainsi réécrire l'exemple précédent de cette manière :
@@ -333,7 +377,7 @@ esac
 
 Ces ``switch case`` sont très souvent utilisés pour traiter les options d'entrées d'un script.
 
-#### Les boucles
+### Les boucles
 Les boucles sont des structures de contrôles permettant d'itérer plusieurs fois une même action. 
 Il y a divers types de boucles. L'une d'elles est la boucle ``while``. Celle si itèrera tant que la condition à sa droite sera vraie.
 
