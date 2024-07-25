@@ -454,7 +454,7 @@ Le nombre est 2
 Le nombre est 4
 ```
 
-### Variables
+## Variables
 
 On peut définir une variable de cette manière : 
 
@@ -506,7 +506,7 @@ Renverra :
 5
 ```
 
-### Fonctions
+## Fonctions
 
 Une fonction permet d'encapsuler une série de commandes et actions au sein d'une seule avec ses propres arguments.
 Il a y deux syntaxes pour définir une fonction :
