@@ -254,13 +254,14 @@ L'opérateur Bash AND ``&&`` permet d'éxécuter la commande à droite de l'opé
 
 ```sh
 ❯ls && echo "La commande est passée" || echo "La commande n'est pas passée"
-Vos fichiers
+*Vos fichiers*
 La commande est passée
 ```
 
 ```sh
-❯cat nexistepas && echocat: nexistepas: Aucun fichier ou dossier de ce nom
-La commande n'est pas passée "La commande est passée" || echo "La commande n'est pas passée"
+❯cat nexistepas && echo "La commande est passée" || echo "La commande n'est pas passée"
+cat: nexistepas: Aucun fichier ou dossier de ce nom
+La commande n'est pas passée
 ```
 
 Ces opérateurs ont une associativité par la gauche. Cela permet donc d'utiliser en premier ``&&`` puis ``||`` pour traiter tout les cas en une ligne.
@@ -480,7 +481,7 @@ echo Créons un fichier nommé ${KERNEL}_file # Fonctionnera
 touch ${KERNEL}_file
 ```
 
-Certaines variables sont déjà assignées par Bash:
+Certaines variables sont déjà assignées par Bash, voici une liste non exhaustive:
 
 - ``$SHELL`` : Le chemin du binaire du shell actuel
 - ``$$`` Le PID de la session Bash
@@ -551,7 +552,3 @@ echo "Les variables après la fonction sont var1: $var1, var2: $var2"
 ```
 
 On voit bien que après la fonctin la ``$var1`` s'est remise sur sa valeur précédente tandis que la ``$var2`` reste sur la valeur définie dans la fonction.
-
-
-
-
