@@ -4,6 +4,7 @@ nav:
   - Shell : 'shell'
   - Cheatsheet Shell: 'cheatsheetShell'
   - Travaux Pratique Shell: 'TPShell'
+  - Python: 'python'
 
 # Theme material
 theme:
