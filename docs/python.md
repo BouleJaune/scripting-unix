@@ -116,23 +116,123 @@ Enfin, on peut convertir des ``str`` vers des nombres de la même manière avec 
 2
 ```
 
-### Booléens
-[todo]
-
 
 ## Structures de données
 
 ### Listes
-as stacks as queues
+
+L'un des types d'objets les plus manipulé en Python est la liste. Une liste est formé d'une succession d'objets indéxés. On peut en construire en listant des objets séparés par une virgule et en les entourants de ``[]``.
+
+Une liste indexée, on peut donc récupérer un élément précis via son placement dans la liste. L'indexe commence à 0. Le type d'une liste est ``list``.
+
+```python
+>>>ma_liste = ["hello", 2, 2+3, "world"]
+>>>ma_liste[0] # Renverra "hello"
+>>>ma_liste[3] # Renverra "world"
+>>>ma_liste[-1] # Renverra "world"
+>>>ma_liste[0:2] # Renverra une liste avec les éléments de 0 à 2 exclus ['hello', 2]
+```
+
+Les listes comme la plupart des objets supportent des méthodes par défaut. Les méthodes les plus courantes permettent d'ajouter un élément à la liste, d'en enlever, de l'inverses etc ...
+
+```python
+ma_liste.append(3) # Ajoute à la fin de la liste un 3
+ma_liste.pop(i) # Enlève l'objet à la position i
+ma_liste.count(x) # Compte le nombre d'occurence de x dans la liste
+ma_liste.reverse() # Inverse l'ordre de la liste
+```
+
+
+
+
 ### tuples / sequences
-### Les dictionnaires (hash)
+### Les dictionnaires (hash map)
+
+Une autre structure de données utile est le *dictionnaire* (de type ``dict``). Un dictionnare est une liste où les index sont des clefs compréhensibles et non juste un numéro.
+
+```python
+>>>mon_dict = {"pays": "France", "ville": "Paris", "Rivière": "Seine"}
+>>>mon_dict["pays"] # Retournera 'France'
+```
+
+
 ### Sets
 
 ## Structures de contrôle
-### if
-### for
-### range
-### break, continue, else on loops, pass
+
+### Conditons ``if``
+
+``if`` est l'une des structures les plus connue et utile en informatique. Sur Python la syntaxe est la suivante :
+
+```python
+x = int(input("Entrez un nombre")) # Demande à l'utilisateur d'entrer un nombre (initialement en str) et le convertit en int.
+if x < 0:
+    print("Le nombre est négatif")
+elif x > 0:
+    print("Le nombre est positif")
+else:
+    print("Le nombre est égal à 0")
+```
+
+L'indentation en python est essentiel et est ce qui permet de définir le début et la fin des blocs de code.
+
+
+
+### Boucles ``for``
+
+Les boucles ``for`` en python permettent d'itérer sur un itérable, comme une liste par exemple.
+
+```python
+animaux = ["Chien", "Chat", "Poisson"]
+for animal in animaux:
+    print(animal)
+```
+
+Pour itérer de manière plus classique un certain nombre de fois on doit créer un itérable de cette longueur. ``range()`` est très pratique pour cela.
+
+```python
+for i in range(10)
+    print(i)
+```
+
+Cette boucle itèrera 10 fois avec ``i`` allant de 0 à 9.
+
+
+### Boucles ``while``
+
+La boucle ``while`` est aussi présente en python et possède comme syntaxe : 
+
+```python
+n = 0
+while n < 10: 
+    print(n)
+    n+=1 # équivalent plus rapide de n = n + 1
+```
+
+
+### Mots clefs ``break`` et ``continue``
+
+Le mot clef ``break`` permet de finir plus tôt une boucle dans son entièreté tandis que le mot clef continue permet de sauter directement à l'itération suivante.
+
+```python
+for n in range(10):
+    if n == 2:
+        continue
+    if n == 5:
+        break
+    print(n)
+```
+
+Cette boucle renverra : 
+
+```python
+0
+1
+3
+4
+```
+
+
 ### Match
 ## Fonctions
 
