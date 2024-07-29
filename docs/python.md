@@ -174,7 +174,7 @@ else:
     print("Le nombre est égal à 0")
 ```
 
-L'indentation en python est essentiel et est ce qui permet de définir le début et la fin des blocs de code.
+L'indentation en python est essentielle et est ce qui permet de définir le début et la fin des blocs de code.
 
 
 
@@ -210,9 +210,9 @@ while n < 10:
 ```
 
 
-### Mots clefs ``break`` et ``continue``
+### Mots clés ``break`` et ``continue``
 
-Le mot clef ``break`` permet de finir plus tôt une boucle dans son entièreté tandis que le mot clef continue permet de sauter directement à l'itération suivante.
+Le mot clé ``break`` permet de finir plus tôt une boucle dans son entièreté tandis que le mot clé continue permet de sauter directement à l'itération suivante.
 
 ```python
 for n in range(10):
@@ -233,15 +233,178 @@ Cette boucle renverra :
 ```
 
 
-### Match
 ## Fonctions
 
-## Input et output
-### strings format
-f strings, .format, 
-### Lire et écrire dans des fichiers
+Une fonction en Python est définie avec le mot clé ``def``, il est suivi du nom de la fonction et de parenthèses définissant des paramètres pour la fonction.
 
-## Errors et exceptions
+```python
+def carre(nombre):
+    if type(nombre) is int or type(nombre) is float:
+    # if isinstance(nombre, (int, float)): serait plus propre
+        return nombre**2
+    else:
+        print("Ce n'est pas un nombre")
+```
+
+Une fonction peut être terminée avec le mot clé ``return``, ce mot clé permet de renvoyer le résultat de l'expressiion du ``return`` à l'appel de la fonction. Si la fonction ne passe pas par un ``return`` elle sortira naturellement et renverra ``None``.
+
+On appel une fonction via son nom avec des parenthèses et dans les parenthèses les paramètres voulus. Comme en mathématiques ``f`` représente la fonction et ``f(paramètres)`` représente l'image de la fonction, sa valeur traitée.
+
+```python
+>>> carre
+<function carre at 0x77943898a2a0>
+```
+```python
+>>>n = 4
+>>>n2 = carre(n)
+>>>print(n2)
+16
+```
+```python
+>>>n = "hello"
+>>>n2 = carre(n)
+Ce n'est pas un nombre
+>>>print(type(n2))
+<class 'NoneType'>
+```
+
+## Lire et écrire dans des fichiers
+
+### Ouverture d'un fichier
+
+Pour ouvrir un fichier en Python, on utilise la fonction ``open()``. Cette fonction prend deux arguments principaux : le nom du fichier et le mode d'ouverture.
+
+
+```python
+# Ouverture d'un fichier en lecture
+fichier = open('mon_fichier.txt', 'r')
+
+# Ouverture d'un fichier en écriture (crée le fichier s'il n'existe pas)
+fichier = open('mon_fichier.txt', 'w')
+
+# Ouverture d'un fichier en mode ajout (ajoute à la fin du fichier)
+fichier = open('mon_fichier.txt', 'a')
+```
+
+### Lecture de fichier
+
+Pour lire le contenu d'un fichier, on peut utiliser différentes méthodes :
+
+```python
+
+# Lire tout le contenu
+contenu = fichier.read()
+
+# Lire ligne par ligne
+ligne = fichier.readline()
+
+# Lire toutes les lignes dans une liste
+lignes = fichier.readlines()
+```
+Exemple :
+
+```python
+with open('mon_fichier.txt', 'r') as fichier:
+    contenu = fichier.read()
+    print(contenu)
+```
+
+### Écriture dans un fichier
+
+Pour écrire dans un fichier, on utilise la méthode ``write()``.
+
+```python
+
+with open('mon_fichier.txt', 'w') as fichier:
+    fichier.write('Bonjour, monde!\n')
+    fichier.write('Voici une autre ligne.')
+```
+
+En mode ``'w'``, si le fichier n'existe pas, il est créé. Si le fichier existe déjà, son contenu est écrasé.
+
+### Fermeture d'un fichier
+
+Il est crucial de fermer un fichier après avoir fini de l'utiliser pour libérer les ressources. Cela peut se faire avec la méthode ``close()`` ou automatiquement avec une clause ``with`` :
+
+```python
+fichier.close()
+```
+
+Cependant, l'utilisation de ``with`` est préférable car elle assure que le fichier est correctement fermé même si une erreur survient pendant les opérations de lecture ou d'écriture.
+
+
+
+
+## Erreurs et exceptions
+
+La gestion des exceptions en Python est une partie essentielle du langage, permettant de gérer les erreurs de manière élégante et de maintenir le bon fonctionnement du programme. Voici un aperçu des concepts et pratiques de base pour gérer les exceptions.
+
+Une exception est une erreur détectée lors de l'exécution d'un programme. Python utilise un modèle basé sur la levée et la gestion d'exceptions pour gérer ces erreurs.
+
+### Structure try-except
+
+Pour capturer et gérer les exceptions, on utilise les blocs ``try-except``. Le code susceptible de provoquer une exception est placé dans le bloc ``try``, et le bloc ``except`` est utilisé pour gérer l'erreur.
+
+```python
+try:
+    # Code pouvant provoquer une exception
+    result = 10 / 0
+except ZeroDivisionError:
+    # Code exécuté si une exception de type ZeroDivisionError est levée
+    print("Erreur : division par zéro.")
+```
+Dans cet exemple, la division par zéro lève une exception ``ZeroDivisionError``, qui est ensuite capturée par le bloc ``except``.
+
+### Gestion de Plusieurs Exceptions
+
+Il est possible de gérer plusieurs types d'exceptions en utilisant plusieurs blocs ``except``.
+
+```python
+try:
+    fichier = open('non_existent_file.txt', 'r')
+except FileNotFoundError:
+    print("Le fichier n'a pas été trouvé.")
+except IOError:
+    print("Une erreur d'entrée/sortie est survenue.")
+```
+
+Ici, on gère spécifiquement les exceptions ``FileNotFoundError`` et ``IOError``.
+
+### Utilisation de ``else`` et ``finally``
+
+Le bloc ``else`` est exécuté si aucune exception n'est levée dans le bloc ``try``. Le bloc ``finally`` est exécuté en toutes circonstances, qu'une exception ait été levée ou non, et est typiquement utilisé pour le nettoyage, comme la fermeture de fichiers ou la libération de ressources.
+
+```python
+try:
+    fichier = open('mon_fichier.txt', 'r')
+    contenu = fichier.read()
+except FileNotFoundError:
+    print("Le fichier n'a pas été trouvé.")
+else:
+    print("Le fichier a été lu avec succès.")
+finally:
+    if 'fichier' in locals():
+        fichier.close()
+    print("Le fichier est fermé.")
+```
+
+### Levée d'Exceptions
+
+Il est possible de lever des exceptions manuellement avec l'instruction ``raise``.
+
+```python
+def verifie_age(age):
+    if age < 0:
+        raise ValueError("L'âge ne peut pas être négatif.")
+    return age
+
+try:
+    verifie_age(-1)
+except ValueError as e:
+    print(e)
+```
+
+Dans cet exemple, une exception ``ValueError`` est levée si l'âge est négatif.
 
 ## Classes
 ### Ptite prez POO
