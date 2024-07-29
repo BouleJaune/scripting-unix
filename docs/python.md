@@ -1,14 +1,5 @@
 # Python - Les bases
 
-## Présentation de Python
-## Variables et expressions
-## Les tableaux, les chaînes de caractères
-## Les instructions de contrôle
-## Les dictionnaires (hash)
-
-
-https://docs.python.org/3/tutorial/index.html
-
 ## Introduction
 
 Python est un langage de programmation interprété polyvalent et facile d'accès. Sa grande force réside dans sa popularité, qui lui permet d'avoir une très grande communauté prolifique sur la production de modules externes. Python est utilisé pour faire un peu de tout, du WebDev aux sciences en passant par l'IA il existe toujours plusieurs frameworks pour chaque cas d'usage.
@@ -84,7 +75,7 @@ Les ``str`` supportent quelques opérations simples avec ``+`` et ``*``. Le prem
 'Ce chat est très très très beau.'
 ```
 
-### Les nombres, int et float
+### Les nombres, ``int`` et ``float``
 
 L'un des avantages simplistes le plus rapidement visible de Python par rapport au Bash est le support natif des nombres.Il y a deux principaux types ``builtins``, ``int`` et ``float``. Le premier sert à représenter des nombres entiers et le second des nombres à virgules. Il existe un autre type, ``complex`` mais est assez rare et nécessite des connaissances mathématiques pour le comprendre.
 Attention c'est un ``.`` pour délimiter les décimales en Python, comme les anglais ! 
@@ -116,10 +107,27 @@ Enfin, on peut convertir des ``str`` vers des nombres de la même manière avec 
 2
 ```
 
+### Les booléens, ``bool``
 
-## Structures de données
+Le type ``bool`` en Python représente les valeurs booléennes, qui peuvent être soit ``True`` soit ``False``. Ces valeurs sont utilisées pour exprimer des conditions logiques et sont le résultat d'expressions de comparaison ou d'opérations logiques.
 
-### Listes
+Par exemple :
+
+```python
+>>> a = 5
+>>> b = 10
+>>> a < b
+True
+>>> a > b
+False
+```
+
+Les booléens sont souvent utilisés dans les structures de contrôle, comme les instructions ``if``, pour prendre des décisions dans le code. 
+
+
+## Types built-ins de structures de données
+
+### Les listes, ``list``
 
 L'un des types d'objets les plus manipulé en Python est la liste. Une liste est formé d'une succession d'objets indéxés. On peut en construire en listant des objets séparés par une virgule et en les entourants de ``[]``.
 
@@ -148,13 +156,47 @@ ma_liste.reverse() # Inverse l'ordre de la liste
 ### tuples / sequences
 ### Les dictionnaires (hash map)
 
-Une autre structure de données utile est le *dictionnaire* (de type ``dict``). Un dictionnare est une liste où les index sont des clefs compréhensibles et non juste un numéro.
-
+Une autre structure de données utile est le *dictionnaire* (de type ``dict``). Un dictionnaire est une liste où les index sont des clés compréhensibles et non juste un numéro.
 ```python
->>>mon_dict = {"pays": "France", "ville": "Paris", "Rivière": "Seine"}
->>>mon_dict["pays"] # Retournera 'France'
+mon_dict = {"pays": "France", "ville": "Paris", "Rivière": "Seine"}
+mon_dict["pays"] # Retournera 'France'
 ```
 
+Les éléments d'un dictionnaire peuvent être ajoutés ou modifiés en utilisant la clé entre crochets.
+```python
+mon_dict["ville"] = Nice  # Modifie la valeur associée à la clé "ville"
+mon_dict["region"] = "PACA"  # Ajoute une nouvelle paire clé-valeur
+```
+On peut supprimer des éléments à l'aide de la fonction ``del`` ou de la méthode ``pop()``.
+```python
+del d["ville"]  # Supprime la paire clé-valeur avec la clé "ville"
+region = d.pop("region")  # Supprime et retourne la valeur associée à "region"
+```
+
+Methodes utiles:
+
+- ``keys()`` : Retourne un objet vue contenant toutes les clés.
+```python
+cles = mon_dict.keys()   # Retourne dict_keys(['pays', 'ville', 'Rivière'])
+```
+
+- ``values()`` : Retourne un objet vue contenant toutes les valeurs.
+
+```python
+valeurs = mon_dict.values() # Retourne dict_values(['France', 'Paris', 'Seine'])
+```
+
+- ``items()`` : Retourne un objet vue contenant toutes les paires clé-valeur.
+
+```python
+paires = mon_dict.items()  # Retourne dict_items([('pays', 'France'), ('ville', 'Paris'), ('Rivière', 'Seine')])
+```
+
+Ces objets (``dict_items``, ``dict_values`` et ``dict_keys``) peuvent être convertis facilement en ``list`` :
+```python
+valeurs = list(mon_dict.values())
+print(list) # ['France', 'Paris', 'Seine']
+```
 
 ### Sets
 
