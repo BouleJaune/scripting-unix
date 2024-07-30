@@ -1,5 +1,3 @@
-man ! RTFM
-
 # Cheatsheet des Commandes Unix
 
 Le manuel, souvent appelé "man", est une collection de pages de documentation pour les commandes Unix et les programmes. Chaque page fournit une description détaillée de l'utilisation, des options, des exemples et de la syntaxe d'une commande ou d'un programme spécifique.
