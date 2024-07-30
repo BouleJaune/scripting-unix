@@ -2,7 +2,7 @@
 
 Le manuel, souvent appelé "man", est une collection de pages de documentation pour les commandes Unix et les programmes. Chaque page fournit une description détaillée de l'utilisation, des options, des exemples et de la syntaxe d'une commande ou d'un programme spécifique.
 
-La commande man est utilisée pour afficher ces pages de manuel. Par exemple, man ls affiche la documentation pour la commande ls. Cette documentation est essentielle pour comprendre les différentes options et usages des commandes disponibles dans le système Unix.
+La commande ``man`` est utilisée pour afficher ces pages de manuel. Par exemple, ``man ls`` affiche la documentation pour la commande ``ls``. Cette documentation est essentielle pour comprendre les différentes options et usages des commandes disponibles dans le système Unix.
 
 
 #### Commandes de Base
@@ -61,7 +61,7 @@ La commande man est utilisée pour afficher ces pages de manuel. Par exemple, ma
 - ``history`` : Affiche l'historique des commandes.
 - ``alias [alias]='[commande]'`` : Crée un alias pour une commande.
 - ``xargs`` : Construit et exécute des commandes à partir du ``stdin``, utilisé pour manipuler des arguments.
-- ``tr 'car1' 'car2'`` : Transcode les caractères, ici remplace les occurrences de 'car1' par 'car2' dans le ``stdin``.
+- ``tr 'car1' 'car2'`` : Transcode les caractères, ici remplace les occurrences de 'car1' par 'car2' dans le ``stdin``. On peut notamment utiliser ``tr [:upper:] [:lower:]`` pour passer tout les caractères en minuscule.
 
 
 #### Redirection et Pipes
