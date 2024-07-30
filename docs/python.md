@@ -77,7 +77,7 @@ Ici, ``str(2)`` permet de traduire l'``int 2`` en ``str`` en prenant sa représe
 On peut aussi définir des strings avec des triples guillemets ce qui permet d'écrire des chaînes de caractères sur plusieurs lignes.
 
 ```python
->>>string = ```hello
+>>>string = '''hello
 world
 !!!
 '''
@@ -112,11 +112,11 @@ age = 28
 print(f"Je m'appelle {nom} et j'ai {age} ans.")  # Affiche : "Je m'appelle Charlie et j'ai 28 ans."
 ```
 
-Cette manière de faire du ``string formatting`` est appelée ``F-Strings`` est a été introduite en python 3.6.
+Cette manière de faire du formatage de chaînes de charactères est appelée ``F-Strings`` est a été introduite sur python 3.6.
 Si vous n'avez pas accès à cette version ou une plus récente vous pouvez utiliser la méthode ``.format()``.
 
 ```python
-print("Je m'appelle {0} et j'ai {1} ans.".format(nom, age))  # Affiche : "Je m'appelle Charlie et j'ai 28 ans."
+print("Je m'appelle {0} et j'ai {1} ans.".format(nom, age))
 ```
 
 
