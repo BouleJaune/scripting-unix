@@ -27,6 +27,28 @@ lrwxrwxrwx 1 root root 10  7 juin  08:33 /usr/bin/python3 -> python3.12
 
 On peut quitter l'interpréteur intéractif python avec ``<Ctrl-D>``, ``exit()`` ou encore ``quit()``.
 
+## Gestion des blocs de code par indentation
+
+En Python, l'indentation est essentielle pour définir la structure des blocs de code. Contrairement à de nombreux autres langages de programmation qui utilisent des accolades ``{}`` ou des mots clés spécifiques pour délimiter les blocs de code, Python utilise uniquement l'indentation.
+
+L'indentation détermine la hiérarchie des blocs de code et définit la portée des structures de contrôle telles que les fonctions, les boucles, et les conditions.
+
+Voici un exemple avec une fonction et une condition :
+
+```python
+def saluer(nom):
+    if nom:
+        print("Bonjour, {nom} !")
+    else:
+        print("Bonjour, étranger !")
+```
+
+Dans cet exemple :
+    - La fonction saluer est définie avec def, et tout le code à l'intérieur de cette fonction est indenté.
+    - Le bloc if contient du code qui est encore plus indenté, indiquant qu'il appartient à la condition.
+
+Il est recommandé d'utiliser 4 espaces pour chaque niveau d'indentation. Les mélanges de tabulations et d'espaces ou une indentation incohérente entraînent des erreurs de syntaxe.
+
 ## Quelques types builtins essentiels
 
 Python, contrairement à Bash, est un langage "strongly typed", c'est à dire qu'il ne fonctionne pas juste avec des chaines de caractères comme Bash mais avec des ``types``.
@@ -43,6 +65,8 @@ type("Hello World")
 Il y a plusieurs classes de base en Python qui viennent avec des outils de manipulation pratique de ces objets.
 
 ### Les chaines de caractères, ``str``
+
+
 Une chaîne de caractères de classe ``str`` peuvent être crées de deux manières différentes. Soit en l'écrivant directement entourée de guillemets, soit en tentant de traduire un autre objet en ``str``.
 ```python
 >>>string = "Hello world"
@@ -59,6 +83,8 @@ world
 '''
 ```
 
+#### Méthodes
+
 Chaque ``str`` (et autres objets) possède une liste de ``methods`` qui sont des fonctions applicables sur l'objet en question.
 ```python
 >>>"hello".capitalize()
@@ -74,6 +100,25 @@ Les ``str`` supportent quelques opérations simples avec ``+`` et ``*``. Le prem
 >>>"Ce chat est " + "très " *3 + "beau."
 'Ce chat est très très très beau.'
 ```
+
+#### Formatage de ``str``
+
+Le formatage de chaînes en Python permet d'insérer des valeurs dans des chaînes de manière lisible et flexible. Il existe plusieurs méthodes pour formater des chaînes.
+La syntaxe principale nécessite de définir le ``str`` avec un ``f`` devant et les variables à mettre dans le texte entre ``{}``.
+
+```python
+nom = "Charlie"
+age = 28
+print(f"Je m'appelle {nom} et j'ai {age} ans.")  # Affiche : "Je m'appelle Charlie et j'ai 28 ans."
+```
+
+Cette manière de faire du ``string formatting`` est appelée ``F-Strings`` est a été introduite en python 3.6.
+Si vous n'avez pas accès à cette version ou une plus récente vous pouvez utiliser la méthode ``.format()``.
+
+```python
+print("Je m'appelle {0} et j'ai {1} ans.".format(nom, age))  # Affiche : "Je m'appelle Charlie et j'ai 28 ans."
+```
+
 
 ### Les nombres, ``int`` et ``float``
 
@@ -181,13 +226,11 @@ cles = mon_dict.keys()   # Retourne dict_keys(['pays', 'ville', 'Rivière'])
 ```
 
 - ``values()`` : Retourne un objet vue contenant toutes les valeurs.
-
 ```python
 valeurs = mon_dict.values() # Retourne dict_values(['France', 'Paris', 'Seine'])
 ```
 
 - ``items()`` : Retourne un objet vue contenant toutes les paires clé-valeur.
-
 ```python
 paires = mon_dict.items()  # Retourne dict_items([('pays', 'France'), ('ville', 'Paris'), ('Rivière', 'Seine')])
 ```
@@ -216,7 +259,6 @@ else:
     print("Le nombre est égal à 0")
 ```
 
-L'indentation en python est essentielle et est ce qui permet de définir le début et la fin des blocs de code.
 
 
 
@@ -277,7 +319,11 @@ Cette boucle renverra :
 
 ## Fonctions
 
+Les fonctions en Python sont des blocs de code réutilisables qui exécutent une tâche spécifique. Elles permettent de structurer le code, le rendre plus lisible et éviter la duplication.
+
 Une fonction en Python est définie avec le mot clé ``def``, il est suivi du nom de la fonction et de parenthèses définissant des paramètres pour la fonction.
+
+Le bloc de code de la fonction est indenté.
 
 ```python
 def carre(nombre):
@@ -288,26 +334,38 @@ def carre(nombre):
         print("Ce n'est pas un nombre")
 ```
 
-Une fonction peut être terminée avec le mot clé ``return``, ce mot clé permet de renvoyer le résultat de l'expressiion du ``return`` à l'appel de la fonction. Si la fonction ne passe pas par un ``return`` elle sortira naturellement et renverra ``None``.
+```python
+>>>carre
+<function carre at 0x77943898a2a0>
+```
 
 On appel une fonction via son nom avec des parenthèses et dans les parenthèses les paramètres voulus. Comme en mathématiques ``f`` représente la fonction et ``f(paramètres)`` représente l'image de la fonction, sa valeur traitée.
 
-```python
->>> carre
-<function carre at 0x77943898a2a0>
-```
 ```python
 >>>n = 4
 >>>n2 = carre(n)
 >>>print(n2)
 16
 ```
+
+Une fonction peut être terminée avec le mot clé ``return``, ce mot clé permet de renvoyer le résultat de l'expression du ``return`` à l'appel de la fonction. Si la fonction ne passe pas par un ``return`` elle sortira naturellement et renverra ``None``.
+
+
 ```python
 >>>n = "hello"
 >>>n2 = carre(n)
 Ce n'est pas un nombre
 >>>print(type(n2))
 <class 'NoneType'>
+```
+
+Les fonctions peuvent avoir des paramètres par défaut, des arguments nommés et des arguments variables.
+
+```python
+def saluer(nom, message="Bonjour"):
+    print(message, nom)
+saluer("Alice")            # Affiche "Bonjour Alice"
+saluer("Bob", "Salut")     # Affiche "Salut Bob"
 ```
 
 ## Lire et écrire dans des fichiers
