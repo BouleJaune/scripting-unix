@@ -1,13 +1,11 @@
-# Cheatsheet Shell
-
-## Binaires utiles
-
-Force et efficience des binaires linux
-tr, xargs
-
 man ! RTFM
 
 # Cheatsheet des Commandes Unix
+
+Le manuel, souvent appelé "man", est une collection de pages de documentation pour les commandes Unix et les programmes. Chaque page fournit une description détaillée de l'utilisation, des options, des exemples et de la syntaxe d'une commande ou d'un programme spécifique.
+
+La commande man est utilisée pour afficher ces pages de manuel. Par exemple, man ls affiche la documentation pour la commande ls. Cette documentation est essentielle pour comprendre les différentes options et usages des commandes disponibles dans le système Unix.
+
 
 #### Commandes de Base
 - ``pwd`` : Affiche le chemin du répertoire de travail actuel.
@@ -64,6 +62,9 @@ man ! RTFM
 - ``date`` : Affiche ou modifie la date et l'heure système.
 - ``history`` : Affiche l'historique des commandes.
 - ``alias [alias]='[commande]'`` : Crée un alias pour une commande.
+- ``xargs`` : Construit et exécute des commandes à partir du ``stdin``, utilisé pour manipuler des arguments.
+- ``tr 'car1' 'car2'`` : Transcode les caractères, ici remplace les occurrences de 'car1' par 'car2' dans le ``stdin``.
+
 
 #### Redirection et Pipes
 - ``command1 > fichier`` : Redirige la sortie standard de `command1` vers `fichier`.
