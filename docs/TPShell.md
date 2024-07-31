@@ -17,7 +17,3 @@ plus tard python s'en occupera
 ```sh
 df | tail -n +2 | tr -s " " | cut -d " " -f 5
 ```
-
-```sh
-cat /etc/apt/sources.list > temp && awk '/^deb/ {$0=$0" non-free non-free-firmware"} 1' temp > /etc/apt/sources.list && rm temp
-```
