@@ -1,11 +1,15 @@
 site_name: Scripting Unix
 nav:
   - Introduction: 'index.md'
-  - Shell : 'shell.md'
-  - Cheatsheet Shell: 'cheatsheetShell.md'
-  - Travaux Pratique Shell: 'TPShell.md'
+  - Shell:
+    - Shell : 'shell/shell.md'
+    - Cheatsheet Shell: 'shell/cheatsheet-shell.md'
+    - Travaux Pratique Shell: 'shell/tp-shell.md'
   - Python: 'python.md'
+  - Perl et Ruby: 'perl-ruby.md'
   - Awk et regex: 'awk-regex.md'
+  - Modularité: 'modularite.md'
+  - Parallelisme: 'parallelisme.md'
 
 # Theme material
 theme:
