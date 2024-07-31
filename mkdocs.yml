@@ -1,6 +1,6 @@
 site_name: Scripting Unix
 nav:
-  - Introduction: 'cours.md'
+  - Introduction: 'index.md'
   - Shell : 'shell.md'
   - Cheatsheet Shell: 'cheatsheetShell.md'
   - Travaux Pratique Shell: 'TPShell.md'

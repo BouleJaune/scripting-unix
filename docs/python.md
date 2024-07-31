@@ -209,7 +209,7 @@ mon_dict["pays"] # Retournera 'France'
 
 Les éléments d'un dictionnaire peuvent être ajoutés ou modifiés en utilisant la clé entre crochets.
 ```python
-mon_dict["ville"] = Nice  # Modifie la valeur associée à la clé "ville"
+mon_dict["ville"] = "Nice"  # Modifie la valeur associée à la clé "ville"
 mon_dict["region"] = "PACA"  # Ajoute une nouvelle paire clé-valeur
 ```
 On peut supprimer des éléments à l'aide de la fonction ``del`` ou de la méthode ``pop()``.
