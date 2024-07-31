@@ -1,0 +1,1313 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cours/">
+      
+      
+        <link rel="next" href="../cheatsheetShell/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+    
+    
+      
+        <title>Shell - Scripting Unix</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9.5A2.5 2.5 0 0 0 9.5 12a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 12 9.5m0 3.5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m0-3.5A2.5 2.5 0 0 0 9.5 12a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 12 9.5m0 3.5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m0-11A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 14c-2.63 0-5-1.57-6-4a6.505 6.505 0 0 1 8.5-3.5A6.52 6.52 0 0 1 18 12c-1 2.43-3.37 4-6 4m0-6.5A2.5 2.5 0 0 0 9.5 12a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 12 9.5m0 3.5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Shell - Scripting Unix" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/shell.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Shell - Scripting Unix" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/shell.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#le-shell-les-bases" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Scripting Unix" class="md-header__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scripting Unix
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Shell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Scripting Unix" class="md-nav__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Scripting Unix
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cours/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quest-ce-quun-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qu'est ce qu'un shell
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differents-shells-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Différents shells Unix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendre-un-script-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendre un script exécutable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteres-speciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caractères spéciaux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelines-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelines linux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commande-et-processus-subsitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commande et processus subsitution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commande et processus subsitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution-de-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Substitution de commandes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substitution-de-processus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Substitution de processus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-de-retour-et-operateurs-et" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code de retour et opérateurs &amp;&amp; et ||
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structures-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structures de contrôle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structures de contrôle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-boucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les boucles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonctions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheetShell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheatsheet Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TPShell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Travaux Pratique Shell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awk-regex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Awk et regex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quest-ce-quun-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qu'est ce qu'un shell
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differents-shells-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Différents shells Unix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendre-un-script-executable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendre un script exécutable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteres-speciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caractères spéciaux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelines-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelines linux
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commande-et-processus-subsitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commande et processus subsitution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commande et processus subsitution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution-de-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Substitution de commandes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substitution-de-processus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Substitution de processus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-de-retour-et-operateurs-et" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code de retour et opérateurs &amp;&amp; et ||
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structures-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structures de contrôle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structures de contrôle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-boucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les boucles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonctions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="le-shell-les-bases">Le Shell - les bases</h1>
+<h2 id="quest-ce-quun-shell">Qu'est ce qu'un shell</h2>
+<p>Un shell Unix est une interface homme machine (IHM) en ligne de commande (CLI). Il fournit à la fois un langage de commandes interactives et un langage de scripting. Le shell traite des commandes ou scripts.</p>
+<p>Il ne faut pas confondre un shell avec un terminal. Un terminal était initialement physiquement un écran et un clavier. Aujourd'hui lorsque l'on parle de terminal on parle d'émulateur de terminal, c'est une catégorie de logiciels permettant de fournir un GUI pour lancer des shells (bash, python, zsh, fish, powershell, ruby ...).<br />
+Émulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.</p>
+<p>La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.</p>
+<h2 id="differents-shells-unix">Différents shells Unix</h2>
+<p>"sh" (shell command langage) est un spécification de langage défini par POSIX mais n'est pas une implémentation en lui même. Il y a diverses implémentations, la plus connue étannt Bash.
+Le fichier <code>/bin/sh</code> est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. <code>ls -l /bin/sh</code>
+Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.
+Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
+Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu navigable ou encore une forte customisabilité par exemple).</p>
+<p>Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
+Exemple de fonctionnalité disponible sur Bash et qui n'est pas "POSIX compliant" : 
+<code>test</code> et <code>[]</code> sont POSIX compliant mais <code>[[]]</code> ne l'est pas. Les deux premiers sont strictements pareils, <code>[</code> étant un alias de test, le dernier permet notamment d'utiliser des "Wildcards Patterns" comme <code>*</code>.</p>
+<p>Pour information lancer un script via /bin/sh avec /bin/sh étant un symlink vers bash va lancer bash en mode posix ce qui rendra bash le plus POSIX compliant possible.
+<a href="https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html">Bash POSIX Mode</a></p>
+<p>En pratique il est rare d'utiliser des fonctionnalités non disponibles sur d'autres shell tout comme il est au final rare d'utiliser autre chose que Bash, néanmoins il peut être utile de garder ceci dans un coin de la tête.</p>
+<h2 id="rendre-un-script-executable">Rendre un script exécutable</h2>
+<p>Pour qu'un script soit éxécutable sur Linux, que ce soit un script Shell, Python ou autre, il faut que celui-ci ait des droits d'exécution.
+Pour vérifier qu'un fichier possède ces droits on peut utiliser <code>ls -l script.sh</code> pour lister ses permissions.</p>
+<p>Si un script de ne les possède pas on peut les rajouter avec <code>chmod +x script.sh</code>. Cela rajoutera pour tout le monde les permissions. Par défaut sur linux les permissions sont gérables à trois niveau, le propriétaire du fichier, le groupe du fichier et tout le monde.</p>
+<p>Si l'on veut rajouter le <code>x</code>, l'exécution, sur un type précis on peut le préciser avec la lettre correspondante. <code>o</code> pour tout le monde (others), <code>g</code> pour groupe et <code>u</code> pour le propriétaire (user).</p>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>❯<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>script.sh
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">23</span><span class="w"> </span>mai<span class="w"> </span><span class="m">23</span>:00<span class="w"> </span>script.sh
+</span></code></pre></div></td></tr></table></div>
+Le script n'a pas de x dans ses permissions
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>❯ chmod ug+x script.sh
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>❯ ls -l script.sh
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>-rwxr-xr-- 1 root root 0 23 mai 23:00 script.sh
+</span></code></pre></div></td></tr></table></div>
+Le script a des permissions d'exécution sur l'user et le groupe.</p>
+<p>Une fois un script rendu exécutable on peut le lancer en mettant directement son chemin dans le shell.</p>
+<p>Soit de manière absolue ou encore de manière relative.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>/chemin/vers/le/script.sh
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>./script.sh
+</span></code></pre></div></td></tr></table></div>
+La méthode relative est, justement, relative à la position actuelle du terminal. <code>.</code> représente dans le shell le dossier actuel, donc si vous ne vous situez pas au bon endroit cela ne fonctionnera pas.</p>
+<p><code>..</code> représente le dossier avant le dossier actuel, on peut utiliser les deux pour atteindre n'importe quel fichier du système mais il est parfois plus simple d'utiliser le chemin entier.</p>
+<p>Lorsque le script est appelé le shell va chercher un logiciel avec lequel lire notre script. Cela peut par exemple être python ou bash. Par défaut Linux va tenter d'exécuter le script avec le shell actuel, donc bash si c'est un shell bash par exemple. Ce qui n'est pas très fiable ni possible pour un script autre que bash.</p>
+<p>Pour cela on peut <code>#!</code> tout au début du script suivi du binaire voulu, ceci est appelé un <code>shebang</code>.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/usr/bin/python3</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>...contenu<span class="w"> </span>du<span class="w"> </span>script....
+</span></code></pre></div></td></tr></table></div></p>
+<p>Enfin une autre manière d'utiliser un script sans shebang ni permissions d'exécution et de directement l'appeler avec le binaire voulu.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>bash<span class="w"> </span>script.sh
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>python<span class="w"> </span>script.py
+</span></code></pre></div></td></tr></table></div></p>
+<h2 id="caracteres-speciaux">Caractères spéciaux</h2>
+<p>Dans un shell Linux certains caractères ont une signification spéciale, en voici une liste non exhaustive. </p>
+<ul>
+<li><code>~</code> "Tilde". Répertoire personnel, la plupart du temps /home/user.</li>
+<li><code>`</code> "Backtick". Utile pour ouvrir et fermé des substitutions de commandes.</li>
+<li><code>#</code> Marque le début d'un commentaire.</li>
+<li><code>|</code> Caractère pipe, permet de faire des pipes Unix.</li>
+<li><code>*</code> Caractère joker (wildcard), permet de se substituer n'importe quelle suite de caractères. (<code>ls fichiers_*</code> par exemple)</li>
+<li><code>?</code> Permet de se substituer à un seul caractère.</li>
+<li><code>'</code> et <code>"</code> Permet de délimiter des chaînes de caractères, utile par exemple pour des chaînes comportant des espaces. (<code>ls "/fichier/avec/un espace"</code>)</li>
+<li><code>;</code> Défini la fin d'une commande. Utile pour faire plusieurs commandes sur une seule ligne sans lien logique entre elles.</li>
+<li><code>\</code> Permet d'échapper un caractère pour lui enlever son effet "spécial". (<code>echo L\'apostrophe peut se mettre comme ceci</code>)</li>
+</ul>
+<h2 id="redirections">Redirections</h2>
+<p>Les flux standards sur Linux sont le standard out (<code>stdout</code>), standard error (<code>stderr</code>) et standard input (<code>stdin</code>). Normalement chaque processus Linux possède un flux de chaque par défaut.</p>
+<p>Ces flux servent à transmettre des données entre une source et une sortie. 
+Les données sur linux sont toujours du texte et la commande lancée représente une des extrémités de ces flux.</p>
+<p>Le <code>stdin</code> est le flux d'entrée dans la commande lancée, le <code>stdout</code> la sortie normale de la comande et le <code>stderr</code> est le canal pour les erreurs.\
+Par défaut le <code>stdout</code> et le <code>stderr</code> sont envoyés dans le terminal en cours. On peut rediriger ces sorties vers d'autres scripts, commandes ou fichiers.\</p>
+<p>Sur Linux tout est un fichier, même ces trois flux, ils sont dénommés <code>0</code> pour le <code>stdin</code>, <code>1</code> pour le <code>stdout</code> et <code>2</code> pour le <code>stderr</code>. Ces fichiers sont situés dans <code>/proc/PID/fd</code>. </p>
+<p>Redirection vers un fichier: </p>
+<p>On peut utiliser <code>&gt;</code> et <code>&gt;&gt;</code> pour rediriger le stdout vers un fichier, les doubles chevrons permettent d'ajouter à la fin d'un fichier déjà existant tandis que le simple chevron écrase le fichier. Dans les deux cas si le fichier n'existait pas il sera créé.</p>
+<p>Cela ne redirige pas le <code>stderr</code> par défaut.
+Script d'exemple : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="se">\#</span>!/bin/sh
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>cat<span class="w"> </span>nexistepas<span class="w"> </span>
+</span></code></pre></div></td></tr></table></div></p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>test.sh
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>./test.sh<span class="w"> </span>&gt;<span class="w"> </span>out
+</span></code></pre></div></td></tr></table></div>
+<p>On peut expliciter ce qui est redirigé en précisant le numéro du fichier correspondant.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>./test.sh<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>./test.sh<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>out
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>./test.sh<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>out<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors
+</span></code></pre></div></td></tr></table></div></p>
+<p>Si on veut rediriger à la fois le <code>stdout</code> et le <code>stderr</code> vers le même fichier avec une syntaxe plus courte que d'écrire deux fois le fichier on peut faire : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>./test.sh<span class="w"> </span>&gt;<span class="w"> </span>out<span class="w"> </span><span class="m">2</span>&gt;<span class="se">\&amp;</span><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+Cela dit au shell de rediriger <code>2</code> (<code>stderr</code>) vers la même sortie que <code>1</code> (<code>stdout</code>). </p>
+<p>Le <code>stdin</code> est un peu plus complexe à visualiser sans redirection, par défaut celui ci étant le clavier.</p>
+<p>On peut aussi le rediriger, donc ne plus avoir le clavier comme input mais un fichier ou la sortie d'autre processus.</p>
+<p>Commençons par créer un fichier d'inputs: 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>seq<span class="w"> </span><span class="m">10</span><span class="w"> </span>&gt;<span class="w"> </span>input
+</span></code></pre></div></td></tr></table></div></p>
+<p>La commande <code>grep PATTERN FILE</code> permet de récupérer dans du texte les lignes matchant un pattern.
+Elle accepte le nom d'un fichier en entrée, on peut donc faire <code>grep 5 input</code> pour récupérer la ligne où le <code>5</code> est présent. Néanmoins si aucun fichier n'est fourni il va chercher à match dans le stdin.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>grep<span class="w"> </span><span class="m">5</span>
+</span></code></pre></div></td></tr></table></div>
+<p>On peut donc lui rediriger le stdin pour lui fournir notre fichier input de cette manière. Pour cela on utilise encore une fois des chevrons, mais cette fois ci dans l'autre sens.
+grep 5 &lt; input</p>
+<p>Il est à noter que ces redirections peuvent être placées n'importe où dans la commande, cela est aussi vrai pour les redirections de stderr et stdout.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>&lt;<span class="w"> </span>input<span class="w"> </span>grep<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>grep<span class="w"> </span>&lt;<span class="w"> </span>input<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>grep<span class="w"> </span><span class="m">2</span>&gt;err<span class="w"> </span><span class="m">1</span>&gt;out<span class="w"> </span>&lt;<span class="w"> </span>input<span class="w"> </span><span class="m">5</span>
+</span></code></pre></div></td></tr></table></div>
+On peut aussi rediriger la même sortie vers plusieurs fichiers différents.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>cat<span class="w"> </span>input<span class="w"> </span>&gt;out<span class="w"> </span>&gt;out2
+</span></code></pre></div></td></tr></table></div></p>
+<p>Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un fichier <code>/dev/null</code> sur Linux pensé pour ceci. Un exemple d'utilisation et de <code>grep</code> dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant <code>stderr</code> vers <code>/dev/null</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>grep<span class="w"> </span>-r<span class="w"> </span>PATTERN<span class="w"> </span>.<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span></code></pre></div></td></tr></table></div>
+<h2 id="pipelines-linux">Pipelines linux</h2>
+<p>Les pipes Linux permettent de rediriger le <code>stdout</code> d'une première commande vers le <code>stdin</code> d'une seconde commande. Cela permet de chaîner des processus et de gagner beaucoup de temps.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>ls<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>dev
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>service
+</span></code></pre></div></td></tr></table></div>
+<p>Ou encore une un peu plus élaborée : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs
+</span></code></pre></div></td></tr></table></div></p>
+<p>Il est possible de rediriger aussi le <code>stderr</code> dans une pipe, soit en le redirigeant simplement vers le <code>stdout</code> soit en utilisant <code>|&amp;</code>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>❯cat<span class="w"> </span>nexistepas<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Aucun fichier&quot;</span><span class="w"> </span>-c
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>cat:<span class="w"> </span>nexistepas:<span class="w"> </span>Aucun<span class="w"> </span>fichier<span class="w"> </span>ou<span class="w"> </span>dossier<span class="w"> </span>de<span class="w"> </span>ce<span class="w"> </span>nom
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="m">0</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>❯cat<span class="w"> </span>nexistepas<span class="w"> </span><span class="p">|&amp;</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Aucun fichier&quot;</span><span class="w"> </span>-c
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>❯cat<span class="w"> </span>nexistepas<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Aucun fichier&quot;</span><span class="w"> </span>-c
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>L'option <code>-c</code> de <code>grep</code> permet de compter le nombre correspondance avec le pattern voulu. On voit que dans le premier cas le <code>stderr</code> est affiché dans le terminal tandis que dans les suivants il est envoyé dans le <code>stdin</code> du <code>grep</code>.</p>
+<p>Un point important qui sera revu dans la partie <em>parallélisme</em> est le fait que chacun des processus d'une série de pipes est lancé dès le début. Les processus n'attendent pas que le précédent soit fini pour démarrer.
+La plupart des commandes linux classiques vont traiter les données en entrée (<code>stdin</code>) ligne par ligne et envoyer en sortie (<code>stdout</code>) aussi ligne par ligne. Le temps d'exécution est donc minoré par le processus le plus long et n'est donc pas la somme du temps d'exécution de chaque processus.</p>
+<p>La commande <code>time</code> permet de mesurer le temps d'exécution d'une commande et donc de visualiser cette parallélisation.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>❯time<span class="w"> </span><span class="o">(</span>sleep<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="o">(</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="o">)</span><span class="w">  </span><span class="m">0</span>,00s<span class="w"> </span>user<span class="w"> </span><span class="m">0</span>,00s<span class="w"> </span>system<span class="w"> </span><span class="m">0</span>%<span class="w"> </span>cpu<span class="w"> </span><span class="m">5</span>,002<span class="w"> </span>total
+</span></code></pre></div></td></tr></table></div>
+<p>On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d'un <code>sleep 5</code> et non la somme des deux (à 0.001s près). Dans cet exemple les deux processus sont indépendants et il n'y a pas d'intérêts à la connexion du <code>stdout</code> du premier processus au <code>stdin</code> du second.</p>
+<h2 id="commande-et-processus-subsitution">Commande et processus subsitution</h2>
+<h3 id="substitution-de-commandes">Substitution de commandes</h3>
+<p>Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe <code>$(commandes)</code> ou <code>`commandes`</code>, les deux syntaxes sont fonctionnellement pareils.</p>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nb">echo</span><span class="w"> </span>Le<span class="w"> </span>chemin<span class="w"> </span>du<span class="w"> </span>dossier<span class="w"> </span>actuel<span class="w"> </span>est<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+</span></code></pre></div></td></tr></table></div>
+La commande <code>pwd</code> signifie "print working directory" et affiche donc le chemin complet du dossier actuel.</p>
+<p>On peut aussi substituer une pipeline de commandes qui renverra le <code>stdout</code> final.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le système d&#39;exploitation est `uname -a | cut -d &#39; &#39; -f 1`&quot;</span>
+</span></code></pre></div></td></tr></table></div></p>
+<h3 id="substitution-de-processus">Substitution de processus</h3>
+<p>La substitution de commande permet de remplacer par le <code>stdout</code> de la commande mais parfois on ne veut pas directement ce <code>stdout</code> mais on veut plutôt un fichier contenant ce contenu. 
+On peut faire cela via une substitution de processus qui a pour syntaxe <code>&lt;(commande)</code>.</p>
+<p>Ici la variable <code>--kubeconfig</code> attends un nom de fichier et pas directement son contenu, cependant nous possédons le contenu du kubeconfig dans une variable. On utilise donc une substitution de process. </p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>kubectl<span class="w"> </span>--kubeconfig<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$CONTENU_KUBECONFIG</span><span class="o">)</span><span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dep.yml
+</span></code></pre></div></td></tr></table></div>
+<h2 id="code-de-retour-et-operateurs-et">Code de retour et opérateurs &amp;&amp; et ||</h2>
+<p>Lorsqu'une commande finit de s'éxécuter elle va renvoyer un code de retour qui dépendra de son état de sortie.
+Si tout s'est bien passé celui ci sera égal à <code>0</code>, sinon, il sera souvent <code>1</code> ou un autre nombre en fonction de la commande en elle même.
+Ce code est automatiquement stocké dans la variable <code>$?</code> pour chaque commande et permet donc de faire des actions en fonction de sa valeur.
+Naturellement on peut imaginer utiliser une structure de contrôle tel qu'un <code>if else</code> pour manipuler ces codes de retour. Cependant Bash fournit une alternative plus pratique pour des cas simples avec <code>&amp;&amp;</code> et <code>||</code>.</p>
+<p>L'opérateur Bash AND <code>&amp;&amp;</code> permet d'éxécuter la commande à droite de l'opérateur si et seulement si la commande à gauche a un code de retour à <code>0</code>, tandis que l'opérateur OR <code>||</code> exécutera la commande à droite si et seulement si la commande à gauche a un code de retour différent de <code>0</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>❯ls<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande est passée&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande n&#39;est pas passée&quot;</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>*Vos<span class="w"> </span>fichiers*
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>La<span class="w"> </span>commande<span class="w"> </span>est<span class="w"> </span>passée
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>❯cat<span class="w"> </span>nexistepas<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande est passée&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande n&#39;est pas passée&quot;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>cat:<span class="w"> </span>nexistepas:<span class="w"> </span>Aucun<span class="w"> </span>fichier<span class="w"> </span>ou<span class="w"> </span>dossier<span class="w"> </span>de<span class="w"> </span>ce<span class="w"> </span>nom
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>La<span class="w"> </span>commande<span class="w"> </span>n<span class="err">&#39;</span>est<span class="w"> </span>pas<span class="w"> </span>passée
+</span></code></pre></div></td></tr></table></div>
+<p>Ces opérateurs ont une associativité par la gauche. Cela permet donc d'utiliser en premier <code>&amp;&amp;</code> puis <code>||</code> pour traiter tout les cas en une ligne.
+Rappel associativité gauche : <code>a ~ b ~ c = (a ~ b)~c</code></p>
+<p>Cela implique qu'il faut donc mettre le <code>&amp;&amp;</code> <em>avant</em> le <code>||</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>❯cat<span class="w"> </span>nexistepas<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande n&#39;est pas passée&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;La commande est passée&quot;</span><span class="w"> </span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>cat:<span class="w"> </span>nexistepas:<span class="w"> </span>Aucun<span class="w"> </span>fichier<span class="w"> </span>ou<span class="w"> </span>dossier<span class="w"> </span>de<span class="w"> </span>ce<span class="w"> </span>nom
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>La<span class="w"> </span>commande<span class="w"> </span>n<span class="err">&#39;</span>est<span class="w"> </span>pas<span class="w"> </span>passée
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>La<span class="w"> </span>commande<span class="w"> </span>est<span class="w"> </span>passée
+</span></code></pre></div></td></tr></table></div>
+<h2 id="structures-de-controle">Structures de contrôle</h2>
+<h3 id="les-tests">Les tests</h3>
+<p>La commande <code>test</code> permet de tester si une expression est vraie ou fausse. Test renverra un code de retour de <code>0</code> si vraie et <code>1</code> si faux.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>❯test<span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>a
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="m">0</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Les expressions se construisent via des opérateurs de test qui sont, notamment : </p>
+<ul>
+<li><code>a = b</code> et <code>a != b</code> testent si les chaines de charactères <code>a</code> et <code>ab</code> sont respectivement égales et inégales</li>
+<li><code>-z a</code> et <code>-n a</code> respectivement testent si la chaine de charactères <code>a</code> est vide et ne l'est pas</li>
+<li><code>n1 -eq n2</code> et <code>n1 -ne n2</code> testent l'égalité et l'inégalité de deux nombres</li>
+<li><code>n1 -lt n2</code> et <code>n1 -gt n2</code> testent si <code>n1</code> est strictement plus petit que <code>n2</code> pour <code>-lt</code> et strictement plus grand pour <code>-gt</code>.</li>
+<li><code>n1 -le n2</code> et <code>n1 -ge n2</code> pareil mais inférieur/supérieur ou égal.</li>
+</ul>
+<p>Il y aussi des opérateurs purement logiques qui permettent de combiner plusieurs expressions entre elles:
+<code>! e</code> si <code>e</code> renvoi vrai si <code>e</code> est fausse et inversement.
+<code>e1 -a e2</code>  renvoi vrai si et seulement si <code>e1</code> et <code>e2</code> sont vrais.
+<code>e1 -o e2</code> renvoi vrai si <code>e1</code> ou <code>e2</code> ou les deux sont vrais.</p>
+<p>Exemples : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>❯test<span class="w">  </span><span class="m">5</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">2</span><span class="w"> </span>-a<span class="w"> </span><span class="m">5</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>❯test<span class="w"> </span><span class="m">5</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">2</span><span class="w"> </span>-o<span class="w"> </span><span class="m">5</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="m">0</span>
+</span></code></pre></div></td></tr></table></div>
+Plus d'opérateurs pour construire des expressions sont disponibles sur le manuel de la commande (<code>man test</code>).</p>
+<p>La plupart du temps la commande <code>test</code> n'est pas utilisée avec cette syntaxe. Son autre syntaxe plus commune est <code>[</code> : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="o">[</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+Les espaces après <code>[</code> et avant <code>]</code> sont importants. Ce serait comme écrire <code>test"hello" = "world"</code> ce qui ne peut pas fonctionner.</p>
+<p>Il existe aussi une autre notation <code>[[</code> qui apporte plus de fonctionnalités cependant cette version de <code>test</code> n'est pas POSIX. L'une de ces fonctionnalités est notamment le support du joker <code>*</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nv">A</span><span class="o">=</span><span class="s2">&quot;VARIABLE_TEST&quot;</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="o">[</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*TEST*<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>ne<span class="w"> </span>fonctionnera<span class="w"> </span>pas
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="o">[[</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*TEST*<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>fonctionne
+</span></code></pre></div></td></tr></table></div>
+<h3 id="structure-if">Structure if</h3>
+<p>Les <code>test</code> sont le plus souvent utilisés avec la structure de contrôle <code>if</code>. Cette structure permet d'exécuter des actions si et seulement si la commande à droite de <code>if</code> a un code de retour de <code>0</code>. </p>
+<p>La syntaxe est la suivante : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nv">A</span><span class="o">=</span><span class="s2">&quot;VARIABLE_TEST&quot;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*TEST*<span class="w"> </span><span class="o">]]</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="k">then</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>contient<span class="w"> </span>TEST
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="k">fi</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>On peut rajouter des <code>else</code> pour faire une action dans le cas où le code de retour n'est pas <code>0</code> et même refaire directement un autre <code>if</code> avec <code>elif</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="nv">A</span><span class="o">=</span><span class="s2">&quot;VARIABLE_TEST&quot;</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*HELLO*<span class="w"> </span><span class="o">]]</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="k">then</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>contient<span class="w"> </span>HELLO
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*WORLD*<span class="w"> </span><span class="o">]]</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a><span class="k">then</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>contient<span class="w"> </span>WORLD
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a><span class="k">else</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>ne<span class="w"> </span>contient<span class="w"> </span>ni<span class="w"> </span>HELLO<span class="w"> </span>ni<span class="w"> </span>WORLD
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a><span class="k">fi</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="switch-case">Switch case</h3>
+<p>Parfois on veut faire plusieurs tests en une seule fois, par exemple si l'on veut traiter les options d'entrée d'un script ou encore comparer une variable avec plusieurs autres.
+On peut faire ceci avec un <code>switch case</code>. On peut ainsi réécrire l'exemple précédent de cette manière :</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-33-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-33-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-33-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-33-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-33-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-33-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-33-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-33-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-33-10">10</a></span>
+<span class="normal"><a href="#__codelineno-33-11">11</a></span>
+<span class="normal"><a href="#__codelineno-33-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="nv">A</span><span class="o">=</span><span class="s2">&quot;VARIABLE_TEST&quot;</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="k">case</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="w">    </span>HELLO<span class="o">)</span><span class="w"> </span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>contient<span class="w"> </span>HELLO
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="w">        </span><span class="p">;;</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="w">    </span>WORLD<span class="o">)</span><span class="w"> </span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>contient<span class="w"> </span>WORLD
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="w">        </span><span class="p">;;</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="w">    </span>*<span class="o">)</span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$A</span><span class="w"> </span>ne<span class="w"> </span>contient<span class="w"> </span>pas<span class="w"> </span>HELLO<span class="w"> </span>ni<span class="w"> </span>WORLD
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11"></a><span class="w">        </span><span class="p">;;</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12"></a><span class="k">esac</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Ces <code>switch case</code> sont très souvent utilisés pour traiter les options d'entrées d'un script.</p>
+<h3 id="les-boucles">Les boucles</h3>
+<p>Les boucles sont des structures de contrôles permettant d'itérer plusieurs fois une même action. 
+Il y a divers types de boucles. L'une d'elles est la boucle <code>while</code>. Celle si itèrera tant que la condition à sa droite sera vraie.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
+<span class="normal"><a href="#__codelineno-34-2">2</a></span>
+<span class="normal"><a href="#__codelineno-34-3">3</a></span>
+<span class="normal"><a href="#__codelineno-34-4">4</a></span>
+<span class="normal"><a href="#__codelineno-34-5">5</a></span>
+<span class="normal"><a href="#__codelineno-34-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="nv">n</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$n</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="k">do</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="w">    </span><span class="nv">n</span><span class="o">=</span><span class="k">$(</span>seq<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>shuf<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>Nombre<span class="w"> </span>aléatoire<span class="w">  </span><span class="nv">$n</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>seq 10</code> permet de générer une liste de 1 à 10, <code>shuf -n 1</code> permet d'en sélectionner un aléatoirement. Cette boucle <code>while</code> tournera donc tant que l'on ne tombe pas aléatoirement sur <code>n=10</code>.</p>
+<p>Une boucle très similaire est <code>until</code>, qui fait exactement l'opposé et itère tant que sa condition n'est <em>pas</em> vraie.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span>
+<span class="normal"><a href="#__codelineno-35-3">3</a></span>
+<span class="normal"><a href="#__codelineno-35-4">4</a></span>
+<span class="normal"><a href="#__codelineno-35-5">5</a></span>
+<span class="normal"><a href="#__codelineno-35-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="nv">n</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="k">until</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$n</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="k">do</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="w">    </span><span class="nv">n</span><span class="o">=</span><span class="k">$(</span>seq<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>shuf<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>Nombre<span class="w"> </span>aléatoire<span class="w">  </span><span class="nv">$n</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Le dernier type de boucle est la boucle <code>for</code>, celle ci permet d'itérer au travers de, par exemple, une liste.
+Cela permet soit de parcourir une liste et avoir une variable fixée sur la valeur en cours :</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span>
+<span class="normal"><a href="#__codelineno-36-3">3</a></span>
+<span class="normal"><a href="#__codelineno-36-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>bash<span class="w"> </span>linux<span class="w"> </span>script
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="k">do</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cette boucle listera les mots de la liste : </span><span class="nv">$i</span><span class="s2">&quot;</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Soit de contrôler le nombre d'itération d'une action :</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span>
+<span class="normal"><a href="#__codelineno-37-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="k">do</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cette boucle s&#39;exécutera 5 fois, </span><span class="nv">$i</span><span class="s2">&quot;</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span>
+<span class="normal"><a href="#__codelineno-38-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="k">do</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cette boucle s&#39;exécutera 5 fois, </span><span class="nv">$i</span><span class="s2">&quot;</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Parfois on veut pouvoir sortir plus tôt d'une boucle ou bien passer directement à l'itération suivante. On peut faire cela respectivement grâce à <code>break</code> et <code>continue</code>.</p>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-39-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-39-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-39-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-39-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-39-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-39-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-39-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-39-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-39-10">10</a></span>
+<span class="normal"><a href="#__codelineno-39-11">11</a></span>
+<span class="normal"><a href="#__codelineno-39-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..8<span class="o">}</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="k">do</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4"></a><span class="w">    </span><span class="k">then</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="w">        </span><span class="k">continue</span><span class="w"> </span><span class="c1">#Permet de skipper le reste de cette itération</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8"></a><span class="w">    </span><span class="k">then</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9"></a><span class="w">        </span><span class="k">break</span><span class="w"> </span><span class="c1">#Sortira définitivement de la boucle</span>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le nombre est </span><span class="nv">$i</span><span class="s2">&quot;</span>
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+Donnera : 
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
+<span class="normal"><a href="#__codelineno-40-2">2</a></span>
+<span class="normal"><a href="#__codelineno-40-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">4</span>
+</span></code></pre></div></td></tr></table></div></p>
+<h2 id="variables">Variables</h2>
+<p>On peut définir une variable de cette manière : </p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="nv">VARIABLE</span><span class="o">=</span><span class="s2">&quot;contenu de la variable&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>If faut noter qu'il n'y a pas d'espace de part et d'autre du <code>=</code> et que toutes les variables sont stockées en tant que chaîne de caractères.</p>
+<p>On peut aussi définir des variables en demandant dynamiquement à l'utilisateur de les remplir grâce à <code>read</code>. </p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="nb">read</span><span class="w"> </span>VARIABLE
+</span></code></pre></div></td></tr></table></div>
+<p>Pour utiliser une variable il faut rappeler son nom avec un <code>$</code> devant. Cependant dans certains cas il peut être nécessaire d'encapsuler le nom de la variable dans <code>{}</code>.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="nv">KERNEL</span><span class="o">=</span><span class="s2">&quot;Linux-6.9.9&quot;</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="nb">echo</span><span class="w"> </span>Le<span class="w"> </span>kernel<span class="w"> </span>est<span class="w"> </span><span class="nv">$KERNEL</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="nb">echo</span><span class="w"> </span>Créons<span class="w"> </span>un<span class="w"> </span>fichier<span class="w"> </span>nommé<span class="w"> </span><span class="nv">$KERNEL_file</span><span class="w"> </span><span class="c1"># Renverra une variable vide</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="nb">echo</span><span class="w"> </span>Créons<span class="w"> </span>un<span class="w"> </span>fichier<span class="w"> </span>nommé<span class="w"> </span><span class="si">${</span><span class="nv">KERNEL</span><span class="si">}</span>_file<span class="w"> </span><span class="c1"># Fonctionnera</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a>touch<span class="w"> </span><span class="si">${</span><span class="nv">KERNEL</span><span class="si">}</span>_file
+</span></code></pre></div></td></tr></table></div>
+<p>Certaines variables sont déjà assignées par Bash, voici une liste non exhaustive:</p>
+<ul>
+<li><code>$SHELL</code> : Le chemin du binaire du shell actuel</li>
+<li><code>$$</code> Le PID de la session Bash</li>
+<li><code>$?</code> Le dernier code de retour</li>
+<li><code>$@</code> La liste des arguments d'entrée du script</li>
+<li><code>$#</code> Le nombre de ces arguments</li>
+<li><code>$n</code> avec <code>n</code> un chiffre. L'argument numéro <code>n</code></li>
+</ul>
+<p>Les trois derniers sont particulièrements utiles pour utiliser des arguments d'entrée de script :
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
+<span class="normal"><a href="#__codelineno-44-2">2</a></span>
+<span class="normal"><a href="#__codelineno-44-3">3</a></span>
+<span class="normal"><a href="#__codelineno-44-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="ch">#!/bin/sh</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$#</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$@</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$3</span>
+</span></code></pre></div></td></tr></table></div>
+Renverra : </p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a>❯./script.sh<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="m">3</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4"></a><span class="m">5</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="fonctions">Fonctions</h2>
+<p>Une fonction permet d'encapsuler une série de commandes et actions au sein d'une seule avec ses propres arguments.
+Il a y deux syntaxes pour définir une fonction :</p>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
+<span class="normal"><a href="#__codelineno-46-2">2</a></span>
+<span class="normal"><a href="#__codelineno-46-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="w">    </span>contenu<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>fonction
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="o">}</span>
+</span></code></pre></div></td></tr></table></div>
+et</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
+<span class="normal"><a href="#__codelineno-47-2">2</a></span>
+<span class="normal"><a href="#__codelineno-47-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="w">    </span>contenu<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>fonction
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3"></a><span class="o">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Le mot reservé <code>function</code> est donc optionnel mais si celui est omis alors les <code>()</code> deviennent obligatoires tandis qu'elles ne le sont pas dans le premier cas.
+Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguiter et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.</p>
+<p>Si l'on veut utiliser des arguments on peut utiliser les variables built-ins $n pour récupérer ces arguments au moment de l'appel de la fonction.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
+<span class="normal"><a href="#__codelineno-48-2">2</a></span>
+<span class="normal"><a href="#__codelineno-48-3">3</a></span>
+<span class="normal"><a href="#__codelineno-48-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les arguments sont : </span><span class="nv">$1</span><span class="s2"> </span><span class="nv">$2</span><span class="s2">&quot;</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="o">}</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a>ma_fonction<span class="w"> </span>arg1<span class="w"> </span>arg2
+</span></code></pre></div></td></tr></table></div>
+<p>Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieure sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
+<span class="normal"><a href="#__codelineno-49-2">2</a></span>
+<span class="normal"><a href="#__codelineno-49-3">3</a></span>
+<span class="normal"><a href="#__codelineno-49-4">4</a></span>
+<span class="normal"><a href="#__codelineno-49-5">5</a></span>
+<span class="normal"><a href="#__codelineno-49-6">6</a></span>
+<span class="normal"><a href="#__codelineno-49-7">7</a></span>
+<span class="normal"><a href="#__codelineno-49-8">8</a></span>
+<span class="normal"><a href="#__codelineno-49-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;A&quot;</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2"></a><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;B&quot;</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;C&quot;</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5"></a><span class="w">    </span><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;D&quot;</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables dans la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
+</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7"></a><span class="o">}</span>
+</span><span id="__span-49-8"><a id="__codelineno-49-8" name="__codelineno-49-8"></a>ma_fonction
+</span><span id="__span-49-9"><a id="__codelineno-49-9" name="__codelineno-49-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables après la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>On voit bien que après la fonctin la <code>$var1</code> s'est remise sur sa valeur précédente tandis que la <code>$var2</code> reste sur la valeur définie dans la fonction.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
