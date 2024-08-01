@@ -8,7 +8,7 @@ Le parallélisme est donc une sous catégorie de concurrence mais nécessite un 
 
 Une manière de faire de la concurrence sans faire du parallélisme est de faire de la programmation asynchrone. En programmation asynchrone une tâche sera non bloquante et permettra donc de passer à l'étape suivante, contrairement à la programmation classique (synchrone) où une tâche est bloquante tant qu'elle n'est pas finie. Ceci est utile lorsque la tâche en question ne nécessite aucune actions du processeur.
 
-On peut imaginer une commande ``sleep 10`` qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce ``sleep 10``, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce ``sleep 10`` finisse. Du temps a bien été gagné.
+On peut imaginer une commande ``sleep 10`` qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce ``sleep 10``, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce ``sleep 10`` finisse. 
 
 Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un notre.
 
@@ -60,11 +60,56 @@ bg # Continue l'éxécution en arrière plan
 
 ### Pipes
 
+L'utilisation de pipes sur Linux est, nativement, du multiprocessing.
+Tout les processus d'une série de pipes sont lancés en même temps au début. La plupart des commandes Linux traitent ligne par ligne et renvoient ligne par ligne les données, ce qui permet une exécution concurrente de la plupart des commandes.
+
+Ainsi, le temps d'exécution d'une série de pipes est le temps d'éxécution du processus le plus long du lot, et non la somme de tout les temps.
+
+```sh
+sleep 10 | sleep 10
+# Ne prendra que 10 secondes pour s'exécuter
+```
+
+
 ### Xargs et parallel
+
+``xargs`` est une commande Unix puissante permettant la manipulation d'arguments. Cette commande perment notamment de récupérer puis grouper ou dégrouper des arguments et de les placer où on veut dans une commande à exécuter.
+
+Exemple simple :
+
+```sh
+❯seq 6 | xargs -n 2
+1 2
+3 4
+5 6
+```
+
+Par défaut si aucune commande n'est fournis, ``xargs`` fera un ``echo`` des arguments. Ici xargs a groupé 2 par 2 les arguments.
+
+
+Dans l'absolu c'est très pratique, cependant une autre force de xargs et la possibilité
+
+Elle permet aussi d'exécuter 
+
 xargs -P 10
 parallel
 
-### Une note sur les 
+
+### Exercice
+
+Utilisez ces méthodes pour optimiser le ping d'une longue liste d'ip.
+
+```sh
+for i in {1..200}
+   do
+   ping -c 1 192.168.1.$i &
+   done
+```
+
+```sh
+echo 192.168.1.{1..200} | xargs -n 1 -P 200 ping -c 1
+```
+
 
 ## Python
 Voici les principaux types de concurrence en Python :
