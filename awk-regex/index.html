@@ -520,6 +520,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -714,6 +723,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -879,6 +897,13 @@ Si aucun pattern n'est fourni alors <code>awk</code> matchera chaque ligne.</p>
 <li><strong><code>srand([expr])</code></strong> : Initialise le générateur de nombres aléatoires avec <code>expr</code> ou l'heure actuelle.</li>
 <li><strong><code>rand()</code></strong> : Renvoie un nombre aléatoire entre 0 et 1.</li>
 </ul>
+<h3 id="exercice">Exercice</h3>
+<p>Attraper la ligne précédent un match</p>
+<details class="note">
+<summary>Exemple de solution</summary>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..254<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">0</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/1 reçus/ {print prev} {prev=$0}&#39;</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
 <h2 id="regex">Regex</h2>
 <p>Cours global regex</p>
 <h3 id="regex-sur-unix">Regex sur Unix</h3>
