@@ -532,9 +532,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xargs-et-parallel" class="md-nav__link">
+  <a href="#xargs" class="md-nav__link">
     <span class="md-ellipsis">
-      Xargs et parallel
+      Xargs
     </span>
   </a>
   
@@ -653,9 +653,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xargs-et-parallel" class="md-nav__link">
+  <a href="#xargs" class="md-nav__link">
     <span class="md-ellipsis">
-      Xargs et parallel
+      Xargs
     </span>
   </a>
   
@@ -722,7 +722,7 @@
 <p>La <strong>concurrence</strong> (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches <em>existent</em> en même temps. Le <strong>parallélisme</strong> quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.</p>
 <p>Le parallélisme est donc une sous catégorie de concurrence mais nécessite un processeur multicoeurs.</p>
 <p>Une manière de faire de la concurrence sans faire du parallélisme est de faire de la programmation asynchrone. En programmation asynchrone une tâche sera non bloquante et permettra donc de passer à l'étape suivante, contrairement à la programmation classique (synchrone) où une tâche est bloquante tant qu'elle n'est pas finie. Ceci est utile lorsque la tâche en question ne nécessite aucune actions du processeur.</p>
-<p>On peut imaginer une commande <code>sleep 10</code> qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce <code>sleep 10</code>, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce <code>sleep 10</code> finisse. Du temps a bien été gagné.</p>
+<p>On peut imaginer une commande <code>sleep 10</code> qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce <code>sleep 10</code>, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce <code>sleep 10</code> finisse. </p>
 <p>Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un notre.</p>
 <h2 id="concurrence-sur-bash">Concurrence sur Bash</h2>
 <p>Le shell Unix étant bien plus proche du système Linux la gestion de la concurrence est quasiment directement celle du kernel Linux. 
@@ -769,20 +769,44 @@ Tout les processus d'une série de pipes sont lancés en même temps au début. 
 <span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1"># Ne prendra que 10 secondes pour s&#39;exécuter</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="xargs-et-parallel">Xargs et parallel</h3>
-<p>xargs -P 10
-parallel</p>
-<h3 id="exercice">Exercice</h3>
-<p>Utilisez ces méthodes pour optimiser le ping d'une longue liste d'ip.</p>
+<h3 id="xargs">Xargs</h3>
+<p><code>xargs</code> est une commande Unix puissante permettant la manipulation d'arguments. Cette commande perment notamment de récupérer puis grouper ou dégrouper des arguments et de les placer où on veut dans une commande à exécuter.</p>
+<p>Exemple simple :</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..200<span class="o">}</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">   </span><span class="k">do</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">   </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$i</span><span class="w"> </span><span class="p">&amp;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">   </span><span class="k">done</span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>❯seq<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="m">1</span><span class="w"> </span><span class="m">2</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="m">5</span><span class="w"> </span><span class="m">6</span>
 </span></code></pre></div></td></tr></table></div>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..200<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">200</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>
+<p>Par défaut si aucune commande n'est fournis, <code>xargs</code> fera un <code>echo</code> des arguments. Sinon <code>xargs</code> les rajoutera à la fin de la commande.
+Le <code>-n 2</code> permet de préciser de grouper 2 par 2 les arguments.</p>
+<p>On peut utiliser <code>-I {}</code> pour placer où on veut les arguments et pas seulement à la fin.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>❯seq<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-I<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;L&#39;argument de valeur {} est au milieu du texte&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>L<span class="s1">&#39;argument de valeur 1 est au milieu du texte</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="s1">L&#39;</span>argument<span class="w"> </span>de<span class="w"> </span>valeur<span class="w"> </span><span class="m">2</span><span class="w"> </span>est<span class="w"> </span>au<span class="w"> </span>milieu<span class="w"> </span>du<span class="w"> </span>texte
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>L<span class="err">&#39;</span>argument<span class="w"> </span>de<span class="w"> </span>valeur<span class="w"> </span><span class="m">3</span><span class="w"> </span>est<span class="w"> </span>au<span class="w"> </span>milieu<span class="w"> </span>du<span class="w"> </span>texte
+</span></code></pre></div></td></tr></table></div>
+<p>Dans l'état <code>xargs</code> est très pratique, cependant une autre force de xargs et la possibilité de facilement faire du multiprocessing.
+En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> le nombre de processus.
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>seq<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-P<span class="w"> </span><span class="m">3</span><span class="w"> </span>-I<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;L&#39;argument de valeur {} est au milieu du texte&quot;</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>Ici, il y aura 3 processus, un pour chaque exécution de <code>echo</code>. On peut aussi mettre <code>N=0</code> pour utiliser le maximum possible de processus automatiquement.</p>
+<h3 id="exercice">Exercice</h3>
+<p>Utilisez ces méthodes pour optimiser le ping d'une longue liste d'ip.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..200<span class="o">}</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">   </span><span class="k">do</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">   </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$i</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">   </span><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..200<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">200</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="python">Python</h2>
 <p>Voici les principaux types de concurrence en Python :</p>
