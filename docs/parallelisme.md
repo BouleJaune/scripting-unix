@@ -71,7 +71,7 @@ sleep 10 | sleep 10
 ```
 
 
-### Xargs et parallel
+### Xargs
 
 ``xargs`` est une commande Unix puissante permettant la manipulation d'arguments. Cette commande perment notamment de récupérer puis grouper ou dégrouper des arguments et de les placer où on veut dans une commande à exécuter.
 
@@ -84,15 +84,26 @@ Exemple simple :
 5 6
 ```
 
-Par défaut si aucune commande n'est fournis, ``xargs`` fera un ``echo`` des arguments. Ici xargs a groupé 2 par 2 les arguments.
+Par défaut si aucune commande n'est fournis, ``xargs`` fera un ``echo`` des arguments. Sinon ``xargs`` les rajoutera à la fin de la commande.
+Le ``-n 2`` permet de préciser de grouper 2 par 2 les arguments.
 
+On peut utiliser ``-I {}`` pour placer où on veut les arguments et pas seulement à la fin.
 
-Dans l'absolu c'est très pratique, cependant une autre force de xargs et la possibilité
+```sh
+❯seq 3 | xargs -I {} echo "L'argument de valeur {} est au milieu du texte"
+L'argument de valeur 1 est au milieu du texte
+L'argument de valeur 2 est au milieu du texte
+L'argument de valeur 3 est au milieu du texte
+```
 
-Elle permet aussi d'exécuter 
+Dans l'état ``xargs`` est très pratique, cependant une autre force de xargs et la possibilité de facilement faire du multiprocessing.
+En effet il suffit de rajouter simplement ``-P N`` avec ``N`` le nombre de processus.
+```sh
+seq 3 | xargs -P 3 -I {} echo "L'argument de valeur {} est au milieu du texte"
+```
 
-xargs -P 10
-parallel
+Ici, il y aura 3 processus, un pour chaque exécution de ``echo``. On peut aussi mettre ``N=0`` pour utiliser le maximum possible de processus automatiquement.
+
 
 
 ### Exercice
