@@ -114,6 +114,14 @@ awk 'BEGIN {n=0} {n += $1} END {print n}' numbers.txt
 - **`srand([expr])`** : Initialise le générateur de nombres aléatoires avec `expr` ou l'heure actuelle.
 - **`rand()`** : Renvoie un nombre aléatoire entre 0 et 1.
 
+
+### Exercice
+Attraper la ligne précédent un match
+??? Note "Exemple de solution"
+    ```sh
+    echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | awk '/1 reçus/ {print prev} {prev=$0}'
+    ```
+
 ## Regex
 Cours global regex
 ### Regex sur Unix

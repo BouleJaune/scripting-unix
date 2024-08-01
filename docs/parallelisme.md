@@ -108,7 +108,7 @@ Ici, il y aura 3 processus, un pour chaque exécution de ``echo``. On peut aussi
 
 ### Exercice
 
-Utilisez ces méthodes pour optimiser le ping de multiples IPs.  
+Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à 192.168.1.254.
 
 ??? note "Exemples de solutions"
 
@@ -146,6 +146,4 @@ Voici les principaux types de concurrence en Python :
 
 La programmation asynchrone est assez similaire au multi-threading
 
-## Python
 
-## En perl et ruby
