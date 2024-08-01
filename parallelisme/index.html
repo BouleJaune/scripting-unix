@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../awk-regex/">
+        <link rel="prev" href="../modularite/">
       
-      
-        <link rel="next" href="../parallelisme/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Modularité - Scripting Unix</title>
+        <title>Parallelisme - Scripting Unix</title>
       
     
     
@@ -61,11 +59,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Modularité - Scripting Unix" >
+        <meta  property="og:title"  content="Parallelisme - Scripting Unix" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="./assets/images/social/modularite.png" >
+        <meta  property="og:image"  content="./assets/images/social/parallelisme.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,11 +75,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Modularité - Scripting Unix" >
+        <meta  name="twitter:title"  content="Parallelisme - Scripting Unix" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="./assets/images/social/modularite.png" >
+        <meta  name="twitter:image"  content="./assets/images/social/parallelisme.png" >
       
     
     
@@ -102,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#modularite" class="md-skip">
+        <a href="#la-programmation-parallele-en-shell-perl-python-et-ruby" class="md-skip">
           Aller au contenu
         </a>
       
@@ -138,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Modularité
+              Parallelisme
             
           </span>
         </div>
@@ -428,6 +426,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modularité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -444,7 +462,7 @@
           
   
   <span class="md-ellipsis">
-    Modularité
+    Parallelisme
   </span>
   
 
@@ -455,7 +473,7 @@
         
   
   <span class="md-ellipsis">
-    Modularité
+    Parallelisme
   </span>
   
 
@@ -477,61 +495,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python-modules" class="md-nav__link">
+  <a href="#differentes-types-de-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
-      Python modules
+      Différentes types de concurrency
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrence-sur-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrence sur Bash
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrence sur Bash">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#types-de-modules" class="md-nav__link">
+  <a href="#processus-en-arriere-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Types de Modules
+      Processus en arrière plan
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-dun-module" class="md-nav__link">
+  <a href="#pipes" class="md-nav__link">
     <span class="md-ellipsis">
-      Création d'un Module
+      Pipes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#utilisation-des-modules" class="md-nav__link">
+  <a href="#xargs-et-parallel" class="md-nav__link">
     <span class="md-ellipsis">
-      Utilisation des Modules
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Utilisation des Modules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#importation-de-modules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Importation de Modules
+      Xargs et parallel
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#chemin-dacces-aux-modules" class="md-nav__link">
+  <a href="#exercice" class="md-nav__link">
     <span class="md-ellipsis">
-      Chemin d'accès aux Modules
+      Exercice
     </span>
   </a>
   
@@ -543,27 +555,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#biblios-externes-utiles" class="md-nav__link">
+  <a href="#python" class="md-nav__link">
     <span class="md-ellipsis">
-      Biblios externes utiles
+      Python
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#venv-requirementstxt-poetry" class="md-nav__link">
+  <a href="#python_1" class="md-nav__link">
     <span class="md-ellipsis">
-      venv, requirements.txt, poetry
+      Python
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mot-sur-modules-ruby-perl-et-non-existence-shell" class="md-nav__link">
+  <a href="#en-perl-et-ruby" class="md-nav__link">
     <span class="md-ellipsis">
-      mot sur modules ruby, perl, et non existence shell
+      En perl et ruby
     </span>
   </a>
   
@@ -573,26 +585,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../parallelisme/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Parallelisme
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -624,61 +616,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python-modules" class="md-nav__link">
+  <a href="#differentes-types-de-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
-      Python modules
+      Différentes types de concurrency
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrence-sur-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrence sur Bash
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrence sur Bash">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#types-de-modules" class="md-nav__link">
+  <a href="#processus-en-arriere-plan" class="md-nav__link">
     <span class="md-ellipsis">
-      Types de Modules
+      Processus en arrière plan
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-dun-module" class="md-nav__link">
+  <a href="#pipes" class="md-nav__link">
     <span class="md-ellipsis">
-      Création d'un Module
+      Pipes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#utilisation-des-modules" class="md-nav__link">
+  <a href="#xargs-et-parallel" class="md-nav__link">
     <span class="md-ellipsis">
-      Utilisation des Modules
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Utilisation des Modules">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#importation-de-modules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Importation de Modules
+      Xargs et parallel
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#chemin-dacces-aux-modules" class="md-nav__link">
+  <a href="#exercice" class="md-nav__link">
     <span class="md-ellipsis">
-      Chemin d'accès aux Modules
+      Exercice
     </span>
   </a>
   
@@ -690,27 +676,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#biblios-externes-utiles" class="md-nav__link">
+  <a href="#python" class="md-nav__link">
     <span class="md-ellipsis">
-      Biblios externes utiles
+      Python
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#venv-requirementstxt-poetry" class="md-nav__link">
+  <a href="#python_1" class="md-nav__link">
     <span class="md-ellipsis">
-      venv, requirements.txt, poetry
+      Python
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mot-sur-modules-ruby-perl-et-non-existence-shell" class="md-nav__link">
+  <a href="#en-perl-et-ruby" class="md-nav__link">
     <span class="md-ellipsis">
-      mot sur modules ruby, perl, et non existence shell
+      En perl et ruby
     </span>
   </a>
   
@@ -731,89 +717,90 @@
                   
 
 
-<h1 id="modularite">Modularité</h1>
-<h2 id="python-modules">Python modules</h2>
-<p>En Python, un <strong>module</strong> est un fichier contenant du code Python, comme des fonctions, des classes et des variables, qui peuvent être importées et utilisées dans d'autres fichiers Python. Les modules permettent de structurer un programme Python en séparant le code en morceaux logiques, facilitant ainsi la réutilisation et l'organisation.</p>
-<p>L'écosystème Python possède des milliers de modules externes entretenus par la communauté permettant de faciliter le développement de n'importe quel programme. Cette diversité de modules est l'une des plus grande force de Python.</p>
-<h3 id="types-de-modules">Types de Modules</h3>
-<ol>
-<li>
-<p><strong>Modules intégrés</strong> : Ces modules font partie de l'installation standard de Python et n'ont pas besoin d'être installés séparément. Exemples : <code>math</code>, <code>sys</code>, <code>os</code>.</p>
-</li>
-<li>
-<p><strong>Modules tiers</strong> : Ce sont des modules créés par la communauté Python et disponibles via le Python Package Index (PyPI). Ils doivent être installés avec des outils comme <code>pip</code>. Exemples : <code>requests</code>, <code>numpy</code>, <code>pandas</code>.</p>
-</li>
-<li>
-<p><strong>Modules personnalisés</strong> : Ce sont des modules que vous créez vous-même pour organiser votre propre code.</p>
-</li>
-</ol>
-<h3 id="creation-dun-module">Création d'un Module</h3>
-<p>Un module en Python est simplement un fichier Python (.py). Par exemple, un fichier <code>mymodule.py</code> pourrait contenir :</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># mymodule.py</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">def</span> <span class="nf">saluer</span><span class="p">(</span><span class="n">nom</span><span class="p">):</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Bonjour, </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2">!&quot;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<h1 id="la-programmation-parallele-en-shell-perl-python-et-ruby">La programmation parallèle en Shell, Perl, Python et Ruby</h1>
+<h2 id="differentes-types-de-concurrency">Différentes types de concurrency</h2>
+<p>La <strong>concurrence</strong> (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches <em>existent</em> en même temps. Le <strong>parallélisme</strong> quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.</p>
+<p>Le parallélisme est donc une sous catégorie de concurrence mais nécessite un processeur multicoeurs.</p>
+<p>Une manière de faire de la concurrence sans faire du parallélisme est de faire de la programmation asynchrone. En programmation asynchrone une tâche sera non bloquante et permettra donc de passer à l'étape suivante, contrairement à la programmation classique (synchrone) où une tâche est bloquante tant qu'elle n'est pas finie. Ceci est utile lorsque la tâche en question ne nécessite aucune actions du processeur.</p>
+<p>On peut imaginer une commande <code>sleep 10</code> qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce <code>sleep 10</code>, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce <code>sleep 10</code> finisse. Du temps a bien été gagné.</p>
+<p>Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un notre.</p>
+<h2 id="concurrence-sur-bash">Concurrence sur Bash</h2>
+<p>Le shell Unix étant bien plus proche du système Linux la gestion de la concurrence est quasiment directement celle du kernel Linux. 
+Un processus possède minimum un thread mais peut en posséder plus.</p>
+<p>Quand un coeur du processeur est libre, le système choisi un thread en attente de traitement et s'en occupe.
+Après un certain temps ce thread peut être remis en attente et/ou déplacer vers un autre coeur pour optimiser le système, mais ce n'est pas quelque chose à prendre en compte en tant que développeurs.</p>
+<p>Ainsi, faire du multiprocessing en Bash revient à lancer plusieurs processus et laisser Linux s'en occuper.
+On ne peut pas faire du multithreading en Bash.</p>
+<h3 id="processus-en-arriere-plan">Processus en arrière plan</h3>
+<p>Il existe de multiples manières de faire du multiprocessing, l'une des manières les plus basiques est d'utiliser <code>&amp;</code> qui permet de passer une commande en arrière plan et la rendre non bloquante.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span>Hello
 </span></code></pre></div></td></tr></table></div>
-<h3 id="utilisation-des-modules">Utilisation des Modules</h3>
-<h4 id="importation-de-modules">Importation de Modules</h4>
-<p>Pour utiliser un module, vous devez d'abord l'importer dans votre script Python. Il existe plusieurs façons de le faire :</p>
-<ul>
-<li>Importation complète :</li>
-</ul>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<p>Parfois on veut attendre que tout les jobs en arrière plan soient finis avant de continuer, ceci peut être fait avec la commande <code>wait</code>. </p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">mymodule</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">mymodule</span><span class="o">.</span><span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">))</span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sleep<span class="w"> </span><span class="m">10</span><span class="p">&amp;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>sleep<span class="w"> </span><span class="m">10</span><span class="p">&amp;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span>Waiting<span class="w"> </span>!
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="nb">wait</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span>Fin<span class="w"> </span>!
 </span></code></pre></div></td></tr></table></div>
-<ul>
-<li>Importation avec un alias :</li>
-</ul>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<p>On peut aussi lister les jobs en arrière plan avec <code>jobs</code> et remettre un job au premier plan avec <code>fg</code> (pour <em>foreground</em>).</p>
+<p>Parfois on se rends compte qu'une commande est longue à s'éxécuter et on aurait aimé la mettre en arrière plan. C'est possible via la combinaison de <code>CTRL+Z</code> suivi de la commande <code>bg</code> (pour <em>background</em>).
+<code>CTRL+Z</code> permet de suspendre un job et rendre la main dans le shell et <code>bg</code> permet d'arrêter la suspension et de continuer l'exécution du processus.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">mymodule</span> <span class="k">as</span> <span class="nn">mm</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">mm</span><span class="o">.</span><span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">))</span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">jobs</span><span class="w"> </span><span class="c1"># Affichera le processus sleep en arrière plan</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nb">fg</span><span class="w">  </span><span class="c1"># Renverra le shell dans le process sleep</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>*CTRL+Z*<span class="w"> </span><span class="c1"># Suspend et rend la main</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nb">bg</span><span class="w"> </span><span class="c1"># Continue l&#39;éxécution en arrière plan</span>
 </span></code></pre></div></td></tr></table></div>
-<ul>
-<li>Importation de fonctions spécifiques :</li>
-</ul>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">mymodule</span> <span class="kn">import</span> <span class="n">saluer</span><span class="p">,</span> <span class="n">addition</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Charlie&quot;</span><span class="p">))</span>
+<h3 id="pipes">Pipes</h3>
+<p>L'utilisation de pipes sur Linux est, nativement, du multiprocessing.
+Tout les processus d'une série de pipes sont lancés en même temps au début. La plupart des commandes Linux traitent ligne par ligne et renvoient ligne par ligne les données, ce qui permet une exécution concurrente de la plupart des commandes.</p>
+<p>Ainsi, le temps d'exécution d'une série de pipes est le temps d'éxécution du processus le plus long du lot, et non la somme de tout les temps.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1"># Ne prendra que 10 secondes pour s&#39;exécuter</span>
 </span></code></pre></div></td></tr></table></div>
-<ul>
-<li>Importation de toutes les fonctions (non recommandé) :</li>
-</ul>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<h3 id="xargs-et-parallel">Xargs et parallel</h3>
+<p>xargs -P 10
+parallel</p>
+<h3 id="exercice">Exercice</h3>
+<p>Utilisez ces méthodes pour optimiser le ping d'une longue liste d'ip.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">mymodule</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Diana&quot;</span><span class="p">))</span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..200<span class="o">}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">   </span><span class="k">do</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">   </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$i</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">   </span><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Cette méthode n'est pas recommandée car elle peut porter à confusion la provenance d'une fonction. Cela rend le code peut lisible.</p>
-<h3 id="chemin-dacces-aux-modules">Chemin d'accès aux Modules</h3>
-<p>Python va d'abord chercher le module dans les modules builtins, listés dans <code>sys.builtin_module_names</code>. Si il ne le trouve pas dans cette liste il va chercher le fichier .py du module recherché dans les dossiers listés par <code>sys.path</code>.</p>
-<p>Cette liste contient les dossiers d'installation de modules externes mais aussi le dossier actuel (pour une exécution intéractive) ou le dossier du script .py appelé.</p>
-<h2 id="biblios-externes-utiles">Biblios externes utiles</h2>
-<p>numpy, django, flask, pandas, matplotlib, scipy, requests, ansible, paramiko, </p>
-<h2 id="venv-requirementstxt-poetry">venv, requirements.txt, poetry</h2>
-<h2 id="mot-sur-modules-ruby-perl-et-non-existence-shell">mot sur modules ruby, perl, et non existence shell</h2>
-<p>cpan unix
-cpan Chocolate::Belgian</p>
-<p>On Windows:
-$ ppm
-ppm&gt; search net-smtp
-ppm&gt; install Net-SMTP-Multipart</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..200<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">200</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="python">Python</h2>
+<p>Voici les principaux types de concurrence en Python :</p>
+<ul>
+<li>Le multi-processing implique l'exécution de plusieurs processus indépendants, chacun ayant sa propre mémoire. Cela évite les problèmes de sécurité des données associés au multi-threading, mais la communication inter-processus est plus complexe et coûteuse. </li>
+</ul>
+<p><strong>Utilisation typique</strong> : Tâches computationnelles intensives où l'isolation entre les tâches est importante.</p>
+<ul>
+<li>Le multi-threading consiste à exécuter plusieurs threads (fils d'exécution) au sein d'un seul processus. On peut par exemple visualiser un programme avec deux threads faisant des écritures en base de données. Lorsqu'un thread commence son écriture, il peut laisser la main au second thread pour gagner du temps, sans pour autant que physiquement le processeur traite les actions en simultannée. Le multi-threading peut poser des problèmes de sécurité de données, les threads ayant souvent accès à la mémoire des autres threads.</li>
+</ul>
+<p><strong>Utilisation typique</strong> : Applications nécessitant des opérations d'E/S non bloquantes ou des tâches pouvant être exécutées indépendamment.</p>
+<ul>
+<li>La programmation asynchrone utilise des événements, des callbacks ou des futures/promesses pour gérer des tâches concurrentes. Les opérations peuvent être déclenchées de manière non bloquante, permettant à un programme de continuer à fonctionner pendant l'attente de la finalisation d'une tâche. </li>
+</ul>
+<p><strong>Utilisation typique</strong> : Gestion d'opérations E/S, telles que les appels réseau ou l'accès aux fichiers, où le temps d'attente peut être long.</p>
+<p>La programmation asynchrone est assez similaire au multi-threading</p>
+<h2 id="python_1">Python</h2>
+<h2 id="en-perl-et-ruby">En perl et ruby</h2>
 
 
 

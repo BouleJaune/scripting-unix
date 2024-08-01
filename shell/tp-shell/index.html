@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../cheatsheet-shell/">
       
-        <link rel="next" href="shell/shell/">
+      
+        <link rel="next" href="../../python/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
-        <title>Scripting Unix</title>
+        <title>Travaux Pratique Shell - Scripting Unix</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introduction" >
+        <meta  property="og:title"  content="Travaux Pratique Shell - Scripting Unix" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="./assets/images/social/index.png" >
+        <meta  property="og:image"  content="./assets/images/social/shell/tp-shell.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,11 +77,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introduction" >
+        <meta  name="twitter:title"  content="Travaux Pratique Shell - Scripting Unix" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="./assets/images/social/index.png" >
+        <meta  name="twitter:image"  content="./assets/images/social/shell/tp-shell.png" >
       
     
     
@@ -100,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#travaux-pratique-shell" class="md-skip">
           Aller au contenu
         </a>
       
@@ -116,7 +118,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="." title="Scripting Unix" class="md-header__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+    <a href="../.." title="Scripting Unix" class="md-header__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -136,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Travaux Pratique Shell
             
           </span>
         </div>
@@ -213,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Scripting Unix" class="md-nav__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+    <a href="../.." title="Scripting Unix" class="md-nav__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -228,19 +230,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -249,7 +242,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -258,8 +250,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -277,11 +271,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -295,7 +289,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Shell
@@ -309,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="shell/shell/" class="md-nav__link">
+      <a href="../shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -330,7 +324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="shell/cheatsheet-shell/" class="md-nav__link">
+      <a href="../cheatsheet-shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -348,10 +342,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="shell/tp-shell/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Travaux Pratique Shell
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -360,6 +374,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sans-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sans scripts
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -379,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="python/" class="md-nav__link">
+      <a href="../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -399,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="perl-ruby/" class="md-nav__link">
+      <a href="../../perl-ruby/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -419,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="awk-regex/" class="md-nav__link">
+      <a href="../../awk-regex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -439,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modularite/" class="md-nav__link">
+      <a href="../../modularite/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -459,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parallelisme/" class="md-nav__link">
+      <a href="../../parallelisme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -492,6 +544,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sans-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sans scripts
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -505,86 +583,18 @@
                   
 
 
-<h1 id="introduction">Introduction</h1>
-<p>Les objectifs de la formation</p>
-<p>Connaître les caractéristiques des principaux outils de scripting Unix/Linux</p>
-<p>Savoir lire des scripts Unix/Linux écrits en Shell, Perl, Python Ruby ou AWK</p>
-<p>Être capable d'écrire des scripts simples d'exploitation Unix/Linux</p>
-<p>Comprendre comment choisir l'outil le plus adapté pour résoudre un problème particulier</p>
-<p>Prez perso et demander le niveau des gens</p>
-<h1 id="le-langage-perl-les-bases">Le langage Perl - les bases</h1>
-<p>Prez, utilité de nos jours, spécifité</p>
-<p>Présentation de Perl</p>
-<p>Les variables scalaires, les tableaux, les opérateurs</p>
-<p>Les instructions de contrôle</p>
-<p>Les tableaux associatifs (hash)</p>
-<h1 id="le-langage-ruby-les-bases">Le langage Ruby - les bases</h1>
-<p>Présentation de Ruby
-Les variables
-Les chaînes de caractères\
-Les structures de contrôle\
-Les tableaux, les itérateurs - Les hash\</p>
-<h1 id="le-langage-python-les-bases">Le langage Python - les bases</h1>
-<p>Python est un langage de programmation interprété à usage extrêmement populaire de nos jours.
-Sa facilité facilité d'apprentissage et de lecture est ce qui a fait sa popularité initiale, aujourd'hui c'est la communauté qui en fait sa force avec les milliers de modules et programmes Python disponibles.</p>
-<p>Pour un administrateur système et/ou un devops Python est un langage très attirant, son principal défaut, la potentielle lenteur au runtime, n'est pas un problème dans nos cas d'usage. Python est aussi ce qui est derrière Ansible et permet la création de modules Ansible customs, le plus important outil d'infrastructure as code (IAC) du moment.
-Il est aussi par défaut installé sur la très grande majorité des distributions Linux.</p>
-<h2 id="syntaxe">Syntaxe</h2>
-<p>Variables et expressions\
-Les tableaux, les chaînes de caractères\
-Les instructions de contrôle\
-Les dictionnaires (hash)\</p>
-<h2 id="exercices-python">Exercices Python</h2>
-<h1 id="les-expressions-regulieres-regexp">Les expressions régulières (RegExp)</h1>
-<p>regex car tout est texte
-Importance de grep et sed 
-RegExp en Shell (via grep et sed)\
-RegExp en Perl (normes)\
-RegExp en Python (module re mais osef)\</p>
-<h1 id="la-modularite-en-shell-perl-python-et-ruby">La modularité en Shell, Perl, Python et Ruby</h1>
-<p>parler de direnv, de requirements.txt, de venv python, de classes python (osef un peu)
-y a des trucs pour shell (bpkg) mais pas le but, illogique, shell = spécifique task</p>
-<p>Les fonctions =&gt; dans les parties syntaxes\
-Les paquetages=&gt; oui\
-L'approche objet =&gt; syntaxe\
-Utilisation de bibliothèques externes=&gt; oui\</p>
-<h1 id="la-programmation-parallele-en-shell-perl-python-et-ruby">La programmation parallèle en Shell, Perl, Python et Ruby</h1>
-<p>différentes concurrency
-xargs pipes et parallel et &amp; + wait pour shell
-multi-threading et async pour python</p>
-<h1 id="resoudre-des-problemes-avec-le-shell-perl-python-et-ruby">Résoudre des problèmes avec le Shell, Perl, Python et Ruby</h1>
-<p>Ecrire des scripts d'exploitation (activer une application, les signaux, ...)\
-Manipuler des fichiers\
-Faire des calculs\
-Ecrire des CGI Web\
-Accéder à des bases de données\
-Manipuler des fichiers XML (parsing, validation, création)\
-Créer des applications réseaux TCP/IP\</p>
-<p>Ptit serveur web
-Génération de fichier dans un dossier
-service shell filewatcher qui trigger un truc
-xargs et des pipes pour multiprocessing
-perl ou grep pour regex
-awk pour un truc</p>
-<p>9 - AWK : un sous-ensemble POSIX/ISO du langage Perl</p>
-<p>10 - Conclusion</p>
-<h1 id="quel-outil-pour-quoi-faire">Quel outil pour quoi faire?</h1>
-<h2 id="interets-des-shells-unix">Intérets des Shells Unix</h2>
-<p>Le shell malgré sa syntaxe archaique et ses fonctionnalités limitées vis à vis de langages interprétés à usage général a tout de même encore des avantages.</p>
-<h2 id="actions-uniques">Actions uniques</h2>
-<p>Utile lorsque l'on veut faire une tâche relativement simple que quelques fois. 
-Maitriser le shell permet d'être beaucoup plus rapide dans un environnement Unix
-Exemple: extraire des données textes et les process sommairement
-<code>cat / sed / cut / tr</code> ...</p>
-<h3 id="manipulation-de-binaires">Manipulation de binaires</h3>
-<p>L'une des force de Bash par rapport à d'autres langages et sa facilité à manipuler directement des binaires. En python, par exemple, on peut aussi manipuler des binaires, mais on sent clairement que cela est moins pensé pour.
-Exemple : Utiliser un exécutable propriétaire (import baroc), utiliser l'output d'un script python et l'injecter ailleurs etc</p>
-<h3 id="manipulation-de-texte">Manipulation de texte</h3>
-<p>Tout est texte
-Exemple : lire des logs</p>
-<h3 id="manipulation-os-linux">Manipulation OS linux</h3>
-<p>les deux derniers ~= Manipulation linux pur car linux déjà tout fichiers et texte + binaires unix</p>
-<p>Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe go python</p>
+<h1 id="travaux-pratique-shell">Travaux Pratique Shell</h1>
+<p>Gérer un peu des users
+Récupérer la liste des pourcentages de remplissages des filesystems
+Generate logs (?) with errors and what not
+Logrotate
+Parsing log et trouver les warnings, criticals etc
+Save dans un fichier dans un dossier</p>
+<p>plus tard python s'en occupera</p>
+<h2 id="script">Script</h2>
+<h2 id="sans-scripts">Sans scripts</h2>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>df<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">5</span>
+</span></code></pre></div></td></tr></table></div>
 
 
 
@@ -640,10 +650,10 @@ Exemple : lire des logs</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

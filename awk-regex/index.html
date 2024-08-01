@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../python/">
+        <link rel="prev" href="../perl-ruby/">
       
+      
+        <link rel="next" href="../modularite/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -100,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-a-awk" class="md-skip">
+        <a href="#introduction-a-awk-et-aux-regex" class="md-skip">
           Aller au contenu
         </a>
       
@@ -250,8 +252,56 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Shell
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../shell/" class="md-nav__link">
+      <a href="../shell/shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -263,15 +313,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../cheatsheetShell/" class="md-nav__link">
+      <a href="../shell/cheatsheet-shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -283,15 +334,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../TPShell/" class="md-nav__link">
+      <a href="../shell/tp-shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -300,6 +352,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -316,6 +376,26 @@
   
   <span class="md-ellipsis">
     Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perl-ruby/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Perl et Ruby
   </span>
   
 
@@ -377,56 +457,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts-de-base" class="md-nav__link">
+  <a href="#awk" class="md-nav__link">
     <span class="md-ellipsis">
-      Concepts de Base
+      Awk
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Concepts de Base">
+    <nav class="md-nav" aria-label="Awk">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#structure-de-commande" class="md-nav__link">
+  <a href="#variables-par-defaut" class="md-nav__link">
     <span class="md-ellipsis">
-      Structure de Commande
+      Variables par défaut
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#champs-et-enregistrements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Champs et Enregistrements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Opérations de Base
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemples-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemples de Base
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemples de Base">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#imprimer-des-colonnes-specifiques" class="md-nav__link">
@@ -464,17 +511,68 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fonctions-integrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonctions Intégrées
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#utilisations-avancees" class="md-nav__link">
+  <a href="#regex" class="md-nav__link">
     <span class="md-ellipsis">
-      Utilisations Avancées
+      Regex
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Regex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex-sur-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex sur Unix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-perl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Perl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-ruby" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Ruby
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -482,6 +580,46 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modularité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallelisme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallelisme
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -513,56 +651,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts-de-base" class="md-nav__link">
+  <a href="#awk" class="md-nav__link">
     <span class="md-ellipsis">
-      Concepts de Base
+      Awk
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Concepts de Base">
+    <nav class="md-nav" aria-label="Awk">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#structure-de-commande" class="md-nav__link">
+  <a href="#variables-par-defaut" class="md-nav__link">
     <span class="md-ellipsis">
-      Structure de Commande
+      Variables par défaut
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#champs-et-enregistrements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Champs et Enregistrements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Opérations de Base
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemples-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemples de Base
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemples de Base">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#imprimer-des-colonnes-specifiques" class="md-nav__link">
@@ -600,17 +705,68 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fonctions-integrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonctions Intégrées
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#utilisations-avancees" class="md-nav__link">
+  <a href="#regex" class="md-nav__link">
     <span class="md-ellipsis">
-      Utilisations Avancées
+      Regex
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Regex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex-sur-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex sur Unix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-perl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Perl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-en-ruby" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex en Ruby
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -629,39 +785,49 @@
                   
 
 
-<h1 id="introduction-a-awk">Introduction à <code>awk</code></h1>
+<h1 id="introduction-a-awk-et-aux-regex">Introduction à <code>awk</code> et aux Regex</h1>
+<h2 id="awk">Awk</h2>
 <p><code>awk</code> est un puissant langage de programmation et un utilitaire en ligne de commande dans les systèmes Unix et Linux. Il est conçu pour la manipulation de texte et le traitement de données basées sur des fichiers texte ou des flux d'entrée. <code>awk</code> permet de rechercher des motifs, extraire et transformer des données.</p>
 <p>Les fichiers de tests sont récupérables ici :</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>curl<span class="w"> </span>fichier.txt<span class="w"> </span>numbers.txt
 </span></code></pre></div></td></tr></table></div>
 <p>Ils ont étés générés pour <code>numbers.txt</code> avec :
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { for (i = 1; i&lt;= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>numbers.txt
-</span></code></pre></div></td></tr></table></div></p>
-<h2 id="concepts-de-base">Concepts de Base</h2>
-<h3 id="structure-de-commande">Structure de Commande</h3>
-<p>La syntaxe de base de <code>awk</code> est la suivante :
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>awk<span class="w"> </span><span class="s1">&#39;pattern { action }&#39;</span><span class="w"> </span>fichier
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { for (i = 1; i&lt;= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>numbers.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="sb">`</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">### Structure de Commande</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>La<span class="w"> </span>syntaxe<span class="w"> </span>de<span class="w"> </span>base<span class="w"> </span>de<span class="w"> </span><span class="sb">``</span>awk<span class="sb">``</span><span class="w"> </span>est<span class="w"> </span>la<span class="w"> </span>suivante<span class="w"> </span>:
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="sb">```</span>bash
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>awk<span class="w"> </span><span class="s1">&#39;pattern { action }&#39;</span><span class="w"> </span>fichier
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li>pattern : Un motif qui, s'il est vrai pour une ligne donnée, déclenche l'exécution de l'action.</li>
 <li>action : Une série d'instructions entre {} qui sont exécutées lorsque le motif est trouvé.</li>
 </ul>
-<h2 id="champs-et-enregistrements">Champs et Enregistrements</h2>
+<h3 id="variables-par-defaut">Variables par défaut</h3>
+<p>Awk fournit une liste de variables déjà initialisées, en voici une partie: </p>
 <ul>
-<li><code>FNR</code> : Numéro de ligne dans le fichier actuel (File Number of Rows).</li>
 <li><code>NR</code> : Numéro de ligne global (cumulé à travers tous les fichiers d'entrée (Number of Rows).</li>
-<li><code>$0</code> : La ligne entière courante.</li>
+<li><code>$0</code> : La ligne entière actuelle.</li>
 <li><code>$1</code>, <code>$2</code>, ..., <code>$n</code> : Les n-ièmes champs d'une ligne, où le séparateur de champs par défaut est l'espace ou la tabulation.</li>
-<li><code>NF</code> : Le nombre de champs de chaque ligne (<code>Number of Fields</code>)</li>
+<li><code>FS</code> : Le séparateur de champs (par défaut, espace ou tabulation).</li>
+<li><code>OFS</code> : Le séparateur de champs de sortie (par défaut, espace).</li>
+<li><code>RS</code> : Le séparateur d'enregistrements (par défaut, nouvelle ligne).</li>
+<li><code>ORS</code> : Le séparateur d'enregistrements de sortie (par défaut, nouvelle ligne).</li>
+<li><code>FNR</code> : Le numéro de ligne actuel dans le fichier d'entrée actuel (File Number of Rows).</li>
+<li><code>NF</code> : Le nombre de champs dans la ligne courante (Number of Fields).</li>
+<li><code>FILENAME</code> : Le nom du fichier d'entrée actuel.</li>
 </ul>
-<p>On peut changer le délimiteur par défaut avec <code>-F</code>, <code>-F,</code> utilisera <code>,</code> comme délimiteur.</p>
-<h2 id="operations-de-base">Opérations de Base</h2>
-<ul>
-<li>Impression : <code>{ print $1, $2 }</code> imprime les premier et deuxième champs de chaque ligne.</li>
-<li>Conditions : <code>if (condition) { action }</code> permet d'exécuter des actions basées sur des conditions.</li>
-<li>Expressions régulières : <code>/motif/ { action }</code> pour filtrer les lignes correspondant à un motif donné.</li>
-</ul>
-<h2 id="exemples-de-base">Exemples de Base</h2>
+<p>On peut changer le délimiteur par défaut avec <code>-F</code>, <code>-F,</code> utilisera <code>,</code> comme délimiteur au lieu de tab ou espace.</p>
+<p>Awk permet aussi de déclarer ses propres variables dans les actions :</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ n = 0; print n}&#39;</span><span class="w"> </span>fichier.txt
+</span></code></pre></div></td></tr></table></div>
 <h3 id="imprimer-des-colonnes-specifiques">Imprimer des Colonnes Spécifiques</h3>
 <p>Pour imprimer le premier et le troisième champ de chaque ligne d'un fichier :</p>
 <p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 }&#39;</span><span class="w"> </span>fichier.txt
@@ -686,7 +852,7 @@ Si aucun pattern n'est fourni alors <code>awk</code> matchera chaque ligne.</p>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="calculs-et-operations-sur-les-champs">Calculs et Opérations sur les Champs</h3>
 <p>Pour calculer la somme des valeurs des troisième et quatrième champs de chaque ligne:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ somme = $3 + $4; print somme }&#39;</span><span class="w"> </span>fichier.txt
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ somme = $1 + $2; print somme }&#39;</span><span class="w"> </span>numbers.txt
 </span></code></pre></div></td></tr></table></div>
 <h3 id="mots-cles-begin-et-end">Mots clés BEGIN et END</h3>
 <p><code>BEGIN { action }</code> permet d'exécuter une action avant la lecture de la première ligne. De manière symétrique <code>END { action }</code> permet d'éxécuter une action après la lecture de la dernière ligne.</p>
@@ -700,12 +866,28 @@ Si aucun pattern n'est fourni alors <code>awk</code> matchera chaque ligne.</p>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># Somme de la première colonne</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN {n=0} {n += $1} END {print n}&#39;</span><span class="w"> </span>numbers.txt
 </span></code></pre></div></td></tr></table></div>
-<h2 id="utilisations-avancees">Utilisations Avancées</h2>
+<h3 id="fonctions-integrees">Fonctions Intégrées</h3>
 <ul>
-<li>Fonctions intégrées : <code>length()</code>, <code>toupper()</code>, <code>tolower()</code>, <code>substr()</code>, etc.</li>
-<li>Déclarations de variables : <code>awk 'BEGIN { somme=0 } { somme += $1 } END { print somme }' fichier.txt</code></li>
-<li>Traitement de plusieurs fichiers : <code>awk 'FNR==1 { print FILENAME } { print }' fichier1.txt fichier2.txt</code></li>
+<li><strong><code>length([string])</code></strong> : Renvoie la longueur d'une chaîne ou du champ courant.</li>
+<li><strong><code>substr(string, start, length)</code></strong> : Extrait une sous-chaîne de <code>string</code> à partir de <code>start</code> sur <code>length</code> caractères.</li>
+<li><strong><code>tolower(string)</code></strong> : Convertit la chaîne en minuscules.</li>
+<li><strong><code>toupper(string)</code></strong> : Convertit la chaîne en majuscules.</li>
+<li><strong><code>split(string, array, [separator])</code></strong> : Divise <code>string</code> en éléments dans <code>array</code>, séparés par <code>separator</code>.</li>
+<li><strong><code>match(string, regex)</code></strong> : Renvoie l'indice de départ et la longueur de la correspondance de <code>regex</code> dans <code>string</code>.</li>
+<li><strong><code>gsub(regex, replacement, [target])</code></strong> : Remplace toutes les occurrences de <code>regex</code> par <code>replacement</code> dans <code>target</code> (ou <code>$0</code> si omis).</li>
+<li><strong><code>sub(regex, replacement, [target])</code></strong> : Remplace la première occurrence de <code>regex</code> par <code>replacement</code> dans <code>target</code>.</li>
+<li><strong><code>srand([expr])</code></strong> : Initialise le générateur de nombres aléatoires avec <code>expr</code> ou l'heure actuelle.</li>
+<li><strong><code>rand()</code></strong> : Renvoie un nombre aléatoire entre 0 et 1.</li>
 </ul>
+<h2 id="regex">Regex</h2>
+<p>Cours global regex</p>
+<h3 id="regex-sur-unix">Regex sur Unix</h3>
+<p>sur awk
+sur grep
+sur sed</p>
+<h3 id="regex-en-python">Regex en Python</h3>
+<h3 id="regex-en-perl">Regex en Perl</h3>
+<h3 id="regex-en-ruby">Regex en Ruby</h3>
 
 
 
