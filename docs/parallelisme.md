@@ -108,18 +108,25 @@ Ici, il y aura 3 processus, un pour chaque exécution de ``echo``. On peut aussi
 
 ### Exercice
 
-Utilisez ces méthodes pour optimiser le ping d'une longue liste d'ip.
+Utilisez ces méthodes pour optimiser le ping de multiples IPs.  
 
-```sh
-for i in {1..200}
-   do
-   ping -c 1 192.168.1.$i &
-   done
-```
+??? note "Exemples de solutions"
 
-```sh
-echo 192.168.1.{1..200} | xargs -n 1 -P 200 ping -c 1
-```
+    ```sh
+     for i in {1..254}
+        do
+        (ping -c 1 192.168.1.$i > /dev/null && echo "192.168.1.$i") &
+        done
+    ```
+
+    ```sh
+    echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | grep -B 1 "1 reçus" | grep stat
+    ```
+
+    ```sh
+    echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | awk '/1 reçus/ {print prev} {prev=$0}'
+    ```
+
 
 
 ## Python
