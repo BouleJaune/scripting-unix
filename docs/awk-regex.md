@@ -14,7 +14,8 @@ curl fichier.txt numbers.txt
 Ils ont étés générés pour ``numbers.txt`` avec :
 ```sh
 awk 'BEGIN { for (i = 1; i<= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }' > numbers.txt
-`
+```
+
 ### Structure de Commande
 
 La syntaxe de base de ``awk`` est la suivante :
@@ -121,6 +122,113 @@ Attraper la ligne précédent un match
     ```sh
     echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | awk '/1 reçus/ {print prev} {prev=$0}'
     ```
+
+## Expression Régulières
+
+Les expressions régulières (regex) sont un puissant outil de recherche et de manipulation de texte basé sur des motifs. Elles sont utilisées pour correspondre à des chaînes de caractères suivant des règles spécifiques.
+
+Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxes et possibilités et certains outils utilisent certaines variantes. Les variantes principales sont : 
+
+- Simple Regular Expressions (``sed``, ``grep``)
+- Extended Regular Expressions (``awk``, ``-E``)
+- Perl-Compatible Regular Expressions (Perl, Python, PHP, Java)
+ 
+
+### Simple Regular Expressions
+
+Les expressions régulières simples sont principalement utilisés par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut.
+
+
+### Extended Regular Expressions
+
+
+
+### Perl-Compatible Regular Expressions
+
+
+
+#### Caractères Littéraux
+
+Les caractères simples correspondent à eux-mêmes :
+
+- ``a`` : Correspond à la lettre "a".
+
+#### Métacaractères
+
+Certains caractères ont des significations spéciales :
+
+- ``.`` : Correspond à n'importe quel caractère sauf un saut de ligne.
+- ``^`` : Début de la ligne.
+- ``$`` : Fin de la ligne.
+- ``*`` : Correspond à 0 ou plusieurs répétitions du caractère précédent. ``.*`` permet donc de matcher n'importe quel série de caractères.
+- ``+`` : Correspond à 1 ou plusieurs répétitions du caractère précédent.
+- ``?`` : Correspond à 0 ou 1 répétition du caractère précédent.
+- ``[]`` : Définit une classe de caractères. ``[abc]`` correspond à "a", "b" ou "c".
+- ``|`` : OU logique. ``a|b`` correspond à "a" ou "b".
+
+#### Séquences d'Échappement
+
+Certains caractères doivent être échappés avec une barre oblique inverse ``\`` :
+
+- ``\.`` : Correspond à un point littéral.
+- ``\d`` : Correspond à un chiffre (0-9).
+- ``\D`` : Correspond à un caractère non numérique.
+- ``\w`` : Correspond à un caractère de mot (lettres, chiffres, et underscore).
+- ``\W`` : Correspond à un caractère non-mot.
+- ``\s`` : Correspond à un espace blanc (tab, espace, saut de ligne ...).
+- ``\S`` : Correspond à un caractère non-espace blanc.
+
+### Quantificateurs
+
+- ``{n}`` : Correspond exactement à n répétitions.
+- ``{n,}`` : Correspond à au moins n répétitions.
+- ``{n,m}`` : Correspond entre n et m répétitions.
+
+
+### Groupes et Références
+
+- ``(abc)`` : Correspond à "abc" et capture ce groupe pour une référence ultérieure.
+
+#### Références à des Groupes
+
+- ``\1``, ``\2``, ... : Référencent les groupes capturés par leur numéro.
+
+### Assertions
+
+#### Assertions Positives
+
+- ``(?=abc)`` : Correspond à une position suivie par "abc".
+
+#### Assertions Négatives
+
+- ``(?!abc)`` : Correspond à une position non suivie par "abc".
+
+### Exemples Pratiques
+
+#### Correspondance Simple
+
+- ``hello`` : Correspond à la chaîne "hello".
+
+#### Correspondance de Chiffres
+
+- ``\d{3}`` : Correspond à exactement trois chiffres.
+
+#### Correspondance d'Emails
+
+- ``\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b`` : Correspond à une adresse email.
+
+#### Remplacement de Texte
+
+En Python, vous pouvez utiliser des regex pour rechercher et remplacer des motifs dans une chaîne grâce au module ``re``.
+
+```python
+import re
+
+texte = "Bonjour, je m'appelle Alice."
+nouveau_texte = re.sub(r"Alice", "Bob", texte)
+print(nouveau_texte)  # Bonjour, je m'appelle Bob.
+```
+
 
 ## Regex
 Cours global regex
