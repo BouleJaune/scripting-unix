@@ -129,42 +129,64 @@ Les expressions régulières (regex) sont un puissant outil de recherche et de m
 
 Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxes et possibilités et certains outils utilisent certaines variantes. Les variantes principales sont : 
 
-- Simple Regular Expressions (``sed``, ``grep``)
-- Extended Regular Expressions (``awk``, ``-E``)
+- POSIX Basic Regular Expressions (``sed``, ``grep``)
+- POSIX Extended Regular Expressions (``awk``, ``-E``)
 - Perl-Compatible Regular Expressions (Perl, Python, PHP, Java)
  
+POSIX a défini trois variantes, mais la plus ancienne, *simple regular expression* (SRE) est depréciée. Cependant les deux autres sont rétrocompatibles.
 
-### Simple Regular Expressions
+### POSIX Basic Regular Expressions (BRE)
 
-Les expressions régulières simples sont principalement utilisés par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut.
+Les BRE sont principalement utilisées par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut. Il est important de noter que ``grep`` et ``sed`` sur la majorité des systèmes Linux sont en réalité ``GNU sed`` et ``GNU grep``, qui ne sont pas exactement les mêmes que ceux disponibles sur FreeBSD ou MacOS.
 
+Un caractère normal ou une suite de caractères correspondent à eux même : 
 
-### Extended Regular Expressions
+- ``abcd`` : Correspond à "abcd".
 
-
-
-### Perl-Compatible Regular Expressions
-
-
-
-#### Caractères Littéraux
-
-Les caractères simples correspondent à eux-mêmes :
-
-- ``a`` : Correspond à la lettre "a".
-
-#### Métacaractères
-
-Certains caractères ont des significations spéciales :
+Il y a plusieurs métacaractères ayant des effets particuliers: 
 
 - ``.`` : Correspond à n'importe quel caractère sauf un saut de ligne.
 - ``^`` : Début de la ligne.
 - ``$`` : Fin de la ligne.
 - ``*`` : Correspond à 0 ou plusieurs répétitions du caractère précédent. ``.*`` permet donc de matcher n'importe quel série de caractères.
-- ``+`` : Correspond à 1 ou plusieurs répétitions du caractère précédent.
-- ``?`` : Correspond à 0 ou 1 répétition du caractère précédent.
-- ``[]`` : Définit une classe de caractères. ``[abc]`` correspond à "a", "b" ou "c".
-- ``|`` : OU logique. ``a|b`` correspond à "a" ou "b".
+- ``[]`` : Définit une classe de caractères. ``[abc]`` correspond à "a", "b" ou "c". On peut aussi matcher une plage de caractères. ``[a-z]`` correspond à tout les lettres de l'alphabet en minuscule.
+- ``[^]`` : Définit une classe de caractères. ``[^abc]`` correspond à ce qui n'est pas "a", "b" ou "c".
+- ``{n,m}`` : Correspond entre n et m répétitions de l'élément précédent. En BRE il faut noter ``\{n,m\}``.
+- ``()``: Défini une sous-expression. Cette expression peut être rappelée plus tard avec ``\n``. En BRE il faut écrire ``\(\)``.
+- ``\n`` : Permet de rappeler la n-ieme sous-expression. ``\(hello\) world \1`` matchera dans son entièreté "hello world hello".
+
+### POSIX Extended Regular Expressions (ERE)
+
+En ERE quasiment tout les fonctionnalités de BRE sont reprises, ``{}`` et ``()`` n'ont plus besoin d'être échapés avec des antislash ``\`` pour fonctionner. De plus ``\n`` n'est plus présent.
+
+Il y a cependant trois nouveaux métacaractères :
+
+- ``?`` : Correspond à 0 ou une seule fois l'élément précédent. ``ab?c`` correspondra donc avec ``ac`` ou ``abc`` par exemple.
+- ``+`` : Correspond à minimum 1 fois l'élément précédent. ``ab+c`` correspondra avec ``abc`` ou encore ``abbbbc`` mais pas ``ac``.
+- ``|`` : OU logique. ``abcd|efgh`` correspond à "abcd" ou "efgh".
+
+Pour utiliser des ERE sur des outils tels que ``sed`` et ``grep`` il faut rajouter l'option ``-E`` :
+
+```sh
+echo hello world | grep -E "hello|bonjour|hola"
+```
+
+En plus de ces métacaractères, les BRE et les ERE supportent des classes de caractères :
+
+- ``[:alnum:]`` : Caractères alphanumériques.
+- ``[:alpha:]`` : Caractères alphabétiques.
+- ``[:digit:]`` : Chiffres.
+- ``[:lower:]`` ``[:upper:]`` : Caractères minucules et majuscules pour le second.
+- ``[:space:]`` : Correspond à un espace vide, un " ", ou encore un tab, retour à la ligne...
+
+
+Ces classes de caractères avec GNU ``grep`` et ``sed`` doivent être encadrés de deux crochets : ``[[:lower:]]``. D'autres outils comme ``tr`` ne nécessitent qu'une seule paire de crochets.
+
+
+### Perl-Compatible Regular Expressions (PCRE) 
+
+Perl est une variante d'expression régulière plus extensive que celles définies par POSIX. La syntaxe PCRE étant 
+
 
 #### Séquences d'Échappement
 
