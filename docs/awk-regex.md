@@ -73,7 +73,7 @@ fichier.txt
 
 ### Filtrer par Motif
 
-Pour afficher les lignes contenant le mot "Erreur" :
+Pour afficher les lignes contenant le mot "ERROR" :
 
 ```bash
 awk '/ERROR/ { print $0 }' fichier.txt
@@ -197,13 +197,13 @@ echo helloworld | grep "hello\b" # => ne matchera pas
 ```
 - ``\>`` et ``\<``  : Permet de correspondre seulement le début d'un mot pour ``\<`` ou seulement la fin pour ``\>``.
 
-... Sur ``awk`` ``\b`` est reservé pour *backspace*, il faut donc utiliser ``\y`` à la place ...
+... sur ``awk`` ``\b`` est reservé pour *backspace*, il faut donc utiliser ``\y`` à la place ...
 
 ```sh
 echo hello world | awk '/hello\y/' # Renverra "hello world"
 ```
 
-GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que ``\w`` pour les caractères alphanumériques ou encore ``\s`` pour les espaces blancs (tabs, space, \r ...).
+GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que ``\w`` pour les caractères alphanumériques (``\W`` pour la négation) ou encore ``\s`` pour les espaces blancs comme tabulation, espace, \r ... (``\S`` pour la négation).
 
 ### Perl-Compatible Regular Expressions (PCRE) 
 
@@ -211,58 +211,30 @@ Perl possède une variante d'expression régulière plus extensive que celles d�
 La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement similaires. 
 
 
-La force et flexibilité de cette syntaxe a poussé le PCRE a devenir un standard parmis les outils et langage de programmation ne suivant pas les définitions POSIX. Ainsi Python, Ruby, Java, .NET, JavaScript utilisent tous des près ou de loin la syntaxe PCRE. Certains langages tels que PHP ou R utilisent même directement le moteur PCRE.
+La force et flexibilité de cette syntaxe a poussé le PCRE a devenir un standard parmis les langages de programmation. Ainsi Python, Ruby, Java, .NET, JavaScript utilisent tous des près ou de loin la syntaxe PCRE. Certains langages tels que PHP ou R utilisent même directement le moteur PCRE.
+
+
+La syntaxe PCRE récupère la syntaxe GNU ERE et y rajoute des fonctionnalités :
 
 
 
-#### Séquences d'Échappement
-
-Certains caractères doivent être échappés avec une barre oblique inverse ``\`` :
-
-- ``\.`` : Correspond à un point littéral.
 - ``\d`` : Correspond à un chiffre (0-9).
 - ``\D`` : Correspond à un caractère non numérique.
-- ``\w`` : Correspond à un caractère de mot (lettres, chiffres, et underscore).
-- ``\W`` : Correspond à un caractère non-mot.
-- ``\s`` : Correspond à un espace blanc (tab, espace, saut de ligne ...).
+- ``\w`` : Correspond à un caractère alphanumérique (lettres, chiffres, et underscore).
+- ``\W`` : Correspond à un caractère non-alphanumérique.
+- ``\s`` : Correspond à un caractère espace blanc (tab, espace, saut de ligne ...).
 - ``\S`` : Correspond à un caractère non-espace blanc.
 
-### Quantificateurs
+Et bien d'autres ...
+[Spécification PCRE](https://www.pcre.org/original/doc/html/pcrepattern.html#SEC4)
 
-- ``{n}`` : Correspond exactement à n répétitions.
-- ``{n,}`` : Correspond à au moins n répétitions.
-- ``{n,m}`` : Correspond entre n et m répétitions.
-
-
-### Groupes et Références
-
-- ``(abc)`` : Correspond à "abc" et capture ce groupe pour une référence ultérieure.
-
-#### Références à des Groupes
-
-- ``\1``, ``\2``, ... : Référencent les groupes capturés par leur numéro.
-
-### Assertions
-
-#### Assertions Positives
-
-- ``(?=abc)`` : Correspond à une position suivie par "abc".
-
-#### Assertions Négatives
-
-- ``(?!abc)`` : Correspond à une position non suivie par "abc".
+![Variantes de REGEX](regex.png)
 
 ### Exemples Pratiques
 
-#### Correspondance Simple
-
 - ``hello`` : Correspond à la chaîne "hello".
 
-#### Correspondance de Chiffres
-
 - ``\d{3}`` : Correspond à exactement trois chiffres.
-
-#### Correspondance d'Emails
 
 - ``\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b`` : Correspond à une adresse email.
 
