@@ -129,15 +129,15 @@ Les expressions régulières (regex) sont un puissant outil de recherche et de m
 
 Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxes et possibilités et certains outils utilisent certaines variantes. Les variantes principales sont : 
 
-- POSIX Basic Regular Expressions (``sed``, ``grep``)
-- POSIX Extended Regular Expressions (``awk``, ``-E``)
+- POSIX/GNU Basic Regular Expressions (``sed``, ``grep``)
+- POSIX/GNU Extended Regular Expressions (``awk``, ``-E``)
 - Perl-Compatible Regular Expressions (Perl, Python, PHP, Java)
  
 POSIX a défini trois variantes, mais la plus ancienne, *simple regular expression* (SRE) est depréciée. Cependant les deux autres sont rétrocompatibles.
 
 ### POSIX Basic Regular Expressions (BRE)
 
-Les BRE sont principalement utilisées par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut. Il est important de noter que ``grep`` et ``sed`` sur la majorité des systèmes Linux sont en réalité ``GNU sed`` et ``GNU grep``, qui ne sont pas exactement les mêmes que ceux disponibles sur FreeBSD ou MacOS.
+Les BRE sont principalement utilisées par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut.
 
 Un caractère normal ou une suite de caractères correspondent à eux même : 
 
@@ -180,12 +180,39 @@ En plus de ces métacaractères, les BRE et les ERE supportent des classes de ca
 - ``[:space:]`` : Correspond à un espace vide, un " ", ou encore un tab, retour à la ligne...
 
 
-Ces classes de caractères avec GNU ``grep`` et ``sed`` doivent être encadrés de deux crochets : ``[[:lower:]]``. D'autres outils comme ``tr`` ne nécessitent qu'une seule paire de crochets.
+Ces classes de caractères avec ``grep`` et ``sed`` doivent être encadrés de deux crochets : ``[[:lower:]]``. D'autres outils comme ``tr`` ne nécessitent qu'une seule paire de crochets.
 
+### GNU vs POSIX
+
+Il est important de noter que ``grep`` et ``sed`` sur la majorité des systèmes Linux sont en réalité ``GNU sed`` et ``GNU grep``, qui ne sont pas exactement les mêmes que ceux disponibles sur FreeBSD ou MacOS, et utilisent donc GNU BRE et GNU ERE au lieu de simplement la version POSIX.
+
+GNU BRE et GNU ERE sont des extensions de POSIX BRE et POSIX ERE. En pratique, GNU BRE et GNU ERE fournissent les mêmes possibilités mais GNU BRE a besoin d'échapper les métacaractères seulement disponibles dans POSIX ERE.
+
+Les opérateurs apportés par GNU BRE/ERE permettent de définir notamment les bords d'un mot :
+
+- ``\b`` et ``\B`` : Permet de correspondre le début OU la fin d'un mot. Et pour ``\B`` de ne **pas** correspondre le début ou la fin d'un mot.
+```sh
+echo hello world | grep "hello\b" # => matchera
+echo helloworld | grep "hello\b" # => ne matchera pas
+```
+- ``\>`` et ``\<``  : Permet de correspondre seulement le début d'un mot pour ``\<`` ou seulement la fin pour ``\>``.
+
+... Sur ``awk`` ``\b`` est reservé pour *backspace*, il faut donc utiliser ``\y`` à la place ...
+
+```sh
+echo hello world | awk '/hello\y/' # Renverra "hello world"
+```
+
+GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que ``\w`` pour les caractères alphanumériques ou encore ``\s`` pour les espaces blancs (tabs, space, \r ...).
 
 ### Perl-Compatible Regular Expressions (PCRE) 
 
-Perl est une variante d'expression régulière plus extensive que celles définies par POSIX. La syntaxe PCRE étant 
+Perl possède une variante d'expression régulière plus extensive que celles définies par POSIX. PCRE représente un moteur de regex basé initialement sur la syntaxe Perl et écrit en C qui permet d'implémenter cette variante de regex dans divers outils.
+La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement similaires. 
+
+
+La force et flexibilité de cette syntaxe a poussé le PCRE a devenir un standard parmis les outils et langage de programmation ne suivant pas les définitions POSIX. Ainsi Python, Ruby, Java, .NET, JavaScript utilisent tous des près ou de loin la syntaxe PCRE. Certains langages tels que PHP ou R utilisent même directement le moteur PCRE.
+
 
 
 #### Séquences d'Échappement
@@ -250,14 +277,3 @@ texte = "Bonjour, je m'appelle Alice."
 nouveau_texte = re.sub(r"Alice", "Bob", texte)
 print(nouveau_texte)  # Bonjour, je m'appelle Bob.
 ```
-
-
-## Regex
-Cours global regex
-### Regex sur Unix
-sur awk
-sur grep
-sur sed
-### Regex en Python
-### Regex en Perl
-### Regex en Ruby
