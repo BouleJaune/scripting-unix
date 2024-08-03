@@ -73,6 +73,7 @@ fichier.txt
 
 ### Filtrer par Motif
 
+``awk`` permet de rechercher par expressions régulières (vues plus bas) du texte.
 Pour afficher les lignes contenant le mot "ERROR" :
 
 ```bash
