@@ -27,7 +27,7 @@ La commande ``man`` est utilisée pour afficher ces pages de manuel. Par exemple
 - ``head -n [nombre] [fichier]`` : Affiche les premières lignes d'un fichier ou du ``stdin`` sans fichier.
 - ``tail -n [nombre] [fichier]`` : Affiche les dernières lignes d'un fichier ou du ``stdin`` sans fichier.
 - ``vim [fichier]`` : Editeur de texte modal.
-- ``diff [fichie1] [fichier2]`` : Affiche la différence entre deux fichiers.
+- ``diff [fichier1] [fichier2]`` : Affiche la différence entre deux fichiers.
 
 #### Filtrage de Texte
 - ``grep [motif] [fichier]`` : Recherche un motif dans un fichier ou dans le ``stdin`` sans fichier.

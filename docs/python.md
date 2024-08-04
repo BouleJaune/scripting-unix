@@ -505,24 +505,3 @@ except ValueError as e:
 ```
 
 Dans cet exemple, une exception ``ValueError`` est levée si l'âge est négatif.
-
-## Classes
-### Ptite prez POO
-### Class objet
-### Instance objet
-### Héritage
-### Iterators / generators
-
-## Modules => voir si c'est pas une autre partie entière
-modules internes d'un projet (multi fichiers)
-modules externes
-standard modules
-import * bad
-
-
-## Librairie standard
-OS interface, math, compression
-...
-
-
-

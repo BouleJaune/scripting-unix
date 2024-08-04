@@ -86,3 +86,7 @@ plugins:
       separator: '[\s\-\.]+'
       lang:
         - fr
+
+# Customization
+extra_css:
+  - stylesheets/extra.css
