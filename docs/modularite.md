@@ -118,7 +118,7 @@ On peut utiliser ``pip freeze`` pour lister tout les modules installés et leur 
 pip freeze > requirements.txt
 ```
 
-## Les environnements virtuels (venv) et Poetry
+## Les environnements virtuels (venv)
 
 ### Le problème de ``pip`` seul
 
