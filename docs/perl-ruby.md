@@ -27,11 +27,9 @@ my $texte = "Perl est puissant.";
 $texte =~ s/p2uiss/puiss/i;  # Remplacement de texte avec regex
 print "$texte\n";
 
-# Lire un fichier
-open(my $fh, '<', 'exemple.txt') or die "Impossible d'ouvrir le fichier: $!";
-while (my $ligne = <$fh>) {
-    print $ligne;
-}
+# Création et écriture dans un fichier
+open(my $fh, '>', 'exemple.txt') or die "Impossible de créer le fichier: $!";
+print $fh "Ceci est une ligne de texte.\n";
 close($fh);
 ```
 
@@ -56,7 +54,6 @@ Ruby, tout comme Perl, est assez peu utilisé avec 5% des utilisateurs de Stacko
 ### Exemple de Code
 
 ```ruby
-
 # Exemple de script Ruby
 puts "Bonjour, monde!"
 
@@ -65,12 +62,10 @@ texte = "Ruby est élégant."
 texte.gsub!('élégant', 'puissant')
 puts texte
 
-# Lire un fichier
-File.open('exemple.txt', 'r') do |file|
-  file.each_line do |line|
-    puts line
-  end
-end
+# Création et écriture dans un fichier
+File.open('exemple.txt', 'w') do |file|
+  file.puts "Ceci est une ligne de texte."
+endd
 ```
 
 ### Utilisations Courantes
