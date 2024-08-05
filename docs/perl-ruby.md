@@ -4,14 +4,13 @@
 
 ### Introduction
 
-**Perl** (Practical Extraction and Report Language) est un langage de programmation dynamique et interprété, créé par Larry Wall en 1987. Il est particulièrement bien adapté à la manipulation de texte et à l'extraction de données, mais il est également utilisé pour le développement web, l'administration système, la bioinformatique et bien d'autres domaines.
+**Perl** est un langage de programmation dynamique et interprété, créé par Larry Wall en 1987. Il est particulièrement bien adapté à la manipulation de texte et à l'extraction de données, ce qui le pousse à être assez adéquat pour de l'admistration de système Unix, ceci étant fortement basés sur la manipulation de texte.
 
-### Caractéristiques Principales
+Cependant Perl est de moins en moins utilisé de nos jours, selon le dernier sondage Stackoverflow Perl est à 2.5% d'utilisation parmis les développeurs ayant répondus. Ce nombre est à mettre face à celui de Python qui est de 51%.
 
-- **Manipulation de Texte** : Perl est connu pour ses puissantes capacités de manipulation de texte, notamment grâce à ses expressions régulières (regex) avancées.
-- **Flexibilité et Extensibilité** : Perl permet d'écrire du code de différentes manières, offrant une grande flexibilité aux développeurs.
-- **CPAN** : Le Comprehensive Perl Archive Network (CPAN) est un vaste référentiel de modules et de bibliothèques, facilitant l'extension des fonctionnalités de Perl.
-- **Compatibilité** : Perl est très portable et fonctionne sur de nombreux systèmes d'exploitation.
+La plupart des interactions avec ce langage ce font via la maintenance de vieux scripts et outils legacy. Il est suffisamment lisible pour qu'une personne étant habitué à un autre langage de scripting généraliste comme Python puisse en lire sans trop de problèmes.
+
+Son principal avantage vient de la puissance et flexibilité de ses Regex, cependant la plupart des autres outils utilisent désormais la même syntaxe d'expression régulières.
 
 ### Exemple de Code
 
@@ -40,19 +39,19 @@ close($fh);
 
  - Traitement de texte et extraction de données
  - Scripts d'administration système
- - Développement web avec frameworks comme Catalyst ou Dancer
- - Bioinformatique et analyse de données
 
 ## Ruby
 ### Introduction
 
-Ruby est un langage de programmation dynamique, interprété, orienté objet, créé par Yukihiro "Matz" Matsumoto et publié pour la première fois en 1995. Ruby est conçu pour être simple à utiliser et productif, en mettant l'accent sur l'élégance et la lisibilité du code.
-Caractéristiques Principales
+Ruby est un langage de programmation dynamique et interprété, créé par Yukihiro "Matz" Matsumoto et publié pour la première fois en 1995. Ruby est conçu pour être simple à utiliser et productif, en mettant l'accent sur l'élégance et la lisibilité du code.
+
+Ruby, tout comme Perl, est assez peu utilisé avec 5% des utilisateurs de Stackoverflow l'utilisant. La plupart de ses utilisateurs ne l'utilisent pas pour de l'administration système contrairement à Perl mais plutôt pour de webdev via le framework de backend web ``Ruby on Rails`` utilisé dans certain écosystème.
+
+### Caractéristiques Principales
 
    - Simplicité et Productivité : Ruby est conçu pour être facile à lire et à écrire, favorisant une syntaxe naturelle et concise.
    - Orienté Objet : En Ruby, tout est objet, ce qui permet une approche unifiée de la programmation.
    - Ruby on Rails : Un framework web populaire et puissant qui a contribué à la popularité de Ruby pour le développement web.
-   - Métaprogrammation : Ruby supporte la métaprogrammation, permettant de définir des méthodes et des classes à la volée.
 
 ### Exemple de Code
 
@@ -81,4 +80,6 @@ end
    - Développement d'applications de bureau et de scripts
 
 
-Perl et Ruby sont deux langages dynamiques et interprétés avec des caractéristiques uniques. Perl excelle dans la manipulation de texte et les tâches d'administration système, tandis que Ruby se distingue par sa simplicité, sa productivité et son framework web Ruby on Rails. Chacun de ces langages a sa propre communauté et écosystème, offrant de nombreux modules et bibliothèques pour étendre leurs fonctionnalités. Le choix entre Perl et Ruby dépendra des besoins spécifiques du projet et des préférences personnelles du développeur.
+Bien que Perl et Ruby ne soient plus aussi populaires qu'ils l'étaient, ils restent des langages puissants avec des cas d'utilisation spécifiques. Perl continue d'être utilisé pour la maintenance d'anciens scripts, tandis que Ruby, grâce à Ruby on Rails, est encore une option solide pour le développement web. Toutefois, les nouveaux projets peuvent préférer des langages plus modernes et largement adoptés comme Python, JavaScript, ou Go.
+
+![Utilisation Langages Stackoverflow](most_used_languages.png)
