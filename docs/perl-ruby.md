@@ -76,8 +76,6 @@ end
 ### Utilisations Courantes
 
    - Développement web avec Ruby on Rails
-   - Automatisation de tâches
-   - Développement d'applications de bureau et de scripts
 
 
 Bien que Perl et Ruby ne soient plus aussi populaires qu'ils l'étaient, ils restent des langages puissants avec des cas d'utilisation spécifiques. Perl continue d'être utilisé pour la maintenance d'anciens scripts, tandis que Ruby, grâce à Ruby on Rails, est encore une option solide pour le développement web. Toutefois, les nouveaux projets peuvent préférer des langages plus modernes et largement adoptés comme Python, JavaScript, ou Go.
