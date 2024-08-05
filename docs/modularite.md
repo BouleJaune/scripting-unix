@@ -176,34 +176,31 @@ Je recommande ainsi d'utiliser simplement des venvs Python classique, et qu'une 
 
 ## Une courte liste de modules Python connus
 
-### Siences : 
-
+#### Siences
 1. **NumPy** - Calcul scientifique et manipulation de tableaux multidimensionnels.
 2. **Pandas** - Analyse de données et manipulation de structures de données.
 3. **Matplotlib** - Visualisation de données avec des graphiques 2D.
 4. **Seaborn** - Visualisation statistique basée sur Matplotlib.
 5. **SciPy** - Calcul scientifique avancé, incluant l'optimisation et les statistiques.
 
-### Machine learning
+#### Machine learning
 6. **scikit-learn** - Apprentissage automatique et data mining.
 7. **TensorFlow** - Apprentissage automatique et réseaux de neurones.
 8. **Keras** - Interface de haut niveau pour TensorFlow, simplifiant la construction de modèles de deep learning.
 9. **PyTorch** - Bibliothèque de deep learning développée par Facebook.
 10. **NLTK** - Traitement du langage naturel.
 
-### Web
+#### Web
 11. **Requests** - Requêtes HTTP simples.
 12. **BeautifulSoup** - Analyse et extraction de données à partir de documents HTML et XML.
 13. **Flask** - Micro-framework web léger.
 14. **Django** - Framework web complet pour le développement rapide de sites web.
 
-### Traitement d'image
-
+#### Traitement d'image
 15. **Pillow** - Manipulation et traitement d'images.
 16. **OpenCV** - Vision par ordinateur et traitement d'images.
 
-### Automatisation
-
+#### Automatisation
 17. **Selenium** - Automatisation de navigateurs pour les tests web.
 18. **Scrapy** - Framework de scraping web rapide et hautement extensible.
 19. **paramiko** - Connexions SSH via Python.
