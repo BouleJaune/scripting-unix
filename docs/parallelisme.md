@@ -155,7 +155,7 @@ print('Time taken in seconds -', t2 - t1)
 Ce code permet de mesurer le temps d'exécution du calcul de chaque carré entre 0 et 100000000-1. Il prend 4.8s à s'exécuter sur mon système.
 
 
-### ``threading``
+### threading
 
 La librairie ``threading`` permet le multithreading dans Python. Cependant à cause de la manière dont Python est implementé il ne peut y avoir qu'un seul thread qui a le controle (lock) de l'interpréteur Python à un instant ``t``. Cela est causé par le Pytho Global Interpreter Lock ou encore GIL.
 
@@ -167,8 +167,6 @@ import threading
 import time
 
 n = 100000000
-
-threads_num = 2
 
 def carre(deb_fin):
     debut = deb_fin[0]
@@ -203,29 +201,72 @@ La méthode ``.join()`` permet de bloquer l'avancée dans le script jusqu'à ce 
 Malgré les résultats peu engageants ``threading`` peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.
 
 
-### ``multiprocessing``
+### multiprocessing
 
-Lorsque l'on veut donc accélérer une tâche limité par le CPU on peut utiliser la librairie ``multiprocessing`` qui permet la création de différents processus qui iront sur des coeurs différents.
+Lorsque l'on veut donc accélérer une tâche limitée par le CPU on peut utiliser la librairie ``multiprocessing`` qui permet la création de différents processus qui iront sur des coeurs différents.
 
 ```python
+import time
 import multiprocessing
 
-def worker(num):
-    print(f'Worker: {num}')
+n = 100000000
 
-if __name__ == "__main__":
-    processes = []
-    for i in range(5):
-        p = multiprocessing.Process(target=worker, args=(i,))
-        processes.append(p)
-        p.start()
 
-    for p in processes:
-        p.join()
+def carre(deb_fin):
+    debut = deb_fin[0]
+    fin = deb_fin[1]
+    for i in range(debut, fin):
+        k = i**2
+        del k
+
+
+t1 = time.time()
+
+with multiprocessing.Pool() as pool:
+    pool.map(carre, [(0, n // 2), (n // 2, n)])
+
+t2 = time.time()
+
+print('Time taken in seconds -', t2 - t1)
 ```
 
 
-### ``asyncio``
+Pour faire fonctionner ``multiprocessing`` on peut définir un objet ``Pool`` et y maper une fonction et une liste d'arguments, la librairie s'occupera d'appliquer ces arguments à la fonction et d'exécuter ceci dans des processus différents.
+Le temps d'exécution est ici quasiment deux fois plus rapide. 
+
+Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. 
+
+De plus la communication entre les processus est plus compliquée que la communication inter-threads de ``threading``.
+
+### asyncio
+
+``asyncio``
 
 
+### Utiliser la concurrence du Shell pour Python !
 
+```sh
+echo 0 50000000 50000000 100000000 | xargs -P 2 -n 2 python script.py
+```
+
+```python
+#!python
+import sys
+import time
+
+deb_fin = (int(sys.argv[1]), int(sys.argv[2]))
+
+def carre(deb_fin):
+    debut = deb_fin[0]
+    fin = deb_fin[1]
+    for i in range(debut, fin):
+        k = i**2
+        del k
+
+
+t1 = time.time()
+carre(deb_fin)
+t2 = time.time()
+
+print('Time taken in seconds -', t2 - t1)
+```
