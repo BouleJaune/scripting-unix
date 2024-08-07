@@ -556,6 +556,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#variantes-dexpressions-regulieres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variantes d'expressions régulières
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variantes d'expressions régulières">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#posix-basic-regular-expressions-bre" class="md-nav__link">
     <span class="md-ellipsis">
       POSIX Basic Regular Expressions (BRE)
@@ -598,20 +608,19 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exemples Pratiques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#remplacement-de-texte" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remplacement de Texte
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-regulieres-sur-python-et-contournement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expression régulières sur Python et contournement
+    </span>
+  </a>
   
 </li>
         
@@ -792,6 +801,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#variantes-dexpressions-regulieres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variantes d'expressions régulières
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variantes d'expressions régulières">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#posix-basic-regular-expressions-bre" class="md-nav__link">
     <span class="md-ellipsis">
       POSIX Basic Regular Expressions (BRE)
@@ -834,20 +853,19 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exemples Pratiques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#remplacement-de-texte" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remplacement de Texte
-    </span>
-  </a>
-  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-regulieres-sur-python-et-contournement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expression régulières sur Python et contournement
+    </span>
+  </a>
   
 </li>
         
@@ -967,6 +985,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 </details>
 <h2 id="expression-regulieres">Expression Régulières</h2>
 <p>Les expressions régulières (regex) sont un puissant outil de recherche et de manipulation de texte basé sur des motifs. Elles sont utilisées pour correspondre à des chaînes de caractères suivant des règles spécifiques.</p>
+<h3 id="variantes-dexpressions-regulieres">Variantes d'expressions régulières</h3>
 <p>Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxes et possibilités et certains outils utilisent certaines variantes. Les variantes principales sont : </p>
 <ul>
 <li>POSIX/GNU Basic Regular Expressions (<code>sed</code>, <code>grep</code>)</li>
@@ -974,7 +993,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <li>Perl-Compatible Regular Expressions (Perl, Python, PHP, Java)</li>
 </ul>
 <p>POSIX a défini trois variantes, mais la plus ancienne, <em>simple regular expression</em> (SRE) est depréciée. Cependant les deux autres sont rétrocompatibles.</p>
-<h3 id="posix-basic-regular-expressions-bre">POSIX Basic Regular Expressions (BRE)</h3>
+<h4 id="posix-basic-regular-expressions-bre">POSIX Basic Regular Expressions (BRE)</h4>
 <p>Les BRE sont principalement utilisées par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que <code>sed</code> et <code>grep</code> les utilisent par défaut.</p>
 <p>Un caractère normal ou une suite de caractères correspondent à eux même : </p>
 <ul>
@@ -992,7 +1011,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <li><code>()</code>: Défini une sous-expression. Cette expression peut être rappelée plus tard avec <code>\n</code>. En BRE il faut écrire <code>\(\)</code>.</li>
 <li><code>\n</code> : Permet de rappeler la n-ieme sous-expression. <code>\(hello\) world \1</code> matchera dans son entièreté "hello world hello".</li>
 </ul>
-<h3 id="posix-extended-regular-expressions-ere">POSIX Extended Regular Expressions (ERE)</h3>
+<h4 id="posix-extended-regular-expressions-ere">POSIX Extended Regular Expressions (ERE)</h4>
 <p>En ERE quasiment tout les fonctionnalités de BRE sont reprises, <code>{}</code> et <code>()</code> n'ont plus besoin d'être échapés avec des antislash <code>\</code> pour fonctionner. De plus <code>\n</code> n'est plus présent.</p>
 <p>Il y a cependant trois nouveaux métacaractères :</p>
 <ul>
@@ -1012,7 +1031,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <li><code>[:space:]</code> : Correspond à un espace vide, un " ", ou encore un tab, retour à la ligne...</li>
 </ul>
 <p>Ces classes de caractères avec <code>grep</code> et <code>sed</code> doivent être encadrés de deux crochets : <code>[[:lower:]]</code>. D'autres outils comme <code>tr</code> ne nécessitent qu'une seule paire de crochets.</p>
-<h3 id="gnu-vs-posix">GNU vs POSIX</h3>
+<h4 id="gnu-vs-posix">GNU vs POSIX</h4>
 <p>Il est important de noter que <code>grep</code> et <code>sed</code> sur la majorité des systèmes Linux sont en réalité <code>GNU sed</code> et <code>GNU grep</code>, qui ne sont pas exactement les mêmes que ceux disponibles sur FreeBSD ou MacOS, et utilisent donc GNU BRE et GNU ERE au lieu de simplement la version POSIX.</p>
 <p>GNU BRE et GNU ERE sont des extensions de POSIX BRE et POSIX ERE. En pratique, GNU BRE et GNU ERE fournissent les mêmes possibilités mais GNU BRE a besoin d'échapper les métacaractères seulement disponibles dans POSIX ERE.</p>
 <p>Les opérateurs apportés par GNU BRE/ERE permettent de définir notamment les bords d'un mot :</p>
@@ -1028,7 +1047,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/hello\y/&#39;</span><span class="w"> </span><span class="c1"># Renverra &quot;hello world&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que <code>\w</code> pour les caractères alphanumériques (<code>\W</code> pour la négation) ou encore <code>\s</code> pour les espaces blancs comme tabulation, espace, \r ... (<code>\S</code> pour la négation).</p>
-<h3 id="perl-compatible-regular-expressions-pcre">Perl-Compatible Regular Expressions (PCRE)</h3>
+<h4 id="perl-compatible-regular-expressions-pcre">Perl-Compatible Regular Expressions (PCRE)</h4>
 <p>Perl possède une variante d'expression régulière plus extensive que celles définies par POSIX. PCRE représente un moteur de regex basé initialement sur la syntaxe Perl et écrit en C qui permet d'implémenter cette variante de regex dans divers outils.
 La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement similaires. </p>
 <p>La force et flexibilité de cette syntaxe a poussé le PCRE a devenir un standard parmis les langages de programmation. Ainsi Python, Ruby, Java, .NET, JavaScript utilisent tous des près ou de loin la syntaxe PCRE. Certains langages tels que PHP ou R utilisent même directement le moteur PCRE.</p>
@@ -1044,7 +1063,8 @@ La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement sim
 <p>Et bien d'autres ...
 <a href="https://www.pcre.org/original/doc/html/pcrepattern.html#SEC4">Spécification PCRE</a></p>
 <p><img alt="Variantes de REGEX" src="../regex.png" /></p>
-<h3 id="exemples-pratiques">Exemples Pratiques</h3>
+<p><a href="https://regexlicensing.org/">Licence Regex</a></p>
+<h4 id="exemples-pratiques">Exemples Pratiques</h4>
 <ul>
 <li>
 <p><code>hello</code> : Correspond à la chaîne "hello".</p>
@@ -1053,20 +1073,50 @@ La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement sim
 <p><code>\d{3}</code> : Correspond à exactement trois chiffres.</p>
 </li>
 <li>
-<p><code>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b</code> : Correspond à une adresse email.</p>
+<p><code>\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b</code> : Correspond (à peu près) à une adresse email.</p>
 </li>
 </ul>
-<h4 id="remplacement-de-texte">Remplacement de Texte</h4>
-<p>En Python, vous pouvez utiliser des regex pour rechercher et remplacer des motifs dans une chaîne grâce au module <code>re</code>.</p>
+<h3 id="expression-regulieres-sur-python-et-contournement">Expression régulières sur Python et contournement</h3>
+<p>En Python, vous pouvez utiliser des regex pour rechercher, découper, remplacer  des motifs dans une chaîne grâce au module <code>re</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
 <span class="normal"><a href="#__codelineno-14-2">2</a></span>
 <span class="normal"><a href="#__codelineno-14-3">3</a></span>
 <span class="normal"><a href="#__codelineno-14-4">4</a></span>
 <span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">import</span> <span class="nn">re</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">texte</span> <span class="o">=</span> <span class="s2">&quot;Bonjour, je m&#39;appelle Alice.&quot;</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">nouveau_texte</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">texte</span><span class="p">)</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">nouveau_texte</span><span class="p">)</span>  <span class="c1"># Bonjour, je m&#39;appelle Bob.</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contactez nous à support@example.com ou contact@example.com ou thierry.amettler@proton.me&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">emails</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Python utilise une variante proche de la syntaxe PCRE.</p>
+<p>Python étant un langage de programmation général il peut être judicieux de combiner des Regex avec, par exemple, des conditions <code>if</code>, des variables ou encore des méthodes sur les strings. Cela permet potentiellement de simplifier la lecture du code qui peut vite être peu lisible avec seulement des regex.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contact us at support@example.com or sales@example.com or thierry.amettler@proton.me&quot;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="k">def</span> <span class="nf">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="k">if</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>        <span class="n">local</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>        <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">domain</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="c1"># Extraire les mots qui sont des adresses email</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 
 

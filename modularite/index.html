@@ -578,13 +578,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-environnements-virtuels-venv-et-poetry" class="md-nav__link">
+  <a href="#les-environnements-virtuels-venv" class="md-nav__link">
     <span class="md-ellipsis">
-      Les environnements virtuels (venv) et Poetry
+      Les environnements virtuels (venv)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Les environnements virtuels (venv) et Poetry">
+    <nav class="md-nav" aria-label="Les environnements virtuels (venv)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -833,13 +833,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-environnements-virtuels-venv-et-poetry" class="md-nav__link">
+  <a href="#les-environnements-virtuels-venv" class="md-nav__link">
     <span class="md-ellipsis">
-      Les environnements virtuels (venv) et Poetry
+      Les environnements virtuels (venv)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Les environnements virtuels (venv) et Poetry">
+    <nav class="md-nav" aria-label="Les environnements virtuels (venv)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1053,7 +1053,7 @@
 <p>On peut utiliser <code>pip freeze</code> pour lister tout les modules installés et leur version et donc générer ce fichier :
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </span></code></pre></div></td></tr></table></div></p>
-<h2 id="les-environnements-virtuels-venv-et-poetry">Les environnements virtuels (venv) et Poetry</h2>
+<h2 id="les-environnements-virtuels-venv">Les environnements virtuels (venv)</h2>
 <h3 id="le-probleme-de-pip-seul">Le problème de <code>pip</code> seul</h3>
 <p>Lorsque l'on installe un paquet avec <code>pip</code> celui-ci se retrouvera installé de manière globale sur le système. Cela peut vite être problématique d'un point de vue gestion des dépendances : </p>
 <ul>
@@ -1072,10 +1072,16 @@
 <p><code>-m</code> permet de dire qu'on va appeler un module python, module dénommé <code>venv</code>, ce module appelé tel quel attends le nom de l'environnement virtuel à créer, nom qui ici est aussi <code>venv</code> (mais aurait pu être autre chose).</p>
 <p>La commande va générer un dossier du nom du venv (ici simplement <code>venv</code>) et va le remplir de tout le nécessaire pour avoir un Python isolé, notamment copier le binaire en lui même de python, fournir des méthodes pour activer et désactiver le venv et des dossiers d'installations des modules. Cela reste suffisamment léger (16Mo pour un venv vierge).</p>
 <p>En faisant un <code>pip freeze</code> avant et après activation du venv on peut comparer les modules disponibles. Avant le <code>pip freeze</code> renverra une longue liste de modules tandis que sur un venv vierge il n'y aura rien.</p>
-<p>Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que <code>python</code> doit pointer vers le venv il faut sourcer le script d'activation.</p>
+<p>Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que <code>python</code> doit pointer vers le venv il faut sourcer le script d'activation, et pour désactiver simplement faire <code>deactivate</code>.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
-<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1"># En étant dans le dossier du projet où le dossier venv se situe</span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1"># En étant dans le dossier du projet où le dossier venv se situe</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">source</span><span class="w"> </span>./venv/bin/activate
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1"># Pour désactiver le venv</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>deactivate
 </span></code></pre></div></td></tr></table></div>
 <p>Il faut ainsi penser à le réactiver à chaque nouveau Shell. 
 Des éditeurs de texte comme Visual Studio Code permettent de s'occuper de la gestion des venvs et de leur activation aussi.</p>
