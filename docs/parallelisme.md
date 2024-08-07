@@ -1,6 +1,6 @@
 # La programmation parallèle en Shell, Perl, Python et Ruby
 
-## Différentes types de concurrency
+## Différentes types de concurrence
 
 La **concurrence** (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches *existent* en même temps. Le **parallélisme** quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.
 
@@ -130,20 +130,102 @@ Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à
 
 
 ## Python
-Voici les principaux types de concurrence en Python :
 
-- Le multi-processing implique l'exécution de plusieurs processus indépendants, chacun ayant sa propre mémoire. Cela évite les problèmes de sécurité des données associés au multi-threading, mais la communication inter-processus est plus complexe et coûteuse. 
+Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules ``threading``, ``asyncio`` et ``multiprocessing``. Les trois permettent de la concurrence mais il y a des subtilités entre elles.
 
-**Utilisation typique** : Tâches computationnelles intensives où l'isolation entre les tâches est importante.
+On peut mesurer le temps d'exécution de fonctions grâce au module ``time`` et sa fonction ``time()``. C'est essentiel de mesurer lorsque l'on cherche à optimiser des temps d'exécution.
 
-- Le multi-threading consiste à exécuter plusieurs threads (fils d'exécution) au sein d'un seul processus. On peut par exemple visualiser un programme avec deux threads faisant des écritures en base de données. Lorsqu'un thread commence son écriture, il peut laisser la main au second thread pour gagner du temps, sans pour autant que physiquement le processeur traite les actions en simultannée. Le multi-threading peut poser des problèmes de sécurité de données, les threads ayant souvent accès à la mémoire des autres threads.
+```
+import time
 
-**Utilisation typique** : Applications nécessitant des opérations d'E/S non bloquantes ou des tâches pouvant être exécutées indépendamment.
+n = 100000000
 
-- La programmation asynchrone utilise des événements, des callbacks ou des futures/promesses pour gérer des tâches concurrentes. Les opérations peuvent être déclenchées de manière non bloquante, permettant à un programme de continuer à fonctionner pendant l'attente de la finalisation d'une tâche. 
+def carre(debut, fin):
+    for i in range(debut, fin):
+        k = i**2
+        del k
 
-**Utilisation typique** : Gestion d'opérations E/S, telles que les appels réseau ou l'accès aux fichiers, où le temps d'attente peut être long.
+t1 = time.time()
+carre(0, n)
+t2 = time.time()
 
-La programmation asynchrone est assez similaire au multi-threading
+print('Time taken in seconds -', t2 - t1)
+```
+
+Ce code permet de mesurer le temps d'exécution du calcul de chaque carré entre 0 et 100000000-1. Il prend 4.8s à s'exécuter sur mon système.
+
+
+### ``threading``
+
+La librairie ``threading`` permet le multithreading dans Python. Cependant à cause de la manière dont Python est implementé il ne peut y avoir qu'un seul thread qui a le controle (lock) de l'interpréteur Python à un instant ``t``. Cela est causé par le Pytho Global Interpreter Lock ou encore GIL.
+
+Ainsi une application Python utilisant ``threading`` et deux threads ne sera pas toujours plus rapide qu'avec un seul. Les tâches *CPU-bound* ne verront pas de gain car le GIL bloquera l'exécution des threads en même temps sur le CPU.  En revanche les tâches *I/O-bound* pourront voir des gains significatifs car la tâche n'est pas limitée par le CPU, mais autre chose, par exemple la réponse d'un serveur distant à un ping, ou de l'écriture disque. 
+
+
+```python
+import threading
+import time
+
+n = 100000000
+
+threads_num = 2
+
+def carre(deb_fin):
+    debut = deb_fin[0]
+    fin = deb_fin[1]
+    for i in range(debut, fin):
+        k = i**2
+        del k
+
+
+thread1 = threading.Thread(target=carre, args=((0, n // 2),))  # S'occupera de la moitié des carrés
+thread2 = threading.Thread(target=carre, args=((n // 2, n),))  # Et ce thread de l'autre moitié
+
+t1 = time.time()
+
+thread1.start()
+thread2.start()
+thread1.join()
+thread2.join()
+
+t2 = time.time()
+
+
+print('Time taken in seconds -', t2 - t1)
+```
+
+Cette version du code précédent prends 4.9s à s'exécuter malgré qu'il y ait deux threads faisant les calculs.
+
+Pour utiliser ``threading``, une manière simple est de définir chaque threads avec ``threading.Thread`` en rajoutant comme argument la tâche à effectuer avec ses arguments. Juste définir un objet ``Thread`` ne l'exécute pas. Il faut utiliser la méthode ``.start()`` sur l'objet pour le lancer.
+
+La méthode ``.join()`` permet de bloquer l'avancée dans le script jusqu'à ce que les threads aient fini de s'exécuter.
+
+Malgré les résultats peu engageants ``threading`` peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.
+
+
+### ``multiprocessing``
+
+Lorsque l'on veut donc accélérer une tâche limité par le CPU on peut utiliser la librairie ``multiprocessing`` qui permet la création de différents processus qui iront sur des coeurs différents.
+
+```python
+import multiprocessing
+
+def worker(num):
+    print(f'Worker: {num}')
+
+if __name__ == "__main__":
+    processes = []
+    for i in range(5):
+        p = multiprocessing.Process(target=worker, args=(i,))
+        processes.append(p)
+        p.start()
+
+    for p in processes:
+        p.join()
+```
+
+
+### ``asyncio``
+
 
 

@@ -151,11 +151,14 @@ La commande va générer un dossier du nom du venv (ici simplement ``venv``) et 
 En faisant un ``pip freeze`` avant et après activation du venv on peut comparer les modules disponibles. Avant le ``pip freeze`` renverra une longue liste de modules tandis que sur un venv vierge il n'y aura rien.
 
 
-Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que ``python`` doit pointer vers le venv il faut sourcer le script d'activation.
+Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que ``python`` doit pointer vers le venv il faut sourcer le script d'activation, et pour désactiver simplement faire ``deactivate``.
 
 ```sh
 # En étant dans le dossier du projet où le dossier venv se situe
 source ./venv/bin/activate
+
+# Pour désactiver le venv
+deactivate
 ```
 
 Il faut ainsi penser à le réactiver à chaque nouveau Shell. 

@@ -128,6 +128,8 @@ Attraper la ligne précédent un match
 
 Les expressions régulières (regex) sont un puissant outil de recherche et de manipulation de texte basé sur des motifs. Elles sont utilisées pour correspondre à des chaînes de caractères suivant des règles spécifiques.
 
+### Variantes d'expressions régulières
+
 Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxes et possibilités et certains outils utilisent certaines variantes. Les variantes principales sont : 
 
 - POSIX/GNU Basic Regular Expressions (``sed``, ``grep``)
@@ -136,7 +138,7 @@ Il y a plusieurs variantes de regex. Ces variantes diffèrent dans leurs syntaxe
  
 POSIX a défini trois variantes, mais la plus ancienne, *simple regular expression* (SRE) est depréciée. Cependant les deux autres sont rétrocompatibles.
 
-### POSIX Basic Regular Expressions (BRE)
+#### POSIX Basic Regular Expressions (BRE)
 
 Les BRE sont principalement utilisées par des outils Unix pour la rétrocompatibilité. Ainsi des outils tels que ``sed`` et ``grep`` les utilisent par défaut.
 
@@ -156,7 +158,7 @@ Il y a plusieurs métacaractères ayant des effets particuliers:
 - ``()``: Défini une sous-expression. Cette expression peut être rappelée plus tard avec ``\n``. En BRE il faut écrire ``\(\)``.
 - ``\n`` : Permet de rappeler la n-ieme sous-expression. ``\(hello\) world \1`` matchera dans son entièreté "hello world hello".
 
-### POSIX Extended Regular Expressions (ERE)
+#### POSIX Extended Regular Expressions (ERE)
 
 En ERE quasiment tout les fonctionnalités de BRE sont reprises, ``{}`` et ``()`` n'ont plus besoin d'être échapés avec des antislash ``\`` pour fonctionner. De plus ``\n`` n'est plus présent.
 
@@ -183,7 +185,7 @@ En plus de ces métacaractères, les BRE et les ERE supportent des classes de ca
 
 Ces classes de caractères avec ``grep`` et ``sed`` doivent être encadrés de deux crochets : ``[[:lower:]]``. D'autres outils comme ``tr`` ne nécessitent qu'une seule paire de crochets.
 
-### GNU vs POSIX
+#### GNU vs POSIX
 
 Il est important de noter que ``grep`` et ``sed`` sur la majorité des systèmes Linux sont en réalité ``GNU sed`` et ``GNU grep``, qui ne sont pas exactement les mêmes que ceux disponibles sur FreeBSD ou MacOS, et utilisent donc GNU BRE et GNU ERE au lieu de simplement la version POSIX.
 
@@ -206,7 +208,7 @@ echo hello world | awk '/hello\y/' # Renverra "hello world"
 
 GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que ``\w`` pour les caractères alphanumériques (``\W`` pour la négation) ou encore ``\s`` pour les espaces blancs comme tabulation, espace, \r ... (``\S`` pour la négation).
 
-### Perl-Compatible Regular Expressions (PCRE) 
+#### Perl-Compatible Regular Expressions (PCRE) 
 
 Perl possède une variante d'expression régulière plus extensive que celles définies par POSIX. PCRE représente un moteur de regex basé initialement sur la syntaxe Perl et écrit en C qui permet d'implémenter cette variante de regex dans divers outils.
 La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement similaires. 
@@ -231,22 +233,45 @@ Et bien d'autres ...
 
 ![Variantes de REGEX](regex.png)
 
-### Exemples Pratiques
+[Licence Regex](https://regexlicensing.org/)
+#### Exemples Pratiques
 
 - ``hello`` : Correspond à la chaîne "hello".
 
 - ``\d{3}`` : Correspond à exactement trois chiffres.
 
-- ``\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b`` : Correspond à une adresse email.
+- ``\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b`` : Correspond (à peu près) à une adresse email.
 
-#### Remplacement de Texte
 
-En Python, vous pouvez utiliser des regex pour rechercher et remplacer des motifs dans une chaîne grâce au module ``re``.
+### Expression régulières sur Python et contournement
+
+En Python, vous pouvez utiliser des regex pour rechercher, découper, remplacer  des motifs dans une chaîne grâce au module ``re``.
 
 ```python
 import re
 
-texte = "Bonjour, je m'appelle Alice."
-nouveau_texte = re.sub(r"Alice", "Bob", texte)
-print(nouveau_texte)  # Bonjour, je m'appelle Bob.
+text = "Contactez nous à support@example.com ou contact@example.com ou thierry.amettler@proton.me"
+emails = re.findall(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', text)
+print(emails)
+```
+
+Python utilise une variante proche de la syntaxe PCRE.
+
+Python étant un langage de programmation général il peut être judicieux de combiner des Regex avec, par exemple, des conditions ``if``, des variables ou encore des méthodes sur les strings. Cela permet potentiellement de simplifier la lecture du code qui peut vite être peu lisible avec seulement des regex.
+
+```python
+text = "Contact us at support@example.com or sales@example.com or thierry.amettler@proton.me"
+
+def is_email(word):
+    if "@" in word and "." in word:
+        local, domain = word.split("@")
+        if "." in domain and len(domain.split(".")[-1]) > 1:
+            return True
+    return False
+
+
+# Extraire les mots qui sont des adresses email
+words = text.split()
+emails = [word for word in words if is_email(word)]
+print(emails)
 ```
