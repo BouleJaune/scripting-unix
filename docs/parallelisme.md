@@ -238,16 +238,10 @@ Cependant il est important de noter que créer un processus est une tâche prena
 
 De plus la communication entre les processus est plus compliquée que la communication inter-threads de ``threading``.
 
-### asyncio
-
-``asyncio``
+### Utiliser la concurrence du Shell avec des scripts Python
 
 
-### Utiliser la concurrence du Shell pour Python !
-
-```sh
-echo 0 50000000 50000000 100000000 | xargs -P 2 -n 2 python script.py
-```
+La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
 
 ```python
 #!python
@@ -270,3 +264,9 @@ t2 = time.time()
 
 print('Time taken in seconds -', t2 - t1)
 ```
+
+```sh
+# Multiprocessing sur 2 coeurs du script.
+echo 0 50000000 50000000 100000000 | xargs -P 2 -n 2 python script.py
+```
+
