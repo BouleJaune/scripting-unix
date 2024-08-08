@@ -76,6 +76,29 @@ Enfin une autre manière d'utiliser un script sans shebang ni permissions d'exé
 bash script.sh
 python script.py
 ```
+
+### Exercice
+Créer un fichier script.sh utilisant la commande ``echo`` et l'exécuter via la commande ``bash`` et directement grâce au shebang.
+
+??? Note "Exemple de solution"
+    Ouvrir un éditeur de texte en ligne de commande
+    ```sh
+    vim script.sh
+    ```
+    Contenu du script : 
+    ```sh
+    #!/bin/bash
+    echo Premier script !
+    ```
+    ``i`` pour rentrer en mode insertion, ``esc`` pour revenir en mode normal, ``:wq`` pour enregistrer et quitter.
+    ```sh
+    ❯bash script.sh
+    Premier script !
+    ❯chmod +x script.sh
+    ❯./script.sh
+    Premier script !
+    ```
+
 ## Caractères spéciaux
 
 Dans un shell Linux certains caractères ont une signification spéciale, en voici une liste non exhaustive. 
