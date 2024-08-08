@@ -77,8 +77,8 @@ bash script.sh
 python script.py
 ```
 
-### Exercice
-Créer un fichier script.sh utilisant la commande ``echo`` et l'exécuter via la commande ``bash`` et directement grâce au shebang.
+#### Exercice
+Créer un fichier ``script.sh`` utilisant la commande ``echo`` et l'exécuter via la commande ``bash`` et directement grâce au shebang.
 
 ??? Note "Exemple de solution"
     Ouvrir un éditeur de texte en ligne de commande
@@ -112,6 +112,18 @@ Dans un shell Linux certains caractères ont une signification spéciale, en voi
 - ``'`` et ``"`` Permet de délimiter des chaînes de caractères, utile par exemple pour des chaînes comportant des espaces. (``ls "/fichier/avec/un espace"``)
 - `` ; `` Défini la fin d'une commande. Utile pour faire plusieurs commandes sur une seule ligne sans lien logique entre elles.
 - `` \ `` Permet d'échapper un caractère pour lui enlever son effet "spécial". (``echo L\'apostrophe peut se mettre comme ceci``)
+
+
+#### Exercice
+
+Créer un fichier nommé ``fichier avec espace.txt`` sans utiliser de guillemets avec la commande ``touch``. Lister tout les fichiers ``.txt`` du dossier et supprimer le premier fichier.
+
+??? Note "Exemple de solution"
+    ```sh
+    touch fichier\ avec\ espace.txt
+    ls *.txt
+    rm fichier\ avec\ espace.txt
+    ```
 
 ## Redirections 
 
@@ -153,7 +165,7 @@ On peut expliciter ce qui est redirigé en précisant le numéro du fichier corr
 
 Si on veut rediriger à la fois le ``stdout`` et le ``stderr`` vers le même fichier avec une syntaxe plus courte que d'écrire deux fois le fichier on peut faire : 
 ```sh
-./test.sh > out 2>\&1
+./test.sh > out 2>&1
 ```
 Cela dit au shell de rediriger ``2`` (``stderr``) vers la même sortie que ``1`` (``stdout``). 
 
@@ -193,6 +205,26 @@ Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un 
 ```sh
 grep -r PATTERN . 2>/dev/null
 ```
+#### Exercice
+
+Faire un script qui écrit (``echo``) un message dans le ``stderr`` et un autre dans le ``stdout``. L'exécuter et rediriger les sorties vers un fichier ``errors.txt`` et un ``out.txt``.
+
+??? Note "Exemple de solution"
+
+    Le script.sh :
+    ```sh
+    #!/bin/bash
+    echo ERREUR 1>&2 # On redirige le stdout de cette commande vers son stderr
+    echo SUCCES
+    ```
+    L'exécution : 
+    ```sh
+    ❯ bash script.sh >out.txt 2>errors.txt
+    ❯ cat out.txt
+    SUCCES
+    ❯ cat errors.txt
+    ERREUR
+    ```
 
 ## Pipelines linux
 
@@ -236,6 +268,34 @@ La commande ``time`` permet de mesurer le temps d'exécution d'une commande et d
 ```
 
 On voit bien que la pipeline s'est exécutée en 5.002 secondes, soit le temps d'un ``sleep 5`` et non la somme des deux (à 0.001s près). Dans cet exemple les deux processus sont indépendants et il n'y a pas d'intérêts à la connexion du ``stdout`` du premier processus au ``stdin`` du second.
+
+#### Exercice
+
+Utiliser les commandes ``df``, ``tr`` et ``cut``  pour lister seulement les points de montage des FS. Vous pouvez aussi suprimer la première ligne ``tail -n +2``.
+
+??? Note "Tips"
+    Tips: ``cut`` permet de découper en colonnes selon un délimiteur avec ``-d "caractère"`` et récupérer la colonne que l'on veut avec ``-f numéro``.
+
+    Tips 2: ``tr`` permet, entre autres, de "Squeezer" les répétitions de caractères avec l'option ``-s "caractère"``.
+
+??? Note "Exemple de solution"
+
+    ``df`` permet de donner des informations sur les FS.
+
+    ``tr -s " "`` permet d'enlever les doublons d'espace.
+    
+    ``cut -f 6 -d " "`` découpe la sortie en colonne délimitée par les espaces et ne récupère que la 6eme colonne.
+
+    ``tail -n +2`` enlève la première ligne. 
+
+    ```sh
+    df | tr -s " " | cut -f 6 -d " " | tail -n +2
+    ```
+
+    Enfin une version plus optimisée avec ``awk`` qui met moins en avant les pipelines :
+    ```sh
+    df | awk 'NR>1 {print $6}'
+    ```
 
 ## Commande et processus subsitution
 
