@@ -371,6 +371,58 @@ La commande n'est pas passée
 La commande est passée
 ```
 
+## Variables
+
+On peut définir une variable de cette manière : 
+
+```sh
+VARIABLE="contenu de la variable"
+```
+
+If faut noter qu'il n'y a pas d'espace de part et d'autre du ``=`` et que toutes les variables sont stockées en tant que chaîne de caractères.
+
+On peut aussi définir des variables en demandant dynamiquement à l'utilisateur de les remplir grâce à ``read``. 
+
+```sh
+read VARIABLE
+```
+
+Pour utiliser une variable il faut rappeler son nom avec un ``$`` devant. Cependant dans certains cas il peut être nécessaire d'encapsuler le nom de la variable dans ``{}``.
+
+```sh
+KERNEL="Linux-6.9.9"
+echo Le kernel est $KERNEL
+echo Créons un fichier nommé $KERNEL_file # Renverra une variable vide
+echo Créons un fichier nommé ${KERNEL}_file # Fonctionnera
+touch ${KERNEL}_file
+```
+
+Certaines variables sont déjà assignées par Bash, voici une liste non exhaustive:
+
+- ``$SHELL`` : Le chemin du binaire du shell actuel
+- ``$$`` Le PID de la session Bash
+- ``$?`` Le dernier code de retour
+- ``$@`` La liste des arguments d'entrée du script
+- ``$#`` Le nombre de ces arguments
+- ``$n`` avec ``n`` un chiffre. L'argument numéro ``n``
+
+
+Les trois derniers sont particulièrements utiles pour utiliser des arguments d'entrée de script :
+```sh 
+#!/bin/sh
+echo $#
+echo $@
+echo $3
+```
+Renverra : 
+
+```sh
+❯./script.sh 1 2 5
+3
+1 2 5
+5
+```
+
 
 ## Structures de contrôle
 
@@ -578,57 +630,81 @@ Le nombre est 2
 Le nombre est 4
 ```
 
-## Variables
+#### Exercice
 
-On peut définir une variable de cette manière : 
+Écrivez un script Bash qui renomme tous les fichiers `.txt` dans un répertoire en ajoutant le préfixe "backup_" à chaque nom de fichier.
+
+??? Note "Tips"
+    - Vous pouvez utiliser ``touch {1..10}.txt`` par exemple pour générer rapidement plusieurs fichiers vides.
+    - La commande ``basename`` permet d'enlever les noms de dossier du chemin d'un fichier. (``basename "/etc/resolv.conf"`` renverra ``resolv.conf``. Elle permet aussi d'enlever les extensions si on le précise : ``basename /etc/resolv.conf .conf`` => ``resolv``.
+    - ``mv file1 file2`` permet de déplacer un fichier, et donc de renommer un fichier ``file2=!file1``.
+    
+??? Note "Exemple de solution"
+    ```sh
+    #!/bin/bash
+
+    # Spécifiez le répertoire à traiter
+    directory="."
+
+    # Boucle for pour parcourir tous les fichiers .txt du répertoire
+    for file in "$directory"/*.txt; do
+        # Vérifie que le fichier existe
+        if [ -f "$file" ]; then
+            # Nouveau nom de fichier avec le préfixe "backup_"
+            new_name="$directory/backup_$(basename "$file")"
+            # Renomme le fichier
+            mv "$file" "$new_name"
+            echo "Renommé : $file en $new_name"
+        fi
+    done
+    ```
+## Calculs arithmétiques en Bash
+
+En Bash, les calculs arithmétiques sont simples mais nécessitent une syntaxe spécifique car tout est du texte.
+Ils peuvent être réalisés en utilisant ``$(())`` ou l'ancienne commande ``expr``. La méthode recommandée est d'utiliser ``$(())`` pour sa simplicité et lisibilité.
+
+### Exemple d'Opérations Arithmétiques
+
+```bash
+# Addition
+result=$((3 + 5))
+echo "3 + 5 = $result"   # Affiche 8
+
+# Soustraction
+result=$((10 - 2))
+echo "10 - 2 = $result"  # Affiche 8
+
+# Multiplication
+result=$((4 * 7))
+echo "4 * 7 = $result"   # Affiche 28
+
+# Division
+result=$((20 / 4))
+echo "20 / 4 = $result"  # Affiche 5
+
+# Modulo (reste de division)
+result=$((10 % 3))
+echo "10 % 3 = $result"  # Affiche 1
+```
+
+Bash ne gère que les nombres entiers pour ces opérations, il faut utiliser un autre outil (tel que ``bc``) pour les opérations à virgule flottantes ... ou plutôt directement Python.
+
+On peut incrémenter ou décrémenter une variable en Bash de tel manière : 
 
 ```sh
-VARIABLE="contenu de la variable"
+n=0
+((n++)) # => n = 1
+((n--)) # => n = 0
 ```
 
-If faut noter qu'il n'y a pas d'espace de part et d'autre du ``=`` et que toutes les variables sont stockées en tant que chaîne de caractères.
-
-On peut aussi définir des variables en demandant dynamiquement à l'utilisateur de les remplir grâce à ``read``. 
-
+Cela est surtout utile lors de boucles for :
 ```sh
-read VARIABLE
+for ((i=5; i<=10; i++)); do
+    echo $i
+    done
 ```
 
-Pour utiliser une variable il faut rappeler son nom avec un ``$`` devant. Cependant dans certains cas il peut être nécessaire d'encapsuler le nom de la variable dans ``{}``.
-
-```sh
-KERNEL="Linux-6.9.9"
-echo Le kernel est $KERNEL
-echo Créons un fichier nommé $KERNEL_file # Renverra une variable vide
-echo Créons un fichier nommé ${KERNEL}_file # Fonctionnera
-touch ${KERNEL}_file
-```
-
-Certaines variables sont déjà assignées par Bash, voici une liste non exhaustive:
-
-- ``$SHELL`` : Le chemin du binaire du shell actuel
-- ``$$`` Le PID de la session Bash
-- ``$?`` Le dernier code de retour
-- ``$@`` La liste des arguments d'entrée du script
-- ``$#`` Le nombre de ces arguments
-- ``$n`` avec ``n`` un chiffre. L'argument numéro ``n``
-
-
-Les trois derniers sont particulièrements utiles pour utiliser des arguments d'entrée de script :
-```sh 
-#!/bin/sh
-echo $#
-echo $@
-echo $3
-```
-Renverra : 
-
-```sh
-❯./script.sh 1 2 5
-3
-1 2 5
-5
-```
+Cependant ce n'est pas une syntaxe toujours nécessaire, on peut par exemple réécrire la dernière boucle avec ``for i in $(seq 5 10)``.
 
 ## Fonctions
 
@@ -675,3 +751,42 @@ echo "Les variables après la fonction sont var1: $var1, var2: $var2"
 ```
 
 On voit bien que après la fonctin la ``$var1`` s'est remise sur sa valeur précédente tandis que la ``$var2`` reste sur la valeur définie dans la fonction.
+
+
+#### Exercice
+
+Créer un script qui demande en entrée utilisateur un nombre et utilise une fonction pour vérifier si il est pair ou impair, puis afficher la parité du nombre.
+
+??? Note "Tips"
+    - ``read -p`` pour demande une entrée utilisateur avec un message.
+    - Il peut être interessant de vérifier que l'entrée est bien un nombre.
+    - ``%`` est l'opérateur modulo permettant de calculer le reste d'une division.
+
+
+??? Note "Exemple de solution"
+    ```sh
+    #!/bin/bash
+
+    # Définition de la fonction est_pair
+    est_pair() {
+        # Test si l'entrée est un nombre
+        if ! [ "$1" -eq "$1" ] 2> /dev/null
+        then
+            echo pas un nombre
+        else
+            reste=$(( $1 % 2 ))
+            if [[ $reste == 0 ]]; then
+                echo "pair"
+            else
+                echo "impair"
+            fi
+        fi
+    }
+
+    # Demande à l'utilisateur d'entrer un nombre
+    read -p "Entrez un nombre: " nombre
+
+    # Appel de la fonction et affichage du résultat
+    result=$(est_pair "$nombre")
+    echo "Le nombre $nombre est $result."
+    ```
