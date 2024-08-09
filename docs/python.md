@@ -44,10 +44,15 @@ def saluer(nom):
 ```
 
 Dans cet exemple :
-    - La fonction saluer est définie avec def, et tout le code à l'intérieur de cette fonction est indenté.
-    - Le bloc if contient du code qui est encore plus indenté, indiquant qu'il appartient à la condition.
+
+ - La fonction saluer est définie avec def, et tout le code à l'intérieur de cette fonction est indenté.
+ - Le bloc if contient du code qui est encore plus indenté, indiquant qu'il appartient à la condition.
 
 Il est recommandé d'utiliser 4 espaces pour chaque niveau d'indentation. Les mélanges de tabulations et d'espaces ou une indentation incohérente entraînent des erreurs de syntaxe.
+
+#### Exercice
+
+Rentrez dans l'interpréteur Pythoa pour s'assurer qu'il fonctionne bien et le manipuler un peu, notamment avec des ``print()``, des opérations arithmétiques simples etc ...
 
 ## Quelques types builtins essentiels
 
