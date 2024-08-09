@@ -325,6 +325,18 @@ Ici la variable ``--kubeconfig`` attends un nom de fichier et pas directement so
 kubectl --kubeconfig <(echo $CONTENU_KUBECONFIG) apply -f dep.yml
 ```
 
+#### Exercice
+
+Reprendre la dernière solution présentée de l'exemple précédent, et utiliser soit une substitution de process, soit une subtitution de commande pour enlever la pipe.
+
+??? Note "Exemple de solution"
+    
+    ``awk`` peut soit prendre directement le ``stdin`` en entrée comme précédemment soit un fichier. Ici on veut donc utiliser une substitution de processus plutôt que de commande car on veut fourir un fichier et non directement le contenu du fichier.
+
+    ```sh
+    awk 'NR>1 {print $6}' <(df)
+    ```
+
 
 ## Code de retour et opérateurs && et ||
 
@@ -438,6 +450,34 @@ else
     echo $A ne contient ni HELLO ni WORLD
 fi
 ```
+
+#### Exercice
+
+Faire un script qui demande à l'utilisateur de rentrer un nombre entier et d'afficher si ce nombre est positif, négatif, égal à zéro. (Et si ce n'est pas un nombre !)
+
+??? Note "Tips"
+    ``read`` permet d'enregistrer une entrée utilisateur, ``-p STRING`` permet d'afficher du texte avant.
+
+??? Note "Exemple de solution"
+
+    ```bash
+    #!/bin/bash
+
+    # Demande à l'utilisateur d'entrer un nombre
+    read -p "Entrez un nombre: " number
+
+    # Structure if pour vérifier le signe du nombre
+    if [ "$number" -gt 0 ]; then
+        echo "Le nombre est positif"
+    elif [ "$number" -lt 0 ]; then
+        echo "Le nombre est négatif"
+    elif [ "$number" -eq 0 ]; then
+        echo "Le nombre est zéro"
+    else
+        echo "Ce n'est pas un nombre"
+    fi
+    ```
+    PS: On peut cacher les erreurs dans le cas d'une entrée non-nombre avec ``2>/dev/null``, cependant ``read -p`` écrit de base le prompt dans le ``stderr``, il faut donc rediriger le ``stderr`` de ``read -p`` vers ``stdout`` avec ``2>&1``
 
 ### Switch case
 
