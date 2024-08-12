@@ -25,6 +25,12 @@ lrwxrwxrwx 1 root root 10  7 juin  08:33 /usr/bin/python3 -> python3.12
 -rwxr-xr-x 1 root root 14384  7 juin  08:33 /usr/bin/python3.12
 ```
 
+#### Exercice
+
+Rentrez dans l'interpréteur Python pour s'assurer qu'il fonctionne bien et le manipuler un peu, notamment avec des ``print()``, des opérations arithmétiques simples etc ...
+
+**Tips** : On peut définir des variables simplement avec ``var = valeur``.
+
 On peut quitter l'interpréteur intéractif python avec ``<Ctrl-D>``, ``exit()`` ou encore ``quit()``.
 
 ## Gestion des blocs de code par indentation
@@ -50,9 +56,6 @@ Dans cet exemple :
 
 Il est recommandé d'utiliser 4 espaces pour chaque niveau d'indentation. Les mélanges de tabulations et d'espaces ou une indentation incohérente entraînent des erreurs de syntaxe.
 
-#### Exercice
-
-Rentrez dans l'interpréteur Pythoa pour s'assurer qu'il fonctionne bien et le manipuler un peu, notamment avec des ``print()``, des opérations arithmétiques simples etc ...
 
 ## Quelques types builtins essentiels
 
@@ -97,6 +100,7 @@ Hello
 ```
 
 Une liste exhaustive des méthodes disponibles pour ``str`` est visible dans la documentation officielle sur les types ``builtins`` : [Méthodes ``str``](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
 On y retrouve aussi les autres ``builtins`` et leur documentation.
 
 Les ``str`` supportent quelques opérations simples avec ``+`` et ``*``. Le premier permet de concaténer deux ``str`` en un et le second de répéter un certain nombre de fois un ``str``.
@@ -124,6 +128,37 @@ Si vous n'avez pas accès à cette version ou une plus récente vous pouvez util
 print("Je m'appelle {0} et j'ai {1} ans.".format(nom, age))
 ```
 
+#### Exercice
+
+Écrivez un script Python qui demande à l'utilisateur de saisir une phrase, puis, grâce à notamment des méthodes sur les ``str``:
+
+1. Affiche la phrase en majuscules.
+2. Compte le nombre de mots dans la phrase.
+3. Remplace tous les espaces par des tirets (`-`).
+
+??? Note "Tips"
+    - ``input("Entrez un input")`` permet de demander à l'utilisateur de rentrer des donnnées.
+    - ``str.upper()`` permet de convertir les caractères d'un ``str`` en majuscule. 
+    - ``str.split()`` permet de découper un ``str`` par ses espaces et stocker le tout dans une liste. ``len(liste)`` permet de regarder sa longueur.
+    - ``str.replace("a", "b") : remplace chaque ``a`` par un ``b``.
+
+
+??? Note "Exemple de solution"
+    ```python
+    # Demande à l'utilisateur de saisir une phrase
+    phrase = input("Entrez une phrase: ")
+
+    # 1. Affiche la phrase en majuscules
+    print("Phrase en majuscules:", phrase.upper())
+
+    # 2. Compte le nombre de mots dans la phrase
+    word_count = len(phrase.split())
+    print("Nombre de mots dans la phrase:", word_count)
+
+    # 3. Remplace tous les espaces par des tirets
+    phrase_avec_tirets = phrase.replace(" ", "-")
+    print("Phrase avec des tirets:", phrase_avec_tirets)
+    ```
 
 ### Les nombres, ``int`` et ``float``
 
@@ -174,9 +209,45 @@ False
 
 Les booléens sont souvent utilisés dans les structures de contrôle, comme les instructions ``if``, pour prendre des décisions dans le code. 
 
+#### Exercice
+
+
+Écrivez un script Python qui :
+
+1. Demande à l'utilisateur d'entrer deux nombres entiers.
+2. Calcule et affiche la somme, la différence et le produit de ces deux nombres.
+3. Vérifie si le premier nombre est supérieur au second et affiche le résultat sous forme de booléen.
+4. Vérifie si le second nombre est égal à zéro, et affiche le résultat sous forme de booléen.
+
+Ne pas chercher à vérifier si l'entrée utilisateur est bien un entier. (sauf si vous avez le temps)
+
+??? Note "Exemple de solution"
+   ```python
+    # 1. Demande à l'utilisateur d'entrer deux nombres entiers
+    num1 = int(input("Entrez le premier nombre entier : "))
+    num2 = int(input("Entrez le second nombre entier : "))
+
+    # 2. Calcule et affiche les opérations arithmétiques
+    somme = num1 + num2
+    difference = num1 - num2
+    produit = num1 * num2
+
+    print("Somme :", somme)
+    print("Différence :", difference)
+    print("Produit :", produit)
+
+    # 3. Vérifie si le premier nombre est supérieur au second
+    superieur = num1 > num2
+    print("Le premier nombre est-il supérieur au second ?", superieur)
+
+    # 4. Vérifie si le second nombre est égal à zéro
+    est_zero = num2 == 0
+    print("Le second nombre est-il égal à zéro ?", est_zero)
+    ```
+
+
 
 ## Types built-ins de structures de données
-
 ### Les listes, ``list``
 
 L'un des types d'objets les plus manipulé en Python est la liste. Une liste est formé d'une succession d'objets indéxés. On peut en construire en listant des objets séparés par une virgule et en les entourants de ``[]``.
@@ -201,10 +272,35 @@ ma_liste.reverse() # Inverse l'ordre de la liste
 ```
 
 
+#### Exercice
 
+Écrivez un script Python qui :
 
-### tuples / sequences
-### Les dictionnaires (hash map)
+1. Crée une liste contenant les nombres de 1 à 5.
+2. Ajoute le nombre 6 à la fin de la liste.
+3. Supprime le premier élément de la liste.
+4. Faire une sous liste de tout les éléments sauf le premier.
+5. Récupére le dernier élément de la liste de manière relative (ne pas "hardcoder" son index).
+
+??? Note "Exemple de solution"
+    ```python
+    # 1. Crée une liste contenant les nombres de 1 à 5
+    ma_liste = [1, 2, 3, 4, 5]
+
+    # 2. Ajoute le nombre 6 à la fin de la liste
+    ma_liste.append(6)
+
+    # 3. Supprime le premier élément de la liste
+    ma_liste.pop(0)
+
+    # 4. Sous liste de tout les éléments sauf le premier
+    ma_sous_liste = ma_liste[1:]
+
+    # 4. Dernier élément de manière relative
+    dernier = ma_liste[-1]
+    ```
+
+### Les dictionnaires
 
 Une autre structure de données utile est le *dictionnaire* (de type ``dict``). Un dictionnaire est une liste où les index sont des clés compréhensibles et non juste un numéro.
 ```python
@@ -246,7 +342,40 @@ valeurs = list(mon_dict.values())
 print(list) # ['France', 'Paris', 'Seine']
 ```
 
-### Sets
+#### Exercice
+
+Écrivez un script Python qui :
+
+1. Crée un dictionnaire représentant un contact avec les clés `nom`, `age`, et `email`.
+2. Modifie l'âge du contact.
+3. Ajoute une nouvelle clé `telephone` avec un numéro de téléphone.
+4. Supprime la clé `email` du dictionnaire.
+5. Affiche le dictionnaire final.
+
+??? Note "Exemple de solution"
+
+    ```python
+    # 1. Crée un dictionnaire représentant un contact
+    contact = {
+        "nom": "Alice",
+        "age": 30,
+        "email": "alice@example.com"
+    }
+
+    # 2. Modifie l'âge du contact
+    contact["age"] = 31
+
+    # 3. Ajoute une nouvelle clé "telephone" avec un numéro
+    contact["telephone"] = "0601010101"
+
+    # 4. Supprime la clé "email" du dictionnaire
+    del contact["email"] # ou encore contact.pop("email")
+
+    # 5. Affiche le dictionnaire final
+    print("Dictionnaire final :", contact)
+    ```
+
+
 
 ## Structures de contrôle
 
@@ -266,6 +395,34 @@ else:
 
 
 
+#### Exercice
+
+Écrivez un script Python qui :
+
+1. Demande à l'utilisateur d'entrer trois nombres.
+2. Vérifie et affiche quel est le plus grand des trois nombres.
+3. Vérifie si au moins deux des trois nombres sont égaux, et affiche un message approprié si c'est le cas.
+
+??? Note "Exemple de solution"
+
+    ```python
+    # 1. Demande à l'utilisateur d'entrer trois nombres
+    n1 = float(input("Entrez le premier nombre : "))
+    n2 = float(input("Entrez le deuxième nombre : "))
+    n3 = float(input("Entrez le troisième nombre : "))
+
+    # 2. Vérifie et affiche le plus grand des trois nombres
+    if n1 >= n2 and n1 >= n3:
+        print("Le plus grand nombre est :", n1)
+    elif n2 >= n1 and n2 >= n3:
+        print("Le plus grand nombre est :", n2)
+    else:
+        print("Le plus grand nombre est :", n3)
+
+    # 3. Vérifie si au moins deux nombres sont égaux
+    if n1 == n2 or n1 == n3 or n2 == n3:
+        print("Au moins deux des trois nombres sont égaux.")
+    ```
 
 ### Boucles ``for``
 
@@ -321,6 +478,31 @@ Cette boucle renverra :
 4
 ```
 
+#### Exercice
+
+Écrivez un script Python qui :
+
+1. Crée une liste de mots : ``["python", "bash", "linux", "boucle", "shell"]``.
+2. Utilise une boucle ``for`` pour créer une nouvelle liste contenant la longueur de chaque mot.
+3. Affiche la liste des longueurs.
+
+
+??? Note "Exemple de solution"
+    ```python
+    mots = ["python", "bash", "linux", "boucle", "shell"]
+
+    longueurs = []
+    for mot in mots:
+        longueurs.append(len(mot))
+
+    print("Longueurs des mots :", longueurs)
+    ```
+
+    Ou encore de manière optimisée avec une ``list comprehension``: 
+
+    ```python
+    print("Longueurs des mots :", [len(mot) for mot in ["python", "bash", "linux", "boucle", "shell"]])
+    ```
 
 ## Fonctions
 
@@ -364,7 +546,7 @@ Ce n'est pas un nombre
 <class 'NoneType'>
 ```
 
-Les fonctions peuvent avoir des paramètres par défaut, des arguments nommés et des arguments variables.
+Les fonctions peuvent avoir des paramètres par défaut.
 
 ```python
 def saluer(nom, message="Bonjour"):
@@ -373,6 +555,28 @@ saluer("Alice")            # Affiche "Bonjour Alice"
 saluer("Bob", "Salut")     # Affiche "Salut Bob"
 ```
 
+#### Exercice
+
+Écrivez un script Python qui :
+
+1. Déclare une fonction `addition` qui prend deux arguments numériques et retourne leur somme.
+2. Déclare une fonction `afficher_resultat` qui prend deux arguments numériques, utilise la fonction `addition` pour calculer la somme, et affiche le résultat sous la forme "La somme de X et Y est Z".
+3. Appelez la fonction `afficher_resultat` avec des nombres de votre choix.
+
+??? Note "Exemple de solution"
+    ```python
+    # 1. Déclare la fonction addition
+    def addition(x, y):
+        return x + y
+
+    # 2. Déclare la fonction afficher_resultat
+    def afficher_resultat(a, b):
+        somme = addition(a, b)
+        print(f"La somme de {a} et {b} est {somme}")
+
+    # 3. Appelle la fonction afficher_resultat avec des nombres
+    afficher_resultat(7, 5)
+    ```
 ## Lire et écrire dans des fichiers
 
 ### Ouverture d'un fichier
@@ -406,20 +610,20 @@ ligne = fichier.readline()
 # Lire toutes les lignes dans une liste
 lignes = fichier.readlines()
 ```
-Exemple :
+Exemple avec la clause ``with``:
 
 ```python
 with open('mon_fichier.txt', 'r') as fichier:
     contenu = fichier.read()
     print(contenu)
 ```
+Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté ``with``, une fois sorti de ce bloc le fichier se ferme et la variable ``fichier`` n'existe plus.
 
 ### Écriture dans un fichier
 
 Pour écrire dans un fichier, on utilise la méthode ``write()``.
 
 ```python
-
 with open('mon_fichier.txt', 'w') as fichier:
     fichier.write('Bonjour, monde!\n')
     fichier.write('Voici une autre ligne.')
@@ -438,7 +642,40 @@ fichier.close()
 Cependant, l'utilisation de ``with`` est préférable car elle assure que le fichier est correctement fermé même si une erreur survient pendant les opérations de lecture ou d'écriture.
 
 
+#### Exercice
+Écrivez un script Python qui :
 
+1. Crée un fichier texte nommé `exemple.txt` et y écrit trois lignes de texte.
+2. Lit le contenu du fichier `exemple.txt` et l'affiche à l'écran.
+3. Ajoute une nouvelle ligne de texte à la fin du fichier `exemple.txt`.
+4. Relit et affiche le contenu mis à jour du fichier.
+
+Utilisez des ``with`` pour ouvrir le fichier et faites des blocs de code indépendants pour chaque actions.
+
+??? Note "Exemple de solution"
+
+    ```python
+    # 1. Création et écriture dans le fichier
+    with open('exemple.txt', 'w') as fichier:
+        fichier.write("Première ligne de texte.\n")
+        fichier.write("Deuxième ligne de texte.\n")
+        fichier.write("Troisième ligne de texte.\n")
+
+    # 2. Lecture et affichage du contenu du fichier
+    print("Contenu initial du fichier :")
+    with open('exemple.txt', 'r') as fichier:
+        contenu = fichier.read()
+        print(contenu)
+
+    # 3. Ajout d'une nouvelle ligne de texte
+    with open('exemple.txt', 'a') as fichier:
+        fichier.write("Quatrième ligne ajoutée.\n")
+
+    # 4. Relire et afficher le contenu mis à jour du fichier
+    print("\nContenu mis à jour du fichier :")
+    with open('exemple.txt', 'r') as fichier:
+        contenu_mis_a_jour = fichier.rea
+    ```
 
 ## Erreurs et exceptions
 
@@ -510,3 +747,38 @@ except ValueError as e:
 ```
 
 Dans cet exemple, une exception ``ValueError`` est levée si l'âge est négatif.
+
+#### Exercice
+
+Écrivez un script Python qui demande à l'utilisateur d'entrer un nombre et qui lève une exception si la valeur entrée ne peut être convertie en ``float``.
+
+??? Note "Exemple de solution"
+    ```python
+    def f():
+        try:
+            n = float(input("Entrez un nombre : "))
+        except Exception as e:
+            print(f"Il y a une erreur de type : {type(e).__name__}")
+            print(f"Le message d'erreur est : {e}")
+            f()
+        print(f"Le nombre est {n}")
+
+
+    f()
+    ```
+    Cet exemple utilise un nouveau concept pour pouvoir redemander le nombre à l'utilisateur : la récursivité. C'est pour cela qu'on appelle la fonction ``f`` à l'intérieur d'elle même.
+
+    Elle récupère l'erreur si elle existe, affiche le nom du type d'erreur (``ValueError`` la plupart du temps) et son message avant de relancer la fonction, ce qui relancera l'input.
+
+    Une fois qu'un vrai nombre a été fourni, celui ci est simplement affiché.
+
+
+    Une version plus simple centrée juste sur le ``try`` permettant simplement de ne pas avoir le script en erreur est : 
+    ```python
+    n = None
+    try:
+        n = float(input("Entrer un nombre : "))
+    except:
+        pass
+    print(n)
+    ```
