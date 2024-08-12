@@ -5,16 +5,12 @@
 ``awk`` est un puissant langage de programmation et un utilitaire en ligne de commande dans les systèmes Unix et Linux. Il est conçu pour la manipulation de texte et le traitement de données basées sur des fichiers texte ou des flux d'entrée. ``awk`` permet de rechercher des motifs, extraire et transformer des données.
 
 
-Les fichiers de tests sont récupérables ici :
-
-```sh
-curl fichier.txt numbers.txt
-```
-
-Ils ont étés générés pour ``numbers.txt`` avec :
+Vous pouvez générer le fichier ``numbers.txt`` utilisé dans cette partie avec :
 ```sh
 awk 'BEGIN { for (i = 1; i<= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }' > numbers.txt
 ```
+
+Vous pouvez récupérer ``fichier.txt`` et ``numbers.txt`` dans le dossier ``awk_files`` du repo Github.
 
 ### Structure de Commande
 
