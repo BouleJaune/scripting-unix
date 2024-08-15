@@ -1,15 +1,17 @@
 site_name: Scripting Unix
 nav:
-  - Introduction: 'index.md'
+  - Setup de l'environnement: 'index.md'
   - Shell:
-    - Shell : 'shell/shell.md'
+    - Shell: 'shell/shell.md'
     - Cheatsheet Shell: 'shell/cheatsheet-shell.md'
-    - Travaux Pratique Shell: 'shell/tp-shell.md'
-  - Python: 'python.md'
+  - Python:
+    - Python: 'python.md'
+    - Modularité: 'modularite.md'
   - Perl et Ruby: 'perl-ruby.md'
-  - Awk et regex: 'awk-regex.md'
-  - Modularité: 'modularite.md'
-  - Parallelisme: 'parallelisme.md'
+  - Awk et Expressions régulières:
+    - Awk : 'awk.md'
+    - Expressions régulières : 'regex.md'
+  - Parallelisme en Shell et Python: 'parallelisme.md'
 
 # Theme material
 theme:
@@ -34,10 +36,10 @@ theme:
     - search.suggest
     - navigation.top
     - content.code.copy
-    - navigation.sections
-    - navigation.indexes
-    - navigation.tracking
-    - navigation.path
+    # - navigation.sections
+    # - navigation.indexes
+    # - navigation.tracking
+    # - navigation.path
   highlightjs: true
   hljs_languages:
     - yaml

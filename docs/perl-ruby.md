@@ -20,11 +20,11 @@ use strict;
 use warnings;
 
 # Exemple de script Perl
-print "Bonjour, monde!\n";
+print "Hello world !\n";
 
 # Manipulation de texte
-my $texte = "Perl est puissant.";
-$texte =~ s/p2uiss/puiss/i;  # Remplacement de texte avec regex
+my $texte = "Perl est utile pour les rigex.";
+$texte =~ s/r.gex/regex/i;  # Remplacement de texte avec regex
 print "$texte\n";
 
 # Création et écriture dans un fichier
@@ -33,7 +33,7 @@ print $fh "Ceci est une ligne de texte.\n";
 close($fh);
 ```
 
-# Utilisations Courantes
+### Utilisations Courantes
 
  - Traitement de texte et extraction de données
  - Scripts d'administration système
@@ -55,11 +55,11 @@ Ruby, tout comme Perl, est assez peu utilisé avec 5% des utilisateurs de Stacko
 
 ```ruby
 # Exemple de script Ruby
-puts "Bonjour, monde!"
+puts "Hello world !"
 
 # Manipulation de texte
-texte = "Ruby est élégant."
-texte.gsub!('élégant', 'puissant')
+texte = "Ruby est utile."
+texte.gsub!('utile', 'inutile')
 puts texte
 
 # Création et écriture dans un fichier
@@ -73,6 +73,10 @@ endd
    - Développement web avec Ruby on Rails
 
 
+## Ces langages aujourd'hui
+
 Bien que Perl et Ruby ne soient plus aussi populaires qu'ils l'étaient, ils restent des langages puissants avec des cas d'utilisation spécifiques. Perl continue d'être utilisé pour la maintenance d'anciens scripts, tandis que Ruby, grâce à Ruby on Rails, est encore une option solide pour le développement web. Toutefois, les nouveaux projets peuvent préférer des langages plus modernes et largement adoptés comme Python, JavaScript, ou Go.
+
+Ruby il y a 10 ans était utilisé par 10% des développeurs selon les sondages stackoverflow, aujourd'hui ce n'est plus que 5% et ce chiffre ne va pas tendre à augmenter. La tendance est similaire pour Perl.
 
 ![Utilisation Langages Stackoverflow](most_used_languages.png)

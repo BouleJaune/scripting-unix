@@ -198,17 +198,10 @@ Des éditeurs de texte comme Visual Studio Code permettent de s'occuper de la ge
 
 #### Exercice
 
-1. **Créer un Environnement Virtuel :**
    - Dans un répertoire de votre choix, créez un environnement virtuel nommé `venv`.
-
-2. **Activer l'Environnement Virtuel :**
    - Activez l'environnement virtuel `venv`.
-
-3. **Installer un Package avec `pip` et faire le fichier de requirements**
    - Utilisez `pip` pour installer le package `requests` dans l'environnement virtuel.
    - Générer le fichier de requirements
-
-4. **Vérifier l'Installation :**
    - Démarrez un interpréteur Python et importez le package `requests` pour vérifier qu'il est installé correctement.
 
 ??? Notes "Exemple de solution"
