@@ -21,9 +21,6 @@ Un module en Python est simplement un fichier Python (.py). Par exemple, un fich
 # mymodule.py
 def saluer(nom):
     return f"Bonjour, {nom}!"
-
-def addition(a, b):
-    return a + b
 ```
 
 ### Utilisation des Modules
@@ -71,7 +68,42 @@ Python va d'abord chercher le module dans les modules builtins, listés dans ``s
 
 Cette liste contient les dossiers d'installation de modules externes mais aussi le dossier actuel (pour une exécution intéractive) ou le dossier du script .py appelé.
 
+#### Exercice 
 
+1. Créez un module Python nommé `calculs.py` qui contient deux fonctions :
+    - `addition(a, b)` : retourne la somme de `a` et `b`.
+    - `multiplication(a, b)` : retourne le produit de `a` et `b`.
+    
+2. Dans un autre script Python (par exemple, `main.py`), importez le module `calculs` et utilisez les deux fonctions pour :
+    - Calculer et afficher la somme de `10` et `5`.
+    - Calculer et afficher le produit de `10` et `5`.
+
+??? Notes "Exemple de solution"
+
+     `calculs.py`
+    ```python
+    # 1. Définition du module avec les fonctions
+
+    def addition(a, b):
+        return a + b
+
+    def multiplication(a, b):
+        return a * b
+    ```
+    ``main.py``
+
+    ```python
+
+    # 2. Importation et utilisation du module
+
+    import calculs
+
+    somme = calculs.addition(10, 5)
+    produit = calculs.multiplication(10, 5)
+
+    print("La somme de 10 et 5 est :", somme)
+    print("Le produit de 10 et 5 est :", produit)
+    ```
 
 ## pip : Le Gestionnaire de Paquets de Python
 
@@ -163,6 +195,40 @@ deactivate
 
 Il faut ainsi penser à le réactiver à chaque nouveau Shell. 
 Des éditeurs de texte comme Visual Studio Code permettent de s'occuper de la gestion des venvs et de leur activation aussi.
+
+#### Exercice
+
+1. **Créer un Environnement Virtuel :**
+   - Dans un répertoire de votre choix, créez un environnement virtuel nommé `venv`.
+
+2. **Activer l'Environnement Virtuel :**
+   - Activez l'environnement virtuel `venv`.
+
+3. **Installer un Package avec `pip` et faire le fichier de requirements**
+   - Utilisez `pip` pour installer le package `requests` dans l'environnement virtuel.
+   - Générer le fichier de requirements
+
+4. **Vérifier l'Installation :**
+   - Démarrez un interpréteur Python et importez le package `requests` pour vérifier qu'il est installé correctement.
+
+??? Notes "Exemple de solution"
+    ```bash
+    # Allez dans le dossier voulu puis créer le venv
+    python -m venv venv
+    # L'activer 
+    source ./venv/bin/activate
+    # Installation de requests et génération requirements.txt
+    pip install requests
+    pip freeze > requirements.txt
+    ```
+    Test : 
+    ```python
+    python -m requests # Donnera une réponse claire sur la présence du module ou sinon :
+    python # puis une fois dans l'interpréteur
+    >>>import requests
+    >>>print(requests.__version__)
+    ```
+
 
 ### Un mot sur d'autres solutions
 

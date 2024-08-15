@@ -1,4 +1,4 @@
-# La programmation parallèle en Shell, Perl, Python et Ruby
+# La programmation parallèle en Shell et Python
 
 ## Différentes types de concurrence
 
@@ -108,10 +108,18 @@ Ici, il y aura 3 processus, un pour chaque exécution de ``echo``. On peut aussi
 
 ### Exercice
 
-Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à 192.168.1.254.
+Utilisez Bash et de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à 192.168.1.254.
+
+Mettez clairement en avant les pings réussis.
+
+Si possible tentez plusieurs méthodes pour résoudre l'exercice.
+
+??? note "Tips"
+    Vous pouvez mesurer les temps d'éxécution avec ``time "commande/script"``
 
 ??? note "Exemples de solutions"
-
+    
+    Méthode simple avec une boucle for, un subshell et de la mise en arrière plan. Le ``&&`` et la redirection vers ``/dev/null`` permet de ne récupérer que les ip qui répondent.
     ```sh
      for i in {1..254}
         do
@@ -119,9 +127,13 @@ Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à
         done
     ```
 
+    Méthode en une ligne avec ``xargs`` et des pipes. Les deux ``grep`` permettent de récupérer les IP ayant répondues, en greppant d'abord les lignes répondant avec leur ligne précédante qui affiche l'IP puis en ne récupérant que la ligne précédente (qui contient le pattern ``stat``).
+
     ```sh
     echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | grep -B 1 "1 reçus" | grep stat
     ```
+
+    Même principe mais en utilisant ``awk`` au lieu de ``grep`` pour une récupération de la ligne précédente plus propre. 
 
     ```sh
     echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | awk '/1 reçus/ {print prev} {prev=$0}'
@@ -131,7 +143,7 @@ Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à
 
 ## Python
 
-Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules ``threading``, ``asyncio`` et ``multiprocessing``. Les trois permettent de la concurrence mais il y a des subtilités entre elles.
+Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules ``threading``, ``asyncio`` et ``multiprocessing``. Les trois permettent de la concurrence mais il y a des subtilités entre elles. On ne verra pas ``asyncio`` dans ce cours.
 
 On peut mesurer le temps d'exécution de fonctions grâce au module ``time`` et sa fonction ``time()``. C'est essentiel de mesurer lorsque l'on cherche à optimiser des temps d'exécution.
 
@@ -237,6 +249,77 @@ Le temps d'exécution est ici quasiment deux fois plus rapide.
 Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. 
 
 De plus la communication entre les processus est plus compliquée que la communication inter-threads de ``threading``.
+
+#### Exercice
+
+Implémenter une tâche simple en parallèle en utilisant le module `threading` ou le module `multiprocessing` (ou les deux !). L'opération simple peut être, par exemple, additionner les éléments d'une liste.
+
+   - Créez une fonction `somme_liste(nums)` qui prend une liste de nombres comme argument et retourne la somme des éléments de cette liste après une pause de 1 seconde (pour simuler une tâche longue).
+   - Exécuter en parallèle cette fonction sur plusieurs listes en même temps, soit avec ``threading``, soit avec ``multiprocessing``.
+
+??? Note "Tips"
+    - Utiliser ``time.sleep(secondes)`` pour mettre en pause
+    - On peut faire ``sum(liste)`` pour récupérer la somme d'une liste
+
+??? Note "Exemple de solution"
+
+    Définition de la fonction initiale et des listes à utiliser :
+    ```python
+    import time
+
+    def somme_liste(nums):
+        time.sleep(1)  # Simule une tâche longue
+        return sum(nums) # nums ici est une liste, et sum en fait la somme
+
+    # Listes à traiter
+    listes = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+    ]
+    ```
+
+    Utilisation de ``threading`` :
+    ```python
+    import threading
+    # Fonction wrapper pour exécuter la somme dans un thread
+    def thread_func(liste):
+        resultat = somme_liste(liste)
+        print(f"Somme de {liste} : {resultat}")
+
+    # Lancer les threads
+    threads = []
+    for liste in listes:
+        thread = threading.Thread(target=thread_func, args=(liste,))
+        threads.append(thread)
+        thread.start()
+
+    # Attendre que tous les threads soient terminés
+    for thread in threads:
+        thread.join()
+    ```
+
+    Utilisation de ``multiprocessing`` :
+    ```python
+    import multiprocessing
+
+    # Fonction wrapper pour exécuter la somme dans un processus
+    def process_func(liste):
+        resultat = somme_liste(liste)
+        print(f"Somme de {liste} : {resultat}")
+
+    # Lancer les processus
+    processes = []
+    for liste in listes:
+        process = multiprocessing.Process(target=process_func, args=(liste,))
+        processes.append(process)
+        process.start()
+
+    # Attendre que tous les processus soient terminés
+    for process in processes:
+        process.join()
+    ```
+
 
 ### Utiliser la concurrence du Shell avec des scripts Python
 

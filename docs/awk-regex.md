@@ -1,4 +1,4 @@
-# Introduction à ``awk`` et aux Regex
+# ``awk`` et expressions régulières
 
 ## Awk
 
@@ -53,7 +53,7 @@ Pour imprimer le premier et le troisième champ de chaque ligne d'un fichier :
 ```bash
 awk '{ print $1, $3 }' fichier.txt
 ```
-Si aucun pattern n'est fourni alors ``awk`` matchera chaque ligne.
+Si aucun pattern n'est fourni alors ``awk`` récupèrera chaque ligne.
 
 On peut fournir plusieurs commandes à awk en lui fournissant d'autres patterns et actions.
 
@@ -66,6 +66,16 @@ awk '{ print $1, $3 } \
 fichier.txt
 ```
 
+Ces actions fonctionnent par bloc d'accolades ``{}``, entre chaque bloc il peut y avoir un pattern pour matcher quelque chose, un bloc ``{}`` ne cherchera à match qu'avec le pattern *juste* avant lui même.
+
+Si on veut deux commandes qui utilisent le même pattern il faut les mettre dans le même bloc.
+
+```sh
+awk 'pattern1 { action1 } pattern2 {action2}' fichier # Action 2 s'appliquera que sur les lignes matchant pattern2
+awk 'pattern1 { action1 } {action2}' fichier # Action 2 s'appliquera sur TOUTES les lignes et pas seulement celles matchant pattern1
+awk 'pattern1 { action2 ; action2}' fichier # Action 2 s'appliquera que sur les lignes matchant pattern1
+```
+
 
 ### Filtrer par Motif
 
@@ -73,16 +83,48 @@ fichier.txt
 Pour afficher les lignes contenant le mot "ERROR" :
 
 ```bash
-awk '/ERROR/ { print $0 }' fichier.txt
+awk '/ERROR/ { print $0 }' fichier.txt # Permet de récupérer les lignes contenant ERROR.
+awk '!/ERROR/ { print $0 }' fichier.txt # Permet de ne PAS récupérer les lignes contenant ERROR.
 ```
 
-### Calculs et Opérations sur les Champs
+#### Exercice
 
-Pour calculer la somme des valeurs des troisième et quatrième champs de chaque ligne:
+Cherchez avec ``awk`` dans ``fichier.txt`` toutes les alertes provenant du serveur numéro 3.
+
+??? Note "Exemple de solution"
+
+    ```sh
+    awk '/Server3/ {print $4}' fichier.txt
+    ```
+
+
+### Opérations sur les champs
+
+``awk`` permet aussi de faire des opérations arithmétiques sur les champs si ceux-ci sont numériques.
+
+Pour, par exemple, calculer la somme des valeurs des troisième et quatrième champs de chaque ligne:
 
 ```bash
 awk '{ somme = $1 + $2; print somme }' numbers.txt
 ```
+
+On peut aussi remplacer le contenu des variables (champs ou lignes par exemple):
+
+```bash
+awk '{$0 = "Toutes les lignes seront les mêmes !"} {print $0}' fichier.txt
+```
+
+#### Exercice
+
+Récupérer les alertes de l'infogérant A qui ne sont pas des ``INFO`` et remplacer le nom de l'infogérant A par ``nouveau_infogérant`` et afficher le tout.
+
+??? Note "Tips"
+    On peut faire plusieurs pattern de matching avec ``&&`` (``ET`` logique) et ``||`` (``OU`` logique): ``awk 'pattern1 && pattern2 { commande }'``
+
+??? Note "Exemple de solution"
+    ```bash
+    awk '/InfogérantA/ && !/INFO/  { $5 = "nouveau_infogérant" ; print $0 }' fichier.txt
+    ```
 
 ### Mots clés BEGIN et END 
 
@@ -99,6 +141,16 @@ END { print "Fin de traitement" }' fichier.txt
 awk 'BEGIN {n=0} {n += $1} END {print n}' numbers.txt
 ```
 
+PS: Ici le ``BEGIN {n=0}`` n'est pas nécessaire car en pratique ``awk`` initialisera tout seul la variable à 0 avant la première incrémentation.
+
+#### Exercice
+
+Comptez pour ``Server3`` et ``Server2`` le nombre d'alertes qu'ils possèdent chacun et afficher ces nombres et la somme de ceux-ci.
+
+??? Note "Exemple de solution"
+    ```sh
+    awk '/Server3/ {n1+=1} /Server2/ {n2+=1} END {print n1, n2, n1+n2}' fichier.txt
+    ```
 ### Fonctions Intégrées
 
 - **`length([string])`** : Renvoie la longueur d'une chaîne ou du champ courant.
@@ -113,12 +165,6 @@ awk 'BEGIN {n=0} {n += $1} END {print n}' numbers.txt
 - **`rand()`** : Renvoie un nombre aléatoire entre 0 et 1.
 
 
-### Exercice
-Attraper la ligne précédent un match
-??? Note "Exemple de solution"
-    ```sh
-    echo 192.168.1.{1..254} | xargs -n 1 -P 0 ping -c 1 | awk '/1 reçus/ {print prev} {prev=$0}'
-    ```
 
 ## Expression Régulières
 
