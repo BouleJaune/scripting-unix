@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#la-programmation-parallele-en-shell-perl-python-et-ruby" class="md-skip">
+        <a href="#la-programmation-parallele-en-shell-et-python" class="md-skip">
           Aller au contenu
         </a>
       
@@ -582,6 +582,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="multiprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -718,6 +733,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="multiprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -749,7 +779,7 @@
                   
 
 
-<h1 id="la-programmation-parallele-en-shell-perl-python-et-ruby">La programmation parallèle en Shell, Perl, Python et Ruby</h1>
+<h1 id="la-programmation-parallele-en-shell-et-python">La programmation parallèle en Shell et Python</h1>
 <h2 id="differentes-types-de-concurrence">Différentes types de concurrence</h2>
 <p>La <strong>concurrence</strong> (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches <em>existent</em> en même temps. Le <strong>parallélisme</strong> quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.</p>
 <p>Le parallélisme est donc une sous catégorie de concurrence mais nécessite un processeur multicoeurs.</p>
@@ -829,9 +859,16 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 </span></code></pre></div></td></tr></table></div></p>
 <p>Ici, il y aura 3 processus, un pour chaque exécution de <code>echo</code>. On peut aussi mettre <code>N=0</code> pour utiliser le maximum possible de processus automatiquement.</p>
 <h3 id="exercice">Exercice</h3>
-<p>Utilisez de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à 192.168.1.254.</p>
+<p>Utilisez Bash et de la concurrence pour optimiser le ping d'IPs allant de 192.168.1.1 à 192.168.1.254.</p>
+<p>Mettez clairement en avant les pings réussis.</p>
+<p>Si possible tentez plusieurs méthodes pour résoudre l'exercice.</p>
+<details class="note">
+<summary>Tips</summary>
+<p>Vous pouvez mesurer les temps d'éxécution avec <code>time "commande/script"</code></p>
+</details>
 <details class="note">
 <summary>Exemples de solutions</summary>
+<p>Méthode simple avec une boucle for, un subshell et de la mise en arrière plan. Le <code>&amp;&amp;</code> et la redirection vers <code>/dev/null</code> permet de ne récupérer que les ip qui répondent.
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span>
@@ -839,14 +876,16 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">    </span><span class="k">do</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="o">(</span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$i</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;192.168.1.</span><span class="nv">$i</span><span class="s2">&quot;</span><span class="o">)</span><span class="w"> </span><span class="p">&amp;</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="k">done</span>
-</span></code></pre></div></td></tr></table></div>
+</span></code></pre></div></td></tr></table></div></p>
+<p>Méthode en une ligne avec <code>xargs</code> et des pipes. Les deux <code>grep</code> permettent de récupérer les IP ayant répondues, en greppant d'abord les lignes répondant avec leur ligne précédante qui affiche l'IP puis en ne récupérant que la ligne précédente (qui contient le pattern <code>stat</code>).</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..254<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">0</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-B<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s2">&quot;1 reçus&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>stat
 </span></code></pre></div></td></tr></table></div>
+<p>Même principe mais en utilisant <code>awk</code> au lieu de <code>grep</code> pour une récupération de la ligne précédente plus propre. </p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..254<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">0</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/1 reçus/ {print prev} {prev=$0}&#39;</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
 <h2 id="python">Python</h2>
-<p>Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules <code>threading</code>, <code>asyncio</code> et <code>multiprocessing</code>. Les trois permettent de la concurrence mais il y a des subtilités entre elles.</p>
+<p>Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules <code>threading</code>, <code>asyncio</code> et <code>multiprocessing</code>. Les trois permettent de la concurrence mais il y a des subtilités entre elles. On ne verra pas <code>asyncio</code> dans ce cours.</p>
 <p>On peut mesurer le temps d'exécution de fonctions grâce au module <code>time</code> et sa fonction <code>time()</code>. C'est essentiel de mesurer lorsque l'on cherche à optimiser des temps d'exécution.</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
@@ -961,7 +1000,12 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 <span class="normal"><a href="#__codelineno-12-19">19</a></span>
 <span class="normal"><a href="#__codelineno-12-20">20</a></span>
 <span class="normal"><a href="#__codelineno-12-21">21</a></span>
-<span class="normal"><a href="#__codelineno-12-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">time</span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">time</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kn">import</span> <span class="nn">multiprocessing</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">100000000</span>
@@ -975,21 +1019,40 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>        <span class="k">del</span> <span class="n">k</span>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>
 </span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18"></a>    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">carre</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)])</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="n">process1</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">carre</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),))</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="n">process2</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">carre</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">((</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">),))</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19"></a>
-</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21"></a>
-</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="n">process1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="n">process2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="n">process1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="n">process2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24"></a>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26"></a>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Pour faire fonctionner <code>multiprocessing</code> on peut définir un objet <code>Pool</code> et y maper une fonction et une liste d'arguments, la librairie s'occupera d'appliquer ces arguments à la fonction et d'exécuter ceci dans des processus différents.
-Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
+<p>Syntaxiquement <code>multiprocessing</code> peut être utilisé de manière basique comme <code>threading</code>, on défini un objet <code>Process</code>, avec une fonction <code>target</code> et ses arguments, on le start et on attend la fin de son éxécution avec <code>.join()</code>.</p>
+<p>Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
 <p>Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. </p>
 <p>De plus la communication entre les processus est plus compliquée que la communication inter-threads de <code>threading</code>.</p>
-<h3 id="utiliser-la-concurrence-du-shell-avec-des-scripts-python">Utiliser la concurrence du Shell avec des scripts Python</h3>
-<p>La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
+<h4 id="exercice_1">Exercice</h4>
+<p>Implémenter une tâche simple en parallèle en utilisant le module <code>threading</code> ou le module <code>multiprocessing</code> (ou les deux !). L'opération simple peut être, par exemple, additionner les éléments d'une liste.</p>
+<ul>
+<li>Créez une fonction <code>somme_liste(nums)</code> qui prend une liste de nombres comme argument et affiche la liste et la somme des éléments de cette liste après une pause de 1 seconde (pour simuler une tâche longue).</li>
+<li>Exécuter en parallèle cette fonction sur plusieurs listes en même temps, soit avec <code>threading</code>, soit avec <code>multiprocessing</code>.</li>
+</ul>
+<details class="note">
+<summary>Tips</summary>
+<ul>
+<li>Utiliser <code>time.sleep(secondes)</code> pour mettre en pause</li>
+<li>On peut faire <code>sum(liste)</code> pour récupérer la somme d'une liste</li>
+</ul>
+</details>
+<details class="note">
+<summary>Exemple de solution</summary>
+<p>Définition de la fonction initiale et des listes à utiliser :
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
@@ -1001,36 +1064,113 @@ Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
 <span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-13-10">10</a></span>
 <span class="normal"><a href="#__codelineno-13-11">11</a></span>
-<span class="normal"><a href="#__codelineno-13-12">12</a></span>
-<span class="normal"><a href="#__codelineno-13-13">13</a></span>
-<span class="normal"><a href="#__codelineno-13-14">14</a></span>
-<span class="normal"><a href="#__codelineno-13-15">15</a></span>
-<span class="normal"><a href="#__codelineno-13-16">16</a></span>
-<span class="normal"><a href="#__codelineno-13-17">17</a></span>
-<span class="normal"><a href="#__codelineno-13-18">18</a></span>
-<span class="normal"><a href="#__codelineno-13-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="ch">#!python</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kn">import</span> <span class="nn">sys</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kn">import</span> <span class="nn">time</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="n">deb_fin</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="k">def</span> <span class="nf">somme_liste</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Simule une tâche longue</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>    <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste : </span><span class="si">{</span><span class="n">nums</span><span class="si">}</span><span class="s2"> et somme: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="k">def</span> <span class="nf">carre</span><span class="p">(</span><span class="n">deb_fin</span><span class="p">):</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>    <span class="n">debut</span> <span class="o">=</span> <span class="n">deb_fin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>    <span class="n">fin</span> <span class="o">=</span> <span class="n">deb_fin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>        <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
-</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>        <span class="k">del</span> <span class="n">k</span>
-</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a>
-</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a>
-</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="n">carre</span><span class="p">(</span><span class="n">deb_fin</span><span class="p">)</span>
-</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a>
-</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="c1"># Listes à traiter</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="n">listes</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="p">]</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>Utilisation de <code>threading</code> :
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">import</span> <span class="nn">threading</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="c1"># Lancer les threads</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="k">for</span> <span class="n">liste</span> <span class="ow">in</span> <span class="n">listes</span><span class="p">:</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">somme_liste</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">liste</span><span class="p">,))</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a>    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="c1"># Attendre que tous les threads soient terminés</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a>    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>Utilisation de <code>multiprocessing</code> :
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">import</span> <span class="nn">multiprocessing</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="c1"># Lancer les processus</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="k">for</span> <span class="n">liste</span> <span class="ow">in</span> <span class="n">listes</span><span class="p">:</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>    <span class="n">process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">somme_liste</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">liste</span><span class="p">,))</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>    <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">)</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="c1"># Attendre que tous les processus soient terminés</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a>    <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div></p>
+</details>
+<h3 id="utiliser-la-concurrence-du-shell-avec-des-scripts-python">Utiliser la concurrence du Shell avec des scripts Python</h3>
+<p>La concurrence en Shell s'appliquant sur toute commande peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="ch">#!python</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="kn">import</span> <span class="nn">sys</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="n">deb_fin</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="k">def</span> <span class="nf">carre</span><span class="p">(</span><span class="n">deb_fin</span><span class="p">):</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a>    <span class="n">debut</span> <span class="o">=</span> <span class="n">deb_fin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>    <span class="n">fin</span> <span class="o">=</span> <span class="n">deb_fin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>        <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>        <span class="k">del</span> <span class="n">k</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="n">carre</span><span class="p">(</span><span class="n">deb_fin</span><span class="p">)</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># Multiprocessing sur 2 coeurs du script.</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">50000000</span><span class="w"> </span><span class="m">50000000</span><span class="w"> </span><span class="m">100000000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-P<span class="w"> </span><span class="m">2</span><span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>python<span class="w"> </span>script.py
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1"># Multiprocessing sur 2 coeurs du script.</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">50000000</span><span class="w"> </span><span class="m">50000000</span><span class="w"> </span><span class="m">100000000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-P<span class="w"> </span><span class="m">2</span><span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>python<span class="w"> </span>script.py
 </span></code></pre></div></td></tr></table></div>
 
 

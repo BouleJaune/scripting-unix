@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-a-awk-et-aux-regex" class="md-skip">
+        <a href="#awk-et-expressions-regulieres" class="md-skip">
           Aller au contenu
         </a>
       
@@ -502,14 +502,44 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Filtrer par Motif">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#calculs-et-operations-sur-les-champs" class="md-nav__link">
+  <a href="#operations-sur-les-champs" class="md-nav__link">
     <span class="md-ellipsis">
-      Calculs et Opérations sur les Champs
+      Opérations sur les champs
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Opérations sur les champs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -520,21 +550,27 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mots clés BEGIN et END">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#fonctions-integrees" class="md-nav__link">
     <span class="md-ellipsis">
       Fonctions Intégrées
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercice
     </span>
   </a>
   
@@ -747,14 +783,44 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Filtrer par Motif">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#calculs-et-operations-sur-les-champs" class="md-nav__link">
+  <a href="#operations-sur-les-champs" class="md-nav__link">
     <span class="md-ellipsis">
-      Calculs et Opérations sur les Champs
+      Opérations sur les champs
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Opérations sur les champs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -765,21 +831,27 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mots clés BEGIN et END">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#fonctions-integrees" class="md-nav__link">
     <span class="md-ellipsis">
       Fonctions Intégrées
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exercice" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercice
     </span>
   </a>
   
@@ -889,18 +961,16 @@
                   
 
 
-<h1 id="introduction-a-awk-et-aux-regex">Introduction à <code>awk</code> et aux Regex</h1>
+<h1 id="awk-et-expressions-regulieres"><code>awk</code> et expressions régulières</h1>
 <h2 id="awk">Awk</h2>
 <p><code>awk</code> est un puissant langage de programmation et un utilitaire en ligne de commande dans les systèmes Unix et Linux. Il est conçu pour la manipulation de texte et le traitement de données basées sur des fichiers texte ou des flux d'entrée. <code>awk</code> permet de rechercher des motifs, extraire et transformer des données.</p>
-<p>Les fichiers de tests sont récupérables ici :</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>curl<span class="w"> </span>fichier.txt<span class="w"> </span>numbers.txt
-</span></code></pre></div></td></tr></table></div>
-<p>Ils ont étés générés pour <code>numbers.txt</code> avec :
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { for (i = 1; i&lt;= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>numbers.txt
+<p>Vous pouvez générer le fichier <code>numbers.txt</code> utilisé dans cette partie avec :
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { for (i = 1; i&lt;= 10; i++) print int(100*rand()),  int(100*rand()), int(100*rand()) }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>numbers.txt
 </span></code></pre></div></td></tr></table></div></p>
+<p>Vous pouvez récupérer <code>fichier.txt</code> et <code>numbers.txt</code> dans le dossier <code>awk_files</code> du repo Github.</p>
 <h3 id="structure-de-commande">Structure de Commande</h3>
 <p>La syntaxe de base de <code>awk</code> est la suivante :
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>awk<span class="w"> </span><span class="s1">&#39;pattern { action }&#39;</span><span class="w"> </span>fichier
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>awk<span class="w"> </span><span class="s1">&#39;pattern { action }&#39;</span><span class="w"> </span>fichier
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li>pattern : Un motif qui, s'il est vrai pour une ligne donnée, déclenche l'exécution de l'action.</li>
@@ -922,47 +992,87 @@
 </ul>
 <p>On peut changer le délimiteur par défaut avec <code>-F</code>, <code>-F,</code> utilisera <code>,</code> comme délimiteur au lieu de tab ou espace.</p>
 <p>Awk permet aussi de déclarer ses propres variables dans les actions :</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ n = 0; print n}&#39;</span><span class="w"> </span>fichier.txt
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ n = 0; print n}&#39;</span><span class="w"> </span>fichier.txt
 </span></code></pre></div></td></tr></table></div>
 <h3 id="imprimer-des-colonnes-specifiques">Imprimer des Colonnes Spécifiques</h3>
 <p>Pour imprimer le premier et le troisième champ de chaque ligne d'un fichier :</p>
-<p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 }&#39;</span><span class="w"> </span>fichier.txt
+<p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 }&#39;</span><span class="w"> </span>fichier.txt
 </span></code></pre></div></td></tr></table></div>
-Si aucun pattern n'est fourni alors <code>awk</code> matchera chaque ligne.</p>
+Si aucun pattern n'est fourni alors <code>awk</code> récupèrera chaque ligne.</p>
 <p>On peut fournir plusieurs commandes à awk en lui fournissant d'autres patterns et actions.</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 } { print $5 }&#39;</span><span class="w"> </span>fichier.txt
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># Ou bien en séparant sur plusieurs lignes :</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 } \</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="s1">{ print $5 }&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>fichier.txt
+</span></code></pre></div></td></tr></table></div>
+<p>Ces actions fonctionnent par bloc d'accolades <code>{}</code>, entre chaque bloc il peut y avoir un pattern pour matcher quelque chose, un bloc <code>{}</code> ne cherchera à match qu'avec le pattern <em>juste</em> avant lui même.</p>
+<p>Si on veut deux commandes qui utilisent le même pattern il faut les mettre dans le même bloc.</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span>
-<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 } { print $5 }&#39;</span><span class="w"> </span>fichier.txt
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># Ou bien en séparant sur plusieurs lignes :</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $1, $3 } \</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="s1">{ print $5 }&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>fichier.txt
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action1 } pattern2 {action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera que sur les lignes matchant pattern2</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action1 } {action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera sur TOUTES les lignes et pas seulement celles matchant pattern1</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action2 ; action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera que sur les lignes matchant pattern1</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="filtrer-par-motif">Filtrer par Motif</h3>
 <p><code>awk</code> permet de rechercher par expressions régulières (vues plus bas) du texte.
 Pour afficher les lignes contenant le mot "ERROR" :</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>awk<span class="w"> </span><span class="s1">&#39;/ERROR/ { print $0 }&#39;</span><span class="w"> </span>fichier.txt
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>awk<span class="w"> </span><span class="s1">&#39;/ERROR/ { print $0 }&#39;</span><span class="w"> </span>fichier.txt<span class="w"> </span><span class="c1"># Permet de récupérer les lignes contenant ERROR.</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>awk<span class="w"> </span><span class="s1">&#39;!/ERROR/ { print $0 }&#39;</span><span class="w"> </span>fichier.txt<span class="w"> </span><span class="c1"># Permet de ne PAS récupérer les lignes contenant ERROR.</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="calculs-et-operations-sur-les-champs">Calculs et Opérations sur les Champs</h3>
-<p>Pour calculer la somme des valeurs des troisième et quatrième champs de chaque ligne:</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ somme = $1 + $2; print somme }&#39;</span><span class="w"> </span>numbers.txt
+<h4 id="exercice">Exercice</h4>
+<p>Cherchez avec <code>awk</code> dans <code>fichier.txt</code> toutes les alertes provenant du serveur numéro 3.</p>
+<details class="note">
+<summary>Exemple de solution</summary>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>awk<span class="w"> </span><span class="s1">&#39;/Server3/ {print $4}&#39;</span><span class="w"> </span>fichier.txt
 </span></code></pre></div></td></tr></table></div>
+</details>
+<h3 id="operations-sur-les-champs">Opérations sur les champs</h3>
+<p><code>awk</code> permet aussi de faire des opérations arithmétiques sur les champs si ceux-ci sont numériques.</p>
+<p>Pour, par exemple, calculer la somme des valeurs des troisième et quatrième champs de chaque ligne:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ somme = $1 + $2; print somme }&#39;</span><span class="w"> </span>numbers.txt
+</span></code></pre></div></td></tr></table></div>
+<p>On peut aussi remplacer le contenu des variables (champs ou lignes par exemple):</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>awk<span class="w"> </span><span class="s1">&#39;{$0 = &quot;Toutes les lignes seront les mêmes !&quot;} {print $0}&#39;</span><span class="w"> </span>fichier.txt
+</span></code></pre></div></td></tr></table></div>
+<h4 id="exercice_1">Exercice</h4>
+<p>Récupérer les alertes de l'infogérant A qui ne sont pas des <code>INFO</code> et remplacer le nom de l'infogérant A par <code>nouveau_infogérant</code> et afficher le tout.</p>
+<details class="note">
+<summary>Tips</summary>
+<p>On peut faire plusieurs pattern de matching avec <code>&amp;&amp;</code> (<code>ET</code> logique) et <code>||</code> (<code>OU</code> logique): <code>awk 'pattern1 &amp;&amp; pattern2 { commande }'</code></p>
+</details>
+<details class="note">
+<summary>Exemple de solution</summary>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>awk<span class="w"> </span><span class="s1">&#39;/InfogérantA/ &amp;&amp; !/INFO/  { $5 = &quot;nouveau_infogérant&quot; ; print $0 }&#39;</span><span class="w"> </span>fichier.txt
+</span></code></pre></div></td></tr></table></div>
+</details>
 <h3 id="mots-cles-begin-et-end">Mots clés BEGIN et END</h3>
 <p><code>BEGIN { action }</code> permet d'exécuter une action avant la lecture de la première ligne. De manière symétrique <code>END { action }</code> permet d'éxécuter une action après la lecture de la dernière ligne.</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { print &quot;Début de traitement&quot; } \</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="s1">/ERROR/ { print $0 } \</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="s1">END { print &quot;Fin de traitement&quot; }&#39;</span><span class="w"> </span>fichier.txt
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN { print &quot;Début de traitement&quot; } \</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="s1">/ERROR/ { print $0 } \</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="s1">END { print &quot;Fin de traitement&quot; }&#39;</span><span class="w"> </span>fichier.txt
 </span></code></pre></div></td></tr></table></div>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># Somme de la première colonne</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN {n=0} {n += $1} END {print n}&#39;</span><span class="w"> </span>numbers.txt
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># Somme de la première colonne</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>awk<span class="w"> </span><span class="s1">&#39;BEGIN {n=0} {n += $1} END {print n}&#39;</span><span class="w"> </span>numbers.txt
 </span></code></pre></div></td></tr></table></div>
+<p>PS: Ici le <code>BEGIN {n=0}</code> n'est pas nécessaire car en pratique <code>awk</code> initialisera tout seul la variable à 0 avant la première incrémentation.</p>
+<h4 id="exercice_2">Exercice</h4>
+<p>Comptez pour <code>Server3</code> et <code>Server2</code> le nombre d'alertes qu'ils possèdent chacun et afficher ces nombres et la somme de ceux-ci.</p>
+<details class="note">
+<summary>Exemple de solution</summary>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>awk<span class="w"> </span><span class="s1">&#39;/Server3/ {n1+=1} /Server2/ {n2+=1} END {print n1, n2, n1+n2}&#39;</span><span class="w"> </span>fichier.txt
+</span></code></pre></div></td></tr></table></div>
+</details>
 <h3 id="fonctions-integrees">Fonctions Intégrées</h3>
 <ul>
 <li><strong><code>length([string])</code></strong> : Renvoie la longueur d'une chaîne ou du champ courant.</li>
@@ -976,13 +1086,6 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <li><strong><code>srand([expr])</code></strong> : Initialise le générateur de nombres aléatoires avec <code>expr</code> ou l'heure actuelle.</li>
 <li><strong><code>rand()</code></strong> : Renvoie un nombre aléatoire entre 0 et 1.</li>
 </ul>
-<h3 id="exercice">Exercice</h3>
-<p>Attraper la ligne précédent un match</p>
-<details class="note">
-<summary>Exemple de solution</summary>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">192</span>.168.1.<span class="o">{</span><span class="m">1</span>..254<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-P<span class="w"> </span><span class="m">0</span><span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/1 reçus/ {print prev} {prev=$0}&#39;</span>
-</span></code></pre></div></td></tr></table></div>
-</details>
 <h2 id="expression-regulieres">Expression Régulières</h2>
 <p>Les expressions régulières (regex) sont un puissant outil de recherche et de manipulation de texte basé sur des motifs. Elles sont utilisées pour correspondre à des chaînes de caractères suivant des règles spécifiques.</p>
 <h3 id="variantes-dexpressions-regulieres">Variantes d'expressions régulières</h3>
@@ -1020,7 +1123,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <li><code>|</code> : OU logique. <code>abcd|efgh</code> correspond à "abcd" ou "efgh".</li>
 </ul>
 <p>Pour utiliser des ERE sur des outils tels que <code>sed</code> et <code>grep</code> il faut rajouter l'option <code>-E</code> :</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;hello|bonjour|hola&quot;</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;hello|bonjour|hola&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>En plus de ces métacaractères, les BRE et les ERE supportent des classes de caractères :</p>
 <ul>
@@ -1037,14 +1140,14 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 <p>Les opérateurs apportés par GNU BRE/ERE permettent de définir notamment les bords d'un mot :</p>
 <ul>
 <li><code>\b</code> et <code>\B</code> : Permet de correspondre le début OU la fin d'un mot. Et pour <code>\B</code> de ne <strong>pas</strong> correspondre le début ou la fin d'un mot.
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;hello\b&quot;</span><span class="w"> </span><span class="c1"># =&gt; matchera</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nb">echo</span><span class="w"> </span>helloworld<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;hello\b&quot;</span><span class="w"> </span><span class="c1"># =&gt; ne matchera pas</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;hello\b&quot;</span><span class="w"> </span><span class="c1"># =&gt; matchera</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nb">echo</span><span class="w"> </span>helloworld<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;hello\b&quot;</span><span class="w"> </span><span class="c1"># =&gt; ne matchera pas</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li><code>\&gt;</code> et <code>\&lt;</code>  : Permet de correspondre seulement le début d'un mot pour <code>\&lt;</code> ou seulement la fin pour <code>\&gt;</code>.</li>
 </ul>
 <p>... sur <code>awk</code> <code>\b</code> est reservé pour <em>backspace</em>, il faut donc utiliser <code>\y</code> à la place ...</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/hello\y/&#39;</span><span class="w"> </span><span class="c1"># Renverra &quot;hello world&quot;</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nb">echo</span><span class="w"> </span>hello<span class="w"> </span>world<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/hello\y/&#39;</span><span class="w"> </span><span class="c1"># Renverra &quot;hello world&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>GNU ERE/BRE fourni aussi des raccourcis pour les classes de regex POSIX tels que <code>\w</code> pour les caractères alphanumériques (<code>\W</code> pour la négation) ou encore <code>\s</code> pour les espaces blancs comme tabulation, espace, \r ... (<code>\S</code> pour la négation).</p>
 <h4 id="perl-compatible-regular-expressions-pcre">Perl-Compatible Regular Expressions (PCRE)</h4>
@@ -1078,45 +1181,45 @@ La syntaxe du langage Perl et du PCRE sont très proches mais pas exactement sim
 </ul>
 <h3 id="expression-regulieres-sur-python-et-contournement">Expression régulières sur Python et contournement</h3>
 <p>En Python, vous pouvez utiliser des regex pour rechercher, découper, remplacer  des motifs dans une chaîne grâce au module <code>re</code>.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span>
-<span class="normal"><a href="#__codelineno-14-4">4</a></span>
-<span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">import</span> <span class="nn">re</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contactez nous à support@example.com ou contact@example.com ou thierry.amettler@proton.me&quot;</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">emails</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kn">import</span> <span class="nn">re</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contactez nous à support@example.com ou contact@example.com ou thierry.amettler@proton.me&quot;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="n">emails</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Python utilise une variante proche de la syntaxe PCRE.</p>
 <p>Python étant un langage de programmation général il peut être judicieux de combiner des Regex avec, par exemple, des conditions <code>if</code>, des variables ou encore des méthodes sur les strings. Cela permet potentiellement de simplifier la lecture du code qui peut vite être peu lisible avec seulement des regex.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contact us at support@example.com or sales@example.com or thierry.amettler@proton.me&quot;</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="k">def</span> <span class="nf">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="k">if</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>        <span class="n">local</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>        <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">domain</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>            <span class="k">return</span> <span class="kc">True</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="k">return</span> <span class="kc">False</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="c1"># Extraire les mots qui sont des adresses email</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Contact us at support@example.com or sales@example.com or thierry.amettler@proton.me&quot;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="k">def</span> <span class="nf">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a>    <span class="k">if</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>        <span class="n">local</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a>        <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">domain</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a>    <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="c1"># Extraire les mots qui sont des adresses email</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">is_email</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 
 

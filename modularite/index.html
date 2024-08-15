@@ -537,6 +537,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Chemin d'accès aux Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -602,6 +617,21 @@
       La solution : les environnements virtuels
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="La solution : les environnements virtuels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -792,6 +822,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Chemin d'accès aux Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -857,6 +902,21 @@
       La solution : les environnements virtuels
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="La solution : les environnements virtuels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -969,15 +1029,9 @@
 <p>Un module en Python est simplement un fichier Python (.py). Par exemple, un fichier <code>mymodule.py</code> pourrait contenir :</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># mymodule.py</span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># mymodule.py</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">def</span> <span class="nf">saluer</span><span class="p">(</span><span class="n">nom</span><span class="p">):</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Bonjour, </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2">!&quot;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="utilisation-des-modules">Utilisation des Modules</h3>
 <h4 id="importation-de-modules">Importation de Modules</h4>
@@ -1022,36 +1076,90 @@
 <h3 id="chemin-dacces-aux-modules">Chemin d'accès aux Modules</h3>
 <p>Python va d'abord chercher le module dans les modules builtins, listés dans <code>sys.builtin_module_names</code>. Si il ne le trouve pas dans cette liste il va chercher le fichier .py du module recherché dans les dossiers listés par <code>sys.path</code>.</p>
 <p>Cette liste contient les dossiers d'installation de modules externes mais aussi le dossier actuel (pour une exécution intéractive) ou le dossier du script .py appelé.</p>
+<h4 id="exercice">Exercice</h4>
+<ol>
+<li>
+<p>Créez un module Python nommé <code>calculs.py</code> qui contient deux fonctions :</p>
+<ul>
+<li><code>addition(a, b)</code> : retourne la somme de <code>a</code> et <code>b</code>.</li>
+<li><code>multiplication(a, b)</code> : retourne le produit de <code>a</code> et <code>b</code>.</li>
+</ul>
+</li>
+<li>
+<p>Dans un autre script Python (par exemple, <code>main.py</code>), importez le module <code>calculs</code> et utilisez les deux fonctions pour :</p>
+<ul>
+<li>Calculer et afficher la somme de <code>10</code> et <code>5</code>.</li>
+<li>Calculer et afficher le produit de <code>10</code> et <code>5</code>.</li>
+</ul>
+</li>
+</ol>
+<details class="notes">
+<summary>Exemple de solution</summary>
+<p><code>calculs.py</code>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># 1. Définition du module avec les fonctions</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">def</span> <span class="nf">multiplication</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</span></code></pre></div></td></tr></table></div>
+<code>main.py</code></p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span>
+<span class="normal"><a href="#__codelineno-6-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># 2. Importation et utilisation du module</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span> <span class="nn">calculs</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="n">somme</span> <span class="o">=</span> <span class="n">calculs</span><span class="o">.</span><span class="n">addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="n">produit</span> <span class="o">=</span> <span class="n">calculs</span><span class="o">.</span><span class="n">multiplication</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La somme de 10 et 5 est :&quot;</span><span class="p">,</span> <span class="n">somme</span><span class="p">)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le produit de 10 et 5 est :&quot;</span><span class="p">,</span> <span class="n">produit</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
 <h2 id="pip-le-gestionnaire-de-paquets-de-python">pip : Le Gestionnaire de Paquets de Python</h2>
 <p><strong>pip</strong> est l'outil officiel et le plus couramment utilisé pour installer et gérer les packages Python. Il permet aux développeurs de rechercher, installer, mettre à jour et désinstaller des packages disponibles dans le Python Package Index (PyPI).</p>
 <p><code>pip</code> est généralement installé par défaut avec Python.</p>
 <h3 id="utilisation-de-base">Utilisation de base</h3>
 <p>Pour installer, désinstaller ou mettre à jour un package :</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>pip<span class="w"> </span>install<span class="w"> </span>nom_du_package
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>nom_du_package
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nom_du_package
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>nom_du_package
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>nom_du_package
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nom_du_package
 </span></code></pre></div></td></tr></table></div>
 <p>Pour voir tous les packages installés dans votre environnement Python, utilisez la commande pip list :</p>
-<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>pip<span class="w"> </span>list
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>pip<span class="w"> </span>list
 </span></code></pre></div></td></tr></table></div>
 <code>pip search</code> permet de rechercher un package, mais il est souvent plus judicieux d'aller les chercher directement sur <a href="https://pypi.org/">PyPI</a>.</p>
 <h3 id="fichier-requirements">Fichier Requirements</h3>
 <p><code>pip</code> permet également d'installer des packages à partir d'un fichier de dépendances (généralement nommé requirements.txt). Ce fichier liste les packages nécessaires à un projet.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a># Exemple de fichier requirements.txt
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>requests==2.25.1
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>numpy&gt;=1.19.5
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>pandas
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a># Exemple de fichier requirements.txt
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>requests==2.25.1
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>numpy&gt;=1.19.5
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>pandas
 </span></code></pre></div></td></tr></table></div>
 <p>Pour installer les modules depuis ce fichier on peut faire :</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </span></code></pre></div></td></tr></table></div>
 <p>On peut utiliser <code>pip freeze</code> pour lister tout les modules installés et leur version et donc générer ce fichier :
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </span></code></pre></div></td></tr></table></div></p>
 <h2 id="les-environnements-virtuels-venv">Les environnements virtuels (venv)</h2>
 <h3 id="le-probleme-de-pip-seul">Le problème de <code>pip</code> seul</h3>
@@ -1067,24 +1175,74 @@
 <p>Toutes ces raisons poussent à vouloir un système qui permet d'isoler les projets les uns des autres et les isoler aussi du système. Pour cela on utilise des environnements virtuels (venvs).</p>
 <p>Python fourni la fonctionnalité par défaut, il n'y a pas besoin de solutions externes qui peuvent amener leur propre lot de problèmes.</p>
 <p>Pour créer un environnement virtuel il suffit d'être positionné dans le dossier du projet et faire : 
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 </span></code></pre></div></td></tr></table></div></p>
 <p><code>-m</code> permet de dire qu'on va appeler un module python, module dénommé <code>venv</code>, ce module appelé tel quel attends le nom de l'environnement virtuel à créer, nom qui ici est aussi <code>venv</code> (mais aurait pu être autre chose).</p>
 <p>La commande va générer un dossier du nom du venv (ici simplement <code>venv</code>) et va le remplir de tout le nécessaire pour avoir un Python isolé, notamment copier le binaire en lui même de python, fournir des méthodes pour activer et désactiver le venv et des dossiers d'installations des modules. Cela reste suffisamment léger (16Mo pour un venv vierge).</p>
 <p>En faisant un <code>pip freeze</code> avant et après activation du venv on peut comparer les modules disponibles. Avant le <code>pip freeze</code> renverra une longue liste de modules tandis que sur un venv vierge il n'y aura rien.</p>
 <p>Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que <code>python</code> doit pointer vers le venv il faut sourcer le script d'activation, et pour désactiver simplement faire <code>deactivate</code>.</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
-<span class="normal"><a href="#__codelineno-11-2">2</a></span>
-<span class="normal"><a href="#__codelineno-11-3">3</a></span>
-<span class="normal"><a href="#__codelineno-11-4">4</a></span>
-<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1"># En étant dans le dossier du projet où le dossier venv se situe</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">source</span><span class="w"> </span>./venv/bin/activate
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1"># Pour désactiver le venv</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>deactivate
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># En étant dans le dossier du projet où le dossier venv se situe</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nb">source</span><span class="w"> </span>./venv/bin/activate
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1"># Pour désactiver le venv</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>deactivate
 </span></code></pre></div></td></tr></table></div>
 <p>Il faut ainsi penser à le réactiver à chaque nouveau Shell. 
 Des éditeurs de texte comme Visual Studio Code permettent de s'occuper de la gestion des venvs et de leur activation aussi.</p>
+<h4 id="exercice_1">Exercice</h4>
+<ol>
+<li><strong>Créer un Environnement Virtuel :</strong></li>
+<li>
+<p>Dans un répertoire de votre choix, créez un environnement virtuel nommé <code>venv</code>.</p>
+</li>
+<li>
+<p><strong>Activer l'Environnement Virtuel :</strong></p>
+</li>
+<li>
+<p>Activez l'environnement virtuel <code>venv</code>.</p>
+</li>
+<li>
+<p><strong>Installer un Package avec <code>pip</code> et faire le fichier de requirements</strong></p>
+</li>
+<li>Utilisez <code>pip</code> pour installer le package <code>requests</code> dans l'environnement virtuel.</li>
+<li>
+<p>Générer le fichier de requirements</p>
+</li>
+<li>
+<p><strong>Vérifier l'Installation :</strong></p>
+</li>
+<li>Démarrez un interpréteur Python et importez le package <code>requests</code> pour vérifier qu'il est installé correctement.</li>
+</ol>
+<details class="notes">
+<summary>Exemple de solution</summary>
+<p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># Allez dans le dossier voulu puis créer le venv</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="c1"># L&#39;activer </span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="nb">source</span><span class="w"> </span>./venv/bin/activate
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="c1"># Installation de requests et génération requirements.txt</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>pip<span class="w"> </span>install<span class="w"> </span>requests
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</span></code></pre></div></td></tr></table></div>
+Test : 
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">requests</span> <span class="c1"># Donnera une réponse claire sur la présence du module ou sinon :</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="n">python</span> <span class="c1"># puis une fois dans l&#39;interpréteur</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">requests</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="o">&gt;&gt;&gt;</span><span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div></p>
+</details>
 <h3 id="un-mot-sur-dautres-solutions">Un mot sur d'autres solutions</h3>
 <p>Il existe de multiples autres solutions pour résoudre ce problème, certaines très connues et apportant bien d'autres fonctionnalités comme <code>conda</code>. Cependant je déconseille fortement leur utilisation pour un néophyte du langage, encore plus dans le cadre d'administration de système Unix, où l'installation de logiciels externes est souvent limitée sur les serveurs.</p>
 <ul>
