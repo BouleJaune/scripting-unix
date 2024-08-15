@@ -212,6 +212,7 @@ La méthode ``.join()`` permet de bloquer l'avancée dans le script jusqu'à ce 
 
 Malgré les résultats peu engageants ``threading`` peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.
 
+L'argument ``args=(arg,)`` s'écrit comme cela car il attends un ``tuple``, et la manière la plus courante d'écrire un tuple de longueur un est celle-ci ``(n,)``.
 
 ### multiprocessing
 
@@ -249,7 +250,6 @@ print('Time taken in seconds -', t2 - t1)
 
 
 Syntaxiquement ``multiprocessing`` peut être utilisé de manière basique comme ``threading``, on défini un objet ``Process``, avec une fonction ``target`` et ses arguments, on le start et on attend la fin de son éxécution avec ``.join()``.
-
 Le temps d'exécution est ici quasiment deux fois plus rapide. 
 
 Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. 
@@ -321,7 +321,7 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
 ### Utiliser la concurrence du Shell avec des scripts Python
 
 
-La concurrence en Shell s'appliquant sur toute commande peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
+La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
 
 ```python
 #!python
