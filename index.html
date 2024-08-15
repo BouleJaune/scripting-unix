@@ -61,7 +61,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introduction" >
+        <meta  property="og:title"  content="Setup de l'environnement" >
       
         <meta  property="og:description"  content="None" >
       
@@ -77,7 +77,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introduction" >
+        <meta  name="twitter:title"  content="Setup de l'environnement" >
       
         <meta  name="twitter:description"  content="None" >
       
@@ -102,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#setup-de-lenvironnement" class="md-skip">
           Aller au contenu
         </a>
       
@@ -138,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Setup de l'environnement
             
           </span>
         </div>
@@ -239,18 +239,149 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Setup de l'environnement
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Introduction
+    Setup de l'environnement
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-de-lenvironnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup de l'environnement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup de l'environnement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      VM Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VM Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installer-une-vm-linux-avec-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installer une VM Linux avec WSL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installer-une-vm-linux-avec-virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installer une VM Linux avec VirtualBox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vim-et-visual-studio-code-vsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim et Visual Studio Code (VSC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vim et Visual Studio Code (VSC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-de-git-sur-ubuntudebian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation de git sur Ubuntu/Debian
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -264,29 +395,16 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
     
     
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -346,27 +464,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="shell/tp-shell/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Travaux Pratique Shell
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -376,6 +473,41 @@
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -390,6 +522,35 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modularite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modularité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -420,12 +581,47 @@
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Awk et Expressions régulières
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Awk et Expressions régulières
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="awk-regex/" class="md-nav__link">
+      <a href="awk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Awk et regex
+    Awk
   </span>
   
 
@@ -433,23 +629,32 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="modularite/" class="md-nav__link">
+      <a href="regex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Modularité
+    Expressions régulières
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -465,7 +670,7 @@
         
   
   <span class="md-ellipsis">
-    Parallelisme
+    Parallelisme en Shell et Python
   </span>
   
 
@@ -491,8 +696,119 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-de-lenvironnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup de l'environnement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup de l'environnement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      VM Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VM Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installer-une-vm-linux-avec-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installer une VM Linux avec WSL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installer-une-vm-linux-avec-virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installer une VM Linux avec VirtualBox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vim-et-visual-studio-code-vsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim et Visual Studio Code (VSC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vim et Visual Studio Code (VSC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-de-git-sur-ubuntudebian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation de git sur Ubuntu/Debian
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -507,86 +823,84 @@
                   
 
 
-<h1 id="introduction">Introduction</h1>
-<p>Les objectifs de la formation</p>
-<p>Connaître les caractéristiques des principaux outils de scripting Unix/Linux</p>
-<p>Savoir lire des scripts Unix/Linux écrits en Shell, Perl, Python Ruby ou AWK</p>
-<p>Être capable d'écrire des scripts simples d'exploitation Unix/Linux</p>
-<p>Comprendre comment choisir l'outil le plus adapté pour résoudre un problème particulier</p>
-<p>Prez perso et demander le niveau des gens</p>
-<h1 id="le-langage-perl-les-bases">Le langage Perl - les bases</h1>
-<p>Prez, utilité de nos jours, spécifité</p>
-<p>Présentation de Perl</p>
-<p>Les variables scalaires, les tableaux, les opérateurs</p>
-<p>Les instructions de contrôle</p>
-<p>Les tableaux associatifs (hash)</p>
-<h1 id="le-langage-ruby-les-bases">Le langage Ruby - les bases</h1>
-<p>Présentation de Ruby
-Les variables
-Les chaînes de caractères\
-Les structures de contrôle\
-Les tableaux, les itérateurs - Les hash\</p>
-<h1 id="le-langage-python-les-bases">Le langage Python - les bases</h1>
-<p>Python est un langage de programmation interprété à usage extrêmement populaire de nos jours.
-Sa facilité facilité d'apprentissage et de lecture est ce qui a fait sa popularité initiale, aujourd'hui c'est la communauté qui en fait sa force avec les milliers de modules et programmes Python disponibles.</p>
-<p>Pour un administrateur système et/ou un devops Python est un langage très attirant, son principal défaut, la potentielle lenteur au runtime, n'est pas un problème dans nos cas d'usage. Python est aussi ce qui est derrière Ansible et permet la création de modules Ansible customs, le plus important outil d'infrastructure as code (IAC) du moment.
-Il est aussi par défaut installé sur la très grande majorité des distributions Linux.</p>
-<h2 id="syntaxe">Syntaxe</h2>
-<p>Variables et expressions\
-Les tableaux, les chaînes de caractères\
-Les instructions de contrôle\
-Les dictionnaires (hash)\</p>
-<h2 id="exercices-python">Exercices Python</h2>
-<h1 id="les-expressions-regulieres-regexp">Les expressions régulières (RegExp)</h1>
-<p>regex car tout est texte
-Importance de grep et sed 
-RegExp en Shell (via grep et sed)\
-RegExp en Perl (normes)\
-RegExp en Python (module re mais osef)\</p>
-<h1 id="la-modularite-en-shell-perl-python-et-ruby">La modularité en Shell, Perl, Python et Ruby</h1>
-<p>parler de direnv, de requirements.txt, de venv python, de classes python (osef un peu)
-y a des trucs pour shell (bpkg) mais pas le but, illogique, shell = spécifique task</p>
-<p>Les fonctions =&gt; dans les parties syntaxes\
-Les paquetages=&gt; oui\
-L'approche objet =&gt; syntaxe\
-Utilisation de bibliothèques externes=&gt; oui\</p>
-<h1 id="la-programmation-parallele-en-shell-perl-python-et-ruby">La programmation parallèle en Shell, Perl, Python et Ruby</h1>
-<p>différentes concurrency
-xargs pipes et parallel et &amp; + wait pour shell
-multi-threading et async pour python</p>
-<h1 id="resoudre-des-problemes-avec-le-shell-perl-python-et-ruby">Résoudre des problèmes avec le Shell, Perl, Python et Ruby</h1>
-<p>Ecrire des scripts d'exploitation (activer une application, les signaux, ...)\
-Manipuler des fichiers\
-Faire des calculs\
-Ecrire des CGI Web\
-Accéder à des bases de données\
-Manipuler des fichiers XML (parsing, validation, création)\
-Créer des applications réseaux TCP/IP\</p>
-<p>Ptit serveur web
-Génération de fichier dans un dossier
-service shell filewatcher qui trigger un truc
-xargs et des pipes pour multiprocessing
-perl ou grep pour regex
-awk pour un truc</p>
-<p>9 - AWK : un sous-ensemble POSIX/ISO du langage Perl</p>
-<p>10 - Conclusion</p>
-<h1 id="quel-outil-pour-quoi-faire">Quel outil pour quoi faire?</h1>
-<h2 id="interets-des-shells-unix">Intérets des Shells Unix</h2>
-<p>Le shell malgré sa syntaxe archaique et ses fonctionnalités limitées vis à vis de langages interprétés à usage général a tout de même encore des avantages.</p>
-<h2 id="actions-uniques">Actions uniques</h2>
-<p>Utile lorsque l'on veut faire une tâche relativement simple que quelques fois. 
-Maitriser le shell permet d'être beaucoup plus rapide dans un environnement Unix
-Exemple: extraire des données textes et les process sommairement
-<code>cat / sed / cut / tr</code> ...</p>
-<h3 id="manipulation-de-binaires">Manipulation de binaires</h3>
-<p>L'une des force de Bash par rapport à d'autres langages et sa facilité à manipuler directement des binaires. En python, par exemple, on peut aussi manipuler des binaires, mais on sent clairement que cela est moins pensé pour.
-Exemple : Utiliser un exécutable propriétaire (import baroc), utiliser l'output d'un script python et l'injecter ailleurs etc</p>
-<h3 id="manipulation-de-texte">Manipulation de texte</h3>
-<p>Tout est texte
-Exemple : lire des logs</p>
-<h3 id="manipulation-os-linux">Manipulation OS linux</h3>
-<p>les deux derniers ~= Manipulation linux pur car linux déjà tout fichiers et texte + binaires unix</p>
-<p>Philo kiss, pleins de petits binaires linux avec une seule tache, trop complexe go python</p>
+  <h1>Setup de l'environnement</h1>
+
+<h2 id="setup-de-lenvironnement">Setup de l'environnement</h2>
+<h3 id="vm-linux">VM Linux</h3>
+<h4 id="installer-une-vm-linux-avec-wsl">Installer une VM Linux avec WSL</h4>
+<p>Si les droits nécessaires sont disponibles le mieux est de passer par une installation via WSL.</p>
+<ul>
+<li>Ouvrez PowerShell en tant qu'administrateur et exécutez la commande suivante pour activer WSL :</li>
+</ul>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>wsl<span class="w"> </span>--install
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>Redémarrez votre ordinateur</li>
+<li>Ouvrez le Microsoft Store et installer Ubuntu par exemple</li>
+<li>Lancez la distribution depuis le menu démarrer et suivre les instructions (ne pas oublier le mdp!)</li>
+<li>C'est bon ! Vous pouvez ouvrir un terminal powershell et faire <code>wsl</code> ou directement ouvrir un terminal <code>wsl</code>.</li>
+</ul>
+<p>Si possible utilisez le <code>Windows Terminal</code> qui est installé par défaut sur Windows 11 ou disponible sur Github ou le Microsoft Store sur Windows 10.</p>
+<h4 id="installer-une-vm-linux-avec-virtualbox">Installer une VM Linux avec VirtualBox</h4>
+<p>Guide Unbuntu : https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview</p>
+<ul>
+<li>Téléchargez et installez VirtualBox depuis le site officiel.</li>
+<li>Téléchargez un ISO Linux, typiquement Ubuntu sur le site officiel.</li>
+<li>Ouvrez VirtualBox et cliquez sur "New"</li>
+<li>Donnez un nom et sélectionner le type "Linux" avec la bonne version</li>
+<li>Attribuez de la mémoire RAM et un disque dur virtuel (dépend de votre PC)</li>
+<li>Démarrez la machine virtuelle et sélectionnez l'ISO télécharger puis suivre les instructions d'installation.</li>
+</ul>
+<h3 id="vim-et-visual-studio-code-vsc">Vim et Visual Studio Code (VSC)</h3>
+<p>Pour faire du scripting il faut un éditeur de texte, et plus celui-ci est puissant, plus il sera agréable de manipuler des fichiers textes et scripts divers et variés.</p>
+<h4 id="vim">Vim</h4>
+<p><code>vim</code> est un éditeur de texte très ancien, entièrement en TUI (Terminal User Interface) soit disponible seulement dans un terminal. Il est en général installé sur la plupart des serveurs Linux et lors d'actions sur ces serveurs il peut être nécessaire de savoir l'utiliser ne serait-ce qu'un minimum.</p>
+<p>En effet <code>vim</code> est un éditeur de texte modale, c'est à dire que par défaut appuyer sur des lettres n'écrit pas du texte mais fait toute une série d'actions diverses et variés qui peuvent se combiner entre elles (ex: <code>dap</code> = Delete All Paragrah). Ce principe rend l'outil strictement inutilisable si on ne connait pas.</p>
+<p>Utilisation très simpliste de <code>vim</code> : </p>
+<ul>
+<li>Ouvrir <code>vim</code> (<code>vim fichier.txt</code>)</li>
+<li>Appuyer sur <code>i</code> pour rentrer en mode insertion, puis se déplacer avec les flèches et faire les modifications voulues.</li>
+<li>Appuyer sur <code>échape</code> pour repasser en mode "normal" une fois les actions faites.</li>
+<li>Appyuer exactement sur <code>:wq</code> pour Write (enregistrer) et Quit.</li>
+<li>Si on veut quitter sans sauvegarder il faut passer en mode normal (<code>échape</code>) et <code>:q!</code>.</li>
+</ul>
+<p>Vim est cependant bien plus puissant que cela, il dispose de mouvements et actions trés poussés ainsi que d'une énorme quantité de plugins à sa disposition (en <code>vimscript</code>). 
+Son successeur <code>neovim</code> est encore plus populaire grâce à ses plugins écrits en <code>lua</code>, un langage plus pratique et universel que le <code>vimscript</code>.</p>
+<p>Vim/neovim sont tellement populaires que chaque année il est élu éditeur le plus apprécié et envié au monde. Cependant il reste bien moins utilisé que Visual Studio Code à cause de sa forte courbe d'apprentissage.</p>
+<h4 id="visual-studio-code">Visual Studio Code</h4>
+<p>Visual Studio Code est donc l'éditeur de texte le plus populaire chez les développeurs. Il ne faut pas le confondre avec Visual Studio qui lui est un IDE à part entière. VSC est open source et disponible sur Linux, MacOS et Windows. Il a une interface utilisateur user friendly et de fortes possibilités de customisation via de nombreux plugins.</p>
+<p>VSC n'étant pas un logicel "free" au sens de sa licence il n'est pas dispo dans les paquets par défaut, il faut donc l'installer comme suit : </p>
+<p>Si <code>snap</code> est disponible :</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>code<span class="w"> </span>--classic
+</span></code></pre></div></td></tr></table></div>
+<p>Sinon sur Debian/Ubuntu : 
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>curl<span class="w"> </span>https://packages.microsoft.com/keys/microsoft.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>&gt;<span class="w"> </span>microsoft.gpg
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">644</span><span class="w"> </span>microsoft.gpg<span class="w"> </span>/etc/apt/keyrings/microsoft-archive-keyring.gpg
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
+</span></code></pre></div></td></tr></table></div>
+Puis :
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apt-transport-https
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>code
+</span></code></pre></div></td></tr></table></div></p>
+<p>On peut lancer normalement VSC, mais on peut aussi ouvrir un projet depuis un terminal (que ce soit sur Linux ou Windows) en faisant simplement <code>code .</code> dans le répertoire du projet.</p>
+<p>VSC propose une intégration très pratique avec WSL si la VM installée utilise WSL.</p>
+<h3 id="git">git</h3>
+<p>Git est un système de contrôle de version distribué utilisé pour suivre les modifications du code source tout au long du développement logiciel. Il permet aux développeurs de collaborer efficacement, de gérer différentes versions d'un projet, et de conserver un historique complet des modifications.</p>
+<p>Git n'est initialement qu'un logiciel et est à ne pas confondre avec Github qui est une plateforme permettant de fournir un serveur distant git et un GUI tout en rajoutant d'autres fonctionnalités (issues, github actions etc...). Il y a d'autres solutions similaires à Github tel que Gitlab, Gitea, sourcehut etc...</p>
+<h4 id="installation-de-git-sur-ubuntudebian">Installation de git sur Ubuntu/Debian</h4>
+<p>Dans un terminal faire : 
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</span></code></pre></div></td></tr></table></div></p>
+<p>Git permet de faire beaucoup d'actions sur le code source mais pour ce cours il sera simplement nécessaire de cloner le repo du cours :
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/BouleJaune/scripting-unix.git
+</span></code></pre></div></td></tr></table></div></p>
 
 
 
@@ -642,7 +956,7 @@ Exemple : lire des logs</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
       <script src="assets/javascripts/bundle.fe8b6f2b.min.js"></script>
