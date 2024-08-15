@@ -977,6 +977,7 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 <p>Pour utiliser <code>threading</code>, une manière simple est de définir chaque threads avec <code>threading.Thread</code> en rajoutant comme argument la tâche à effectuer avec ses arguments. Juste définir un objet <code>Thread</code> ne l'exécute pas. Il faut utiliser la méthode <code>.start()</code> sur l'objet pour le lancer.</p>
 <p>La méthode <code>.join()</code> permet de bloquer l'avancée dans le script jusqu'à ce que les threads aient fini de s'exécuter.</p>
 <p>Malgré les résultats peu engageants <code>threading</code> peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.</p>
+<p>L'argument <code>args=(arg,)</code> s'écrit comme cela car il attends un <code>tuple</code>, et la manière la plus courante d'écrire un tuple de longueur un est celle-ci <code>(n,)</code>.</p>
 <h3 id="multiprocessing">multiprocessing</h3>
 <p>Lorsque l'on veut donc accélérer une tâche limitée par le CPU on peut utiliser la librairie <code>multiprocessing</code> qui permet la création de différents processus qui iront sur des coeurs différents.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
@@ -1033,8 +1034,8 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 </span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26"></a>
 </span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Syntaxiquement <code>multiprocessing</code> peut être utilisé de manière basique comme <code>threading</code>, on défini un objet <code>Process</code>, avec une fonction <code>target</code> et ses arguments, on le start et on attend la fin de son éxécution avec <code>.join()</code>.</p>
-<p>Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
+<p>Syntaxiquement <code>multiprocessing</code> peut être utilisé de manière basique comme <code>threading</code>, on défini un objet <code>Process</code>, avec une fonction <code>target</code> et ses arguments, on le start et on attend la fin de son éxécution avec <code>.join()</code>.
+Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
 <p>Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. </p>
 <p>De plus la communication entre les processus est plus compliquée que la communication inter-threads de <code>threading</code>.</p>
 <h4 id="exercice_1">Exercice</h4>
@@ -1129,7 +1130,7 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 </span></code></pre></div></td></tr></table></div></p>
 </details>
 <h3 id="utiliser-la-concurrence-du-shell-avec-des-scripts-python">Utiliser la concurrence du Shell avec des scripts Python</h3>
-<p>La concurrence en Shell s'appliquant sur toute commande peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
+<p>La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
