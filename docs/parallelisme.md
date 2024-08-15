@@ -232,10 +232,15 @@ def carre(deb_fin):
         del k
 
 
+process1 = multiprocessing.Process(target=carre, args=((0, n // 2),))
+process2 = multiprocessing.Process(target=carre, args=((n // 2, n),))
+
 t1 = time.time()
 
-with multiprocessing.Pool() as pool:
-    pool.map(carre, [(0, n // 2), (n // 2, n)])
+process1.start()
+process2.start()
+process1.join()
+process2.join()
 
 t2 = time.time()
 
@@ -243,7 +248,8 @@ print('Time taken in seconds -', t2 - t1)
 ```
 
 
-Pour faire fonctionner ``multiprocessing`` on peut définir un objet ``Pool`` et y maper une fonction et une liste d'arguments, la librairie s'occupera d'appliquer ces arguments à la fonction et d'exécuter ceci dans des processus différents.
+Syntaxiquement ``multiprocessing`` peut être utilisé de manière basique comme ``threading``, on défini un objet ``Process``, avec une fonction ``target`` et ses arguments, on le start et on attend la fin de son éxécution avec ``.join()``.
+
 Le temps d'exécution est ici quasiment deux fois plus rapide. 
 
 Cependant il est important de noter que créer un processus est une tâche prenant un peu de temps, il est donc peu judicieux d'utiliser du multiprocessing lorsqu'il y a des milliers et des milliers de tâches n'étant pas limitées par le CPU par exemple. 
@@ -254,7 +260,7 @@ De plus la communication entre les processus est plus compliquée que la communi
 
 Implémenter une tâche simple en parallèle en utilisant le module `threading` ou le module `multiprocessing` (ou les deux !). L'opération simple peut être, par exemple, additionner les éléments d'une liste.
 
-   - Créez une fonction `somme_liste(nums)` qui prend une liste de nombres comme argument et retourne la somme des éléments de cette liste après une pause de 1 seconde (pour simuler une tâche longue).
+   - Créez une fonction `somme_liste(nums)` qui prend une liste de nombres comme argument et affiche la liste et la somme des éléments de cette liste après une pause de 1 seconde (pour simuler une tâche longue).
    - Exécuter en parallèle cette fonction sur plusieurs listes en même temps, soit avec ``threading``, soit avec ``multiprocessing``.
 
 ??? Note "Tips"
@@ -269,7 +275,7 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
 
     def somme_liste(nums):
         time.sleep(1)  # Simule une tâche longue
-        return sum(nums) # nums ici est une liste, et sum en fait la somme
+        return print(f"Liste : {nums} et somme: {sum(nums)}")
 
     # Listes à traiter
     listes = [
@@ -282,15 +288,11 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
     Utilisation de ``threading`` :
     ```python
     import threading
-    # Fonction wrapper pour exécuter la somme dans un thread
-    def thread_func(liste):
-        resultat = somme_liste(liste)
-        print(f"Somme de {liste} : {resultat}")
 
     # Lancer les threads
     threads = []
     for liste in listes:
-        thread = threading.Thread(target=thread_func, args=(liste,))
+        thread = threading.Thread(target=somme_liste, args=(liste,))
         threads.append(thread)
         thread.start()
 
@@ -303,15 +305,10 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
     ```python
     import multiprocessing
 
-    # Fonction wrapper pour exécuter la somme dans un processus
-    def process_func(liste):
-        resultat = somme_liste(liste)
-        print(f"Somme de {liste} : {resultat}")
-
     # Lancer les processus
     processes = []
     for liste in listes:
-        process = multiprocessing.Process(target=process_func, args=(liste,))
+        process = multiprocessing.Process(target=somme_liste, args=(liste,))
         processes.append(process)
         process.start()
 
