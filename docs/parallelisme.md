@@ -321,7 +321,7 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
 ### Utiliser la concurrence du Shell avec des scripts Python
 
 
-La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
+La concurrence en Shell s'appliquant sur toute commande peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
 
 ```python
 #!python
