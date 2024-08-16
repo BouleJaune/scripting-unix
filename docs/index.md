@@ -44,9 +44,9 @@ Utilisation très simpliste de ``vim`` :
 
 - Ouvrir ``vim`` (``vim fichier.txt``)
 - Appuyer sur ``i`` pour rentrer en mode insertion, puis se déplacer avec les flèches et faire les modifications voulues.
-- Appuyer sur ``échape`` pour repasser en mode "normal" une fois les actions faites.
+- Appuyer sur ``esc`` pour repasser en mode "normal" une fois les actions faites.
 - Appyuer exactement sur ``:wq`` pour Write (enregistrer) et Quit.
-- Si on veut quitter sans sauvegarder il faut passer en mode normal (``échape``) et ``:q!``.
+- Si on veut quitter sans sauvegarder il faut passer en mode normal (``esc``) et ``:q!``.
 
 
 Vim est cependant bien plus puissant que cela, il dispose de mouvements et actions trés poussés ainsi que d'une énorme quantité de plugins à sa disposition (en ``vimscript``). 
