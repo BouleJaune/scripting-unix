@@ -12,6 +12,7 @@ nav:
     - Awk : 'awk.md'
     - Expressions régulières : 'regex.md'
   - Parallelisme en Shell et Python: 'parallelisme.md'
+  - Travaux pratique: 'travaux-pratique.md'
 
 # Theme material
 theme:
