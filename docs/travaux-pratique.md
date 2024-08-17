@@ -17,11 +17,12 @@ Ces données seront sous la forme d'un fichier texte/csv et représenteront des 
 
 Exemples d'alertes possibles :
 
+```python
 "INFO": ["System running smoothly.", "Routine check completed.", "Backup successful.", "Restart performed successfully", "Update was successful"],
 "WARNING": ["Disk space running low.", "High memory usage detected.", "Unusual login activity detected.", "Load average running high", "MySQL response time slow"],
 "ERROR": ["Application crashed.", "Service unavailable.", "Database connection lost.", "FileSystem saturated", "Server unresponsive"],
 "CRITICAL": ["System overload imminent.", "Critical security vulnerability detected.", "Data corruption detected.", "System bricked", "Server is on fire"]
-
+```
 Vous pouvez utiliser la librairie ``pandas`` ou ``csv`` pour enregistrer au format ``csv`` les données mais ce n'est pas forcément nécessaire.
 
 Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (10000 par exemple).
