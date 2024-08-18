@@ -12,6 +12,8 @@
         <link rel="prev" href="../regex/">
       
       
+        <link rel="next" href="../travaux-pratique/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
@@ -695,6 +697,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../travaux-pratique/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Travaux pratique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -855,16 +877,16 @@
 
 <h1 id="la-programmation-parallele-en-shell-et-python">La programmation parallèle en Shell et Python</h1>
 <h2 id="differentes-types-de-concurrence">Différentes types de concurrence</h2>
-<p>La <strong>concurrence</strong> (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches <em>existent</em> en même temps. Le <strong>parallélisme</strong> quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.</p>
+<p>La <strong>concurrence</strong> (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches <em>existent</em> en même temps. Le <strong>parallélisme</strong> quant à lui désigne l'éxécution simultanée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.</p>
 <p>Le parallélisme est donc une sous catégorie de concurrence mais nécessite un processeur multicoeurs.</p>
 <p>Une manière de faire de la concurrence sans faire du parallélisme est de faire de la programmation asynchrone. En programmation asynchrone une tâche sera non bloquante et permettra donc de passer à l'étape suivante, contrairement à la programmation classique (synchrone) où une tâche est bloquante tant qu'elle n'est pas finie. Ceci est utile lorsque la tâche en question ne nécessite aucune actions du processeur.</p>
 <p>On peut imaginer une commande <code>sleep 10</code> qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce <code>sleep 10</code>, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce <code>sleep 10</code> finisse. </p>
-<p>Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un notre.</p>
+<p>Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un autre.</p>
 <h2 id="concurrence-sur-bash">Concurrence sur Bash</h2>
 <p>Le shell Unix étant bien plus proche du système Linux la gestion de la concurrence est quasiment directement celle du kernel Linux. 
 Un processus possède minimum un thread mais peut en posséder plus.</p>
 <p>Quand un coeur du processeur est libre, le système choisi un thread en attente de traitement et s'en occupe.
-Après un certain temps ce thread peut être remis en attente et/ou déplacer vers un autre coeur pour optimiser le système, mais ce n'est pas quelque chose à prendre en compte en tant que développeurs.</p>
+Après un certain temps ce thread peut être remis en attente et/ou déplacé vers un autre coeur pour optimiser le système, mais ce n'est pas quelque chose à prendre en compte en tant que développeurs.</p>
 <p>Ainsi, faire du multiprocessing en Bash revient à lancer plusieurs processus et laisser Linux s'en occuper.
 On ne peut pas faire du multithreading en Bash.</p>
 <h3 id="processus-en-arriere-plan">Processus en arrière plan</h3>
@@ -885,7 +907,7 @@ On ne peut pas faire du multithreading en Bash.</p>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nb">echo</span><span class="w"> </span>Fin<span class="w"> </span>!
 </span></code></pre></div></td></tr></table></div>
 <p>On peut aussi lister les jobs en arrière plan avec <code>jobs</code> et remettre un job au premier plan avec <code>fg</code> (pour <em>foreground</em>).</p>
-<p>Parfois on se rends compte qu'une commande est longue à s'éxécuter et on aurait aimé la mettre en arrière plan. C'est possible via la combinaison de <code>CTRL+Z</code> suivi de la commande <code>bg</code> (pour <em>background</em>).
+<p>Parfois on se rend compte qu'une commande est longue à s'éxécuter et on aurait aimé la mettre en arrière plan. C'est possible via la combinaison de <code>CTRL+Z</code> suivi de la commande <code>bg</code> (pour <em>background</em>).
 <code>CTRL+Z</code> permet de suspendre un job et rendre la main dans le shell et <code>bg</code> permet d'arrêter la suspension et de continuer l'exécution du processus.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
@@ -916,7 +938,7 @@ Tout les processus d'une série de pipes sont lancés en même temps au début. 
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="m">3</span><span class="w"> </span><span class="m">4</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="m">5</span><span class="w"> </span><span class="m">6</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Par défaut si aucune commande n'est fournis, <code>xargs</code> fera un <code>echo</code> des arguments. Sinon <code>xargs</code> les rajoutera à la fin de la commande.
+<p>Par défaut si aucune commande n'est fournie, <code>xargs</code> fera un <code>echo</code> des arguments. Sinon <code>xargs</code> les rajoutera à la fin de la commande.
 Le <code>-n 2</code> permet de préciser de grouper 2 par 2 les arguments.</p>
 <p>On peut utiliser <code>-I {}</code> pour placer où on veut les arguments et pas seulement à la fin.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
@@ -961,7 +983,7 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 <h2 id="python">Python</h2>
 <p>Il existe sur Python trois manières principales de faire de la programmation concurrentielle, via les modules <code>threading</code>, <code>asyncio</code> et <code>multiprocessing</code>. Les trois permettent de la concurrence mais il y a des subtilités entre elles. On ne verra pas <code>asyncio</code> dans ce cours.</p>
 <p>On peut mesurer le temps d'exécution de fonctions grâce au module <code>time</code> et sa fonction <code>time()</code>. C'est essentiel de mesurer lorsque l'on cherche à optimiser des temps d'exécution.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
@@ -974,20 +996,20 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 <span class="normal"><a href="#__codelineno-10-11">11</a></span>
 <span class="normal"><a href="#__codelineno-10-12">12</a></span>
 <span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>import time
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">time</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>n = 100000000
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">100000000</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>def carre(debut, fin):
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>    for i in range(debut, fin):
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>        k = i**2
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>        del k
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="k">def</span> <span class="nf">carre</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>        <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>        <span class="k">del</span> <span class="n">k</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a>t1 = time.time()
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a>carre(0, n)
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a>t2 = time.time()
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">carre</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a>print(&#39;Time taken in seconds -&#39;, t2 - t1)
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time taken in seconds -&#39;</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Ce code permet de mesurer le temps d'exécution du calcul de chaque carré entre 0 et 100000000-1. Il prend 4.8s à s'exécuter sur mon système.</p>
 <h3 id="threading">threading</h3>
@@ -1050,7 +1072,7 @@ En effet il suffit de rajouter simplement <code>-P N</code> avec <code>N</code> 
 <p>Cette version du code précédent prends 4.9s à s'exécuter malgré qu'il y ait deux threads faisant les calculs.</p>
 <p>Pour utiliser <code>threading</code>, une manière simple est de définir chaque threads avec <code>threading.Thread</code> en rajoutant comme argument la tâche à effectuer avec ses arguments. Juste définir un objet <code>Thread</code> ne l'exécute pas. Il faut utiliser la méthode <code>.start()</code> sur l'objet pour le lancer.</p>
 <p>La méthode <code>.join()</code> permet de bloquer l'avancée dans le script jusqu'à ce que les threads aient fini de s'exécuter.</p>
-<p>Malgré les résultats peu engageants <code>threading</code> peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.</p>
+<p>Malgré les résultats peu engageants <code>threading</code> peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attend la réponse des serveurs.</p>
 <p>L'argument <code>args=(arg,)</code> s'écrit comme cela car il attends un <code>tuple</code>, et la manière la plus courante d'écrire un tuple de longueur un est celle-ci <code>(n,)</code>.</p>
 <h3 id="multiprocessing">multiprocessing</h3>
 <p>Lorsque l'on veut donc accélérer une tâche limitée par le CPU on peut utiliser la librairie <code>multiprocessing</code> qui permet la création de différents processus qui iront sur des coeurs différents.</p>
@@ -1204,7 +1226,7 @@ Le temps d'exécution est ici quasiment deux fois plus rapide. </p>
 </span></code></pre></div></td></tr></table></div></p>
 </details>
 <h3 id="utiliser-la-concurrence-du-shell-avec-des-scripts-python">Utiliser la concurrence du Shell avec des scripts Python</h3>
-<p>La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
+<p>La concurrence en Shell s'appliquant sur toute commande on peut aussi l'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec <code>sys.argv</code>, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via <code>xargs</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>

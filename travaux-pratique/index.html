@@ -9,25 +9,23 @@
       
       
       
-        <link rel="prev" href="../shell/">
+        <link rel="prev" href="../parallelisme/">
       
       
-        <link rel="next" href="../../python/">
       
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
-        <title>Cheatsheet Shell - Scripting Unix</title>
+        <title>Travaux pratique - Scripting Unix</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -63,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Cheatsheet Shell - Scripting Unix" >
+        <meta  property="og:title"  content="Travaux pratique - Scripting Unix" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="./assets/images/social/shell/cheatsheet-shell.png" >
+        <meta  property="og:image"  content="./assets/images/social/travaux-pratique.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,11 +77,11 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Cheatsheet Shell - Scripting Unix" >
+        <meta  name="twitter:title"  content="Travaux pratique - Scripting Unix" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="./assets/images/social/shell/cheatsheet-shell.png" >
+        <meta  name="twitter:image"  content="./assets/images/social/travaux-pratique.png" >
       
     
     
@@ -104,7 +102,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cheatsheet-des-commandes-unix" class="md-skip">
+        <a href="#travaux-pratique" class="md-skip">
           Aller au contenu
         </a>
       
@@ -120,7 +118,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Scripting Unix" class="md-header__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+    <a href=".." title="Scripting Unix" class="md-header__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -140,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cheatsheet Shell
+              Travaux pratique
             
           </span>
         </div>
@@ -217,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Scripting Unix" class="md-nav__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
+    <a href=".." title="Scripting Unix" class="md-nav__button md-logo" aria-label="Scripting Unix" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -235,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -252,19 +250,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -278,7 +274,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Shell
@@ -292,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shell/" class="md-nav__link">
+      <a href="../shell/shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -310,30 +306,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Cheatsheet Shell
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../shell/cheatsheet-shell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -342,107 +318,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commandes-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Commandes de Base
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gestion-des-fichiers-et-repertoires" class="md-nav__link">
-    <span class="md-ellipsis">
-      Gestion des Fichiers et Répertoires
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visualisation-et-edition-de-fichiers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visualisation et Edition de Fichiers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#filtrage-de-texte" class="md-nav__link">
-    <span class="md-ellipsis">
-      Filtrage de Texte
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gestion-des-processus" class="md-nav__link">
-    <span class="md-ellipsis">
-      Gestion des Processus
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#permissions-et-proprietes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permissions et Propriétés
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reseau-et-connexions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Réseau et Connexions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autres-utilitaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      Autres Utilitaires
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redirection-et-pipes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Redirection et Pipes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -497,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/" class="md-nav__link">
+      <a href="../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -518,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modularite/" class="md-nav__link">
+      <a href="../modularite/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -546,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../perl-ruby/" class="md-nav__link">
+      <a href="../perl-ruby/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../awk/" class="md-nav__link">
+      <a href="../awk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../regex/" class="md-nav__link">
+      <a href="../regex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -650,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../parallelisme/" class="md-nav__link">
+      <a href="../parallelisme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -667,10 +542,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../travaux-pratique/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Travaux pratique
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -679,6 +574,89 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generer-des-donnees-factices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Générer des données factices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-exploring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data exploring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data processing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Django Rest API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-watcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data watcher
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrer-ces-scripts-au-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intégrer ces scripts au système
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pour-aller-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pour aller plus loin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -710,81 +688,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commandes-de-base" class="md-nav__link">
+  <a href="#generer-des-donnees-factices" class="md-nav__link">
     <span class="md-ellipsis">
-      Commandes de Base
+      Générer des données factices
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#gestion-des-fichiers-et-repertoires" class="md-nav__link">
+  <a href="#data-exploring" class="md-nav__link">
     <span class="md-ellipsis">
-      Gestion des Fichiers et Répertoires
+      Data exploring
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#visualisation-et-edition-de-fichiers" class="md-nav__link">
+  <a href="#data-processing" class="md-nav__link">
     <span class="md-ellipsis">
-      Visualisation et Edition de Fichiers
+      Data processing
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#filtrage-de-texte" class="md-nav__link">
+  <a href="#django-rest-api" class="md-nav__link">
     <span class="md-ellipsis">
-      Filtrage de Texte
+      Django Rest API
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#gestion-des-processus" class="md-nav__link">
+  <a href="#data-watcher" class="md-nav__link">
     <span class="md-ellipsis">
-      Gestion des Processus
+      Data watcher
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#permissions-et-proprietes" class="md-nav__link">
+  <a href="#integrer-ces-scripts-au-systeme" class="md-nav__link">
     <span class="md-ellipsis">
-      Permissions et Propriétés
+      Intégrer ces scripts au système
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reseau-et-connexions" class="md-nav__link">
+  <a href="#pour-aller-plus-loin" class="md-nav__link">
     <span class="md-ellipsis">
-      Réseau et Connexions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#autres-utilitaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      Autres Utilitaires
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redirection-et-pipes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Redirection et Pipes
+      Pour aller plus loin
     </span>
   </a>
   
@@ -805,84 +765,74 @@
                   
 
 
-<h1 id="cheatsheet-des-commandes-unix">Cheatsheet des Commandes Unix</h1>
-<p>Le manuel, souvent appelé "man", est une collection de pages de documentation pour les commandes Unix et les programmes. Chaque page fournit une description détaillée de l'utilisation, des options, des exemples et de la syntaxe d'une commande ou d'un programme spécifique.</p>
-<p>La commande <code>man</code> est utilisée pour afficher ces pages de manuel. Par exemple, <code>man ls</code> affiche la documentation pour la commande <code>ls</code>. Cette documentation est essentielle pour comprendre les différentes options et usages des commandes disponibles dans le système Unix.</p>
-<h4 id="commandes-de-base">Commandes de Base</h4>
+<h1 id="travaux-pratique">Travaux Pratique</h1>
+<h2 id="generer-des-donnees-factices">Générer des données factices</h2>
+<p>Faites un script Python générant des données de supervision factices. 
+Ces données seront sous la forme d'un fichier texte/csv et représenteront des alertes avec comme champs : </p>
 <ul>
-<li><code>pwd</code> : Affiche le chemin du répertoire de travail actuel.</li>
-<li><code>cd [répertoire]</code> : Change le répertoire courant.</li>
-<li><code>ls</code> : Liste les fichiers et répertoires.</li>
-<li><code>ls -l</code> : Liste détaillée, avec notamment les droits.</li>
-<li><code>ls -a</code> : Inclut les fichiers cachés.</li>
+<li>Timestamp </li>
+<li>Serveur concerné</li>
+<li>Criticité de l'alerte (critique, informations, erreur...)</li>
+<li>Message de l'alerte</li>
+<li>Infogerant à la charge de l'alerte</li>
+<li>Application concernée</li>
+<li>Environment (prod, hors-prod, testing etc)</li>
 </ul>
-<h4 id="gestion-des-fichiers-et-repertoires">Gestion des Fichiers et Répertoires</h4>
+<p>Exemples d'alertes possibles :</p>
+<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="s2">&quot;INFO&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;System running smoothly.&quot;</span><span class="p">,</span> <span class="s2">&quot;Routine check completed.&quot;</span><span class="p">,</span> <span class="s2">&quot;Backup successful.&quot;</span><span class="p">,</span> <span class="s2">&quot;Restart performed successfully&quot;</span><span class="p">,</span> <span class="s2">&quot;Update was successful&quot;</span><span class="p">],</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="s2">&quot;WARNING&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Disk space running low.&quot;</span><span class="p">,</span> <span class="s2">&quot;High memory usage detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;Unusual login activity detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;Load average running high&quot;</span><span class="p">,</span> <span class="s2">&quot;MySQL response time slow&quot;</span><span class="p">],</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="s2">&quot;ERROR&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Application crashed.&quot;</span><span class="p">,</span> <span class="s2">&quot;Service unavailable.&quot;</span><span class="p">,</span> <span class="s2">&quot;Database connection lost.&quot;</span><span class="p">,</span> <span class="s2">&quot;FileSystem saturated&quot;</span><span class="p">,</span> <span class="s2">&quot;Server unresponsive&quot;</span><span class="p">],</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="s2">&quot;CRITICAL&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;System overload imminent.&quot;</span><span class="p">,</span> <span class="s2">&quot;Critical security vulnerability detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;Data corruption detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;System bricked&quot;</span><span class="p">,</span> <span class="s2">&quot;Server is on fire&quot;</span><span class="p">]</span>
+</span></code></pre></div></td></tr></table></div>
+Vous pouvez utiliser la librairie <code>pandas</code> ou <code>csv</code> pour enregistrer au format <code>csv</code> les données mais ce n'est pas forcément nécessaire.</p>
+<p>Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (10000 par exemple).</p>
+<h2 id="data-exploring">Data exploring</h2>
+<p>Utilisez directement la ligne de commande pour explorer un peu les données pour récupérer notamment : </p>
 <ul>
-<li><code>cp [source] [destination]</code> : Copie des fichiers.</li>
-<li><code>cp -r [source] [destination]</code> : Copie récursive pour les répertoires.</li>
-<li><code>mv [source] [destination]</code> : Déplace ou renomme des fichiers/répertoires.</li>
-<li><code>rm [fichier]</code> : Supprime des fichiers.</li>
-<li><code>rm -r [répertoire]</code> : Supprime des répertoires et leur contenu.</li>
-<li><code>mkdir [répertoire]</code> : Crée un nouveau répertoire.<ul>
-<li><code>mkdir -p [répertoire]</code> : Crée un nouveau répertoire et les répertoires parents si nécessaires et ne renvoit pas d'erreur si le répertoire existe.</li>
+<li>Le nombre de serveurs différents</li>
+<li>Le nombre d'alertes pour un serveur donné</li>
+<li>La liste des alertes critiques</li>
+<li>Toutes les alertes non-INFO</li>
+<li>D'autres choses selon vos idées</li>
 </ul>
-</li>
-</ul>
-<h4 id="visualisation-et-edition-de-fichiers">Visualisation et Edition de Fichiers</h4>
+<h2 id="data-processing">Data processing</h2>
+<p>Faites un script Bash qui va récupérer toutes ces données de supervision et générer un fichier pour chaque alerte.
+Le fichier sera de la forme :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Date :
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>Serveur :
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>Criticité :
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>Message : 
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>Infogerant :
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>Application :
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>Environnement :
+</span></code></pre></div></td></tr></table></div>
+<h2 id="django-rest-api">Django Rest API</h2>
+<p>Utilisez la librairie Django Rest framework pour créer une Rest API simple qui sera en mesure de recevoir les alertes dans une base de données SQlite.</p>
 <ul>
-<li><code>cat [fichier]</code> : Affiche le contenu d'un fichier.</li>
-<li><code>less [fichier]</code> : Affiche le contenu d'un fichier page par page.</li>
-<li><code>head -n [nombre] [fichier]</code> : Affiche les premières lignes d'un fichier ou du <code>stdin</code> sans fichier.</li>
-<li><code>tail -n [nombre] [fichier]</code> : Affiche les dernières lignes d'un fichier ou du <code>stdin</code> sans fichier.</li>
-<li><code>vim [fichier]</code> : Editeur de texte modal.</li>
-<li><code>diff [fichier1] [fichier2]</code> : Affiche la différence entre deux fichiers.</li>
+<li>Sur l'URL <code>/api/alert</code> on pourra récupérer via <code>GET</code> les alertes et via <code>POST</code> on pourra en rajouter</li>
+<li>Sur l'URL <code>/api/alert/[id d'une alerte]</code> on pourra récupérer via <code>GET</code> une alerte précise, la supprimer via <code>DELETE</code> ou la modifier via <code>POST</code>.</li>
 </ul>
-<h4 id="filtrage-de-texte">Filtrage de Texte</h4>
+<h2 id="data-watcher">Data watcher</h2>
+<p>Faire un script qui lis le dossier contenant les fichiers d'alertes et les injecte dans la base de donnée via la Rest API.</p>
+<h2 id="integrer-ces-scripts-au-systeme">Intégrer ces scripts au système</h2>
+<p>Il peut être intéressant d'intégrer proprement les scripts dans le système pour avoir une meilleure gestion et monitoring de ceux-ci.</p>
+<p>Pour cela on peut utiliser Systemd :</p>
 <ul>
-<li><code>grep [motif] [fichier]</code> : Recherche un motif dans un fichier ou dans le <code>stdin</code> sans fichier.</li>
-<li><code>grep -r [motif] [répertoire]</code> : Recherche récursive dans les fichiers d'un répertoire.</li>
-<li><code>uniq</code> : Supprime les doublons (nécessite un tri préalable).</li>
-<li><code>sort [fichier]</code> : Trie le contenu d'un fichier ou du <code>stdin</code> sans fichier.</li>
-<li><code>sort -u [fichier]</code> : Trie le conteu et supprime les doublons.</li>
-<li><code>cut -d [délimiteur] -f [champs] [fichier]</code> : Coupe les champs d'un fichier texte.</li>
-<li><code>sed 's/[motif]/[remplacement]/g' [fichier]</code> : Stream Editor pour filtrer et transformer le texte; ici, remplace tous les occurrences de "motif" par "remplacement". Sans fichier fourni il prendra le <code>stdin</code></li>
+<li>Faire un service systemd pour le serveur Django.</li>
+<li>Faire un timer systemd + service systemd pour le script lisant les données.</li>
+<li>Faire un autre service avec timer pour la génération périodique de données. Il peut être intéressant de faire un petit script wrapper du script Python et Shell.</li>
 </ul>
-<h4 id="gestion-des-processus">Gestion des Processus</h4>
-<ul>
-<li><code>ps</code> : Affiche les processus en cours.</li>
-<li><code>ps aux</code> : Affiche tous les processus avec détails.</li>
-<li><code>top</code> : Affiche en temps réel les processus les plus gourmands.</li>
-<li><code>kill [PID]</code> : Termine le processus avec le PID spécifié.</li>
-</ul>
-<h4 id="permissions-et-proprietes">Permissions et Propriétés</h4>
-<ul>
-<li><code>chmod [permissions] [fichier]</code> : Change les permissions d'un fichier.</li>
-<li><code>chmod 755 [fichier]</code> : Donne les permissions <code>rwxr-xr-x</code>.</li>
-<li><code>chown [utilisateur]:[groupe] [fichier]</code> : Change le propriétaire et le groupe d'un fichier.</li>
-<li><code>chgrp [groupe] [fichier]</code> : Change le groupe d'un fichier.</li>
-</ul>
-<h4 id="reseau-et-connexions">Réseau et Connexions</h4>
-<ul>
-<li><code>ping [adresse]</code> : Vérifie la connectivité vers une adresse IP.</li>
-<li><code>ifconfig</code> : Affiche les configurations réseau des interfaces.</li>
-<li><code>wget [URL]</code> : Télécharge un fichier depuis une URL.</li>
-</ul>
-<h4 id="autres-utilitaires">Autres Utilitaires</h4>
-<ul>
-<li><code>echo [texte]</code> : Affiche un texte.</li>
-<li><code>date</code> : Affiche ou modifie la date et l'heure système.</li>
-<li><code>history</code> : Affiche l'historique des commandes.</li>
-<li><code>alias [alias]='[commande]'</code> : Crée un alias pour une commande.</li>
-<li><code>xargs</code> : Construit et exécute des commandes à partir du <code>stdin</code>, utilisé pour manipuler des arguments.</li>
-<li><code>tr 'car1' 'car2'</code> : Transcode les caractères, ici remplace les occurrences de 'car1' par 'car2' dans le <code>stdin</code>. On peut notamment utiliser <code>tr [:upper:] [:lower:]</code> pour passer tout les caractères en minuscule.</li>
-</ul>
-<h4 id="redirection-et-pipes">Redirection et Pipes</h4>
-<ul>
-<li><code>command1 &gt; fichier</code> : Redirige la sortie standard de <code>command1</code> vers <code>fichier</code>.</li>
-<li><code>command1 &gt;&gt; fichier</code> : Ajoute la sortie standard de <code>command1</code> à <code>fichier</code>.</li>
-<li><code>command1 2&gt; fichier</code> : Redirige les erreurs (stderr) de <code>command1</code> vers <code>fichier</code>.</li>
-<li><code>command1 | command2</code> : Utilise la sortie de <code>command1</code> comme entrée pour <code>command2</code>.</li>
-</ul>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<p>Vous pouvez faire une petite interface graphique web qui permet de visualiser les alertes stockées dans la base de donnée SQLite. Et y rajouter quelques fonctionnalités selon votre imagination. Comme par exemple un bouton d'acquittement d'alerte. Ou encore des filtres.</p>
 
 
 
@@ -938,10 +888,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "search.highlight", "search.suggest", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

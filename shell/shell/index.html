@@ -891,6 +891,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../travaux-pratique/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Travaux pratique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1248,9 +1268,9 @@
 Émulateur de terminaux connus : alacritty, Windows Terminal, urxvt, GNOME Terminal, PuTTY.</p>
 <p>La confusion est courante car sur Windows historiquement le nom du shell et de l'émulateur de terminal étaient les mêmes (cmd, powershell...), ce n'est plus le cas avec Windows 11 et le Windows Terminal.</p>
 <h2 id="differents-shells-unix">Différents shells Unix</h2>
-<p><code>sh</code> (shell command langage) est une spécification de langage définie par POSIX mais n'est pas une implémentation en elle même. Il y a diverses implémentations, la plus connue étannt Bash.
+<p><code>sh</code> (shell command langage) est une spécification de langage définie par POSIX mais n'est pas une implémentation en elle même. Il y a diverses implémentations, la plus connue étant Bash.
 Le fichier <code>/bin/sh</code> est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. <code>ls -l /bin/sh</code>
-Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.
+Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de ce cours.
 Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
 Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu navigable ou encore une forte customisabilité par exemple).</p>
 <p>Quasiment tout les shells Unix suivent a minima ce qui est décrit par POSIX, la plupart rajoutent ensuite diverses fonctionnalités. Lorsque l'on fait un script qui serait amené à être utilisé sur divers systèmes qui n'auraient pas forcément le même shell il peut être judicieux de se contenter d'utiliser ce que POSIX décrit.
@@ -1398,7 +1418,7 @@ grep 5 &lt; input</p>
 On peut aussi rediriger la même sortie vers plusieurs fichiers différents.
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>cat<span class="w"> </span>input<span class="w"> </span>&gt;out<span class="w"> </span>&gt;out2
 </span></code></pre></div></td></tr></table></div></p>
-<p>Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un fichier <code>/dev/null</code> sur Linux pensé pour ceci. Un exemple d'utilisation et de <code>grep</code> dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant <code>stderr</code> vers <code>/dev/null</code>.</p>
+<p>Enfin parfois on veut entièrement cacher quelque chose. Il existe pour cela un fichier <code>/dev/null</code> sur Linux pensé pour ceci. Un exemple d'utilisation et de <code>grep</code> dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant <code>stderr</code> vers <code>/dev/null</code>.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>grep<span class="w"> </span>-r<span class="w"> </span>PATTERN<span class="w"> </span>.<span class="w"> </span><span class="m">2</span>&gt;/dev/null
 </span></code></pre></div></td></tr></table></div>
 <h4 id="exercice_2">Exercice</h4>
@@ -1478,7 +1498,7 @@ La plupart des commandes linux classiques vont traiter les données en entrée (
 </details>
 <h2 id="commande-et-processus-subsitution">Commande et processus subsitution</h2>
 <h3 id="substitution-de-commandes">Substitution de commandes</h3>
-<p>Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe <code>$(commandes)</code> ou <code>`commandes`</code>, les deux syntaxes sont fonctionnellement pareils.</p>
+<p>Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe <code>$(commandes)</code> ou <code>`commandes`</code>, les deux syntaxes sont fonctionnellement identiques.</p>
 <p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="nb">echo</span><span class="w"> </span>Le<span class="w"> </span>chemin<span class="w"> </span>du<span class="w"> </span>dossier<span class="w"> </span>actuel<span class="w"> </span>est<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
 </span></code></pre></div></td></tr></table></div>
 La commande <code>pwd</code> signifie "print working directory" et affiche donc le chemin complet du dossier actuel.</p>
@@ -1585,16 +1605,18 @@ Renverra : </p>
 </span></code></pre></div></td></tr></table></div>
 <p>Les expressions se construisent via des opérateurs de test qui sont, notamment : </p>
 <ul>
-<li><code>a = b</code> et <code>a != b</code> testent si les chaines de charactères <code>a</code> et <code>ab</code> sont respectivement égales et inégales</li>
+<li><code>a = b</code> et <code>a != b</code> testent si les chaines de charactères <code>a</code> et <code>b</code> sont respectivement égales et inégales</li>
 <li><code>-z a</code> et <code>-n a</code> respectivement testent si la chaine de charactères <code>a</code> est vide et ne l'est pas</li>
 <li><code>n1 -eq n2</code> et <code>n1 -ne n2</code> testent l'égalité et l'inégalité de deux nombres</li>
 <li><code>n1 -lt n2</code> et <code>n1 -gt n2</code> testent si <code>n1</code> est strictement plus petit que <code>n2</code> pour <code>-lt</code> et strictement plus grand pour <code>-gt</code>.</li>
 <li><code>n1 -le n2</code> et <code>n1 -ge n2</code> pareil mais inférieur/supérieur ou égal.</li>
 </ul>
-<p>Il y aussi des opérateurs purement logiques qui permettent de combiner plusieurs expressions entre elles:
-<code>! e</code> si <code>e</code> renvoi vrai si <code>e</code> est fausse et inversement.
-<code>e1 -a e2</code>  renvoi vrai si et seulement si <code>e1</code> et <code>e2</code> sont vrais.
-<code>e1 -o e2</code> renvoi vrai si <code>e1</code> ou <code>e2</code> ou les deux sont vrais.</p>
+<p>Il y aussi des opérateurs purement logiques qui permettent de combiner plusieurs expressions entre elles:</p>
+<ul>
+<li><code>! e</code> si <code>e</code> renvoi vrai si <code>e</code> est fausse et inversement.</li>
+<li><code>e1 -a e2</code>  renvoi vrai si et seulement si <code>e1</code> et <code>e2</code> sont vrais.</li>
+<li><code>e1 -o e2</code> renvoi vrai si <code>e1</code> ou <code>e2</code> ou les deux sont vrais.</li>
+</ul>
 <p>Exemples : 
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
 <span class="normal"><a href="#__codelineno-41-2">2</a></span>
@@ -1770,45 +1792,37 @@ Cela permet soit de parcourir une liste et avoir une variable fixée sur la vale
 </span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cette boucle s&#39;exécutera 5 fois, </span><span class="nv">$i</span><span class="s2">&quot;</span>
 </span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1">1</a></span>
-<span class="normal"><a href="#__codelineno-53-2">2</a></span>
-<span class="normal"><a href="#__codelineno-53-3">3</a></span>
-<span class="normal"><a href="#__codelineno-53-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
-</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="k">do</span>
-</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Cette boucle s&#39;exécutera 5 fois, </span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="k">done</span>
-</span></code></pre></div></td></tr></table></div>
 <p>Parfois on veut pouvoir sortir plus tôt d'une boucle ou bien passer directement à l'itération suivante. On peut faire cela respectivement grâce à <code>break</code> et <code>continue</code>.</p>
-<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-54-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-54-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-54-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-54-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-54-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-54-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-54-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-54-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-54-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-54-10">10</a></span>
-<span class="normal"><a href="#__codelineno-54-11">11</a></span>
-<span class="normal"><a href="#__codelineno-54-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..8<span class="o">}</span>
-</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2"></a><span class="k">do</span>
-</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>
-</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4"></a><span class="w">    </span><span class="k">then</span>
-</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5"></a><span class="w">        </span><span class="k">continue</span><span class="w"> </span><span class="c1">#Permet de skipper le reste de cette itération</span>
-</span><span id="__span-54-6"><a id="__codelineno-54-6" name="__codelineno-54-6"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-54-7"><a id="__codelineno-54-7" name="__codelineno-54-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span>
-</span><span id="__span-54-8"><a id="__codelineno-54-8" name="__codelineno-54-8"></a><span class="w">    </span><span class="k">then</span>
-</span><span id="__span-54-9"><a id="__codelineno-54-9" name="__codelineno-54-9"></a><span class="w">        </span><span class="k">break</span><span class="w"> </span><span class="c1">#Sortira définitivement de la boucle</span>
-</span><span id="__span-54-10"><a id="__codelineno-54-10" name="__codelineno-54-10"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-54-11"><a id="__codelineno-54-11" name="__codelineno-54-11"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le nombre est </span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-54-12"><a id="__codelineno-54-12" name="__codelineno-54-12"></a><span class="k">done</span>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-53-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-53-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-53-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-53-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-53-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-53-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-53-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-53-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-53-10">10</a></span>
+<span class="normal"><a href="#__codelineno-53-11">11</a></span>
+<span class="normal"><a href="#__codelineno-53-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..8<span class="o">}</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="k">do</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="w">    </span><span class="k">then</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5"></a><span class="w">        </span><span class="k">continue</span><span class="w"> </span><span class="c1">#Permet de skipper le reste de cette itération</span>
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">]</span>
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8"></a><span class="w">    </span><span class="k">then</span>
+</span><span id="__span-53-9"><a id="__codelineno-53-9" name="__codelineno-53-9"></a><span class="w">        </span><span class="k">break</span><span class="w"> </span><span class="c1">#Sortira définitivement de la boucle</span>
+</span><span id="__span-53-10"><a id="__codelineno-53-10" name="__codelineno-53-10"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-53-11"><a id="__codelineno-53-11" name="__codelineno-53-11"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le nombre est </span><span class="nv">$i</span><span class="s2">&quot;</span>
+</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div>
 Donnera : 
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-55-1">1</a></span>
-<span class="normal"><a href="#__codelineno-55-2">2</a></span>
-<span class="normal"><a href="#__codelineno-55-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">2</span>
-</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">4</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-54-1">1</a></span>
+<span class="normal"><a href="#__codelineno-54-2">2</a></span>
+<span class="normal"><a href="#__codelineno-54-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3"></a>Le<span class="w"> </span>nombre<span class="w"> </span>est<span class="w"> </span><span class="m">4</span>
 </span></code></pre></div></td></tr></table></div></p>
 <h4 id="exercice_6">Exercice</h4>
 <p>Écrivez un script Bash qui renomme tous les fichiers <code>.txt</code> dans un répertoire en ajoutant le préfixe "backup_" à chaque nom de fichier.</p>
@@ -1822,7 +1836,44 @@ Donnera :
 </details>
 <details class="note">
 <summary>Exemple de solution</summary>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1"> 1</a></span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-55-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-55-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-55-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-55-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-55-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-55-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-55-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-55-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-55-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-55-10">10</a></span>
+<span class="normal"><a href="#__codelineno-55-11">11</a></span>
+<span class="normal"><a href="#__codelineno-55-12">12</a></span>
+<span class="normal"><a href="#__codelineno-55-13">13</a></span>
+<span class="normal"><a href="#__codelineno-55-14">14</a></span>
+<span class="normal"><a href="#__codelineno-55-15">15</a></span>
+<span class="normal"><a href="#__codelineno-55-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2"></a>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="c1"># Spécifiez le répertoire à traiter</span>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4"></a><span class="nv">directory</span><span class="o">=</span><span class="s2">&quot;.&quot;</span>
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5"></a>
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6"></a><span class="c1"># Boucle for pour parcourir tous les fichiers .txt du répertoire</span>
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$directory</span><span class="s2">&quot;</span>/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8"></a><span class="w">    </span><span class="c1"># Vérifie que le fichier existe</span>
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10"></a><span class="w">        </span><span class="c1"># Nouveau nom de fichier avec le préfixe &quot;backup_&quot;</span>
+</span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11"></a><span class="w">        </span><span class="nv">new_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$directory</span><span class="s2">/backup_</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-55-12"><a id="__codelineno-55-12" name="__codelineno-55-12"></a><span class="w">        </span><span class="c1"># Renomme le fichier</span>
+</span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13"></a><span class="w">        </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$new_name</span><span class="s2">&quot;</span>
+</span><span id="__span-55-14"><a id="__codelineno-55-14" name="__codelineno-55-14"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Renommé : </span><span class="nv">$file</span><span class="s2"> en </span><span class="nv">$new_name</span><span class="s2">&quot;</span>
+</span><span id="__span-55-15"><a id="__codelineno-55-15" name="__codelineno-55-15"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-55-16"><a id="__codelineno-55-16" name="__codelineno-55-16"></a><span class="k">done</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+<h2 id="calculs-arithmetiques-en-bash">Calculs arithmétiques en Bash</h2>
+<p>En Bash, les calculs arithmétiques sont simples mais nécessitent une syntaxe spécifique car tout est du texte.
+Ils peuvent être réalisés en utilisant <code>$(())</code> ou l'ancienne commande <code>expr</code>. La méthode recommandée est d'utiliser <code>$(())</code> pour sa simplicité et lisibilité.</p>
+<h3 id="exemple-doperations-arithmetiques">Exemple d'Opérations Arithmétiques</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-56-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-56-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-56-4"> 4</a></span>
@@ -1837,127 +1888,90 @@ Donnera :
 <span class="normal"><a href="#__codelineno-56-13">13</a></span>
 <span class="normal"><a href="#__codelineno-56-14">14</a></span>
 <span class="normal"><a href="#__codelineno-56-15">15</a></span>
-<span class="normal"><a href="#__codelineno-56-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2"></a>
-</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3"></a><span class="c1"># Spécifiez le répertoire à traiter</span>
-</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4"></a><span class="nv">directory</span><span class="o">=</span><span class="s2">&quot;.&quot;</span>
-</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5"></a>
-</span><span id="__span-56-6"><a id="__codelineno-56-6" name="__codelineno-56-6"></a><span class="c1"># Boucle for pour parcourir tous les fichiers .txt du répertoire</span>
-</span><span id="__span-56-7"><a id="__codelineno-56-7" name="__codelineno-56-7"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$directory</span><span class="s2">&quot;</span>/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-56-8"><a id="__codelineno-56-8" name="__codelineno-56-8"></a><span class="w">    </span><span class="c1"># Vérifie que le fichier existe</span>
-</span><span id="__span-56-9"><a id="__codelineno-56-9" name="__codelineno-56-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-56-10"><a id="__codelineno-56-10" name="__codelineno-56-10"></a><span class="w">        </span><span class="c1"># Nouveau nom de fichier avec le préfixe &quot;backup_&quot;</span>
-</span><span id="__span-56-11"><a id="__codelineno-56-11" name="__codelineno-56-11"></a><span class="w">        </span><span class="nv">new_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$directory</span><span class="s2">/backup_</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-56-12"><a id="__codelineno-56-12" name="__codelineno-56-12"></a><span class="w">        </span><span class="c1"># Renomme le fichier</span>
-</span><span id="__span-56-13"><a id="__codelineno-56-13" name="__codelineno-56-13"></a><span class="w">        </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$new_name</span><span class="s2">&quot;</span>
-</span><span id="__span-56-14"><a id="__codelineno-56-14" name="__codelineno-56-14"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Renommé : </span><span class="nv">$file</span><span class="s2"> en </span><span class="nv">$new_name</span><span class="s2">&quot;</span>
-</span><span id="__span-56-15"><a id="__codelineno-56-15" name="__codelineno-56-15"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-56-16"><a id="__codelineno-56-16" name="__codelineno-56-16"></a><span class="k">done</span>
-</span></code></pre></div></td></tr></table></div>
-</details>
-<h2 id="calculs-arithmetiques-en-bash">Calculs arithmétiques en Bash</h2>
-<p>En Bash, les calculs arithmétiques sont simples mais nécessitent une syntaxe spécifique car tout est du texte.
-Ils peuvent être réalisés en utilisant <code>$(())</code> ou l'ancienne commande <code>expr</code>. La méthode recommandée est d'utiliser <code>$(())</code> pour sa simplicité et lisibilité.</p>
-<h3 id="exemple-doperations-arithmetiques">Exemple d'Opérations Arithmétiques</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-57-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-57-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-57-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-57-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-57-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-57-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-57-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-57-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-57-10">10</a></span>
-<span class="normal"><a href="#__codelineno-57-11">11</a></span>
-<span class="normal"><a href="#__codelineno-57-12">12</a></span>
-<span class="normal"><a href="#__codelineno-57-13">13</a></span>
-<span class="normal"><a href="#__codelineno-57-14">14</a></span>
-<span class="normal"><a href="#__codelineno-57-15">15</a></span>
-<span class="normal"><a href="#__codelineno-57-16">16</a></span>
-<span class="normal"><a href="#__codelineno-57-17">17</a></span>
-<span class="normal"><a href="#__codelineno-57-18">18</a></span>
-<span class="normal"><a href="#__codelineno-57-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="c1"># Addition</span>
-</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="k">))</span>
-</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3 + 5 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># Affiche 8</span>
-</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4"></a>
-</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5"></a><span class="c1"># Soustraction</span>
-</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="k">))</span>
-</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;10 - 2 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 8</span>
-</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8"></a>
-</span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9"></a><span class="c1"># Multiplication</span>
-</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">7</span><span class="k">))</span>
-</span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4 * 7 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># Affiche 28</span>
-</span><span id="__span-57-12"><a id="__codelineno-57-12" name="__codelineno-57-12"></a>
-</span><span id="__span-57-13"><a id="__codelineno-57-13" name="__codelineno-57-13"></a><span class="c1"># Division</span>
-</span><span id="__span-57-14"><a id="__codelineno-57-14" name="__codelineno-57-14"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">20</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="k">))</span>
-</span><span id="__span-57-15"><a id="__codelineno-57-15" name="__codelineno-57-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;20 / 4 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 5</span>
-</span><span id="__span-57-16"><a id="__codelineno-57-16" name="__codelineno-57-16"></a>
-</span><span id="__span-57-17"><a id="__codelineno-57-17" name="__codelineno-57-17"></a><span class="c1"># Modulo (reste de division)</span>
-</span><span id="__span-57-18"><a id="__codelineno-57-18" name="__codelineno-57-18"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">10</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">3</span><span class="k">))</span>
-</span><span id="__span-57-19"><a id="__codelineno-57-19" name="__codelineno-57-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;10 % 3 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 1</span>
+<span class="normal"><a href="#__codelineno-56-16">16</a></span>
+<span class="normal"><a href="#__codelineno-56-17">17</a></span>
+<span class="normal"><a href="#__codelineno-56-18">18</a></span>
+<span class="normal"><a href="#__codelineno-56-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="c1"># Addition</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="k">))</span>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3 + 5 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># Affiche 8</span>
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4"></a>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5"></a><span class="c1"># Soustraction</span>
+</span><span id="__span-56-6"><a id="__codelineno-56-6" name="__codelineno-56-6"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="k">))</span>
+</span><span id="__span-56-7"><a id="__codelineno-56-7" name="__codelineno-56-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;10 - 2 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 8</span>
+</span><span id="__span-56-8"><a id="__codelineno-56-8" name="__codelineno-56-8"></a>
+</span><span id="__span-56-9"><a id="__codelineno-56-9" name="__codelineno-56-9"></a><span class="c1"># Multiplication</span>
+</span><span id="__span-56-10"><a id="__codelineno-56-10" name="__codelineno-56-10"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">7</span><span class="k">))</span>
+</span><span id="__span-56-11"><a id="__codelineno-56-11" name="__codelineno-56-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4 * 7 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># Affiche 28</span>
+</span><span id="__span-56-12"><a id="__codelineno-56-12" name="__codelineno-56-12"></a>
+</span><span id="__span-56-13"><a id="__codelineno-56-13" name="__codelineno-56-13"></a><span class="c1"># Division</span>
+</span><span id="__span-56-14"><a id="__codelineno-56-14" name="__codelineno-56-14"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">20</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="k">))</span>
+</span><span id="__span-56-15"><a id="__codelineno-56-15" name="__codelineno-56-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;20 / 4 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 5</span>
+</span><span id="__span-56-16"><a id="__codelineno-56-16" name="__codelineno-56-16"></a>
+</span><span id="__span-56-17"><a id="__codelineno-56-17" name="__codelineno-56-17"></a><span class="c1"># Modulo (reste de division)</span>
+</span><span id="__span-56-18"><a id="__codelineno-56-18" name="__codelineno-56-18"></a><span class="nv">result</span><span class="o">=</span><span class="k">$((</span><span class="m">10</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">3</span><span class="k">))</span>
+</span><span id="__span-56-19"><a id="__codelineno-56-19" name="__codelineno-56-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;10 % 3 = </span><span class="nv">$result</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Affiche 1</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Bash ne gère que les nombres entiers pour ces opérations, il faut utiliser un autre outil (tel que <code>bc</code>) pour les opérations à virgule flottantes ... ou plutôt directement Python.</p>
 <p>On peut incrémenter ou décrémenter une variable en Bash de tel manière : </p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-58-1">1</a></span>
-<span class="normal"><a href="#__codelineno-58-2">2</a></span>
-<span class="normal"><a href="#__codelineno-58-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="nv">n</span><span class="o">=</span><span class="m">0</span>
-</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="o">((</span>n++<span class="o">))</span><span class="w"> </span><span class="c1"># =&gt; n = 1</span>
-</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="o">((</span>n--<span class="o">))</span><span class="w"> </span><span class="c1"># =&gt; n = 0</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1">1</a></span>
+<span class="normal"><a href="#__codelineno-57-2">2</a></span>
+<span class="normal"><a href="#__codelineno-57-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="nv">n</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2"></a><span class="o">((</span>n++<span class="o">))</span><span class="w"> </span><span class="c1"># =&gt; n = 1</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3"></a><span class="o">((</span>n--<span class="o">))</span><span class="w"> </span><span class="c1"># =&gt; n = 0</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Cela est surtout utile lors de boucles for :
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1">1</a></span>
-<span class="normal"><a href="#__codelineno-59-2">2</a></span>
-<span class="normal"><a href="#__codelineno-59-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1"></a><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span><span class="m">10</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
-</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3"></a><span class="w">    </span><span class="k">done</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-58-1">1</a></span>
+<span class="normal"><a href="#__codelineno-58-2">2</a></span>
+<span class="normal"><a href="#__codelineno-58-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span><span class="m">10</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="w">    </span><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
 <p>Cependant ce n'est pas une syntaxe toujours nécessaire, on peut par exemple réécrire la dernière boucle avec <code>for i in $(seq 5 10)</code>.</p>
 <h2 id="fonctions">Fonctions</h2>
 <p>Une fonction permet d'encapsuler une série de commandes et actions au sein d'une seule avec ses propres arguments.
 Il a y deux syntaxes pour définir une fonction :</p>
-<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-60-1">1</a></span>
+<p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1">1</a></span>
+<span class="normal"><a href="#__codelineno-59-2">2</a></span>
+<span class="normal"><a href="#__codelineno-59-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2"></a><span class="w">    </span>contenu<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>fonction
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3"></a><span class="o">}</span>
+</span></code></pre></div></td></tr></table></div>
+et</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-60-1">1</a></span>
 <span class="normal"><a href="#__codelineno-60-2">2</a></span>
-<span class="normal"><a href="#__codelineno-60-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
+<span class="normal"><a href="#__codelineno-60-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1"></a>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
 </span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2"></a><span class="w">    </span>contenu<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>fonction
 </span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3"></a><span class="o">}</span>
 </span></code></pre></div></td></tr></table></div>
-et</p>
+<p>Le mot reservé <code>function</code> est donc optionnel mais si celui est omis alors les <code>()</code> deviennent obligatoires tandis qu'elles ne le sont pas dans le premier cas.
+Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguité et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.</p>
+<p>Si l'on veut utiliser des arguments on peut utiliser les variables built-ins $n pour récupérer ces arguments au moment de l'appel de la fonction.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-61-1">1</a></span>
 <span class="normal"><a href="#__codelineno-61-2">2</a></span>
-<span class="normal"><a href="#__codelineno-61-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1"></a>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2"></a><span class="w">    </span>contenu<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>fonction
+<span class="normal"><a href="#__codelineno-61-3">3</a></span>
+<span class="normal"><a href="#__codelineno-61-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les arguments sont : </span><span class="nv">$1</span><span class="s2"> </span><span class="nv">$2</span><span class="s2">&quot;</span>
 </span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3"></a><span class="o">}</span>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4"></a>ma_fonction<span class="w"> </span>arg1<span class="w"> </span>arg2
 </span></code></pre></div></td></tr></table></div>
-<p>Le mot reservé <code>function</code> est donc optionnel mais si celui est omis alors les <code>()</code> deviennent obligatoires tandis qu'elles ne le sont pas dans le premier cas.
-Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguiter et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.</p>
-<p>Si l'on veut utiliser des arguments on peut utiliser les variables built-ins $n pour récupérer ces arguments au moment de l'appel de la fonction.</p>
+<p>Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieur sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.</p>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-62-1">1</a></span>
 <span class="normal"><a href="#__codelineno-62-2">2</a></span>
 <span class="normal"><a href="#__codelineno-62-3">3</a></span>
-<span class="normal"><a href="#__codelineno-62-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les arguments sont : </span><span class="nv">$1</span><span class="s2"> </span><span class="nv">$2</span><span class="s2">&quot;</span>
-</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3"></a><span class="o">}</span>
-</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4"></a>ma_fonction<span class="w"> </span>arg1<span class="w"> </span>arg2
-</span></code></pre></div></td></tr></table></div>
-<p>Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieure sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-63-1">1</a></span>
-<span class="normal"><a href="#__codelineno-63-2">2</a></span>
-<span class="normal"><a href="#__codelineno-63-3">3</a></span>
-<span class="normal"><a href="#__codelineno-63-4">4</a></span>
-<span class="normal"><a href="#__codelineno-63-5">5</a></span>
-<span class="normal"><a href="#__codelineno-63-6">6</a></span>
-<span class="normal"><a href="#__codelineno-63-7">7</a></span>
-<span class="normal"><a href="#__codelineno-63-8">8</a></span>
-<span class="normal"><a href="#__codelineno-63-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;A&quot;</span>
-</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2"></a><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;B&quot;</span>
-</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;C&quot;</span>
-</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5"></a><span class="w">    </span><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;D&quot;</span>
-</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables dans la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
-</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7"></a><span class="o">}</span>
-</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8"></a>ma_fonction
-</span><span id="__span-63-9"><a id="__codelineno-63-9" name="__codelineno-63-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables après la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
+<span class="normal"><a href="#__codelineno-62-4">4</a></span>
+<span class="normal"><a href="#__codelineno-62-5">5</a></span>
+<span class="normal"><a href="#__codelineno-62-6">6</a></span>
+<span class="normal"><a href="#__codelineno-62-7">7</a></span>
+<span class="normal"><a href="#__codelineno-62-8">8</a></span>
+<span class="normal"><a href="#__codelineno-62-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1"></a><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;A&quot;</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2"></a><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;B&quot;</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3"></a><span class="k">function</span><span class="w"> </span>ma_fonction<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">var1</span><span class="o">=</span><span class="s2">&quot;C&quot;</span>
+</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5"></a><span class="w">    </span><span class="nv">var2</span><span class="o">=</span><span class="s2">&quot;D&quot;</span>
+</span><span id="__span-62-6"><a id="__codelineno-62-6" name="__codelineno-62-6"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables dans la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
+</span><span id="__span-62-7"><a id="__codelineno-62-7" name="__codelineno-62-7"></a><span class="o">}</span>
+</span><span id="__span-62-8"><a id="__codelineno-62-8" name="__codelineno-62-8"></a>ma_fonction
+</span><span id="__span-62-9"><a id="__codelineno-62-9" name="__codelineno-62-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Les variables après la fonction sont var1: </span><span class="nv">$var1</span><span class="s2">, var2: </span><span class="nv">$var2</span><span class="s2">&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>On voit bien que après la fonctin la <code>$var1</code> s'est remise sur sa valeur précédente tandis que la <code>$var2</code> reste sur la valeur définie dans la fonction.</p>
 <h4 id="exercice_7">Exercice</h4>
@@ -1972,53 +1986,53 @@ Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'i
 </details>
 <details class="note">
 <summary>Exemple de solution</summary>
-<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-64-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-64-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-64-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-64-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-64-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-64-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-64-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-64-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-64-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-64-10">10</a></span>
-<span class="normal"><a href="#__codelineno-64-11">11</a></span>
-<span class="normal"><a href="#__codelineno-64-12">12</a></span>
-<span class="normal"><a href="#__codelineno-64-13">13</a></span>
-<span class="normal"><a href="#__codelineno-64-14">14</a></span>
-<span class="normal"><a href="#__codelineno-64-15">15</a></span>
-<span class="normal"><a href="#__codelineno-64-16">16</a></span>
-<span class="normal"><a href="#__codelineno-64-17">17</a></span>
-<span class="normal"><a href="#__codelineno-64-18">18</a></span>
-<span class="normal"><a href="#__codelineno-64-19">19</a></span>
-<span class="normal"><a href="#__codelineno-64-20">20</a></span>
-<span class="normal"><a href="#__codelineno-64-21">21</a></span>
-<span class="normal"><a href="#__codelineno-64-22">22</a></span>
-<span class="normal"><a href="#__codelineno-64-23">23</a></span>
-<span class="normal"><a href="#__codelineno-64-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2"></a>
-</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3"></a><span class="c1"># Définition de la fonction est_pair</span>
-</span><span id="__span-64-4"><a id="__codelineno-64-4" name="__codelineno-64-4"></a>est_pair<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-64-5"><a id="__codelineno-64-5" name="__codelineno-64-5"></a><span class="w">    </span><span class="c1"># Test si l&#39;entrée est un nombre</span>
-</span><span id="__span-64-6"><a id="__codelineno-64-6" name="__codelineno-64-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
-</span><span id="__span-64-7"><a id="__codelineno-64-7" name="__codelineno-64-7"></a><span class="w">    </span><span class="k">then</span>
-</span><span id="__span-64-8"><a id="__codelineno-64-8" name="__codelineno-64-8"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>pas<span class="w"> </span>un<span class="w"> </span>nombre
-</span><span id="__span-64-9"><a id="__codelineno-64-9" name="__codelineno-64-9"></a><span class="w">    </span><span class="k">else</span>
-</span><span id="__span-64-10"><a id="__codelineno-64-10" name="__codelineno-64-10"></a><span class="w">        </span><span class="nv">reste</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="k">))</span>
-</span><span id="__span-64-11"><a id="__codelineno-64-11" name="__codelineno-64-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$reste</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-64-12"><a id="__codelineno-64-12" name="__codelineno-64-12"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pair&quot;</span>
-</span><span id="__span-64-13"><a id="__codelineno-64-13" name="__codelineno-64-13"></a><span class="w">        </span><span class="k">else</span>
-</span><span id="__span-64-14"><a id="__codelineno-64-14" name="__codelineno-64-14"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;impair&quot;</span>
-</span><span id="__span-64-15"><a id="__codelineno-64-15" name="__codelineno-64-15"></a><span class="w">        </span><span class="k">fi</span>
-</span><span id="__span-64-16"><a id="__codelineno-64-16" name="__codelineno-64-16"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-64-17"><a id="__codelineno-64-17" name="__codelineno-64-17"></a><span class="o">}</span>
-</span><span id="__span-64-18"><a id="__codelineno-64-18" name="__codelineno-64-18"></a>
-</span><span id="__span-64-19"><a id="__codelineno-64-19" name="__codelineno-64-19"></a><span class="c1"># Demande à l&#39;utilisateur d&#39;entrer un nombre</span>
-</span><span id="__span-64-20"><a id="__codelineno-64-20" name="__codelineno-64-20"></a><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Entrez un nombre: &quot;</span><span class="w"> </span>nombre
-</span><span id="__span-64-21"><a id="__codelineno-64-21" name="__codelineno-64-21"></a>
-</span><span id="__span-64-22"><a id="__codelineno-64-22" name="__codelineno-64-22"></a><span class="c1"># Appel de la fonction et affichage du résultat</span>
-</span><span id="__span-64-23"><a id="__codelineno-64-23" name="__codelineno-64-23"></a><span class="nv">result</span><span class="o">=</span><span class="k">$(</span>est_pair<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$nombre</span><span class="s2">&quot;</span><span class="k">)</span>
-</span><span id="__span-64-24"><a id="__codelineno-64-24" name="__codelineno-64-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le nombre </span><span class="nv">$nombre</span><span class="s2"> est </span><span class="nv">$result</span><span class="s2">.&quot;</span>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-63-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-63-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-63-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-63-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-63-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-63-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-63-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-63-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-63-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-63-10">10</a></span>
+<span class="normal"><a href="#__codelineno-63-11">11</a></span>
+<span class="normal"><a href="#__codelineno-63-12">12</a></span>
+<span class="normal"><a href="#__codelineno-63-13">13</a></span>
+<span class="normal"><a href="#__codelineno-63-14">14</a></span>
+<span class="normal"><a href="#__codelineno-63-15">15</a></span>
+<span class="normal"><a href="#__codelineno-63-16">16</a></span>
+<span class="normal"><a href="#__codelineno-63-17">17</a></span>
+<span class="normal"><a href="#__codelineno-63-18">18</a></span>
+<span class="normal"><a href="#__codelineno-63-19">19</a></span>
+<span class="normal"><a href="#__codelineno-63-20">20</a></span>
+<span class="normal"><a href="#__codelineno-63-21">21</a></span>
+<span class="normal"><a href="#__codelineno-63-22">22</a></span>
+<span class="normal"><a href="#__codelineno-63-23">23</a></span>
+<span class="normal"><a href="#__codelineno-63-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2"></a>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3"></a><span class="c1"># Définition de la fonction est_pair</span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4"></a>est_pair<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5"></a><span class="w">    </span><span class="c1"># Test si l&#39;entrée est un nombre</span>
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7"></a><span class="w">    </span><span class="k">then</span>
+</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span>pas<span class="w"> </span>un<span class="w"> </span>nombre
+</span><span id="__span-63-9"><a id="__codelineno-63-9" name="__codelineno-63-9"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-63-10"><a id="__codelineno-63-10" name="__codelineno-63-10"></a><span class="w">        </span><span class="nv">reste</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="k">))</span>
+</span><span id="__span-63-11"><a id="__codelineno-63-11" name="__codelineno-63-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$reste</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-63-12"><a id="__codelineno-63-12" name="__codelineno-63-12"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pair&quot;</span>
+</span><span id="__span-63-13"><a id="__codelineno-63-13" name="__codelineno-63-13"></a><span class="w">        </span><span class="k">else</span>
+</span><span id="__span-63-14"><a id="__codelineno-63-14" name="__codelineno-63-14"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;impair&quot;</span>
+</span><span id="__span-63-15"><a id="__codelineno-63-15" name="__codelineno-63-15"></a><span class="w">        </span><span class="k">fi</span>
+</span><span id="__span-63-16"><a id="__codelineno-63-16" name="__codelineno-63-16"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-63-17"><a id="__codelineno-63-17" name="__codelineno-63-17"></a><span class="o">}</span>
+</span><span id="__span-63-18"><a id="__codelineno-63-18" name="__codelineno-63-18"></a>
+</span><span id="__span-63-19"><a id="__codelineno-63-19" name="__codelineno-63-19"></a><span class="c1"># Demande à l&#39;utilisateur d&#39;entrer un nombre</span>
+</span><span id="__span-63-20"><a id="__codelineno-63-20" name="__codelineno-63-20"></a><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Entrez un nombre: &quot;</span><span class="w"> </span>nombre
+</span><span id="__span-63-21"><a id="__codelineno-63-21" name="__codelineno-63-21"></a>
+</span><span id="__span-63-22"><a id="__codelineno-63-22" name="__codelineno-63-22"></a><span class="c1"># Appel de la fonction et affichage du résultat</span>
+</span><span id="__span-63-23"><a id="__codelineno-63-23" name="__codelineno-63-23"></a><span class="nv">result</span><span class="o">=</span><span class="k">$(</span>est_pair<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$nombre</span><span class="s2">&quot;</span><span class="k">)</span>
+</span><span id="__span-63-24"><a id="__codelineno-63-24" name="__codelineno-63-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Le nombre </span><span class="nv">$nombre</span><span class="s2"> est </span><span class="nv">$result</span><span class="s2">.&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
 

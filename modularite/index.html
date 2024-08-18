@@ -813,6 +813,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../travaux-pratique/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Travaux pratique
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1249,11 +1269,11 @@
 <p>Les deux derniers points sont tellement importants que sur certaines distributions (Archlinux par exemple), il n'est par défaut même pas possible d'installer directement avec <code>pip</code> des paquets.</p>
 <h3 id="la-solution-les-environnements-virtuels">La solution : les environnements virtuels</h3>
 <p>Toutes ces raisons poussent à vouloir un système qui permet d'isoler les projets les uns des autres et les isoler aussi du système. Pour cela on utilise des environnements virtuels (venvs).</p>
-<p>Python fourni la fonctionnalité par défaut, il n'y a pas besoin de solutions externes qui peuvent amener leur propre lot de problèmes.</p>
+<p>Python fournit la fonctionnalité par défaut, il n'y a pas besoin de solutions externes qui peuvent amener leur propre lot de problèmes.</p>
 <p>Pour créer un environnement virtuel il suffit d'être positionné dans le dossier du projet et faire : 
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 </span></code></pre></div></td></tr></table></div></p>
-<p><code>-m</code> permet de dire qu'on va appeler un module python, module dénommé <code>venv</code>, ce module appelé tel quel attends le nom de l'environnement virtuel à créer, nom qui ici est aussi <code>venv</code> (mais aurait pu être autre chose).</p>
+<p><code>-m</code> permet de dire qu'on va appeler un module python, module dénommé <code>venv</code>, ce module appelé tel quel attend le nom de l'environnement virtuel à créer, nom qui ici est aussi <code>venv</code> (mais aurait pu être autre chose).</p>
 <p>La commande va générer un dossier du nom du venv (ici simplement <code>venv</code>) et va le remplir de tout le nécessaire pour avoir un Python isolé, notamment copier le binaire en lui même de python, fournir des méthodes pour activer et désactiver le venv et des dossiers d'installations des modules. Cela reste suffisamment léger (16Mo pour un venv vierge).</p>
 <p>En faisant un <code>pip freeze</code> avant et après activation du venv on peut comparer les modules disponibles. Avant le <code>pip freeze</code> renverra une longue liste de modules tandis que sur un venv vierge il n'y aura rien.</p>
 <p>Pour activer l'environnement virtuel dans le Shell actuel, et donc dire au shell que <code>python</code> doit pointer vers le venv il faut sourcer le script d'activation, et pour désactiver simplement faire <code>deactivate</code>.</p>
@@ -1306,10 +1326,10 @@ Test :
 <h3 id="un-mot-sur-dautres-solutions">Un mot sur d'autres solutions</h3>
 <p>Il existe de multiples autres solutions pour résoudre ce problème, certaines très connues et apportant bien d'autres fonctionnalités comme <code>conda</code>. Cependant je déconseille fortement leur utilisation pour un néophyte du langage, encore plus dans le cadre d'administration de système Unix, où l'installation de logiciels externes est souvent limitée sur les serveurs.</p>
 <ul>
-<li>Ces outils ne sont pas universels et ne seront pas forcément disponibles dans tout les écosystèmes professionels.</li>
+<li>Ces outils ne sont pas universels et ne seront pas forcément disponibles dans tous les écosystèmes professionels.</li>
 <li>Ces outils rajoutent souvent beaucoup de fonctionnalités qui peuvent rendre confus les néophytes.</li>
 <li>Ces outils ne sont pas installés par défaut avec Python sur toutes les machines Linux récentes.</li>
-<li>Ces outils rajoutent trop d'asbstraction et empêchent de comprendre les tenants et aboutissants de certaines choses, tels que l'intérêt des venvs.</li>
+<li>Ces outils rajoutent trop d'abstraction et empêchent de comprendre les tenants et aboutissants de certaines choses, tels que l'intérêt des venvs.</li>
 </ul>
 <p>Je recommande ainsi d'utiliser simplement des venvs Python classique, et qu'une fois habitué, si le besoin s'en fait sentir, aller chercher un de ces outils en ayant un besoin précis en tête où les venvs classiques ne suffisent pas.</p>
 <h2 id="une-courte-liste-de-modules-python-connus">Une courte liste de modules Python connus</h2>
