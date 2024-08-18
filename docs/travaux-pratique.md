@@ -6,13 +6,13 @@
 Faites un script Python générant des données de supervision factices. 
 Ces données seront sous la forme d'un fichier texte/csv et représenteront des alertes avec comme champs : 
 
-- timestamp 
-- serveur concerné
+- Timestamp 
+- Serveur concerné
 - Criticité de l'alerte (critique, informations, erreur...)
-- message de l'alerte
-- infogerant à la charge de l'alerte
-- application concernée
-- environment (prod, hors-prod, testing etc)
+- Message de l'alerte
+- Infogerant à la charge de l'alerte
+- Application concernée
+- Environment (prod, hors-prod, testing etc)
 
 
 Exemples d'alertes possibles :
@@ -55,7 +55,10 @@ Environnement :
 
 ## Django Rest API
 
-Utilisez la librairie Django Rest framework pour créer une REST API simple qui sera en mesure de recevoir les alertes dans une base de données SQlite.
+Utilisez la librairie Django Rest framework pour créer une Rest API simple qui sera en mesure de recevoir les alertes dans une base de données SQlite.
+
+- Sur l'URL ``/api/alert`` on pourra récupérer via ``GET`` les alertes et via ``POST`` on pourra en rajouter
+- Sur l'URL ``/api/alert/[id d'une alerte]`` on pourra récupérer via ``GET`` une alerte précise, la supprimer via ``DELETE`` ou la modifier via ``POST``.
 
 
 ## Data watcher
@@ -75,4 +78,4 @@ Pour cela on peut utiliser Systemd :
 
 ## Pour aller plus loin
 
-Vous pouvez faire une petite interface graphique web qui permet de visualiser les alertes stockées dans la base de donnée SQLite. Et y rajouter quelques fonctionnalités selon votre imagination. Comme par exemple un bouton d'acquittement qui permettrai de supprimer de la base l'alerte. Ou encore des filtres.
+Vous pouvez faire une petite interface graphique web qui permet de visualiser les alertes stockées dans la base de donnée SQLite. Et y rajouter quelques fonctionnalités selon votre imagination. Comme par exemple un bouton d'acquittement d'alerte. Ou encore des filtres.

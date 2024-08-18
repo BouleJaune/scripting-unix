@@ -21,7 +21,7 @@ Si possible utilisez le ``Windows Terminal`` qui est installé par défaut sur W
 
 #### Installer une VM Linux avec VirtualBox
 
-Guide Unbuntu : https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview
+[Guide Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 
 - Téléchargez et installez VirtualBox depuis le site officiel.
 - Téléchargez un ISO Linux, typiquement Ubuntu sur le site officiel.
