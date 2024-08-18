@@ -2,7 +2,7 @@
 
 ## Différentes types de concurrence
 
-La **concurrence** (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches *existent* en même temps. Le **parallélisme** quant à lui désigne l'éxécution simultannée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.
+La **concurrence** (concurrency) en programmation désigne la capacité d'un système à gérer plusieurs tâches ou processus en même temps, ce qui améliore l'efficacité et la réactivité. Cela ne veut pas nécessairement dire que les tâches s'éxécutent exactement en même temps, juste que ces tâches *existent* en même temps. Le **parallélisme** quant à lui désigne l'éxécution simultanée de plusieurs tâches, notamment grâce à des processeurs multicoeurs.
 
 Le parallélisme est donc une sous catégorie de concurrence mais nécessite un processeur multicoeurs.
 
@@ -10,7 +10,7 @@ Une manière de faire de la concurrence sans faire du parallélisme est de faire
 
 On peut imaginer une commande ``sleep 10`` qui attendra 10 secondes et bloquera le programme, pendant ces 10 secondes le processeur ne fera rien, c'est donc du temps perdu. Ainsi on peut lancer ce ``sleep 10``, le passer "en arrière plan", faire d'autres tâches puis attendre si nécessaire que ce ``sleep 10`` finisse. 
 
-Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un notre.
+Les implémentations exactes des méthodes de concurrence varient grandement d'un langage à un autre.
 
 
 ## Concurrence sur Bash
@@ -19,7 +19,7 @@ Le shell Unix étant bien plus proche du système Linux la gestion de la concurr
 Un processus possède minimum un thread mais peut en posséder plus.
 
 Quand un coeur du processeur est libre, le système choisi un thread en attente de traitement et s'en occupe.
-Après un certain temps ce thread peut être remis en attente et/ou déplacer vers un autre coeur pour optimiser le système, mais ce n'est pas quelque chose à prendre en compte en tant que développeurs.
+Après un certain temps ce thread peut être remis en attente et/ou déplacé vers un autre coeur pour optimiser le système, mais ce n'est pas quelque chose à prendre en compte en tant que développeurs.
 
 Ainsi, faire du multiprocessing en Bash revient à lancer plusieurs processus et laisser Linux s'en occuper.
 On ne peut pas faire du multithreading en Bash.
@@ -46,7 +46,7 @@ echo Fin !
 
 On peut aussi lister les jobs en arrière plan avec ``jobs`` et remettre un job au premier plan avec ``fg`` (pour *foreground*).
 
-Parfois on se rends compte qu'une commande est longue à s'éxécuter et on aurait aimé la mettre en arrière plan. C'est possible via la combinaison de ``CTRL+Z`` suivi de la commande ``bg`` (pour *background*).
+Parfois on se rend compte qu'une commande est longue à s'éxécuter et on aurait aimé la mettre en arrière plan. C'est possible via la combinaison de ``CTRL+Z`` suivi de la commande ``bg`` (pour *background*).
 ``CTRL+Z`` permet de suspendre un job et rendre la main dans le shell et ``bg`` permet d'arrêter la suspension et de continuer l'exécution du processus.
 
 ```sh
@@ -84,7 +84,7 @@ Exemple simple :
 5 6
 ```
 
-Par défaut si aucune commande n'est fournis, ``xargs`` fera un ``echo`` des arguments. Sinon ``xargs`` les rajoutera à la fin de la commande.
+Par défaut si aucune commande n'est fournie, ``xargs`` fera un ``echo`` des arguments. Sinon ``xargs`` les rajoutera à la fin de la commande.
 Le ``-n 2`` permet de préciser de grouper 2 par 2 les arguments.
 
 On peut utiliser ``-I {}`` pour placer où on veut les arguments et pas seulement à la fin.
@@ -147,7 +147,7 @@ Il existe sur Python trois manières principales de faire de la programmation co
 
 On peut mesurer le temps d'exécution de fonctions grâce au module ``time`` et sa fonction ``time()``. C'est essentiel de mesurer lorsque l'on cherche à optimiser des temps d'exécution.
 
-```
+```python
 import time
 
 n = 100000000
@@ -210,7 +210,7 @@ Pour utiliser ``threading``, une manière simple est de définir chaque threads 
 
 La méthode ``.join()`` permet de bloquer l'avancée dans le script jusqu'à ce que les threads aient fini de s'exécuter.
 
-Malgré les résultats peu engageants ``threading`` peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attends la réponse des serveurs.
+Malgré les résultats peu engageants ``threading`` peut gagner du temps lorsque ce n'est pas le CPU qui limite, par exemple si l'on fait de multiples ping et que l'on attend la réponse des serveurs.
 
 L'argument ``args=(arg,)`` s'écrit comme cela car il attends un ``tuple``, et la manière la plus courante d'écrire un tuple de longueur un est celle-ci ``(n,)``.
 
@@ -321,7 +321,7 @@ Implémenter une tâche simple en parallèle en utilisant le module `threading` 
 ### Utiliser la concurrence du Shell avec des scripts Python
 
 
-La concurrence en Shell s'appliquant sur toute commande et peut donc aussi s'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
+La concurrence en Shell s'appliquant sur toute commande on peut aussi l'appliquer sur des scripts Python. On peut reprendre le code précédent et l'adapter pour prendre les arguments en ligne de commande avec ``sys.argv``, ce qui nous permettra d'appeler le script notamment avec du multiprocessing via ``xargs``.
 
 ```python
 #!python

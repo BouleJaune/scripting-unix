@@ -6,9 +6,9 @@
 
 **Perl** est un langage de programmation dynamique et interprété, créé par Larry Wall en 1987. Il est particulièrement bien adapté à la manipulation de texte et à l'extraction de données, ce qui le pousse à être assez adéquat pour de l'admistration de système Unix, ceci étant fortement basés sur la manipulation de texte.
 
-Cependant Perl est de moins en moins utilisé de nos jours, selon le dernier sondage Stackoverflow Perl est à 2.5% d'utilisation parmis les développeurs ayant répondus. Ce nombre est à mettre face à celui de Python qui est de 51%.
+Cependant Perl est de moins en moins utilisé de nos jours, selon le dernier sondage Stackoverflow Perl est à 2.5% d'utilisation parmis les développeurs ayant répondu. Ce nombre est à mettre face à celui de Python qui est de 51%.
 
-La plupart des interactions avec ce langage ce font via la maintenance de vieux scripts et outils legacy. Il est suffisamment lisible pour qu'une personne étant habitué à un autre langage de scripting généraliste comme Python puisse en lire sans trop de problèmes.
+La plupart des interactions avec ce langage ce font via la maintenance de vieux scripts et outils legacy. Il est suffisamment lisible pour qu'une personne étant habituée à un autre langage de scripting généraliste comme Python puisse en lire sans trop de problèmes.
 
 Son principal avantage vient de la puissance et flexibilité de ses Regex, cependant la plupart des autres outils utilisent désormais la même syntaxe d'expression régulières.
 

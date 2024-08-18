@@ -12,9 +12,9 @@ La confusion est courante car sur Windows historiquement le nom du shell et de l
 
 ## Différents shells Unix
 
-``sh`` (shell command langage) est une spécification de langage définie par POSIX mais n'est pas une implémentation en elle même. Il y a diverses implémentations, la plus connue étannt Bash.
+``sh`` (shell command langage) est une spécification de langage définie par POSIX mais n'est pas une implémentation en elle même. Il y a diverses implémentations, la plus connue étant Bash.
 Le fichier ``/bin/sh`` est en réalité un lien symbolique vers une implémentation sur la plupart des systèmes Linux, souvent bash. ``ls -l /bin/sh``
-Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de cours.
+Bash est l'implémentation la plus connue et utilisée, nous utiliserons donc Bash au cours de ce cours.
 Quelques autres implémentations connues sont Ksh (Korn Shell), qui est une implémentation plus ancienne que Bash et surtout présente sur des systèmes moins récents.
 Zsh est l'implémentation par défaut sur MacOS et offre aussi des fonctionnalités pratiques en mode intéractif (complétion tab avec un menu navigable ou encore une forte customisabilité par exemple).
 
@@ -200,7 +200,7 @@ On peut aussi rediriger la même sortie vers plusieurs fichiers différents.
 cat input >out >out2
 ```
 
-Enfin parfois on veut entièrement caché quelque chose. Il existe pour cela un fichier ``/dev/null`` sur Linux pensé pour ceci. Un exemple d'utilisation et de ``grep`` dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant ``stderr`` vers ``/dev/null``.
+Enfin parfois on veut entièrement cacher quelque chose. Il existe pour cela un fichier ``/dev/null`` sur Linux pensé pour ceci. Un exemple d'utilisation et de ``grep`` dans un dossier ne contenant pas que des fichiers textes ce qui renverra des erreurs inutiles, qui peuvent être cachées en redirigeant ``stderr`` vers ``/dev/null``.
 
 ```sh
 grep -r PATTERN . 2>/dev/null
@@ -301,7 +301,7 @@ Utiliser les commandes ``df``, ``tr`` et ``cut``  pour lister seulement les poin
 
 ### Substitution de commandes
 
-Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe ``$(commandes)`` ou ``` `commandes` ```, les deux syntaxes sont fonctionnellement pareils.
+Parfois on peut avoir envie de remplacer une partie d'une commande par le résultat d'autres commandes. On peut faire ceci via une substitution de commandes qui a pour syntaxe ``$(commandes)`` ou ``` `commandes` ```, les deux syntaxes sont fonctionnellement identiques.
 
 ```sh
 echo Le chemin du dossier actuel est $(pwd)
@@ -437,16 +437,17 @@ echo $?
 
 Les expressions se construisent via des opérateurs de test qui sont, notamment : 
 
--  ``a = b`` et ``a != b`` testent si les chaines de charactères ``a`` et ``ab`` sont respectivement égales et inégales
+-  ``a = b`` et ``a != b`` testent si les chaines de charactères ``a`` et ``b`` sont respectivement égales et inégales
 - ``-z a`` et ``-n a`` respectivement testent si la chaine de charactères ``a`` est vide et ne l'est pas
 - ``n1 -eq n2`` et ``n1 -ne n2`` testent l'égalité et l'inégalité de deux nombres
 - ``n1 -lt n2`` et ``n1 -gt n2`` testent si ``n1`` est strictement plus petit que ``n2`` pour ``-lt`` et strictement plus grand pour ``-gt``.
 - ``n1 -le n2`` et ``n1 -ge n2`` pareil mais inférieur/supérieur ou égal.
 
 Il y aussi des opérateurs purement logiques qui permettent de combiner plusieurs expressions entre elles:
-``! e`` si ``e`` renvoi vrai si ``e`` est fausse et inversement.
-``e1 -a e2``  renvoi vrai si et seulement si ``e1`` et ``e2`` sont vrais.
-``e1 -o e2`` renvoi vrai si ``e1`` ou ``e2`` ou les deux sont vrais.
+
+- ``! e`` si ``e`` renvoi vrai si ``e`` est fausse et inversement.
+- ``e1 -a e2``  renvoi vrai si et seulement si ``e1`` et ``e2`` sont vrais.
+- ``e1 -o e2`` renvoi vrai si ``e1`` ou ``e2`` ou les deux sont vrais.
 
 Exemples : 
 ```sh
@@ -599,13 +600,6 @@ do
 done
 ```
 
-```sh
-for i in {1..5}
-do
-    echo "Cette boucle s'exécutera 5 fois, $i"
-done
-```
-
 
 Parfois on veut pouvoir sortir plus tôt d'une boucle ou bien passer directement à l'itération suivante. On peut faire cela respectivement grâce à ``break`` et ``continue``.
 
@@ -725,7 +719,7 @@ ma_fonction () {
 ```
 
 Le mot reservé ``function`` est donc optionnel mais si celui est omis alors les ``()`` deviennent obligatoires tandis qu'elles ne le sont pas dans le premier cas.
-Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguiter et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.
+Les parenthèses ne servent fonctionnellement à rien si ce n'est s'assurer qu'il n'y a pas d'ambiguité et que l'on veut bien faire une fonction. Je recommande donc d'utiliser la première syntaxe plus explicite.
 
 Si l'on veut utiliser des arguments on peut utiliser les variables built-ins $n pour récupérer ces arguments au moment de l'appel de la fonction.
 
@@ -736,7 +730,7 @@ function ma_fonction () {
 ma_fonction arg1 arg2
 ```
 
-Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieure sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.
+Enfin, les variables sont de base globales dans une fonction. C'est à dire qu'une variable définie à l'intérieur ou à l'extérieur sera disponible à l'intérieur ou à l'extérieur par défaut. On peut cependant définir des variables locales qui n'existeront que dans la fonction.
 
 ```sh
 var1="A"

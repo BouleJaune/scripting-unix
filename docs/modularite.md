@@ -169,14 +169,14 @@ Les deux derniers points sont tellement importants que sur certaines distributio
 
 Toutes ces raisons poussent à vouloir un système qui permet d'isoler les projets les uns des autres et les isoler aussi du système. Pour cela on utilise des environnements virtuels (venvs).
 
-Python fourni la fonctionnalité par défaut, il n'y a pas besoin de solutions externes qui peuvent amener leur propre lot de problèmes.
+Python fournit la fonctionnalité par défaut, il n'y a pas besoin de solutions externes qui peuvent amener leur propre lot de problèmes.
 
 Pour créer un environnement virtuel il suffit d'être positionné dans le dossier du projet et faire : 
 ```sh
 python -m venv venv
 ```
 
-``-m`` permet de dire qu'on va appeler un module python, module dénommé ``venv``, ce module appelé tel quel attends le nom de l'environnement virtuel à créer, nom qui ici est aussi ``venv`` (mais aurait pu être autre chose).
+``-m`` permet de dire qu'on va appeler un module python, module dénommé ``venv``, ce module appelé tel quel attend le nom de l'environnement virtuel à créer, nom qui ici est aussi ``venv`` (mais aurait pu être autre chose).
 
 La commande va générer un dossier du nom du venv (ici simplement ``venv``) et va le remplir de tout le nécessaire pour avoir un Python isolé, notamment copier le binaire en lui même de python, fournir des méthodes pour activer et désactiver le venv et des dossiers d'installations des modules. Cela reste suffisamment léger (16Mo pour un venv vierge).
 
@@ -227,10 +227,10 @@ Des éditeurs de texte comme Visual Studio Code permettent de s'occuper de la ge
 
 Il existe de multiples autres solutions pour résoudre ce problème, certaines très connues et apportant bien d'autres fonctionnalités comme ``conda``. Cependant je déconseille fortement leur utilisation pour un néophyte du langage, encore plus dans le cadre d'administration de système Unix, où l'installation de logiciels externes est souvent limitée sur les serveurs.
 
-- Ces outils ne sont pas universels et ne seront pas forcément disponibles dans tout les écosystèmes professionels.
+- Ces outils ne sont pas universels et ne seront pas forcément disponibles dans tous les écosystèmes professionels.
 - Ces outils rajoutent souvent beaucoup de fonctionnalités qui peuvent rendre confus les néophytes.
 - Ces outils ne sont pas installés par défaut avec Python sur toutes les machines Linux récentes.
-- Ces outils rajoutent trop d'asbstraction et empêchent de comprendre les tenants et aboutissants de certaines choses, tels que l'intérêt des venvs.
+- Ces outils rajoutent trop d'abstraction et empêchent de comprendre les tenants et aboutissants de certaines choses, tels que l'intérêt des venvs.
 
 
 Je recommande ainsi d'utiliser simplement des venvs Python classique, et qu'une fois habitué, si le besoin s'en fait sentir, aller chercher un de ces outils en ayant un besoin précis en tête où les venvs classiques ne suffisent pas.

@@ -25,8 +25,8 @@ Il y a plusieurs métacaractères ayant des effets particuliers:
 - ``.`` : Correspond à n'importe quel caractère sauf un saut de ligne.
 - ``^`` : Début de la ligne.
 - ``$`` : Fin de la ligne.
-- ``*`` : Correspond à 0 ou plusieurs répétitions du caractère précédent. ``.*`` permet donc de matcher n'importe quel série de caractères.
-- ``[]`` : Définit une classe de caractères. ``[abc]`` correspond à "a", "b" ou "c". On peut aussi matcher une plage de caractères. ``[a-z]`` correspond à tout les lettres de l'alphabet en minuscule.
+- ``*`` : Correspond à 0 ou plusieurs répétitions du caractère précédent. ``.*`` permet donc de matcher n'importe quelle série de caractères.
+- ``[]`` : Définit une classe de caractères. ``[abc]`` correspond à "a", "b" ou "c". On peut aussi matcher une plage de caractères. ``[a-z]`` correspond à toutes les lettres de l'alphabet en minuscule.
 - ``[^]`` : Définit une classe de caractères. ``[^abc]`` correspond à ce qui n'est pas "a", "b" ou "c".
 - ``{n,m}`` : Correspond entre n et m répétitions de l'élément précédent. En BRE il faut noter ``\{n,m\}``.
 - ``()``: Défini une sous-expression. Cette expression peut être rappelée plus tard avec ``\n``. En BRE il faut écrire ``\(\)``.
