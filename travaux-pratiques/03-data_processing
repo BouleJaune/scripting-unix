@@ -1,0 +1,16 @@
+#!/usr/bin/awk -f
+
+# Script AWK pour parse les données de supervision brutes et générer des fichiers d'alertes dans un dossier.
+# Utilisation : Rendre exécutable et ./03-data_processing.awk fichier.csv
+BEGIN { FS = "," }
+NR >1 {
+outputFile="a_traiter/alerte_"NR-1".txt"
+print "Date:", $1,
+"\nServeur:", $2,
+"\nCriticité:", $3,
+"\nMessage:", $4,
+"\nInfogerant:", $5,
+"\nApplication:", $6,
+"\nEnvironnement:", $7 >(outputFile)
+close(outputFile)
+}

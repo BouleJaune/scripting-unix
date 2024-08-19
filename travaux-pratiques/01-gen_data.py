@@ -16,7 +16,7 @@ messages = {
 infogerants = ["InfogérantA", "InfogérantB", "InfogérantC"]
 applications = ["App1", "App2", "App3", "App4"]
 environments = ["Production", "Staging", "Development"]
-n = 10000
+n = 1000
 
 
 data = []
