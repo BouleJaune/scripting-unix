@@ -23,6 +23,7 @@ Si possible utilisez le ``Windows Terminal`` qui est installé par défaut sur W
 
 [Guide Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 
+
 - Téléchargez et installez VirtualBox depuis le site officiel.
 - Téléchargez un ISO Linux, typiquement Ubuntu sur le site officiel.
 - Ouvrez VirtualBox et cliquez sur "New"

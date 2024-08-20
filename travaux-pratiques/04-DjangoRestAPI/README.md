@@ -7,7 +7,8 @@ Les données sont des données factices de supervision
 
 ### Installation de Django et création du projet
 
-Dans un Python venv installons ``djangorestframework`` et créons un projet vierge: 
+Dans un environnement virtuel Python (venv) installons ``djangorestframework`` et créons un projet vierge: 
+
 ```sh
 pip install djangorestframework 
 django-admin startproject djangorestapi .
@@ -16,6 +17,7 @@ django-admin startapp quickstart
 ```
 
 Maintenant on peut synchroniser la db et créer un super utilisateur : 
+
 ```
 python manage.py migrate
 python manage.py createsuperuser --username admin --email admin@example.com
@@ -36,9 +38,10 @@ Le projet est maintenant créé et prêt à recevoir sa première application.
 
 ### Création d'une application Django
 
-Un projet Django contient des apps, des applications web qui ont chacune leur propre but et utilité. Chaque projet peut contenir plusieurs apps, ceci est utile dans le cadre de gros projets où plusieurs fonctionnalités sont disponibles (blog, webshop, forum sur le même site...).
+Un projet Django contient des "app", des applications web qui ont chacune leur propre but et utilité. Chaque projet peut contenir plusieurs apps, ceci est utile dans le cadre de gros projets où plusieurs fonctionnalités sont disponibles (blog, webshop, forum sur le même site...).
 
 On peut créer une nouvelle application :
+
 ```
 python manage.py startapp myapp
 ```
@@ -47,7 +50,6 @@ Cela va créer un nouveau dossier nommé ``myapp``, c'est dans celui que l'on va
 
 Ce dossier contient :
 ```
-./__init__.py
 ./admin.py 
 ./models.py 
 ./migrations
@@ -57,13 +59,16 @@ Ce dossier contient :
 ./apps.py
 ```
 
+Les fichiers qui nous intéresseront ici sont ``models.py``, ``views.py`` et deux que l'on va créer ``urls.py`` et ``serializers.py``.
+
 ## Model the data
 
-Les models dans Django sont des classes Python qui définie la structure des tables de notre base de données.
+Les models dans Django sont des classes Python qui définient la structure des tables de notre base de données.
 
 Il nous faut donc définir un modèle pour nous permettre de stocker les alertes dans la base de données.
 
 Pour cela il faut modifier le fichier ``models.py`` et définir une classe, qu'on peut nommer, ``Alert`` :
+
 ```python
 from django.db import models
 
@@ -89,30 +94,71 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+Cela va créer les tables vierges dans la base de données SQLite.
+
+Ces modèles nous permettent d'abstracter la partie SQL.
 
 ## Serializer
+
+Le serializer va permettre de transformer les Json reçues via l'API en données ingérées dans la BDD SQL, et inversement transformer le SQL en Json. Il faut un serializer pour chaque modèle de données.
+
+Ici le serializer hérite d'une classe Django Rest Framework qui permet de n'avoir à quasiment rien faire pour avoir un serializer fonctionnel de notre model. On crée juste une classe héritant de ceci et on lui dit quel est le modèle et quels champs il faut prendre.
+
+On met le serializer dans le fichier ``myapp/serializers.py`` :
+
 ```python
 from rest_framework import serializers
 from .models import Alert
-
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alert
         fields = '__all__'
 ```
+
+Il est important de noter que ``models.py`` est importé ici de manière relative avec ``.models`` pour bien s'assurer de ne pas rentrer en conflit avec par exemple d'autres applications Django ou encore même avec ``django.db.models``.
+
 ## API Views
 
-``myapp/views.py``
-```python
-from django.urls import path
-from .views import AlertCreate
-# , AlertRetrieveUpdateDestroy
+Une vue sur Django permet de créer des actions ou encore des pages web. Ces vues seront à rattacher à une URL. Ici les vues que l'on veut sont les actions que l'on souhaite faire soit : 
 
-urlpatterns = [
-    path('alert-create', AlertCreate.as_view(), name='alert-create'),
-    # path('hello/', AlertRetrieveUpdateDestroy, name='alert-retriev'),
-]
+- Ajouter des données et pouvoir tout afficher, action rattachée sur ``/api/alert``.
+- Afficher, supprimer, modifier une donnée précise, action rattachée sur ``/api/alert/id_alert``.
+
+Pour cela on va donc créer une vue pour chaque action. On peut encore une fois utiliser des Classes Python déjà existantes dans le framework car ce sont des actions basiques.
+
+Les deux classes sont disponibles dans ``rest_framework.generics`` et sont ``ListCreateAPIView`` et ``RetrieveUpdateDestroyAPIView``.
+
+Elles n'auront besoin que de savoir sur quel type de donnée on veut faire les actions (``.models.Alert``) et comment traduire Json``<=>``SQL (``.serializers.AlertSerializer``).
+
+
+Le fichier ``views.py`` contient donc :
+
+```python
+# from django.shortcuts import render
+from rest_framework import generics
+from .models import Alert
+from .serializers import AlertSerializer
+
+
+class AlertCreateList(generics.ListCreateAPIView):
+    """
+    Permet de créer des instances d'Alert via POST
+    et de les lister via GET
+    """
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+
+
+class AlertRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Permet de récupérer une instance d'Alert via GET,
+    ou d'uppdate via POST
+    ou de détruire via DELETE
+    """
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+
 ```
 
 ## URL Routing

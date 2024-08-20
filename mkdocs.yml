@@ -49,8 +49,6 @@ theme:
     - console
     - properties
     - shell
-  # logo: 'serveex/img/book_pixel.png'
-  # favicon: 'serveex/img/book_pixel.png'
 
 # Extensions
 markdown_extensions:
