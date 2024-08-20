@@ -61,6 +61,16 @@ Ce dossier contient :
 
 Les fichiers qui nous intéresseront ici sont ``models.py``, ``views.py`` et deux que l'on va créer ``urls.py`` et ``serializers.py``.
 
+
+Une fois tout ceci fait dans le fichier  ``djangorestframework/settings.py`` il faut rajouter notre nouvelle application dans la liste ``INSTALLED_APPS`` :
+
+```python
+INSTALLED_APPS = [
+    'myapp`, # <= cette ligne
+    'rest_framework', 
+    ...
+]
+```
 ## Model the data
 
 Les models dans Django sont des classes Python qui définient la structure des tables de notre base de données.
@@ -161,10 +171,15 @@ class AlertRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 ```
 
+
+Maintenant toute la partie logique est faite, il ne reste plus qu'à créer les URLs.
+
 ## URL Routing
 ### URL de l'app dans le projet
 
-Dans ``djangorestapi/urls.py`` rajouter l'url de notre app RestAPI : 
+Notre application ``myapp`` au sein du projet ``djangorestapi`` a besoin de sa propre URL, elle sera disponible sur ``/api``. Pour cela il faut renseigner cette URL dans le projet. On peut utiliser la fonction ``include`` de ``django.urls``.
+
+Dans ``djangorestapi/urls.py`` rajouter l'url de ``myapp`` : 
 
 ```python
 from django.contrib import admin
@@ -179,21 +194,34 @@ urlpatterns = [
 
 ### URLs des appels API
 
+Une fois l'url de ``myapp`` mise en place on peut définir les URLs de nos ``views``.
+
 Dans le fichier ``myapp/urls.py`` il faut rajouter les URLs des appels API et les rattacher aux ``views`` en question.
+
+Les views étant simplement des Classes Python, elles ne sont pas des objets views, cependant ces classes ont la méthode ``.as_view()`` héritée ce qui perment de la considérer comme tel.
 
 ```python
 from django.urls import path
-from .views import AlertCreate
-# , AlertRetrieveUpdateDestroy
+from .views import AlertCreateList, AlertRetrieveUpdateDestroy
 
 urlpatterns = [
-    path('alert-create', AlertCreate.as_view(), name='alert-create'),
-    # path('hello/', AlertRetrieveUpdateDestroy, name='alert-retriev'),
+    # Rattache l'url /alert à AlertCreateList
+    path('alert', AlertCreateList.as_view(), name='alert-list-create'),
+    # Rattache l'URL /alert/[id d'une Alert] à AlertRetrieveUpdateDestroy
+    path('alert/<int:pk>', AlertRetrieveUpdateDestroy.as_view(), name='alert-detail'),
 ]
 ```
 
-## Auth and perms
+## Informations complémentaires
 
-Pour reset la base de donnée à zéro
+
+Pour flush la base de donnée on peut  : 
+```
 python manage.py flush
-## 
+```
+Ou encore supprimer le fichier de BDD SQLite et remigrer.
+
+Pour lancer le serveur Django : 
+```
+python manage.py runserver
+```
