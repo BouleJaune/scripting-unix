@@ -7,6 +7,7 @@ nav:
   - Python:
     - Python: 'python.md'
     - Modularité: 'modularite.md'
+    - Programmation orientée objet: 'python-oop.md'
   - Perl et Ruby: 'perl-ruby.md'
   - Awk et Expressions régulières:
     - Awk : 'awk.md'
