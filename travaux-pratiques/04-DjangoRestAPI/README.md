@@ -102,7 +102,7 @@ Cela va créer les tables vierges dans la base de données SQLite.
 
 Ces modèles nous permettent d'abstracter la partie SQL.
 
-## Serializer de donnée
+## Serializer de données
 
 Le serializer va permettre de transformer les Json reçues via l'API en données ingérées dans la BDD SQL, et inversement transformer le SQL en Json. Il faut un serializer pour chaque modèle de données.
 
@@ -133,7 +133,7 @@ Pour cela on va donc créer une vue pour chaque action. On peut encore une fois 
 
 Les deux classes sont disponibles dans ``rest_framework.generics`` et sont ``ListCreateAPIView`` et ``RetrieveUpdateDestroyAPIView``.
 
-Elles n'auront besoin que de savoir sur quel type de donnée on veut faire les actions (``.models.Alert``) et comment traduire Json``<=>``SQL (``.serializers.AlertSerializer``).
+Elles n'auront besoin que de savoir sur quel type de données on veut faire les actions (``.models.Alert``) et comment traduire Json``<=>``SQL (``.serializers.AlertSerializer``).
 
 
 Le fichier ``views.py`` contient donc :
@@ -209,7 +209,7 @@ urlpatterns = [
 ## Informations complémentaires
 
 
-Pour flush la base de donnée on peut  : 
+Pour flush la base de données on peut  : 
 ```
 python manage.py flush
 ```
