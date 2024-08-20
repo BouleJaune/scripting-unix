@@ -1,11 +1,5 @@
-Petit serveur web django qui stock les données dans une db sqlite avec une rest api pour ingérer les données
-Les données sont des données factices de supervision
-
-
-
-## Préparations initiales
-
-### Installation de Django et création du projet
+# REST API avec Django
+## Installation de Django et création du projet
 
 Dans un environnement virtuel Python (venv) installons ``djangorestframework`` et créons un projet vierge: 
 
@@ -36,7 +30,7 @@ INSTALLED_APPS = [
 
 Le projet est maintenant créé et prêt à recevoir sa première application.
 
-### Création d'une application Django
+## Création d'une application Django
 
 Un projet Django contient des "app", des applications web qui ont chacune leur propre but et utilité. Chaque projet peut contenir plusieurs apps, ceci est utile dans le cadre de gros projets où plusieurs fonctionnalités sont disponibles (blog, webshop, forum sur le même site...).
 
@@ -71,7 +65,7 @@ INSTALLED_APPS = [
     ...
 ]
 ```
-## Model the data
+## Modèle de données
 
 Les models dans Django sont des classes Python qui définient la structure des tables de notre base de données.
 
@@ -108,7 +102,7 @@ Cela va créer les tables vierges dans la base de données SQLite.
 
 Ces modèles nous permettent d'abstracter la partie SQL.
 
-## Serializer
+## Serializer de donnée
 
 Le serializer va permettre de transformer les Json reçues via l'API en données ingérées dans la BDD SQL, et inversement transformer le SQL en Json. Il faut un serializer pour chaque modèle de données.
 
@@ -128,7 +122,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 Il est important de noter que ``models.py`` est importé ici de manière relative avec ``.models`` pour bien s'assurer de ne pas rentrer en conflit avec par exemple d'autres applications Django ou encore même avec ``django.db.models``.
 
-## API Views
+## Vues de notre application
 
 Une vue sur Django permet de créer des actions ou encore des pages web. Ces vues seront à rattacher à une URL. Ici les vues que l'on veut sont les actions que l'on souhaite faire soit : 
 
@@ -174,7 +168,7 @@ class AlertRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 Maintenant toute la partie logique est faite, il ne reste plus qu'à créer les URLs.
 
-## URL Routing
+## Routes des URLs
 ### URL de l'app dans le projet
 
 Notre application ``myapp`` au sein du projet ``djangorestapi`` a besoin de sa propre URL, elle sera disponible sur ``/api``. Pour cela il faut renseigner cette URL dans le projet. On peut utiliser la fonction ``include`` de ``django.urls``.
@@ -192,7 +186,7 @@ urlpatterns = [
 ]
 ```
 
-### URLs des appels API
+### URLs des appels API dans l'app
 
 Une fois l'url de ``myapp`` mise en place on peut définir les URLs de nos ``views``.
 
