@@ -25,9 +25,9 @@ Exemples d'alertes possibles :
 ```
 Vous pouvez utiliser la librairie ``pandas`` ou ``csv`` pour enregistrer au format ``csv`` les données mais ce n'est pas forcément nécessaire.
 
-Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (10000 par exemple).
+Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (1000 par exemple).
 
-## Data exploring
+## Exploration de données
 
 Utilisez directement la ligne de commande pour explorer un peu les données pour récupérer notamment : 
 
@@ -37,7 +37,7 @@ Utilisez directement la ligne de commande pour explorer un peu les données pour
 - Toutes les alertes non-INFO
 - D'autres choses selon vos idées
 
-## Data processing
+## Processing des données
 
 
 Faites un script Bash qui va récupérer toutes ces données de supervision et générer un fichier pour chaque alerte.
@@ -60,11 +60,13 @@ Utilisez la librairie Django Rest framework pour créer une Rest API simple qui 
 - Sur l'URL ``/api/alert`` on pourra récupérer via ``GET`` les alertes et via ``POST`` on pourra en rajouter
 - Sur l'URL ``/api/alert/[id d'une alerte]`` on pourra récupérer via ``GET`` une alerte précise, la supprimer via ``DELETE`` ou la modifier via ``POST``.
 
+Django Rest Framework permettra d'avoir une interface web pratique.
 
-## Data watcher
+## Connecteur de données
 
-Faire un script qui lis le dossier contenant les fichiers d'alertes et les injecte dans la base de donnée via la Rest API.
+Faire un script qui lit le dossier contenant les fichiers d'alertes et les injecte dans la base de données via la Rest API.
 
+Si la donnée est bien injectée dans la base de données alors supprimez le fichier d'alerte, sinon afficher le code de retour et le nom du fichier.
 
 ## Intégrer ces scripts au système
 

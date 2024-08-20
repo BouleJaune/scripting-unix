@@ -1,3 +1,0 @@
-Faire un systemd service pour le server restapi django
-Faire un systemd timer + service pour le data watcher
-Faire un systemd timer + service pour générer périodiquement de nouvelles données
