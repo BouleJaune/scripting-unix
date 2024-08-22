@@ -407,6 +407,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-oop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programmation orientée objet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -600,18 +621,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-exploring" class="md-nav__link">
+  <a href="#exploration-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data exploring
+      Exploration de données
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-processing" class="md-nav__link">
+  <a href="#processing-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data processing
+      Processing des données
     </span>
   </a>
   
@@ -627,9 +648,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-watcher" class="md-nav__link">
+  <a href="#connecteur-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data watcher
+      Connecteur de données
     </span>
   </a>
   
@@ -697,18 +718,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-exploring" class="md-nav__link">
+  <a href="#exploration-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data exploring
+      Exploration de données
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-processing" class="md-nav__link">
+  <a href="#processing-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data processing
+      Processing des données
     </span>
   </a>
   
@@ -724,9 +745,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-watcher" class="md-nav__link">
+  <a href="#connecteur-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
-      Data watcher
+      Connecteur de données
     </span>
   </a>
   
@@ -788,8 +809,8 @@ Ces données seront sous la forme d'un fichier texte/csv et représenteront des 
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="s2">&quot;CRITICAL&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;System overload imminent.&quot;</span><span class="p">,</span> <span class="s2">&quot;Critical security vulnerability detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;Data corruption detected.&quot;</span><span class="p">,</span> <span class="s2">&quot;System bricked&quot;</span><span class="p">,</span> <span class="s2">&quot;Server is on fire&quot;</span><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
 Vous pouvez utiliser la librairie <code>pandas</code> ou <code>csv</code> pour enregistrer au format <code>csv</code> les données mais ce n'est pas forcément nécessaire.</p>
-<p>Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (10000 par exemple).</p>
-<h2 id="data-exploring">Data exploring</h2>
+<p>Une fois le script fait, générez un fichier csv avec plusieurs milliers d'alertes (1000 par exemple).</p>
+<h2 id="exploration-de-donnees">Exploration de données</h2>
 <p>Utilisez directement la ligne de commande pour explorer un peu les données pour récupérer notamment : </p>
 <ul>
 <li>Le nombre de serveurs différents</li>
@@ -798,7 +819,7 @@ Vous pouvez utiliser la librairie <code>pandas</code> ou <code>csv</code> pour e
 <li>Toutes les alertes non-INFO</li>
 <li>D'autres choses selon vos idées</li>
 </ul>
-<h2 id="data-processing">Data processing</h2>
+<h2 id="processing-des-donnees">Processing des données</h2>
 <p>Faites un script Bash qui va récupérer toutes ces données de supervision et générer un fichier pour chaque alerte.
 Le fichier sera de la forme :</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
@@ -821,8 +842,10 @@ Le fichier sera de la forme :</p>
 <li>Sur l'URL <code>/api/alert</code> on pourra récupérer via <code>GET</code> les alertes et via <code>POST</code> on pourra en rajouter</li>
 <li>Sur l'URL <code>/api/alert/[id d'une alerte]</code> on pourra récupérer via <code>GET</code> une alerte précise, la supprimer via <code>DELETE</code> ou la modifier via <code>POST</code>.</li>
 </ul>
-<h2 id="data-watcher">Data watcher</h2>
-<p>Faire un script qui lis le dossier contenant les fichiers d'alertes et les injecte dans la base de donnée via la Rest API.</p>
+<p>Django Rest Framework permettra d'avoir une interface web pratique.</p>
+<h2 id="connecteur-de-donnees">Connecteur de données</h2>
+<p>Faire un script qui lit le dossier contenant les fichiers d'alertes et les injecte dans la base de données via la Rest API.</p>
+<p>Si la donnée est bien injectée dans la base de données alors supprimez le fichier d'alerte, sinon afficher le code de retour et le nom du fichier.</p>
 <h2 id="integrer-ces-scripts-au-systeme">Intégrer ces scripts au système</h2>
 <p>Il peut être intéressant d'intégrer proprement les scripts dans le système pour avoir une meilleure gestion et monitoring de ceux-ci.</p>
 <p>Pour cela on peut utiliser Systemd :</p>
