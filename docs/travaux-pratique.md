@@ -76,7 +76,6 @@ Pour cela on peut utiliser Systemd :
 
 - Faire un service systemd pour le serveur Django.
 - Faire un timer systemd + service systemd pour le script lisant les données.
-- Faire un autre service avec timer pour la génération périodique de données. Il peut être intéressant de faire un petit script wrapper du script Python et Shell.
 
 ## Pour aller plus loin
 

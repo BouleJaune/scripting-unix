@@ -27,28 +27,6 @@ La Programmation Orientée Objet (POO) est un paradigme de programmation qui org
    personne1.saluer()  # Affiche: Bonjour, je m'appelle Alice et j'ai 30 ans.
 ```
 
-### Encapsulation
-
-L'encapsulation est la technique consistant à restreindre l'accès direct à certains attributs ou méthodes d'un objet, en les protégeant avec des méthodes d'accès (getters) et de modification (setters).
-
-```python
-class CompteBancaire:
-    def __init__(self, solde):
-        self.__solde = solde  # Attribut privé
-
-    def deposer(self, montant):
-        self.__solde += montant
-
-    def retirer(self, montant):
-        if montant <= self.__solde:
-            self.__solde -= montant
-        else:
-            print("Fonds insuffisants")
-
-    def afficher_solde(self):
-        print(f"Solde: {self.__solde}")
-```
-
 ## Héritage
 
 L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.
@@ -86,20 +64,25 @@ for animal in animaux:
 
 ## Abstraction
 
-L'abstraction consiste à définir des classes de base (souvent des classes abstraites) qui ne sont pas destinées à être instanciées, mais à être héritées par d'autres classes.
+L'abstraction consiste à définir des classes de base (souvent des classes abstraites) qui ne sont pas destinées à être instanciées (à créer des objets de cette classe), mais à être héritées par d'autres classes.
 
 ```python
 from abc import ABC, abstractmethod
+# Le module abc = abstract base class
 
-class Forme(ABC):
-    @abstractmethod
+class Forme(ABC): 
+    # Hérite de la classe ABC
+    # Une classe héritant de ABC ne peut pas être instanciée sauf si toute ses méthodes et propriétés abstraites sont écrasées
+    
+    @abstractmethod # Ce "décorateur" permet de dire que la méthode au dessous est "abstraite"
     def aire(self):
         pass
 
 class Carre(Forme):
     def __init__(self, cote):
         self.cote = cote
-
+    
+    # On override la méthode abstraite ce qui rend la classe instanciable 
     def aire(self):
         return self.cote ** 2
 ```
