@@ -1,0 +1,10 @@
+[Unit]
+Description=Exec le service data-connector toute les minutes
+Requires=data-connector.service
+
+[Timer]
+Unit=data-connector.service
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target

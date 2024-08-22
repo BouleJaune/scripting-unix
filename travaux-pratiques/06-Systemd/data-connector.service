@@ -1,0 +1,10 @@
+[Unit]
+Description=Service pour le script d'injection des données
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/chemin/vers/travaux-pratiques
+ExecStart=/chemin/vers/travaux-pratiques/05-data_connector.sh
+
+[Install]
+WantedBy=multi-user.target
