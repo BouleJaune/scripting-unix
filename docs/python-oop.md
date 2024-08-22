@@ -74,6 +74,7 @@ class Forme(ABC):
     # Hérite de la classe ABC
     # Une classe héritant de ABC ne peut pas être instanciée sauf si toute ses méthodes et propriétés abstraites sont écrasées
     
+    # Un décorateur permet de "composer" deux fonctions/méthodes ensembles, ici on compose "abstractmethod" (importée en haut) avec notre fonction aire.
     @abstractmethod # Ce "décorateur" permet de dire que la méthode au dessous est "abstraite"
     def aire(self):
         pass
