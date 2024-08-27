@@ -1,6 +1,6 @@
 site_name: Scripting Unix
 nav:
-  # - Setup de l'environnement: 'index.md'
+  - Setup de l'environnement: 'index.md'
   - Shell:
     - Shell: 'shell/shell.md'
     - Cheatsheet Shell: 'shell/cheatsheet-shell.md'
