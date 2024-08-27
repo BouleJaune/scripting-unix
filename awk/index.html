@@ -936,7 +936,7 @@ Si aucun pattern n'est fourni alors <code>awk</code> récupèrera chaque ligne.<
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action1 } pattern2 {action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera que sur les lignes matchant pattern2</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action1 } {action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera sur TOUTES les lignes et pas seulement celles matchant pattern1</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action2 ; action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera que sur les lignes matchant pattern1</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>awk<span class="w"> </span><span class="s1">&#39;pattern1 { action1 ; action2}&#39;</span><span class="w"> </span>fichier<span class="w"> </span><span class="c1"># Action 2 s&#39;appliquera que sur les lignes matchant pattern1</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="filtrer-par-motif">Filtrer par Motif</h2>
 <p><code>awk</code> permet de rechercher par expressions régulières (vues plus bas) du texte.
