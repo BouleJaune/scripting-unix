@@ -72,7 +72,7 @@ Si on veut deux commandes qui utilisent le même pattern il faut les mettre dans
 ```sh
 awk 'pattern1 { action1 } pattern2 {action2}' fichier # Action 2 s'appliquera que sur les lignes matchant pattern2
 awk 'pattern1 { action1 } {action2}' fichier # Action 2 s'appliquera sur TOUTES les lignes et pas seulement celles matchant pattern1
-awk 'pattern1 { action2 ; action2}' fichier # Action 2 s'appliquera que sur les lignes matchant pattern1
+awk 'pattern1 { action1 ; action2}' fichier # Action 2 s'appliquera que sur les lignes matchant pattern1
 ```
 
 
@@ -93,7 +93,7 @@ Cherchez avec ``awk`` dans ``fichier.txt`` toutes les alertes provenant du serve
 ??? Note "Exemple de solution"
 
     ```sh
-    awk '/Server3/ {print $4}' fichier.txt
+    awk '/Server3/ {print $0}' fichier.txt
     ```
 
 
