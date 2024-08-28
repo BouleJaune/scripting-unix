@@ -437,7 +437,7 @@ for animal in animaux:
 Pour itérer de manière plus classique un certain nombre de fois on doit créer un itérable de cette longueur. ``range()`` est très pratique pour cela.
 
 ```python
-for i in range(10)
+for i in range(10):
     print(i)
 ```
 
