@@ -42,7 +42,7 @@ L'indentation détermine la hiérarchie des blocs de code et définit la portée
 Voici un exemple avec une fonction et une condition :
 
 ```python
-def saluer(nom):
+def saluer(nom=""):
     if nom:
         print("Bonjour, {nom} !")
     else:
