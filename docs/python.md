@@ -315,8 +315,8 @@ mon_dict["region"] = "PACA"  # Ajoute une nouvelle paire clé-valeur
 ```
 On peut supprimer des éléments à l'aide de la fonction ``del`` ou de la méthode ``pop()``.
 ```python
-del d["ville"]  # Supprime la paire clé-valeur avec la clé "ville"
-region = d.pop("region")  # Supprime et retourne la valeur associée à "region"
+del mon_dict["ville"]  # Supprime la paire clé-valeur avec la clé "ville"
+region = mon_dict.pop("region")  # Supprime et retourne la valeur associée à "region"
 ```
 
 Methodes utiles:
