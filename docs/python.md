@@ -44,7 +44,7 @@ Voici un exemple avec une fonction et une condition :
 ```python
 def saluer(nom=""):
     if nom:
-        print("Bonjour, {nom} !")
+        print(f"Bonjour, {nom} !")
     else:
         print("Bonjour, étranger !")
 ```
