@@ -339,7 +339,7 @@ paires = mon_dict.items()  # Retourne dict_items([('pays', 'France'), ('ville', 
 Ces objets (``dict_items``, ``dict_values`` et ``dict_keys``) peuvent être convertis facilement en ``list`` :
 ```python
 valeurs = list(mon_dict.values())
-print(list) # ['France', 'Paris', 'Seine']
+print(valeurs) # ['France', 'Paris', 'Seine']
 ```
 
 #### Exercice
