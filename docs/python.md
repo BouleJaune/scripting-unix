@@ -674,7 +674,8 @@ Utilisez des ``with`` pour ouvrir le fichier et faites des blocs de code indépe
     # 4. Relire et afficher le contenu mis à jour du fichier
     print("\nContenu mis à jour du fichier :")
     with open('exemple.txt', 'r') as fichier:
-        contenu_mis_a_jour = fichier.rea
+        contenu_mis_a_jour = fichier.read()
+        print(contenu_mis_a_jour)
     ```
 
 ## Erreurs et exceptions
