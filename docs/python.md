@@ -595,6 +595,15 @@ fichier = open('mon_fichier.txt', 'w')
 fichier = open('mon_fichier.txt', 'a')
 ```
 
+Rajouter un ``+`` au mode d'ouverture permet de rajouter la possibilité d'écrire pour ``r`` et de lire pour ``w`` et ``a``.
+```python
+# Ouverture du fichier en mode lecteur "plus" qui permet aussi d'écrire
+fichier = open('mon_fichier.txt', 'r+')
+```
+
+On ne peut cependant pas créer de fichier avec ``r+`` contrairement à ``w`` et ``a``. Si le fichier n'existe pas ``r`` et ``r+`` renverront une erreur. 
+
+
 ### Lecture de fichier
 
 Pour lire le contenu d'un fichier, on peut utiliser différentes méthodes :
