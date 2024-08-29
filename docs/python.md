@@ -645,7 +645,7 @@ Cependant, l'utilisation de ``with`` est préférable car elle assure que le fic
 #### Exercice
 Écrivez un script Python qui :
 
-1. Crée un fichier texte nommé `exemple.txt` et y écrit trois lignes de texte.
+1. Crée un fichier texte nommé `exemple.txt` et y écrire trois lignes de texte.
 2. Lit le contenu du fichier `exemple.txt` et l'affiche à l'écran.
 3. Ajoute une nouvelle ligne de texte à la fin du fichier `exemple.txt`.
 4. Relit et affiche le contenu mis à jour du fichier.
