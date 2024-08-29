@@ -2192,9 +2192,17 @@ Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</
 <p>Pour écrire dans un fichier, on utilise la méthode <code>write()</code>.</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
 <span class="normal"><a href="#__codelineno-45-2">2</a></span>
-<span class="normal"><a href="#__codelineno-45-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span>
+<span class="normal"><a href="#__codelineno-45-5">5</a></span>
+<span class="normal"><a href="#__codelineno-45-6">6</a></span>
+<span class="normal"><a href="#__codelineno-45-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Bonjour, monde!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Voici une autre ligne.&#39;</span><span class="p">)</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4"></a>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5"></a><span class="c1"># fichier.closed renvoi True si le fichier et fermé, False sinon</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6"></a><span class="c1"># Ici il renverra True car on est en dehors de l&#39;indentation du with</span>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">fichier</span><span class="o">.</span><span class="n">closed</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>En mode <code>'w'</code>, si le fichier n'existe pas, il est créé. Si le fichier existe déjà, son contenu est écrasé.</p>
 <h3 id="fermeture-dun-fichier">Fermeture d'un fichier</h3>
