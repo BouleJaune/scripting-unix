@@ -2226,7 +2226,8 @@ Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</
 <span class="normal"><a href="#__codelineno-46-17">17</a></span>
 <span class="normal"><a href="#__codelineno-46-18">18</a></span>
 <span class="normal"><a href="#__codelineno-46-19">19</a></span>
-<span class="normal"><a href="#__codelineno-46-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="c1"># 1. Création et écriture dans le fichier</span>
+<span class="normal"><a href="#__codelineno-46-20">20</a></span>
+<span class="normal"><a href="#__codelineno-46-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="c1"># 1. Création et écriture dans le fichier</span>
 </span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
 </span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Première ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Deuxième ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2245,7 +2246,8 @@ Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</
 </span><span id="__span-46-17"><a id="__codelineno-46-17" name="__codelineno-46-17"></a><span class="c1"># 4. Relire et afficher le contenu mis à jour du fichier</span>
 </span><span id="__span-46-18"><a id="__codelineno-46-18" name="__codelineno-46-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contenu mis à jour du fichier :&quot;</span><span class="p">)</span>
 </span><span id="__span-46-19"><a id="__codelineno-46-19" name="__codelineno-46-19"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20"></a>    <span class="n">contenu_mis_a_jour</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">rea</span>
+</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20"></a>    <span class="n">contenu_mis_a_jour</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-46-21"><a id="__codelineno-46-21" name="__codelineno-46-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu_mis_a_jour</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
 <h2 id="erreurs-et-exceptions">Erreurs et exceptions</h2>
