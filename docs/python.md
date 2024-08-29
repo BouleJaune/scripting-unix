@@ -636,6 +636,11 @@ Pour écrire dans un fichier, on utilise la méthode ``write()``.
 with open('mon_fichier.txt', 'w') as fichier:
     fichier.write('Bonjour, monde!\n')
     fichier.write('Voici une autre ligne.')
+
+# fichier.closed renvoi True si le fichier et fermé, False sinon
+# Ici il renverra True car on est en dehors de l'indentation du with
+print(fichier.closed)
+
 ```
 
 En mode ``'w'``, si le fichier n'existe pas, il est créé. Si le fichier existe déjà, son contenu est écrasé.
