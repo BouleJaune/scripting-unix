@@ -2356,19 +2356,17 @@ Dans cet exemple, la division par zéro lève une exception <code>ZeroDivisionEr
 <span class="normal"><a href="#__codelineno-52-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-52-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-52-10">10</a></span>
-<span class="normal"><a href="#__codelineno-52-11">11</a></span>
-<span class="normal"><a href="#__codelineno-52-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">mon_input</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-52-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
 </span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mon_input</span><span class="p">)</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre : &quot;</span><span class="p">))</span>
 </span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 </span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Il y a une erreur de type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le message d&#39;erreur est : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-52-7"><a id="__codelineno-52-7" name="__codelineno-52-7"></a>        <span class="n">f</span><span class="p">(</span><span class="n">mon_input</span><span class="p">)</span>
+</span><span id="__span-52-7"><a id="__codelineno-52-7" name="__codelineno-52-7"></a>        <span class="n">f</span><span class="p">()</span>
 </span><span id="__span-52-8"><a id="__codelineno-52-8" name="__codelineno-52-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le nombre est </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-52-9"><a id="__codelineno-52-9" name="__codelineno-52-9"></a>
 </span><span id="__span-52-10"><a id="__codelineno-52-10" name="__codelineno-52-10"></a>
-</span><span id="__span-52-11"><a id="__codelineno-52-11" name="__codelineno-52-11"></a><span class="n">texte_a_tester</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre : &quot;</span><span class="p">)</span>
-</span><span id="__span-52-12"><a id="__codelineno-52-12" name="__codelineno-52-12"></a><span class="n">f</span><span class="p">(</span><span class="n">texte_a_tester</span><span class="p">)</span>
+</span><span id="__span-52-11"><a id="__codelineno-52-11" name="__codelineno-52-11"></a><span class="n">f</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
 Cet exemple utilise un nouveau concept pour pouvoir redemander le nombre à l'utilisateur : la récursivité. C'est pour cela qu'on appelle la fonction <code>f</code> à l'intérieur d'elle même.</p>
 <p>Elle récupère l'erreur si elle existe, affiche le nom du type d'erreur (<code>ValueError</code> la plupart du temps) et son message avant de relancer la fonction, ce qui relancera l'input.</p>
