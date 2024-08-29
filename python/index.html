@@ -2156,44 +2156,50 @@ On peut supprimer des éléments à l'aide de la fonction <code>del</code> ou de
 </span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="c1"># Ouverture d&#39;un fichier en mode ajout (ajoute à la fin du fichier)</span>
 </span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8"></a><span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
+<p>Rajouter un <code>+</code> au mode d'ouverture permet de rajouter la possibilité d'écrire pour <code>r</code> et de lire pour <code>w</code> et <code>a</code>.
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
+<span class="normal"><a href="#__codelineno-42-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="c1"># Ouverture du fichier en mode lecteur &quot;plus&quot; qui permet aussi d&#39;écrire</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>On ne peut cependant pas créer de fichier avec <code>r+</code> contrairement à <code>w</code> et <code>a</code>. Si le fichier n'existe pas <code>r</code> et <code>r+</code> renverront une erreur. </p>
 <h3 id="lecture-de-fichier">Lecture de fichier</h3>
 <p>Pour lire le contenu d'un fichier, on peut utiliser différentes méthodes :</p>
-<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
-<span class="normal"><a href="#__codelineno-42-2">2</a></span>
-<span class="normal"><a href="#__codelineno-42-3">3</a></span>
-<span class="normal"><a href="#__codelineno-42-4">4</a></span>
-<span class="normal"><a href="#__codelineno-42-5">5</a></span>
-<span class="normal"><a href="#__codelineno-42-6">6</a></span>
-<span class="normal"><a href="#__codelineno-42-7">7</a></span>
-<span class="normal"><a href="#__codelineno-42-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="c1"># Lire tout le contenu</span>
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a>
-</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="c1"># Lire ligne par ligne</span>
-</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="n">ligne</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6"></a>
-</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="c1"># Lire toutes les lignes dans une liste</span>
-</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8"></a><span class="n">lignes</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-</span></code></pre></div></td></tr></table></div>
-Exemple avec la clause <code>with</code>:</p>
 <p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
 <span class="normal"><a href="#__codelineno-43-2">2</a></span>
-<span class="normal"><a href="#__codelineno-43-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span>
+<span class="normal"><a href="#__codelineno-43-6">6</a></span>
+<span class="normal"><a href="#__codelineno-43-7">7</a></span>
+<span class="normal"><a href="#__codelineno-43-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="c1"># Lire tout le contenu</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="c1"># Lire ligne par ligne</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="n">ligne</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6"></a>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7"></a><span class="c1"># Lire toutes les lignes dans une liste</span>
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8"></a><span class="n">lignes</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+Exemple avec la clause <code>with</code>:</p>
+<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
+<span class="normal"><a href="#__codelineno-44-2">2</a></span>
+<span class="normal"><a href="#__codelineno-44-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</code>, une fois sorti de ce bloc le fichier se ferme et la variable <code>fichier</code> n'existe plus.</p>
 <h3 id="ecriture-dans-un-fichier">Écriture dans un fichier</h3>
 <p>Pour écrire dans un fichier, on utilise la méthode <code>write()</code>.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
-<span class="normal"><a href="#__codelineno-44-2">2</a></span>
-<span class="normal"><a href="#__codelineno-44-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Bonjour, monde!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Voici une autre ligne.&#39;</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Bonjour, monde!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Voici une autre ligne.&#39;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>En mode <code>'w'</code>, si le fichier n'existe pas, il est créé. Si le fichier existe déjà, son contenu est écrasé.</p>
 <h3 id="fermeture-dun-fichier">Fermeture d'un fichier</h3>
 <p>Il est crucial de fermer un fichier après avoir fini de l'utiliser pour libérer les ressources. Cela peut se faire avec la méthode <code>close()</code> ou automatiquement avec une clause <code>with</code> :</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="n">fichier</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="n">fichier</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Cependant, l'utilisation de <code>with</code> est préférable car elle assure que le fichier est correctement fermé même si une erreur survient pendant les opérations de lecture ou d'écriture.</p>
 <h4 id="exercice_8">Exercice</h4>
@@ -2207,47 +2213,47 @@ Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</
 <p>Utilisez des <code>with</code> pour ouvrir le fichier et faites des blocs de code indépendants pour chaque actions.</p>
 <details class="note">
 <summary>Exemple de solution</summary>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-46-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-46-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-46-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-46-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-46-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-46-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-46-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-46-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-46-10">10</a></span>
-<span class="normal"><a href="#__codelineno-46-11">11</a></span>
-<span class="normal"><a href="#__codelineno-46-12">12</a></span>
-<span class="normal"><a href="#__codelineno-46-13">13</a></span>
-<span class="normal"><a href="#__codelineno-46-14">14</a></span>
-<span class="normal"><a href="#__codelineno-46-15">15</a></span>
-<span class="normal"><a href="#__codelineno-46-16">16</a></span>
-<span class="normal"><a href="#__codelineno-46-17">17</a></span>
-<span class="normal"><a href="#__codelineno-46-18">18</a></span>
-<span class="normal"><a href="#__codelineno-46-19">19</a></span>
-<span class="normal"><a href="#__codelineno-46-20">20</a></span>
-<span class="normal"><a href="#__codelineno-46-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="c1"># 1. Création et écriture dans le fichier</span>
-</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Première ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Deuxième ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Troisième ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6"></a>
-</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7"></a><span class="c1"># 2. Lecture et affichage du contenu du fichier</span>
-</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contenu initial du fichier :&quot;</span><span class="p">)</span>
-</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
-</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12"></a>
-</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13"></a><span class="c1"># 3. Ajout d&#39;une nouvelle ligne de texte</span>
-</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Quatrième ligne ajoutée.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-46-16"><a id="__codelineno-46-16" name="__codelineno-46-16"></a>
-</span><span id="__span-46-17"><a id="__codelineno-46-17" name="__codelineno-46-17"></a><span class="c1"># 4. Relire et afficher le contenu mis à jour du fichier</span>
-</span><span id="__span-46-18"><a id="__codelineno-46-18" name="__codelineno-46-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contenu mis à jour du fichier :&quot;</span><span class="p">)</span>
-</span><span id="__span-46-19"><a id="__codelineno-46-19" name="__codelineno-46-19"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
-</span><span id="__span-46-20"><a id="__codelineno-46-20" name="__codelineno-46-20"></a>    <span class="n">contenu_mis_a_jour</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-46-21"><a id="__codelineno-46-21" name="__codelineno-46-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu_mis_a_jour</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-47-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-47-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-47-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-47-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-47-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-47-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-47-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-47-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-47-10">10</a></span>
+<span class="normal"><a href="#__codelineno-47-11">11</a></span>
+<span class="normal"><a href="#__codelineno-47-12">12</a></span>
+<span class="normal"><a href="#__codelineno-47-13">13</a></span>
+<span class="normal"><a href="#__codelineno-47-14">14</a></span>
+<span class="normal"><a href="#__codelineno-47-15">15</a></span>
+<span class="normal"><a href="#__codelineno-47-16">16</a></span>
+<span class="normal"><a href="#__codelineno-47-17">17</a></span>
+<span class="normal"><a href="#__codelineno-47-18">18</a></span>
+<span class="normal"><a href="#__codelineno-47-19">19</a></span>
+<span class="normal"><a href="#__codelineno-47-20">20</a></span>
+<span class="normal"><a href="#__codelineno-47-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="c1"># 1. Création et écriture dans le fichier</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Première ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Deuxième ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Troisième ligne de texte.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6"></a>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7"></a><span class="c1"># 2. Lecture et affichage du contenu du fichier</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contenu initial du fichier :&quot;</span><span class="p">)</span>
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu</span><span class="p">)</span>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12"></a>
+</span><span id="__span-47-13"><a id="__codelineno-47-13" name="__codelineno-47-13"></a><span class="c1"># 3. Ajout d&#39;une nouvelle ligne de texte</span>
+</span><span id="__span-47-14"><a id="__codelineno-47-14" name="__codelineno-47-14"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-47-15"><a id="__codelineno-47-15" name="__codelineno-47-15"></a>    <span class="n">fichier</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Quatrième ligne ajoutée.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-47-16"><a id="__codelineno-47-16" name="__codelineno-47-16"></a>
+</span><span id="__span-47-17"><a id="__codelineno-47-17" name="__codelineno-47-17"></a><span class="c1"># 4. Relire et afficher le contenu mis à jour du fichier</span>
+</span><span id="__span-47-18"><a id="__codelineno-47-18" name="__codelineno-47-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contenu mis à jour du fichier :&quot;</span><span class="p">)</span>
+</span><span id="__span-47-19"><a id="__codelineno-47-19" name="__codelineno-47-19"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;exemple.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichier</span><span class="p">:</span>
+</span><span id="__span-47-20"><a id="__codelineno-47-20" name="__codelineno-47-20"></a>    <span class="n">contenu_mis_a_jour</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-47-21"><a id="__codelineno-47-21" name="__codelineno-47-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">contenu_mis_a_jour</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
 <h2 id="erreurs-et-exceptions">Erreurs et exceptions</h2>
@@ -2255,120 +2261,120 @@ Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté <code>with</
 <p>Une exception est une erreur détectée lors de l'exécution d'un programme. Python utilise un modèle basé sur la levée et la gestion d'exceptions pour gérer ces erreurs.</p>
 <h3 id="structure-try-except">Structure try-except</h3>
 <p>Pour capturer et gérer les exceptions, on utilise les blocs <code>try-except</code>. Le code susceptible de provoquer une exception est placé dans le bloc <code>try</code>, et le bloc <code>except</code> est utilisé pour gérer l'erreur.</p>
-<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
-<span class="normal"><a href="#__codelineno-47-2">2</a></span>
-<span class="normal"><a href="#__codelineno-47-3">3</a></span>
-<span class="normal"><a href="#__codelineno-47-4">4</a></span>
-<span class="normal"><a href="#__codelineno-47-5">5</a></span>
-<span class="normal"><a href="#__codelineno-47-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a>    <span class="c1"># Code pouvant provoquer une exception</span>
-</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
-</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4"></a><span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5"></a>    <span class="c1"># Code exécuté si une exception de type ZeroDivisionError est levée</span>
-</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : division par zéro.&quot;</span><span class="p">)</span>
-</span></code></pre></div></td></tr></table></div>
-Dans cet exemple, la division par zéro lève une exception <code>ZeroDivisionError</code>, qui est ensuite capturée par le bloc <code>except</code>.</p>
-<h3 id="gestion-de-plusieurs-exceptions">Gestion de Plusieurs Exceptions</h3>
-<p>Il est possible de gérer plusieurs types d'exceptions en utilisant plusieurs blocs <code>except</code>.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
+<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
 <span class="normal"><a href="#__codelineno-48-2">2</a></span>
 <span class="normal"><a href="#__codelineno-48-3">3</a></span>
 <span class="normal"><a href="#__codelineno-48-4">4</a></span>
 <span class="normal"><a href="#__codelineno-48-5">5</a></span>
 <span class="normal"><a href="#__codelineno-48-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a>    <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;non_existent_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier n&#39;a pas été trouvé.&quot;</span><span class="p">)</span>
-</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a><span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Une erreur d&#39;entrée/sortie est survenue.&quot;</span><span class="p">)</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a>    <span class="c1"># Code pouvant provoquer une exception</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a>    <span class="c1"># Code exécuté si une exception de type ZeroDivisionError est levée</span>
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : division par zéro.&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+Dans cet exemple, la division par zéro lève une exception <code>ZeroDivisionError</code>, qui est ensuite capturée par le bloc <code>except</code>.</p>
+<h3 id="gestion-de-plusieurs-exceptions">Gestion de Plusieurs Exceptions</h3>
+<p>Il est possible de gérer plusieurs types d'exceptions en utilisant plusieurs blocs <code>except</code>.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
+<span class="normal"><a href="#__codelineno-49-2">2</a></span>
+<span class="normal"><a href="#__codelineno-49-3">3</a></span>
+<span class="normal"><a href="#__codelineno-49-4">4</a></span>
+<span class="normal"><a href="#__codelineno-49-5">5</a></span>
+<span class="normal"><a href="#__codelineno-49-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2"></a>    <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;non_existent_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3"></a><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier n&#39;a pas été trouvé.&quot;</span><span class="p">)</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5"></a><span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Une erreur d&#39;entrée/sortie est survenue.&quot;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Ici, on gère spécifiquement les exceptions <code>FileNotFoundError</code> et <code>IOError</code>.</p>
 <h3 id="utilisation-de-else-et-finally">Utilisation de <code>else</code> et <code>finally</code></h3>
 <p>Le bloc <code>else</code> est exécuté si aucune exception n'est levée dans le bloc <code>try</code>. Le bloc <code>finally</code> est exécuté en toutes circonstances, qu'une exception ait été levée ou non, et est typiquement utilisé pour le nettoyage, comme la fermeture de fichiers ou la libération de ressources.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-49-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-49-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-49-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-49-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-49-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-49-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-49-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-49-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-49-10">10</a></span>
-<span class="normal"><a href="#__codelineno-49-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2"></a>    <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4"></a><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier n&#39;a pas été trouvé.&quot;</span><span class="p">)</span>
-</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier a été lu avec succès.&quot;</span><span class="p">)</span>
-</span><span id="__span-49-8"><a id="__codelineno-49-8" name="__codelineno-49-8"></a><span class="k">finally</span><span class="p">:</span>
-</span><span id="__span-49-9"><a id="__codelineno-49-9" name="__codelineno-49-9"></a>    <span class="k">if</span> <span class="s1">&#39;fichier&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
-</span><span id="__span-49-10"><a id="__codelineno-49-10" name="__codelineno-49-10"></a>        <span class="n">fichier</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="__span-49-11"><a id="__codelineno-49-11" name="__codelineno-49-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier est fermé.&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-50-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-50-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-50-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-50-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-50-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-50-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-50-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-50-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-50-10">10</a></span>
+<span class="normal"><a href="#__codelineno-50-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2"></a>    <span class="n">fichier</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mon_fichier.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3"></a>    <span class="n">contenu</span> <span class="o">=</span> <span class="n">fichier</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4"></a><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier n&#39;a pas été trouvé.&quot;</span><span class="p">)</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier a été lu avec succès.&quot;</span><span class="p">)</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8"></a><span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9"></a>    <span class="k">if</span> <span class="s1">&#39;fichier&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10"></a>        <span class="n">fichier</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le fichier est fermé.&quot;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="levee-dexceptions">Levée d'Exceptions</h3>
 <p>Il est possible de lever des exceptions manuellement avec l'instruction <code>raise</code>.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
-<span class="normal"><a href="#__codelineno-50-2">2</a></span>
-<span class="normal"><a href="#__codelineno-50-3">3</a></span>
-<span class="normal"><a href="#__codelineno-50-4">4</a></span>
-<span class="normal"><a href="#__codelineno-50-5">5</a></span>
-<span class="normal"><a href="#__codelineno-50-6">6</a></span>
-<span class="normal"><a href="#__codelineno-50-7">7</a></span>
-<span class="normal"><a href="#__codelineno-50-8">8</a></span>
-<span class="normal"><a href="#__codelineno-50-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="k">def</span> <span class="nf">verifie_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
-</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2"></a>    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;L&#39;âge ne peut pas être négatif.&quot;</span><span class="p">)</span>
-</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4"></a>    <span class="k">return</span> <span class="n">age</span>
-</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5"></a>
-</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7"></a>    <span class="n">verifie_age</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8"></a><span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1">1</a></span>
+<span class="normal"><a href="#__codelineno-51-2">2</a></span>
+<span class="normal"><a href="#__codelineno-51-3">3</a></span>
+<span class="normal"><a href="#__codelineno-51-4">4</a></span>
+<span class="normal"><a href="#__codelineno-51-5">5</a></span>
+<span class="normal"><a href="#__codelineno-51-6">6</a></span>
+<span class="normal"><a href="#__codelineno-51-7">7</a></span>
+<span class="normal"><a href="#__codelineno-51-8">8</a></span>
+<span class="normal"><a href="#__codelineno-51-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="k">def</span> <span class="nf">verifie_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2"></a>    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;L&#39;âge ne peut pas être négatif.&quot;</span><span class="p">)</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4"></a>    <span class="k">return</span> <span class="n">age</span>
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5"></a>
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7"></a>    <span class="n">verifie_age</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8"></a><span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Dans cet exemple, une exception <code>ValueError</code> est levée si l'âge est négatif.</p>
 <h4 id="exercice_9">Exercice</h4>
 <p>Écrivez un script Python qui demande à l'utilisateur d'entrer un nombre et qui lève une exception si la valeur entrée ne peut être convertie en <code>float</code>.</p>
 <details class="note">
 <summary>Exemple de solution</summary>
-<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-51-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-51-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-51-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-51-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-51-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-51-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-51-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-51-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-51-10">10</a></span>
-<span class="normal"><a href="#__codelineno-51-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2"></a>    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre : &quot;</span><span class="p">))</span>
-</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Il y a une erreur de type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le message d&#39;erreur est : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7"></a>        <span class="n">f</span><span class="p">()</span>
-</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le nombre est </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9"></a>
-</span><span id="__span-51-10"><a id="__codelineno-51-10" name="__codelineno-51-10"></a>
-</span><span id="__span-51-11"><a id="__codelineno-51-11" name="__codelineno-51-11"></a><span class="n">f</span><span class="p">()</span>
+<p><div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-52-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-52-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-52-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-52-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-52-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-52-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-52-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-52-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-52-10">10</a></span>
+<span class="normal"><a href="#__codelineno-52-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre : &quot;</span><span class="p">))</span>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Il y a une erreur de type : </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le message d&#39;erreur est : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-52-7"><a id="__codelineno-52-7" name="__codelineno-52-7"></a>        <span class="n">f</span><span class="p">()</span>
+</span><span id="__span-52-8"><a id="__codelineno-52-8" name="__codelineno-52-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Le nombre est </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-52-9"><a id="__codelineno-52-9" name="__codelineno-52-9"></a>
+</span><span id="__span-52-10"><a id="__codelineno-52-10" name="__codelineno-52-10"></a>
+</span><span id="__span-52-11"><a id="__codelineno-52-11" name="__codelineno-52-11"></a><span class="n">f</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
 Cet exemple utilise un nouveau concept pour pouvoir redemander le nombre à l'utilisateur : la récursivité. C'est pour cela qu'on appelle la fonction <code>f</code> à l'intérieur d'elle même.</p>
 <p>Elle récupère l'erreur si elle existe, affiche le nom du type d'erreur (<code>ValueError</code> la plupart du temps) et son message avant de relancer la fonction, ce qui relancera l'input.</p>
 <p>Une fois qu'un vrai nombre a été fourni, celui ci est simplement affiché.</p>
 <p>Une version plus simple centrée juste sur le <code>try</code> permettant simplement de ne pas avoir le script en erreur est : 
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1">1</a></span>
-<span class="normal"><a href="#__codelineno-52-2">2</a></span>
-<span class="normal"><a href="#__codelineno-52-3">3</a></span>
-<span class="normal"><a href="#__codelineno-52-4">4</a></span>
-<span class="normal"><a href="#__codelineno-52-5">5</a></span>
-<span class="normal"><a href="#__codelineno-52-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="n">n</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a><span class="k">try</span><span class="p">:</span>
-</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrer un nombre : &quot;</span><span class="p">))</span>
-</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a><span class="k">except</span><span class="p">:</span>
-</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5"></a>    <span class="k">pass</span>
-</span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1">1</a></span>
+<span class="normal"><a href="#__codelineno-53-2">2</a></span>
+<span class="normal"><a href="#__codelineno-53-3">3</a></span>
+<span class="normal"><a href="#__codelineno-53-4">4</a></span>
+<span class="normal"><a href="#__codelineno-53-5">5</a></span>
+<span class="normal"><a href="#__codelineno-53-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="n">n</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrer un nombre : &quot;</span><span class="p">))</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="k">except</span><span class="p">:</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5"></a>    <span class="k">pass</span>
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div></p>
 </details>
 
