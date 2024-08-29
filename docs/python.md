@@ -772,12 +772,11 @@ Dans cet exemple, une exception ``ValueError`` est levée si l'âge est négatif
     def f():
         try:
             n = float(input("Entrez un nombre : "))
+            print(f"Le nombre est {n}")
         except Exception as e:
             print(f"Il y a une erreur de type : {type(e).__name__}")
             print(f"Le message d'erreur est : {e}")
             f()
-        print(f"Le nombre est {n}")
-
 
     f()
     ```
