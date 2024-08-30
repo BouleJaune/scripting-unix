@@ -14,6 +14,7 @@ nav:
     - Expressions régulières : 'regex.md'
   - Parallelisme en Shell et Python: 'parallelisme.md'
   - Travaux pratique: 'travaux-pratique.md'
+  - Travaux pratique 2: 'travaux-pratique-simples.md'
 
 # Theme material
 theme:
