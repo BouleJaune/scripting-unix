@@ -626,7 +626,7 @@ with open('mon_fichier.txt', 'r') as fichier:
     contenu = fichier.read()
     print(contenu)
 ```
-Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté ``with``, une fois sorti de ce bloc le fichier se ferme et la variable ``fichier`` n'existe plus.
+Ici le fichier est ouvert tant qu'on se situe dans le bloc indenté ``with``, une fois sorti de ce bloc le fichier se ferme.
 
 ### Écriture dans un fichier
 
