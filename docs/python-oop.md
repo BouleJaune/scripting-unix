@@ -62,6 +62,25 @@ for animal in animaux:
     animal.parler()  # Appelle la méthode `parler` spécifique à chaque classe.
 ```
 
+#### Exercice
+
+
+Dans un script python faire une classe Batiment qui possède des methodes (`construction()` par exemple) et des attributs (`surface_en_m2` par exemple).
+
+Puis faites une classe Maison héritant de Batiment et qui possede des attributs / methodes supplémentaires, comme par exemple `famille`, `adresse`, `possede_garage`.
+ 
+Faire plusieurs objets de chaque et utilisez leurs methodes et attributs.
+
+??? Note "Solution"
+    ```python
+    class Batiment():
+    
+    class Maison(Batiment):
+
+    ```
+
+
+
 ## Abstraction
 
 L'abstraction consiste à définir des classes de base (souvent des classes abstraites) qui ne sont pas destinées à être instanciées (à créer des objets de cette classe), mais à être héritées par d'autres classes.
