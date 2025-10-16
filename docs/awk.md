@@ -88,7 +88,7 @@ awk '!/ERROR/ { print $0 }' fichier.txt # Permet de ne PAS récupérer les ligne
 
 #### Exercice
 
-Cherchez avec ``awk`` dans ``fichier.txt`` toutes les alertes provenant du serveur numéro 3.
+Cherchez avec ``awk`` dans ``fichier.txt`` toutes les lignes concernant le serveur numéro 3.
 
 ??? Note "Exemple de solution"
 
