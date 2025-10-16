@@ -27,6 +27,46 @@ La Programmation Orientée Objet (POO) est un paradigme de programmation qui org
    personne1.saluer()  # Affiche: Bonjour, je m'appelle Alice et j'ai 30 ans.
 ```
 
+#### Exercice
+
+Créez une classe Batiment qui possède :
+
+- Un attribut `surface_en_m2`
+- Un attribut `annee_construction`
+- Une méthode `construction()` qui affiche un message indiquant la construction du bâtiment
+- Une méthode `description()` qui renvoie une phrase résumant les caractéristiques du bâtiment
+
+Puis instanciez deux objets de cette classe et utilisez les méthodes / affichez les attributs.
+
+??? Note "Solution"
+    ```python
+    class Batiment:
+        def __init__(self, surface_en_m2, annee_construction):
+            self.surface_en_m2 = surface_en_m2
+            self.annee_construction = annee_construction
+
+        def construction(self):
+            print(f"Un bâtiment de {self.surface_en_m2} m² a été construit en {self.annee_construction}.")
+
+        def description(self):
+            return f"Bâtiment de {self.surface_en_m2} m², construit en {self.annee_construction}."
+    ```
+
+??? Note "Solution"
+    ```python
+    vieux_batiment = Batiment(surface_en_m2=90, annee_construction=1890)
+    print(vieux_batiment.surface_en_m2, vieux_batiment.annee_construction)
+    vieux_batiment.construction()
+    print(vieux_batiment.description())
+
+    print()
+
+    batiment_recent = Batiment(surface_en_m2=160, annee_construction=2022)
+    print(batiment_recent.surface_en_m2, batiment_recent.annee_construction)
+    batiment_recent.construction()
+    print(batiment_recent.description())
+    ```
+
 ## Héritage
 
 L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.
@@ -40,6 +80,10 @@ class Animal:
         pass
 
 class Chien(Animal):
+    def __init__(self, nom, dangereux=False):
+        super().__init__(nom)
+        self.dangereux = dangereux
+
     def parler(self):
         print(f"{self.nom} aboie.")
 
@@ -50,6 +94,12 @@ class Chat(Animal):
 chien = Chien("Rex")
 chien.parler()  # Affiche: Rex aboie.
 ```
+
+La classe enfant hérite du constructeur / ``__init__`` de la classe parent, sauf si on la redéfinit.
+
+On peut appeler des méthodes et attributs de la classe parent dans la classe enfant avec ``super().ma_methode()`` et ``super().monattribut``.
+
+Redéfinir `__init__` écrase celui de la classe parent, donc si on veut le récupérer on appelle `super().__init__`` dans le nouveau `__init__`.
 
 ## Polymorphisme
 
@@ -64,45 +114,33 @@ for animal in animaux:
 
 #### Exercice
 
+Créez une classe Maison qui hérite de Batiment et ajoute :
 
-Dans un script python faire une classe Batiment qui possède des methodes (`construction()` par exemple) et des attributs (`surface_en_m2` par exemple).
+- Un attribut `famille` (nom de la famille habitant la maison)
+- Un attribut `adresse`
+- Un attribut `possede_garage` (booléen)
+- Une méthode `description()`  qui étend celle de Batiment en ajoutant les infos propres à la maison
 
-Puis faites une classe Maison héritant de Batiment et qui possede des attributs / methodes supplémentaires, comme par exemple `famille`, `adresse`, `possede_garage`.
- 
-Faire plusieurs objets de chaque et utilisez leurs methodes et attributs.
+Utilisez/affichez les attributs et méthodes puis observez que les objets de classe `Maison` héritent bien d'attributs et méthodes de la classe `Batiment`.
 
 ??? Note "Solution"
     ```python
-    class Batiment():
-    
     class Maison(Batiment):
+        def __init__(self, surface_en_m2, annee_construction, famille, adresse, possede_garage=False):
+            super().__init__(surface_en_m2, annee_construction)
+            self.famille = famille
+            self.adresse = adresse
+            self.possede_garage = possede_garage
 
+        def description(self):
+            garage = "avec garage" if self.possede_garage else "sans garage"
+            return (f"Maison de {self.surface_en_m2} m² ({garage}), "
+                    f"construite en {self.annee_construction}, "
+                    f"habitée par la famille {self.famille}.")
+
+    mamaison = Maison(surface_en_m2=50, annee_construction=1990, famille="gary", adresse="addr", possede_garage=True)
+    print(mamaison.surface_en_m2)
+    print(mamaison.construction())
+    print(mamaison.description())
     ```
 
-
-
-## Abstraction
-
-L'abstraction consiste à définir des classes de base (souvent des classes abstraites) qui ne sont pas destinées à être instanciées (à créer des objets de cette classe), mais à être héritées par d'autres classes.
-
-```python
-from abc import ABC, abstractmethod
-# Le module abc = abstract base class
-
-class Forme(ABC): 
-    # Hérite de la classe ABC
-    # Une classe héritant de ABC ne peut pas être instanciée sauf si toute ses méthodes et propriétés abstraites sont écrasées
-    
-    # Un décorateur permet de "composer" deux fonctions/méthodes ensembles, ici on compose "abstractmethod" (importée en haut) avec notre fonction aire.
-    @abstractmethod # Ce "décorateur" permet de dire que la méthode au dessous est "abstraite"
-    def aire(self):
-        pass
-
-class Carre(Forme):
-    def __init__(self, cote):
-        self.cote = cote
-    
-    # On override la méthode abstraite ce qui rend la classe instanciable 
-    def aire(self):
-        return self.cote ** 2
-```
