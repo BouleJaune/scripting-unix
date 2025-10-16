@@ -148,3 +148,27 @@ words = text.split()
 emails = [word for word in words if is_email(word)]
 print(emails)
 ```
+
+
+Ou encore comme souvent en python il existe un module directement fait pour : `email-validator`.
+
+```python
+import email_validator as ev
+mail = "support@exemple.com"
+mailko = "support@exemple"
+
+try:
+    print(f"Vérification de {mail}")
+    ev.validate_email(mail)
+    print(f"{mail} est OK")
+except ev.EmailNotValidError as e:
+    print(str(e))
+
+print()
+
+try:
+    print(f"Vérification de {mailko}")
+    ev.validate_email(mailko)
+except ev.EmailNotValidError as e:
+    print(str(e))
+```
