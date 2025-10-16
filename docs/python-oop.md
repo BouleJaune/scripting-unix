@@ -99,7 +99,7 @@ La classe enfant hérite du constructeur / ``__init__`` de la classe parent, sau
 
 On peut appeler des méthodes et attributs de la classe parent dans la classe enfant avec ``super().ma_methode()`` et ``super().monattribut``.
 
-Redéfinir `__init__` écrase celui de la classe parent, donc si on veut le récupérer on appelle `super().__init__`` dans le nouveau `__init__`.
+Redéfinir `__init__` écrase celui de la classe parent, donc si on veut le récupérer on appelle `super().__init__` dans le nouveau `__init__`.
 
 ## Polymorphisme
 
