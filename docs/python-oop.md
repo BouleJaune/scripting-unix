@@ -11,13 +11,13 @@ La Programmation Orientée Objet (POO) est un paradigme de programmation qui org
 - **Classe** : Un modèle définissant les propriétés (attributs) et les comportements (méthodes) que les objets créés à partir de cette classe auront.
   
 ```python
- class Personne:
-     def __init__(self, nom, age):
-         self.nom = nom
-         self.age = age
- 
-     def saluer(self):
-         print(f"Bonjour, je m'appelle {self.nom} et j'ai {self.age} ans.")
+class Personne:
+    def __init__(self, nom, age):
+        self.nom = nom
+        self.age = age
+
+    def saluer(self):
+        print(f"Bonjour, je m'appelle {self.nom} et j'ai {self.age} ans.")
 ```
 
 - Objet : Une instance d'une classe, avec des valeurs spécifiques pour les attributs définis dans la classe.
