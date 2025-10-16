@@ -67,7 +67,7 @@ Puis instanciez deux objets de cette classe et utilisez les méthodes / affichez
     print(batiment_recent.description())
     ```
 
-#### Héritage
+### Héritage
 
 L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.
 
@@ -101,7 +101,7 @@ On peut appeler des méthodes et attributs de la classe parent dans la classe en
 
 Redéfinir `__init__` écrase celui de la classe parent, donc si on veut le récupérer on appelle `super().__init__` dans le nouveau `__init__`.
 
-### Polymorphisme
+#### Polymorphisme
 
 Le polymorphisme permet d'utiliser une méthode de la même manière sur différents types d'objets, même si leur implémentation est différente.
 
