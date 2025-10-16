@@ -1005,7 +1005,7 @@ Pour afficher les lignes contenant le mot "ERROR" :</p>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>awk<span class="w"> </span><span class="s1">&#39;!/ERROR/ { print $0 }&#39;</span><span class="w"> </span>fichier.txt<span class="w"> </span><span class="c1"># Permet de ne PAS récupérer les lignes contenant ERROR.</span>
 </span></code></pre></div></td></tr></table></div>
 <h4 id="exercice">Exercice</h4>
-<p>Cherchez avec <code>awk</code> dans <code>fichier.txt</code> toutes les alertes provenant du serveur numéro 3.</p>
+<p>Cherchez avec <code>awk</code> dans <code>fichier.txt</code> toutes les lignes concernant le serveur numéro 3.</p>
 <details class="note">
 <summary>Exemple de solution</summary>
 <div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>awk<span class="w"> </span><span class="s1">&#39;/Server3/ {print $0}&#39;</span><span class="w"> </span>fichier.txt
