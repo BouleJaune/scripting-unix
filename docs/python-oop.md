@@ -23,8 +23,8 @@ class Personne:
 - Objet : Une instance d'une classe, avec des valeurs spécifiques pour les attributs définis dans la classe.
 
 ```python
-   personne1 = Personne("Alice", 30)
-   personne1.saluer()  # Affiche: Bonjour, je m'appelle Alice et j'ai 30 ans.
+   alice = Personne("Alice", 30)
+   alice.saluer()  # Affiche: Bonjour, je m'appelle Alice et j'ai 30 ans.
 ```
 
 #### Exercice
