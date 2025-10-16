@@ -67,7 +67,7 @@ Puis instanciez deux objets de cette classe et utilisez les méthodes / affichez
     print(batiment_recent.description())
     ```
 
-### Héritage
+#### Héritage
 
 L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.
 
