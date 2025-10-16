@@ -512,6 +512,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Classes et Objets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -539,7 +554,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exercice" class="md-nav__link">
+  <a href="#exercice_1" class="md-nav__link">
     <span class="md-ellipsis">
       Exercice
     </span>
@@ -549,15 +564,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#abstraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Abstraction
-    </span>
-  </a>
   
 </li>
       
@@ -808,6 +814,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Classes et Objets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -835,7 +856,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exercice" class="md-nav__link">
+  <a href="#exercice_1" class="md-nav__link">
     <span class="md-ellipsis">
       Exercice
     </span>
@@ -845,15 +866,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#abstraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Abstraction
-    </span>
-  </a>
   
 </li>
       
@@ -902,8 +914,17 @@
 <span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>   <span class="n">personne1</span> <span class="o">=</span> <span class="n">Personne</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>   <span class="n">personne1</span><span class="o">.</span><span class="n">saluer</span><span class="p">()</span>  <span class="c1"># Affiche: Bonjour, je m&#39;appelle Alice et j&#39;ai 30 ans.</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="heritage">Héritage</h2>
-<p>L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.</p>
+<h4 id="exercice">Exercice</h4>
+<p>Créez une classe Batiment qui possède :</p>
+<ul>
+<li>Un attribut <code>surface_en_m2</code></li>
+<li>Un attribut <code>annee_construction</code></li>
+<li>Une méthode <code>construction()</code> qui affiche un message indiquant la construction du bâtiment</li>
+<li>Une méthode <code>description()</code> qui renvoie une phrase résumant les caractéristiques du bâtiment</li>
+</ul>
+<p>Puis instanciez deux objets de cette classe et utilisez les méthodes / affichez les attributs.</p>
+<details class="note">
+<summary>Solution</summary>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -913,94 +934,146 @@
 <span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">):</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="k">pass</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chien</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> aboie.&quot;</span><span class="p">)</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> miaule.&quot;</span><span class="p">)</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="n">chien</span> <span class="o">=</span> <span class="n">Chien</span><span class="p">(</span><span class="s2">&quot;Rex&quot;</span><span class="p">)</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="n">chien</span><span class="o">.</span><span class="n">parler</span><span class="p">()</span>  <span class="c1"># Affiche: Rex aboie.</span>
-</span></code></pre></div></td></tr></table></div>
-<h2 id="polymorphisme">Polymorphisme</h2>
-<p>Le polymorphisme permet d'utiliser une méthode de la même manière sur différents types d'objets, même si leur implémentation est différente.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">animaux</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chien</span><span class="p">(</span><span class="s2">&quot;Rex&quot;</span><span class="p">),</span> <span class="n">Chat</span><span class="p">(</span><span class="s2">&quot;Mimi&quot;</span><span class="p">)]</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">animaux</span><span class="p">:</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="n">animal</span><span class="o">.</span><span class="n">parler</span><span class="p">()</span>  <span class="c1"># Appelle la méthode `parler` spécifique à chaque classe.</span>
-</span></code></pre></div></td></tr></table></div>
-<h4 id="exercice">Exercice</h4>
-<p>Dans un script python faire une classe Batiment qui possède des methodes (<code>construction()</code> par exemple) et des attributs (<code>surface_en_m2</code> par exemple).</p>
-<p>Puis faites une classe Maison héritant de Batiment et qui possede des attributs / methodes supplémentaires, comme par exemple <code>famille</code>, <code>adresse</code>, <code>possede_garage</code>.</p>
-<p>Faire plusieurs objets de chaque et utilisez leurs methodes et attributs.</p>
-<details class="note">
-<summary>Solution</summary>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Batiment</span><span class="p">():</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Maison</span><span class="p">(</span><span class="n">Batiment</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Batiment</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface_en_m2</span><span class="p">,</span> <span class="n">annee_construction</span><span class="p">):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">surface_en_m2</span> <span class="o">=</span> <span class="n">surface_en_m2</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">annee_construction</span> <span class="o">=</span> <span class="n">annee_construction</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">construction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Un bâtiment de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="si">}</span><span class="s2"> m² a été construit en </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">annee_construction</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Bâtiment de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="si">}</span><span class="s2"> m², construit en </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">annee_construction</span><span class="si">}</span><span class="s2">.&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
-<h2 id="abstraction">Abstraction</h2>
-<p>L'abstraction consiste à définir des classes de base (souvent des classes abstraites) qui ne sont pas destinées à être instanciées (à créer des objets de cette classe), mais à être héritées par d'autres classes.</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-5-10">10</a></span>
-<span class="normal"><a href="#__codelineno-5-11">11</a></span>
-<span class="normal"><a href="#__codelineno-5-12">12</a></span>
-<span class="normal"><a href="#__codelineno-5-13">13</a></span>
-<span class="normal"><a href="#__codelineno-5-14">14</a></span>
-<span class="normal"><a href="#__codelineno-5-15">15</a></span>
-<span class="normal"><a href="#__codelineno-5-16">16</a></span>
-<span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1"># Le module abc = abstract base class</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Forme</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span> 
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="c1"># Hérite de la classe ABC</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="c1"># Une classe héritant de ABC ne peut pas être instanciée sauf si toute ses méthodes et propriétés abstraites sont écrasées</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="c1"># Un décorateur permet de &quot;composer&quot; deux fonctions/méthodes ensembles, ici on compose &quot;abstractmethod&quot; (importée en haut) avec notre fonction aire.</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span class="nd">@abstractmethod</span> <span class="c1"># Ce &quot;décorateur&quot; permet de dire que la méthode au dessous est &quot;abstraite&quot;</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">aire</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>        <span class="k">pass</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">Carre</span><span class="p">(</span><span class="n">Forme</span><span class="p">):</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cote</span><span class="p">):</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cote</span> <span class="o">=</span> <span class="n">cote</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="c1"># On override la méthode abstraite ce qui rend la classe instanciable </span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">aire</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cote</span> <span class="o">**</span> <span class="mi">2</span>
+<details class="note">
+<summary>Solution</summary>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">vieux_batiment</span> <span class="o">=</span> <span class="n">Batiment</span><span class="p">(</span><span class="n">surface_en_m2</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">annee_construction</span><span class="o">=</span><span class="mi">1890</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">vieux_batiment</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="p">,</span> <span class="n">vieux_batiment</span><span class="o">.</span><span class="n">annee_construction</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">vieux_batiment</span><span class="o">.</span><span class="n">construction</span><span class="p">()</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">vieux_batiment</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nb">print</span><span class="p">()</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="n">batiment_recent</span> <span class="o">=</span> <span class="n">Batiment</span><span class="p">(</span><span class="n">surface_en_m2</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">annee_construction</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">batiment_recent</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="p">,</span> <span class="n">batiment_recent</span><span class="o">.</span><span class="n">annee_construction</span><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="n">batiment_recent</span><span class="o">.</span><span class="n">construction</span><span class="p">()</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">batiment_recent</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>
 </span></code></pre></div></td></tr></table></div>
+</details>
+<h2 id="heritage">Héritage</h2>
+<p>L'héritage permet de créer une nouvelle classe à partir d'une classe existante, en réutilisant et en étendant ses fonctionnalités.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">):</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>        <span class="k">pass</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chien</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">dangereux</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dangereux</span> <span class="o">=</span> <span class="n">dangereux</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> aboie.&quot;</span><span class="p">)</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">Chat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">parler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> miaule.&quot;</span><span class="p">)</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="n">chien</span> <span class="o">=</span> <span class="n">Chien</span><span class="p">(</span><span class="s2">&quot;Rex&quot;</span><span class="p">)</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="n">chien</span><span class="o">.</span><span class="n">parler</span><span class="p">()</span>  <span class="c1"># Affiche: Rex aboie.</span>
+</span></code></pre></div></td></tr></table></div>
+<p>La classe enfant hérite du constructeur / <code>__init__</code> de la classe parent, sauf si on la redéfinit.</p>
+<p>On peut appeler des méthodes et attributs de la classe parent dans la classe enfant avec <code>super().ma_methode()</code> et <code>super().monattribut</code>.</p>
+<p>Redéfinir <code>__init__</code> écrase celui de la classe parent, donc si on veut le récupérer on appelle <code>super().__init__`` dans le nouveau</code><strong>init</strong>`.</p>
+<h2 id="polymorphisme">Polymorphisme</h2>
+<p>Le polymorphisme permet d'utiliser une méthode de la même manière sur différents types d'objets, même si leur implémentation est différente.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">animaux</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chien</span><span class="p">(</span><span class="s2">&quot;Rex&quot;</span><span class="p">),</span> <span class="n">Chat</span><span class="p">(</span><span class="s2">&quot;Mimi&quot;</span><span class="p">)]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">animaux</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="n">animal</span><span class="o">.</span><span class="n">parler</span><span class="p">()</span>  <span class="c1"># Appelle la méthode `parler` spécifique à chaque classe.</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="exercice_1">Exercice</h4>
+<p>Créez une classe Maison qui hérite de Batiment et ajoute :</p>
+<ul>
+<li>Un attribut <code>famille</code> (nom de la famille habitant la maison)</li>
+<li>Un attribut <code>adresse</code></li>
+<li>Un attribut <code>possede_garage</code> (booléen)</li>
+<li>Une méthode <code>description()</code>  qui étend celle de Batiment en ajoutant les infos propres à la maison</li>
+</ul>
+<p>Utilisez/affichez les attributs et méthodes puis observez que les objets de classe <code>Maison</code> héritent bien d'attributs et méthodes de la classe <code>Batiment</code>.</p>
+<details class="note">
+<summary>Solution</summary>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Maison</span><span class="p">(</span><span class="n">Batiment</span><span class="p">):</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface_en_m2</span><span class="p">,</span> <span class="n">annee_construction</span><span class="p">,</span> <span class="n">famille</span><span class="p">,</span> <span class="n">adresse</span><span class="p">,</span> <span class="n">possede_garage</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">surface_en_m2</span><span class="p">,</span> <span class="n">annee_construction</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">famille</span> <span class="o">=</span> <span class="n">famille</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">adresse</span> <span class="o">=</span> <span class="n">adresse</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">possede_garage</span> <span class="o">=</span> <span class="n">possede_garage</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>        <span class="n">garage</span> <span class="o">=</span> <span class="s2">&quot;avec garage&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">possede_garage</span> <span class="k">else</span> <span class="s2">&quot;sans garage&quot;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>        <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maison de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="si">}</span><span class="s2"> m² (</span><span class="si">{</span><span class="n">garage</span><span class="si">}</span><span class="s2">), &quot;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>                <span class="sa">f</span><span class="s2">&quot;construite en </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">annee_construction</span><span class="si">}</span><span class="s2">, &quot;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>                <span class="sa">f</span><span class="s2">&quot;habitée par la famille </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">famille</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="n">mamaison</span> <span class="o">=</span> <span class="n">Maison</span><span class="p">(</span><span class="n">surface_en_m2</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">annee_construction</span><span class="o">=</span><span class="mi">1990</span><span class="p">,</span> <span class="n">famille</span><span class="o">=</span><span class="s2">&quot;gary&quot;</span><span class="p">,</span> <span class="n">adresse</span><span class="o">=</span><span class="s2">&quot;addr&quot;</span><span class="p">,</span> <span class="n">possede_garage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">mamaison</span><span class="o">.</span><span class="n">surface_en_m2</span><span class="p">)</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">mamaison</span><span class="o">.</span><span class="n">construction</span><span class="p">())</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">mamaison</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
 
 
 
