@@ -51,7 +51,7 @@ Ce dossier contient :
 ./apps.py
 ```
 
-Les fichiers qui nous intéresseront ici sont ``models.py``, ``views.py`` et deux que l'on va créer ``urls.py`` et ``serializers.py``.
+Les fichiers qui nous intéresseront ici sont ``models.py``, ``views.py`` et deux que l'on va créer plus tard ``urls.py`` et ``serializers.py``.
 
 
 Une fois tout ceci fait dans le fichier  ``djangorestframework/settings.py`` il faut rajouter notre nouvelle application dans la liste ``INSTALLED_APPS`` :
