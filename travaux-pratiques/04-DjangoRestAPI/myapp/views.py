@@ -16,7 +16,7 @@ class AlertCreateList(generics.ListCreateAPIView):
 class AlertRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     """
     Permet de récupérer une instance d'Alert via GET,
-    ou d'uppdate via POST
+    ou d'update via POST
     ou de détruire via DELETE
     """
     queryset = Alert.objects.all()
