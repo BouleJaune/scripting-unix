@@ -8,6 +8,7 @@ pip install djangorestframework
 django-admin startproject djangorestapi .
 cd djangorestapi
 django-admin startapp quickstart
+cd ..
 ```
 
 Maintenant on peut synchroniser la db et créer un super utilisateur : 
