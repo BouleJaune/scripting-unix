@@ -36,7 +36,7 @@ do
 	data='{"date":"'$date_heure'", "serveur": "'$serveur'", "criticity": "'$criticity'", "message": "'$message'", "infogerant": "'$infogerant'", "application": "'$application'", "environnement": "'$env'"}'
 
 	## Envoi dans la rest API pas en bg sinon on casse sqlite ! Et on récupère le code de retour dans r
-	r=$(curl --request POST -H "Content-Type:application/json" http://127.0.0.1:8001/api/alert --data "$data" -s -o /dev/null -w "%{http_code}")
+	r=$(curl --request POST -H "Content-Type:application/json" http://127.0.0.1:8000/api/alert --data "$data" -s -o /dev/null -w "%{http_code}")
 
 	## Traitement du code de retour, on notifie si on a pas 201
 	if [ ! "$r" -eq 201 ];then
