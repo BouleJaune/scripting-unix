@@ -61,7 +61,7 @@ Une fois tout ceci fait dans le fichier  ``djangorestframework/settings.py`` il 
 
 ```python
 INSTALLED_APPS = [
-    'myapp`, # <= cette ligne
+    'myapp', # <= cette ligne
     'rest_framework', 
     ...
 ]
